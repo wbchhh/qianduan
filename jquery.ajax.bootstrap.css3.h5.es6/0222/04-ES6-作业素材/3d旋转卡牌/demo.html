@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d旋转卡牌</title>
+    <style>
+        body{
+            perspective: 500px;
+        }
+        .box{
+            width: 700px;
+            margin: 0 auto;
+            height: 600px;
+        }
+        .pic{
+            width: 400px;
+            margin: 0 auto;
+            margin-top: 300px;
+            transform-style: preserve-3d;
+            /* transform:  rotateX(-60deg); */
+            transform-origin: 50% 50%;
+            animation: donghua 10s linear 0s infinite;
+        }
+        img{
+            width: 500px;
+        }
+        .pic1{
+            transform: rotateY(-60deg);
+            position: absolute;
+        }
+        .pic2{
+            transform:  rotateY(-120deg);
+            position: absolute;
+        }
+        .pic3{
+            transform: rotateY(-180deg);
+            position: absolute;
+        }
+        @keyframes donghua{
+            0% {
+                transform: rotateX(-60deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(-60deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic">
+            <img class="pic1" src="./images/1.jpg">
+            <img class="pic2" src="./images/2.jpg">
+            <img class="pic3" src="./images/3.jpg">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+    <script>
+        // 获取数组中最小值以及索引值的函数
+        function getArrayMin( arr ){
+            // 定义一个空对象
+            var min = {};
+            // 假设数组最小值的索引值
+            min.index = 0;
+            // 假设数组最小值
+            min.value = arr[0];
+
+            for(var i = 1 ; i< arr.length; i++ ){
+                if( min.value > arr[i] ){
+                    min.value = arr[i];
+                    min.index = i;
+                }
+            }
+            return min;
+        }
+
+        // 获取数组中最大值以及索引值的函数
+        function getArrayMax( arr ){
+            // 定义一个空对象
+            var max = {};
+            // 假设数组最小值的索引值
+            max.index = 0;
+            // 假设数组最小值
+            max.value = arr[0];
+
+            for(var i = 1 ; i< arr.length; i++ ){
+                if( max.value < arr[i] ){
+                    max.value = arr[i];
+                    max.index = i;
+                }
+            }
+            return max;
+        }
+
+
+        $(function(){
+            // 1. 声明一个变量,保存每个图片盒子项目的间距距离
+            var gap = 18;
+            // 2. 找到大盒子元素以及找到图片盒子元素
+            var box = $(".box");
+            var item = $(".box .item");
+            // 3. 算出瀑布流的列数(每一行能放几张图片) 用大盒子元素的宽度/图片的元素
+            var boxWidth = box.width();
+            var itemWidth = item.width();
+            var column = Math.floor( boxWidth/itemWidth );
+            // 5. 使用数组保存当前每列图片盒子的高度值,找出高度最小那一列的位置,以及这一列的高度值
+            // 这个数组保存每一列的高度值
+            var arrHeight = [];
+            // 4. 遍历每个图片盒子,先设置第一行每个图片盒子的top和left值
+            item.each(function(index,element){
+                if( index < column ){// 先确定第一行图片盒子的排列位置
+                    $(element).css({
+                        top:0,
+                        left: (itemWidth+gap)*index
+                    });
+                    // 把第一个每个图片盒子的高度添加到数组中
+                    arrHeight.push( $(element).height() );
+                }else{// 第一行之外
+                    var min_value = getArrayMin( arrHeight ).value;
+                    var min_index = getArrayMin( arrHeight ).index;
+                    // 6. 接着摆第二行第一个图片盒子,需要摆在第一行高度最小的图片盒子下面,然后接着找出当前几列中,高度最小的那一列,继续放第二行第二个图片,依次类推继续摆放后续图片
+                    $(element).css({
+                        top: min_value + gap ,
+                        left: (itemWidth+gap)*min_index
+                    });
+
+                    // 更新最小列的值
+                    arrHeight[min_index] += $(element).height() + gap;
+                }
+            });
+            // 7. 等所有图片摆放完毕以后,找出高度最高的那一列,作为大盒子的高度,这样大盒子后续内容才能正常显示
+            var max_value = getArrayMax( arrHeight ).value;
+            box.css("height", max_value );
+
+            // 定义数据
+            var itemData = [
+                {
+                    "img_num":"01",
+                    "title":"拥有一台宾利GT，如何拍，才不会被说炫富？",
+                    "uname":"金英焕",
+                    "num":102
+                },{
+                    "img_num":"02",
+                    "title":"🛁清凉一夏，宝宝用的这些东西你🉐知道…",
+                    "uname":"我是牛油果呀呀",
+                    "num":112
+                },{
+                    "img_num":"03",
+                    "title":"这些超火的动漫台词你绝对都有听过",
+                    "uname":"学说日语",
+                    "num":305
+                },{
+                    "img_num":"04",
+                    "title":"高段位的科学育儿理念！原来是它～",
+                    "uname":"小迷姐儿是豆豆龙",
+                    "num":101
+                },{
+                    "img_num":"05",
+                    "title":"没想到因为婴儿推车，我居然被孩子爸夸了…",
+                    "uname":"我是牛油果呀呀",
+                    "num":164
+                },{
+                    "img_num":"06",
+                    "title":"日常vlog｜妈妈、博主，每天身份转换",
+                    "uname":"木夕_木",
+                    "num":976
+                },{
+                    "img_num":"07",
+                    "title":"这个食谱摆摊能不能赚到学费大家帮忙参考一下😂",
+                    "uname":"彭雨荷baby",
+                    "num":1373
+                },{
+                    "img_num":"08",
+                    "title":"和油污蟑螂say byebye｜厨房清洁好物分享",
+                    "uname":"Cikoe",
+                    "num":60
+                },{
+                    "img_num":"09",
+                    "title":"上街超惹眼宏光MINI EV，市区代步车性价高",
+                    "uname":"一颗小甜欣",
+                    "num":80
+                },{
+                    "img_num":"10",
+                    "title":"📢快开学了！！！再不准备就晚了✅",
+                    "uname":"我叫小豆浆",
+                    "num":261
+                },{
+                    "img_num":"11",
+                    "title":"莆田探店｜时雾美术馆",
+                    "uname":"iamlittley",
+                    "num":43
+                },{
+                    "img_num":"12",
+                    "title":"参加活动遇到喜欢博主 瞬间变成小迷妹",
+                    "uname":"Chili徐辣儿",
+                    "num":112
+                },{
+                    "img_num":"13",
+                    "title":"学习干货📖各科笔记记什么，不看后悔✓ byebye｜厨房清洁好物分享",
+                    "uname":"贺叫兽",
+                    "num":1687
+                },{
+                    "img_num":"14",
+                    "title":"白色的川崎H2你见过吗 EV，市区代步车性价高",
+                    "uname":"机车目录",
+                    "num":146
+                },{
+                    "img_num":"15",
+                    "title":"My Melody🎀｜美乐蒂少女心生活助手",
+                    "uname":"鸭鸭吃饭啦",
+                    "num":2148
+                },{
+                    "img_num":"16",
+                    "title":"女生必学紧急瘦身法‼️一周就能瘦八斤✔️",
+                    "uname":"桃桃爱吃桃",
+                    "num":910
+                },{
+                    "img_num":"17",
+                    "title":"梅家晚饭",
+                    "uname":"梅之小榭",
+                    "num":129
+                },{
+                    "img_num":"18",
+                    "title":"越护肤越油❓分享混油痘肌的自用经验",
+                    "uname":"宁七七Yuki",
+                    "num":84
+                },{
+                    "img_num":"19",
+                    "title":"『NO.62』写作课📒Ⅰ含写作书单整理📚",
+                    "uname":"苏悠扬",
+                    "num":163
+                },{
+                    "img_num":"20",
+                    "title":"魔都探店｜芋泥牛奶冰沙‼️宝藏甜品店‼️",
+                    "uname":"Angela影",
+                    "num":869
+                }
+            ]
+            // 查看更多功能
+            $(".more").on("click",function(){
+                if( itemData.length > 0 ){
+                    // 定义一个新的空数组
+                    var newData = [];
+                    for(var i = 1; i <= 5; i++){
+                        // 随机下标
+                        var index = Math.floor(Math.random()*itemData.length) ;
+                        // 去到随机下标对应的元素
+                        newData.push(  itemData[index] );
+                        // 然后将这个随机得到的元素从原数组arr中剔除
+                        itemData.splice(index,1);
+                    }
+                    
+                    // 遍历添加元素
+                    $.each( newData , function( currentIndex, item ){
+                        var currentNode = $(`<div class="item">
+                                    <a href="#">
+                                        <img src="images/pic/${item.img_num}.jpg" class="pro_img"/>
+                                        <p class="title">${item.title}</p>
+                                        <p class="user">
+                                            <img src="images/touxiang/${item.img_num}.jpg" class="user_img"/>
+                                            <span class="uname">${item.uname}</span>
+                                            <span class="num">${item.num}</span>
+                                        </p>
+                                    </a>
+                                </div>`);
+
+                        box.append( currentNode );
+                        
+                        setTimeout(function(){
+                        	// 隐藏元素
+                        	currentNode.hide();
+                        	// 淡入元素
+                        	currentNode.fadeIn(500);
+                        	
+                            min_value = getArrayMin( arrHeight ).value;
+                            min_index = getArrayMin( arrHeight ).index;
+                            // 6. 接着摆第二行第一个图片盒子,需要摆在第一行高度最小的图片盒子下面,然后接着找出当前几列中,高度最小的那一类,继续放第二行第二个图片,依次类推继续摆放后续图片
+                            currentNode.css({
+                                top: min_value + gap ,
+                                left: (itemWidth+gap)*min_index
+                            });
+                            // 更新最小列的值
+                            arrHeight[min_index] += currentNode.height() + gap;
+                        },50);
+
+                    })
+                }else{
+                	// 设置内容
+                    $(this).html("没有更多数据了~");
+                    // 设置样式
+                    $(this).css({
+                        "color":"gray",
+                        "cursor":"not-allowed",
+                    });
+                    // 解绑事件
+                    $(this).off("click");
+                }
+
+                setTimeout(function(){
+                	// 设置盒子最大值
+                    max_value = getArrayMax( arrHeight ).value;
+                    box.css("height", max_value );
+
+                    // 动画滚动到底部
+                    $("html,body").stop().animate({scrollTop:$("html,body").prop("scrollHeight")}, 500 );
+
+                }, 500 );
+
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/01.jpg" class="pro_img"/>
+                <p class="title">拥有一台宾利GT，如何拍，才不会被说炫富？</p>
+                <p class="user">
+                    <img src="images/touxiang/01.jpg" class="user_img"/>
+                    <span class="uname">金英焕</span>
+                    <span class="num">102</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/02.jpg" class="pro_img"/>
+                <p class="title">🛁清凉一夏，宝宝用的这些东西你🉐知道…</p>
+                <p class="user">
+                    <img src="images/touxiang/02.jpg" class="user_img"/>
+                    <span class="uname">我是牛油果呀呀</span>
+                    <span class="num">112</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/03.jpg" class="pro_img"/>
+                <p class="title">这些超火的动漫台词你绝对都有听过</p>
+                <p class="user">
+                    <img src="images/touxiang/03.jpg" class="user_img"/>
+                    <span class="uname">学说日语</span>
+                    <span class="num">305</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/04.jpg" class="pro_img"/>
+                <p class="title">高段位的科学育儿理念！原来是它～</p>
+                <p class="user">
+                    <img src="images/touxiang/04.jpg" class="user_img"/>
+                    <span class="uname">小迷姐儿是豆豆龙</span>
+                    <span class="num">101</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/05.jpg" class="pro_img"/>
+                <p class="title">没想到因为婴儿推车，我居然被孩子爸夸了…</p>
+                <p class="user">
+                    <img src="images/touxiang/05.jpg" class="user_img"/>
+                    <span class="uname">我是牛油果呀呀</span>
+                    <span class="num">164</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/06.jpg" class="pro_img"/>
+                <p class="title">日常vlog｜妈妈、博主，每天身份转换</p>
+                <p class="user">
+                    <img src="images/touxiang/06.jpg" class="user_img"/>
+                    <span class="uname">木夕_木</span>
+                    <span class="num">976</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/07.jpg" class="pro_img"/>
+                <p class="title">这个食谱摆摊能不能赚到学费大家帮忙参考一下😂</p>
+                <p class="user">
+                    <img src="images/touxiang/07.jpg" class="user_img"/>
+                    <span class="uname">彭雨荷baby</span>
+                    <span class="num">1373</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/08.jpg" class="pro_img"/>
+                <p class="title">和油污蟑螂say byebye｜厨房清洁好物分享</p>
+                <p class="user">
+                    <img src="images/touxiang/08.jpg" class="user_img"/>
+                    <span class="uname">Cikoe</span>
+                    <span class="num">60</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/09.jpg" class="pro_img"/>
+                <p class="title">上街超惹眼宏光MINI EV，市区代步车性价高</p>
+                <p class="user">
+                    <img src="images/touxiang/09.jpg" class="user_img"/>
+                    <span class="uname">一颗小甜欣</span>
+                    <span class="num">80</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="images/pic/10.jpg" class="pro_img"/>
+                <p class="title">📢快开学了！！！再不准备就晚了✅</p>
+                <p class="user">
+                    <img src="images/touxiang/10.jpg" class="user_img"/>
+                    <span class="uname">我叫小豆浆</span>
+                    <span class="num">261</span>
+                </p>
+            </a>
+        </div>
+    </div>
+
+    <a href="javascript:void(0)" class="more">查看更多</a>
+</body>
+</html>

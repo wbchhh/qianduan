@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记住账号密码</title>
+</head>
+<body>
+    <div class="box">
+        <h2>用户登录</h2>
+        <p>账号：<input type="text" id="username"></p>
+        <p>密码：<input type="password" id="password"></p>
+        <p><input type="checkbox" id="check">是否记住账号密码？</p>
+        <button>登录</button>
+    </div>
+    <script>
+        var username = document.querySelector("#username");
+        var password = document.querySelector("#password");
+        var check = document.querySelector("#check");
+        var btn = document.querySelector("button");
+        btn.onclick = function(){
+            if(check.checked){
+                window.localStorage.setItem("myUserName",username.value);
+                window.localStorage.setItem("myUserPass",password.value);
+                window.localStorage.getItem("myUserName");
+                window.localStorage.getItem("myUserPass");
+            }else{
+                window.localStorage.clear();
+            }
+        }
+        var storage = window.localStorage;
+        if(storage.length != 0){
+            username.value = storage.myUserName;
+            password.value = storage.myUserPass;
+            check.setAttribute("checked",true);
+        }
+    </script>
+</body>
+</html>

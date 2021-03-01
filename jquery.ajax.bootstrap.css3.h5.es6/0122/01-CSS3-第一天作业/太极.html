@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 100px auto;
+            width: 500px;
+            height: 500px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            animation: move 1s linear infinite;
+        }
+        .box::after{
+            width: 500px;
+            height: 250px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            content: "";
+            display: block;
+        }
+        .box::before{
+            width: 500px;
+            height: 250px;
+            background-color: white;
+            position: absolute;
+            bottom: 0;
+            content: "";
+            display: block;
+        }
+        .yuan1{
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 125px;
+            transform: translate(-50%,-50%);
+            z-index: 10000;
+        }
+        .yuan1::after{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            position: absolute;
+            content: "";
+            display: block;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .yuan2{
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: black;
+            border-radius: 50%;
+            top: 50%;
+            right: -125px;
+            transform: translate(-50%,-50%);
+            z-index: 10000;
+        }
+        .yuan2::after{
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            position: absolute;
+            content: "";
+            display: block;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        @keyframes move{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="yuan1"></div>
+        <div class="yuan2"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <script src="./js/jquery.js"></script>
+</head>
+<script>
+    function getArrayMin( arr ){
+        var min = {};
+        min.index = 0;
+        min.value = arr[0];
+        for(var i = 1 ; i< arr.length; i++ ){
+            if( min.value > arr[i] ){
+                min.value = arr[i];
+                min.index = i;
+            }
+        }
+            return min;
+        }
+
+        function getArrayMax( arr ){
+            var max = {};
+            max.index = 0;
+            max.value = arr[0];
+            for(var i = 1 ; i< arr.length; i++ ){
+                if( max.value < arr[i] ){
+                    max.value = arr[i];
+                    max.index = i;
+                }
+            }
+            return max;
+        }
+
+        $(function(){
+            var gap = 18;
+            var box = $(".box");
+            var item = $(".box .item");
+            var boxWidth = box.width();
+            var itemWidth = item.width();
+            var column = Math.floor( boxWidth/itemWidth );
+            var arrHeight = [];
+            item.each(function(index,element){
+                if( index < column ){
+                    $(element).css({
+                        top:0,
+                        left: (itemWidth+gap)*index
+                    });
+                    arrHeight.push( $(element).height() );
+                }else{// 第一行之外
+                    var min_value = getArrayMin( arrHeight ).value;
+                    var min_index = getArrayMin( arrHeight ).index;
+                    $(element).css({
+                        top: min_value + gap ,
+                        left: (itemWidth+gap)*min_index
+                    });
+                    arrHeight[min_index] += $(element).height() + gap;
+                }
+            });
+            var max_value = getArrayMax( arrHeight ).value;
+            box.css("height", max_value );
+        });
+</script>
+<body>
+    <div class="box">
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/01.jpg" class="big_img">
+                <p class="title">拥有一台宾利GT，如何拍，才不会被说炫富？</p>
+                <p class="user">
+                    <img src="./img/touxiang/01.jpg" class="small_img">
+                    <span class="uname">金英焕</span>
+                    <span class="num">102</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/02.jpg" class="big_img">
+                <p class="title">🛁清凉一夏，宝宝用的这些东西你🉐知道…</p>
+                <p class="user">
+                    <img src="./img/touxiang/02.jpg" class="small_img">
+                    <span class="uname">我是牛油果呀呀</span>
+                    <span class="num">112</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/03.jpg" class="big_img">
+                <p class="title">这些超火的动漫台词你绝对都有听过</p>
+                <p class="user">
+                    <img src="./img/touxiang/03.jpg" class="small_img">
+                    <span class="uname">学说日语</span>
+                    <span class="num">305</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/04.jpg" class="big_img">
+                <p class="title">高段位的科学育儿理念！原来是它～</p>
+                <p class="user">
+                    <img src="./img/touxiang/04.jpg" class="small_img">
+                    <span class="uname">小迷姐儿是豆豆龙</span>
+                    <span class="num">101</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/05.jpg" class="big_img">
+                <p class="title">没想到因为婴儿推车，我居然被孩子爸夸了…</p>
+                <p class="user">
+                    <img src="./img/touxiang/05.jpg" class="small_img">
+                    <span class="uname">我是牛油果呀呀</span>
+                    <span class="num">164</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/01.jpg" class="big_img">
+                <p class="title">日常vlog｜妈妈、博主，每天身份转换</p>
+                <p class="user">
+                    <img src="./img/touxiang/06.jpg" class="small_img">
+                    <span class="uname">木夕_木</span>
+                    <span class="num">976</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/07.jpg" class="big_img">
+                <p class="title">这个食谱摆摊能不能赚到学费大家帮忙参考一下😂</p>
+                <p class="user">
+                    <img src="./img/touxiang/07.jpg" class="small_img">
+                    <span class="uname">彭雨荷baby</span>
+                    <span class="num">1373</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/08.jpg" class="big_img">
+                <p class="title">和油污蟑螂say byebye｜厨房清洁好物分享</p>
+                <p class="user">
+                    <img src="./img/touxiang/08.jpg" class="small_img">
+                    <span class="uname">Cikoe</span>
+                    <span class="num">60</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/09.jpg" class="big_img">
+                <p class="title">上街超惹眼宏光MINI EV，市区代步车性价高</p>
+                <p class="user">
+                    <img src="./img/touxiang/09.jpg" class="small_img">
+                    <span class="uname">一颗小甜欣</span>
+                    <span class="num">80</span>
+                </p>
+            </a>
+        </div>
+        <div class="item">
+            <a href="#">
+                <img src="./img/pic/10.jpg" class="big_img">
+                <p class="title">📢快开学了！！！再不准备就晚了✅</p>
+                <p class="user">
+                    <img src="./img/touxiang/10.jpg" class="small_img">
+                    <span class="uname">我叫小豆浆</span>
+                    <span class="num">261</span>
+                </p>
+            </a>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="more">查看更多</a>
+</body>
+</html>

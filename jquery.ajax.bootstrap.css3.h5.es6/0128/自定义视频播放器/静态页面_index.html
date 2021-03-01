@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>视频播放</title>
+    <!--字体图标库-->
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/player.css"/>
+</head>
+<body>
+    <div class="container">
+        <h2>视频播放器</h2>
+        <div class="player">
+            <video src="./video/fun.mp4"></video>
+            <div class="controls">
+                <!--播放/暂停-->
+                <a href="javascript:void(0);" class="switch fa fa-play"></a>
+                <!--播放进度-->
+                <div class="progress">
+                    <!-- 线 -->
+                    <div class="line"></div>
+                    <!-- 滑块 -->
+                    <div class="bar"></div>
+                </div>
+                <!--当前播放时间/播放总时长-->
+                <div class="timer">
+                    <span class="current">00:00:00</span> / <span class="total">00:00:00</span>
+                </div>
+                <!--全屏/取消全屏-->
+                <a href="javascript:void(0);" class="expand fa fa-arrows-alt"></a>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(".switch").on("click",function(){
+            if($("video")[0].paused){
+                $("video")[0].style.display = "block";
+                $("video")[0].play();
+                $(this).removeClass("fa").addClass("fa-play");
+            }else{
+                $("video")[0].pause();
+                $(this).removeClass("fa-play").addClass("fa fa-play");
+            }
+        })
+        $("video")[0].ontimeupdate = function(){
+            // 当前播放时间
+            var current = Math.floor($("video")[0].currentTime);
+            var h1 = Math.floor(current/3600);
+            var m1 = Math.floor(current%3600/60);
+            var s1 = Math.floor(current%60);
+            h1 = h1 < 10 ? "0"+h1 : ""+h1;
+            m1 = m1 < 10 ? "0"+m1 : ""+m1;
+            s1 = s1 < 10 ? "0"+s1 : ""+s1;
+            var str1 = h1 + ":"+ m1 + ":" + s1;
+            $(".timer .current").html(str1);
+
+            //总时间
+            var total = $("video")[0].duration;
+            var h = Math.floor(total/3600);
+            var m = Math.floor(total%3600/60);
+            var s = Math.floor(total%60);
+            h = h < 10 ? "0"+h : ""+h;
+            m = m < 10 ? "0"+m : ""+m;
+            s = s < 10 ? "0"+s : ""+s;
+            var str = h + ":"+ m + ":" + s ;
+            $(".timer .total").html(str);
+
+            //进度条
+            $(".progress .line").animate({
+                width:430/total*current
+            })
+        }
+        //重置
+        $("video")[0].onended = function(){
+            $(".switch").removeClass("fa-play").addClass("fa fa-play");
+            $("video")[0].currentTime = 0;
+            $(".progress .line")[0].style.width = "0px";
+        }
+        var isChange = true;
+        $(".expand").on("click",function(){
+            if(isChange){
+                $(".player")[0].requestFullscreen();
+                isChange = false;
+            }else{
+                document.exitFullscreen();
+                isChange = true;
+            }
+        })
+    </script>
+</body>
+</html>

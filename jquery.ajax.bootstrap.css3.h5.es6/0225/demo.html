@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise实现天气预报</title>
+    <style>
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        input,
+        button {
+            outline: none;
+        }
+
+        .box {
+            width: 1488px;
+            height: 500px;
+            margin: 150px auto;
+            border: 6px solid skyblue;
+            border-radius: 10px;
+            z-index: 999;
+        }
+
+        .box .title {
+            font-size: 40px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 46px;
+        }
+
+        .box .search {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .box .search input {
+            width: 500px;
+            height: 40px;
+            border: 2px solid skyblue;
+            text-indent: 10px;
+            box-sizing: border-box;
+        }
+
+        .box .search button {
+            width: 105px;
+            height: 40px;
+            background-color: skyblue;
+            color: white;
+            border: none;
+            box-sizing: border-box;
+            margin-left: -5px;
+            vertical-align: bottom;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .box .city ul {
+            display: flex;
+            margin-left: 440px;
+            margin-top: 16px;
+        }
+
+        .box .city ul li {
+            margin-right: 26px;
+            font-size: 18px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .box .weather ul {
+            display: flex;
+            margin-top: 44px;
+            cursor: pointer;
+        }
+        .box .weather ul li {
+            width: 211.7px;
+            height: 204px;
+            border-right: 1px solid #ccc;
+            text-align: center;
+        }
+        .box .weather ul li:hover{
+            background-color: #f5faff;
+        }
+        .box .weather ul li:nth-child(7){
+            border-right: none;
+        }
+        .box .weather ul li .wea {
+            color: #ffa500;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .box .weather ul li .tem {
+            color: #ffa500;
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        .box .weather ul li .week {
+            color: #ccc;
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        .box .weather ul li .wind {
+            margin-top: 7px;
+        }
+
+        .box .weather ul li .grade {
+            margin-top: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="title">天气预报</div>
+        <div class="search">
+            <input type="search" placeholder="请输入城市名字">
+            <button>搜索</button>
+        </div>
+        <div class="city">
+            <ul>
+                <li>北京</li>
+                <li>上海</li>
+                <li>广州</li>
+                <li>深圳</li>
+            </ul>
+        </div>
+        <div class="weather">
+            <ul></ul>
+        </div>
+    </div>
+    <script>
+        function sendAjax(url) {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest();
+                xhr.open("get", url);
+                xhr.send();
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            resolve(JSON.parse(xhr.responseText));
+                        } else {
+                            reject(xhr);
+                        }
+                    }
+                }
+            });
+        }
+
+        //封装天气函数
+        function weather(cityName) {
+            sendAjax("https://v0.yiketianqi.com/api?version=v9&appid=49311526&appsecret=SWPiwB2X&city=" + cityName).then(res => {
+                console.log(res);
+                ul.innerHTML = "";
+                for (let i = 0; i < 7; i++) {
+                    let lis = document.createElement("li");
+                    let str = "";
+                    str += `
+                            <div class="pic"><img src="https://www.mingtai18.com/tianqiapi/skin/pitaya/${res.data[i].wea_img}.png"></div>
+                            <div class="wea">${res.data[i].wea}</div>
+                            <div class="tem">最低温${res.data[i].tem2}℃~最高温${res.data[i].tem1}℃</div>
+                            <div class="week">${res.data[i].day}${res.data[i].week}</div>
+                            <div class="wind">${res.data[i].win[0]}</div>
+                            <div class="grade">${res.data[i].win_speed}</div>
+                        `;
+                    lis.innerHTML = str;
+                    ul.appendChild(lis);
+                }
+            })
+        }
+        let btn = document.querySelector(".search button");
+        let inp = document.querySelector(".search input");
+        let ul = document.querySelector(".weather ul");
+        let citylis = document.querySelectorAll(".city ul li");
+
+        //初始化
+        weather("温州");
+        for(let j = 0; j < citylis.length; j ++){
+            citylis[j].onclick = () => {
+                inp.value = citylis[j].innerHTML
+                weather(citylis[j].innerHTML);
+            }
+        }
+        btn.onclick = () => {
+            let cityName = inp.value;
+            if(cityName.length == 0){
+                alert("请输入城市名称");
+                return;
+            }
+            weather(cityName);
+        }
+    </script>
+</body>
+
+</html>

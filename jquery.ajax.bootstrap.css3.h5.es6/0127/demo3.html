@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>淘宝搜索建议词</title>
+    <style>
+        input{
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input class="search" type="text" list="search">
+    <datalist id="search">
+        <!-- <option value="111"></option> -->
+    </datalist>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $("input").change(function(){
+            var val = $("input").val();
+            $.ajax({
+                url:"http://suggest.taobao.com/sug?code=utf-8&q="+val,
+                dataType:"jsonp",
+                success:function(data){
+                    for(var i = 0; i < data.result.length; i++){
+                        $("datalist").append("<option value="+`${data.result[i][0]}`+"></option>");
+                    }
+
+                }
+            })
+        })
+    </script>
+</body>
+</html>

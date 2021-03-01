@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品信息查询</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        nav {
+            background-color: #cccccc;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        input {
+            outline: none;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            margin-top: 10px;
+            border: 1px solid #e4e4e4;
+            text-indent: 20px;
+        }
+
+        table {
+            margin-top: 10px;
+            border: 1px solid #e4e4e4;
+        }
+
+        table tr {
+            height: 60px;
+        }
+
+        table tr th {
+            width: 200px;
+        }
+
+        table tr td {
+            text-align: center;
+        }
+        table tr.con{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <nav>商品信息查询</nav>
+        <input type="search" placeholder="搜索商品">
+        <table border="1" rules="all" width="600">
+            <tr>
+                <th>名称</th>
+                <th>价格</th>
+                <th>库存</th>
+            </tr>
+            <!-- <tr>
+                <td>白菜</td>
+                <td>1元/斤</td>
+                <td>100斤</td>
+            </tr> -->
+        </table>
+    </div>
+    <script>
+        //数据
+        let arr = [
+            { name: "白菜", price: "1元/斤", stock: "100斤" },
+            { name: "土豆", price: "1.5元/斤", stock: "600斤" },
+            { name: "番薯", price: "2元/斤", stock: "120斤" },
+            { name: "荷兰豆", price: "4元/斤", stock: "300斤" },
+            { name: "豆角", price: "5元/斤", stock: "500斤" },
+        ];
+        let tbody = document.querySelector("tbody");
+        let input = document.querySelector("input");
+
+        //封装添加数据函数
+        let list = arr => {
+            tbody.innerHTML = ""; //清空数据
+            arr.forEach(item => {
+                let newArr = `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td>${item.stock}</td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML("beforeend", newArr);
+            });
+        }
+        list(arr);
+        input.onchange = () => {
+            let val = input.value;
+            let res = arr.filter(item => {
+                if (item.name.includes(val) || item.price.includes(val) || item.stock.includes(val)) {
+                    return item;
+                }
+            });
+            list(res);
+            if(tbody.innerHTML == ""){
+                let wu = `
+                    <tr class="con">
+                        <td>暂无数据，请输入其他关键值试试~</td>
+                    </tr>
+                `;
+                tbody.insertAdjacentHTML("beforeend", wu);
+            }
+        }
+    </script>
+</body>
+
+</html>

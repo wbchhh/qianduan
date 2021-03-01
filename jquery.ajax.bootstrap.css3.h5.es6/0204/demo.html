@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 200px auto;
+            width: 100px;
+            font-size: 70px;
+            height: 100px;
+            background-color: #ccc;
+            color: white;
+            line-height: 100px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        input{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            outline: none;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">+<input type="file"></div>
+    <script>
+        var inp = document.querySelector("input");
+        inp.onchange = () =>{
+            let val = inp.files[0].type;
+            if(val.includes("image")){
+                console.log("是图片格式");
+            }else{
+                console.log("不是图片格式");
+            }
+        }
+    </script>
+</body>
+</html>

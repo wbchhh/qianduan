@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妙笔千山播放器</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: url("./images/page-bg.jpg");
+            perspective: 800px;
+        }
+        .box{
+            width: 653px;
+            height: 653px;
+            margin: 100px auto;
+            background-image: url("images/bg_circle.png");
+            overflow: hidden;
+            /* animation: xuanzhuan 10s linear infinite; */
+        }
+        .pic{
+            width: 399px;
+            height: 399px;
+            margin: 125px auto;
+            background-image: url("./images/bg_center.png");
+            overflow: hidden;
+        }
+        .btn{
+            width: 95px;
+            height: 94px;
+            margin: 150px auto;
+            background-image: url("./images/btn-bg.png");
+            cursor: pointer;
+            position: relative;
+        }
+        .btn img{
+            position: absolute;
+        }
+        .btn img:nth-child(1){
+            display: none;
+            left: 32px;
+            top: 30px;
+        }
+        .btn img:nth-child(2){
+            left: 35px;
+            top: 30px;
+        }
+        @keyframes xuanzhuan{
+            from{
+                transform: rotateZ(0deg);
+            }
+            to{
+                transform: rotateZ(360deg);
+            }
+        }
+        @keyframes xuanzhuan1{
+            from{
+                transform: rotateZ(0deg);
+            }
+            to{
+                transform: rotateZ(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic">
+            <div class="btn">
+                <img class="play" src="./images/play.png">
+                <img class="pause" src="./images/pause.png">
+                <audio src="./audio/music.mp3"></audio>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(".btn .pause").on("click",function(e){
+            $("audio")[0].play();
+            $(this).hide();
+            $(".play").show();
+            $(".box")[0].style.animation = `xuanzhuan 10s linear infinite`;
+            $(".btn")[0].style.animation = `xuanzhuan1 10s linear infinite`;
+        })
+        $(".btn .play").on("click",function(){
+            $("audio")[0].pause();
+            $(this).hide();
+            $(".pause").show();
+            $(".box")[0].style.animationPlayState = `paused`;
+            $(".btn")[0].style.animationPlayState = `paused`;
+        })
+    </script>
+</body>
+</html>

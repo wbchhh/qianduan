@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin: 20px auto;
+            width: 750px;
+            height: 70px;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .box button{
+            /* float: left; */
+            background-color: #fff;
+            width: 51px;
+            height: 51px;
+            margin: 10px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 51px;
+            color: blue;
+            outline: none;
+            border: none;
+        }
+        .box button.btn1{
+            position: absolute;
+            left: 0;
+            z-index: 10000;
+        }
+        .box button.btn2{
+            position: absolute;
+            left: 680px;
+        }
+        .box button:hover{
+            background-color: blue;
+            color: #fff;
+        }
+        .box ul{
+            list-style: none;
+            /* border: 1px solid #000; */
+            /* width: 620px; */
+            position: absolute;
+            left: 60px;
+            top: 0;
+            overflow: hidden;
+        }
+        .box ul li{
+            float: left;
+            background-color: #fff;
+            width: 50px;
+            height: 50px;
+            margin: 10px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+            color: blue;
+            z-index: 1000;
+        }
+        .box ul li:hover{
+            background-color: blue;
+            color: #fff;
+        }
+        .box ul li.active{
+            background-color: blue;
+            color: #fff;
+        }
+        .content{
+            margin: 0 auto;
+            width: 1061px;
+            background-color: #e9ecef;
+            /* height: 1400px; */
+            border: 1px solid #888a8b;
+            margin-bottom: 100px;
+        }
+        .table {
+            /* 合并表格边框线 */
+            border-collapse: collapse;
+            /* background-color: #000; */
+            width: 100%;
+            width: 100%;
+        }
+        .table thead{
+            line-height: 50px;
+            height: 50px;
+            border-bottom: 1px solid #888a8b;
+        }
+        .table .title th{
+            display: block;
+            cursor: pointer;
+            float: left;
+            /* border-collapse: collapse; */
+        }
+        .table .title th:nth-child(1){
+            width: 60px;
+            border-right: 1px solid #888a8b;
+        }
+        .table .title th:nth-child(2){
+            width: 180px;
+            border-right: 1px solid #888a8b;
+        }
+        .table .title th:nth-child(3){
+            width: 620px;
+            border-right: 1px solid #888a8b;
+        }
+        .table .title th:nth-child(4){
+            width: 190px;
+        }
+        tbody tr{
+            border-bottom: 1px solid #888a8b;
+            background-color: #f2f2f2;
+            height: 100%;
+        }
+        .table td{
+            cursor: pointer;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        .table td:nth-child(1){
+            width: 60px;
+            /* border-right: 1px solid #888a8b; */
+            
+        }
+        .table td:nth-child(2){
+            width: 180px;
+            border-left: 1px solid #888a8b;
+        }
+        .table td:nth-child(3){
+            width: 620px;
+            border-right: 1px solid #888a8b;
+            border-left: 1px solid #888a8b;
+        }
+        .table td:nth-child(4){
+            width: 190px;
+        }
+        tbody tr:nth-child(2){
+            background-color: #ffffff;
+        }
+        tbody tr:nth-child(4){
+            background-color: #ececec;
+        }
+        tbody tr:nth-child(6){
+            background-color: #fff;
+        }
+        tbody tr:nth-child(8){
+            background-color: #fff;
+        }
+        tbody tr:nth-child(10){
+            background-color: #fff;
+        }
+        .clearfix{
+            clear: both;
+            content: "";
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <button class="btn1"><<</button>
+        <ul class=" clearfix">
+            <!-- <li><<</li> -->
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <!-- <li>>></li> -->
+        </ul>
+        <button class="btn2">>></button>
+    </div>
+    <div class="content">
+        <table class="table">
+            <thead>
+                <tr class="title clearfix">
+                    <th>序号</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody class="clearfix">
+                <tr>
+                    <td>1</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>吾问无为谓吾问无为谓吾问无为谓</td>
+                    <td>少时诵诗书所所所所所所所所所所所所111111111111111少时诵诗书所所所所所所所所所所所所所所所所所1111111111111111111111111111111111111所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所</td>
+                    <td>2020-08-10 11：16:20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        var count = 1;
+        var index = 1;
+        xiaohua(index)
+        $("ul li").click(function(){
+            $(this).addClass("active").siblings("li").removeClass("active");
+            index = $(this).html();
+            xiaohua(index);
+            count = index;
+        })
+        $(".box .btn2").click(function(){
+            if(count < 10){
+                count ++;
+                $(".box ul li").eq(count-1).addClass("active").siblings("li").removeClass("active");
+                xiaohua(count);
+            }
+        })
+        $(".box .btn1").click(function(){
+            if(count > 1){
+                count --;
+                $(".box ul li").eq(count-1).addClass("active").siblings("li").removeClass("active");
+                xiaohua(count);
+            }
+        })
+        function xiaohua(num){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","https://v1.alapi.cn/api/joke?token=f5DNmOEL0vI7NieSJx9a&num=10&page="+count);
+            xhr.send();
+            xhr.onload = function(){  
+                var res = JSON.parse(xhr.responseText);
+                for(var i = 0; i < 10;i ++){
+                    var arr = [(num-1)*10+i+1,`${res.data.data[i].title}`,`${res.data.data[i].content}`,`${res.data.data[i].date}`]
+                    $("tbody tr:eq("+i+") td").each(function(index,item){
+                        $(item).html(arr[index]);
+                    })
+                }
+            }
+        }
+    </script>
+</body>
+</html>

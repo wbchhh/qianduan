@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 30px;
+            width: 1000px;
+        }
+        .box .pic{ 
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic"></div>
+    </div>
+    <button>点我</button>
+    <script>
+        var btn = document.getElementsByTagName("button")[0];
+        var pic = document.getElementsByClassName("pic")[0];
+        count = 0;
+        btn.onclick = function(){
+            if(count < 10){
+                count ++;
+                pic.style.width = 100*count +"px";
+                pic.style.backgroundColor = "blue";
+                pic.innerHTML = count+"0%"
+            }
+        }
+        // function poi(poi){
+        //     return function(){
+        //         setInterval(function(){
+        //             poi++;
+        //             console.log(poi);
+        //         },1000)
+        //         return poi;
+        //     }
+        // }
+        // var a = poi(0);
+        // var b = poi(10);
+        // console.log(a());
+        // console.log(b());
+    </script>
+</body>
+</html>

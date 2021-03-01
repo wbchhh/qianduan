@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d万花筒动画特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+            perspective: 1500px;
+        }
+
+        .box {
+            width: 280px;
+            margin: 300px auto;
+            transform-style: preserve-3d;
+            transform: rotateX(-5deg) rotateY(0deg);
+            animation: run 10s linear infinite;
+        }
+
+        img {
+            width: 250px;
+            position: absolute;
+            cursor: pointer;
+        }
+        .box:hover{
+            /* 停止动画 */
+            animation-play-state:paused;
+        }
+
+        img:nth-child(1) {
+            transform: rotateY(0deg) translateZ(500px);
+        }
+
+        img:nth-child(2) {
+            transform: rotateY(36deg) translateZ(500px);
+        }
+
+        img:nth-child(3) {
+            transform: rotateY(72deg) translateZ(500px);
+        }
+
+        img:nth-child(4) {
+            transform: rotateY(108deg) translateZ(500px);
+        }
+
+        img:nth-child(5) {
+            transform: rotateY(144deg) translateZ(500px);
+        }
+
+        img:nth-child(6) {
+            transform: rotateY(180deg) translateZ(500px);
+        }
+
+        img:nth-child(7) {
+            transform: rotateY(216deg) translateZ(500px);
+        }
+
+        img:nth-child(8) {
+            transform: rotateY(252deg) translateZ(500px);
+        }
+
+        img:nth-child(9) {
+            transform: rotateY(288deg) translateZ(500px);
+        }
+
+        img:nth-child(10) {
+            transform: rotateY(324deg) translateZ(500px);
+        }
+
+        img:nth-child(11) {
+            transform: rotateY(360deg) translateZ(500px);
+        }
+
+        @keyframes run {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            25% {
+                transform: rotateX(10deg) rotateY(90deg);
+            }
+
+            50% {
+                transform: rotateX(0deg) rotateY(180deg);
+            }
+
+            75% {
+                transform: rotateX(-10deg) rotateY(270deg);
+            }
+
+            100% {
+                transform: rotateX(0deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/1.jpg">
+        <img src="./images/2.jpg">
+        <img src="./images/3.jpg">
+        <img src="./images/4.jpg">
+        <img src="./images/5.jpg">
+        <img src="./images/6.jpg">
+        <img src="./images/7.jpg">
+        <img src="./images/8.jpg">
+        <img src="./images/9.jpg">
+        <img src="./images/10.jpg">
+    </div>
+</body>
+
+</html>

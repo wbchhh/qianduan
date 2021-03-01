@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        .left{
+            width: 200px;
+            height: 300px;
+            background-color: pink;
+            border: 1px solid #000;
+            overflow-y: scroll;
+            float: left;
+        }
+        .left p{
+            font-size: 20px;
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            line-height: 40px;
+        }
+        .content{
+            float: left;
+            margin-top: 280px;
+            padding: 0 10px;
+        }
+        .right{
+            width: 200px;
+            height: 300px;
+            background-color: pink;
+            border: 1px solid #000;
+            overflow-y: scroll;
+            margin-left: 10px;
+        }
+        .right p{
+            font-size: 20px;
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            line-height: 40px;
+        }
+        .active{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left">
+            <p>香蕉</p>
+            <p>大鸭梨</p>
+            <p>苹果</p>
+            <p>大西瓜</p>
+        </div>
+        <div class="content">
+            <button>>>></button>
+            <button><<<</button>
+            <button>></button>
+            <button><</button>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+    <script>
+        $(".left p").click(function(){
+            $(this).toggleClass("active")
+        })
+        $(".content button").eq(0).click(function(){
+            $(".right").append($(".left p").clone(true))
+            $(".left p").remove();
+            $(".left p").attr("class","");
+            $(".right p").attr("class","");
+        })
+        $(".content button").eq(1).click(function(){
+            $(".left").append($(".right p").clone(true))
+            $(".right p").remove();
+            $(".left p").attr("class","");
+            $(".right p").attr("class","");
+        })
+
+        $(".content button").eq(2).click(function(){
+            $(".right").append($(".left p.active").clone(true));
+            $(".left p.active").remove();
+            $(".right p").attr("class","")
+        })
+        $(".content button").eq(3).click(function(){
+            $(".left").append($(".right p.active").clone(true));
+            $(".right p.active").remove();
+            $(".left p").attr("class","")
+        })
+    </script>
+</body>
+</html>

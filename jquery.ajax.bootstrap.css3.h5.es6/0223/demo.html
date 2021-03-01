@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        class Phone{
+            constructor(size,weight,color,price){
+                this.size = size;
+                this.weight = weight;
+                this.color = color;
+                this.price = price;
+            }
+            call(){
+                console.log("打电话");
+            }
+            sendMessage(){
+                console.log("发短信");
+            }
+            surfInternet(){
+                console.log("上网");
+            }
+            playGame(){
+                console.log("打游戏");
+            }
+        }
+        class IPhone extends Phone{
+            constructor(size,weight,color,price,appleSystem,sire,model,iCloud){
+                super(size,weight,color,price);
+                this.appleSystem = appleSystem;
+                this.sire = sire;
+                this.model = model;
+                this.iCould = iCloud;
+            }
+            trickleCharge(){
+                console.log("苹果慢充");
+            }
+        }
+        class Android extends Phone{
+            constructor(size,weight,color,price,androidSystem,androidVoice,brand,model){
+                super(size,weight,color,price);
+                this.androidSystem = androidSystem;
+                this.androidVoice = androidVoice;
+                this.brand = brand;
+                this.model = model;
+            }
+            splitScreen(){
+                console.log("android分屏");
+            }
+            fastCharge(){
+                console.log("android快充");
+            }
+        }
+        let iPhone = new IPhone("678px","1kg","白色","9999","苹果系统","SIRE","IPhone12","iCloud");
+        console.log(`尺寸：${iPhone.size}，重量：${iPhone.weight}，颜色：${iPhone.color}，价格：${iPhone.price}，系统：${iPhone.appleSystem}`)
+        iPhone.call();
+        iPhone.sendMessage();
+        iPhone.surfInternet();
+        iPhone.playGame();
+        iPhone.trickleCharge();
+
+
+        console.log("--------------------------")
+        let android = new Android();
+        android.call();
+        android.sendMessage();
+        android.surfInternet();
+        android.playGame();
+        android.splitScreen();
+        android.fastCharge();
+    </script>
+</body>
+</html>

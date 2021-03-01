@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            margin: 0 auto;
+            width: 800px;
+            margin-top: 100px;
+        }
+        .up{
+            width: 800px;
+        }
+        .up ul{
+            width: 800px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+        .up ul li{
+            float: left;
+            padding: 10px 30px;
+            cursor: pointer;
+            display: block;
+            background-color: #f0f0f0;
+        }
+        /* .up ul li:hover{
+            background-color: red;
+            color:#fff;
+        } */
+        .down div{
+            display: block;
+            line-height: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="up">
+            <ul>
+                <li>商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="down">
+            <div class="box1">1111</div>
+            <div class="box2">2222</div>
+            <div class="box3">3333</div>
+            <div class="box4">4444</div>
+            <div class="box5">5555</div>
+        </div>
+    </div>
+    <script>
+        $(".up ul li").click(function(){
+            $(".down").children("div").eq($(this).index()).css("display","block").siblings("div").css("display","none");
+            $(this).css({"background-color":"red",
+                        "color":"#fff"}).siblings("li").css({"background-color":"#f0f0f0",
+                                                            "color":"#000"})
+        })
+    </script>
+</body>
+</html>

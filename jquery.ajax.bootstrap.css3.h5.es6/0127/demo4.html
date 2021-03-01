@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("./04-HTML5-作业-剑网3-国风世界素材/images/bg.png");
+            margin: 0;
+            padding: 0;
+        }
+        .up img{
+            width: 100%;
+            margin-top: -100px;
+        }
+        .down{
+            position: relative;
+            margin-top: -30px;
+        }
+        .down .pic{
+            left: 200px;
+            position: absolute;
+            top: 0;
+            width: 315px;
+            height: 282px;
+            overflow: hidden;
+        }
+        .down .shipin{
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+        }
+        .down video{
+            outline: none;
+            display: none;
+        }
+        .down video.con{
+            display: block;
+        }
+        .down .pic .p{
+            width: 37px;
+            height: 260px;
+            position: relative;
+            top: -20px;
+            margin-top: 20px;
+            float: left;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: margin-top .3s;
+        }
+        .down .pic .p:nth-child(1){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -1px 0;
+        }
+        .down .pic .p:nth-child(2){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -60px 0;
+        }
+        .down .pic .p:nth-child(3){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -115px 0;
+        }
+        .down .pic .p:nth-child(4){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -170px 0;
+        }
+        .down .pic .p:nth-child(5){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -225px 0;
+        }
+        .down .pic .p:nth-child(6){
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -280px 0;
+        }
+        .down .pic .p:nth-child(1):hover,.down .pic .p:nth-child(1).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -369px 0;
+        }
+        .down .pic .p:nth-child(2):hover,.down .pic .p:nth-child(2).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -428px 0;
+        }
+        .down .pic .p:nth-child(3):hover,.down .pic .p:nth-child(3).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -483px 0;
+        }
+        .down .pic .p:nth-child(4):hover,.down .pic .p:nth-child(4).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -538px 0;
+        }
+        .down .pic .p:nth-child(5):hover,.down .pic .p:nth-child(5).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -594px 0;
+        }
+        .down .pic .p:nth-child(6):hover,.down .pic .p:nth-child(6).active{
+            background: url("./04-HTML5-作业-剑网3-国风世界素材/images/dashijie.png") no-repeat -649px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="up">
+            <img src="./04-HTML5-作业-剑网3-国风世界素材/images/title_bg.png" alt="">
+        </div>
+        <div class="down">
+            <div class="shipin">
+                <video autoplay controls class="con">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_zy.mp4" type="video/mp4">
+                </video>
+                <video preload controls class="">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_xj.mp4" type="video/mp4">
+                </video>
+                <video preload controls class="">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_gy.mp4" type="video/mp4">
+                </video>
+                <video preload controls class="">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_sl.mp4" type="video/mp4">
+                </video>
+                <video  preload controls class="">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_hh.mp4" type="video/mp4">
+                </video>
+                <video preload controls class="">
+                    <source src="./04-HTML5-作业-剑网3-国风世界素材/media/gfsj_sc.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="pic">
+                <div class="p active"></div>
+                <div class="p"></div>
+                <div class="p"></div>
+                <div class="p"></div>
+                <div class="p"></div>
+                <div class="p"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btns = document.querySelectorAll(".p");
+        var video = document.querySelectorAll("video");
+        var pic = document.querySelector(".pic");
+        for(var i = 0; i < btns.length; i ++){
+            btns[i].index = i;
+            btns[i].onclick = function(){
+                for(var j = 0; j < 6; j++){
+                    video[j].className = "";
+                }
+                video[this.index].className = "con"
+                video[this.index].play();
+                for(var z = 0; z < 6; z++){
+                    btns[z].className = "p";
+                }
+                btns[this.index].className = "p active";
+            }
+
+        }
+    </script>
+</body>
+</html>

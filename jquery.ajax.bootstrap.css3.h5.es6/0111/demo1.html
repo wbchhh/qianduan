@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .nav{
+            margin: 0 auto;
+            width: 336px;
+        }
+        .up{
+            float: left;
+            width: 338px;
+        }
+        .up ul{
+            width: 338px;
+        }
+        .up ul li{
+            float: left;
+            width: 82px;
+        }
+        .up ul li a{
+            font-size: 20px;
+            color: #000;
+            display: block;
+            width: 82px;
+            padding: 10px 20px;
+        }
+        .down{
+            width: 100%;
+            float: left;
+            position: relative;
+        }
+        .down .box1{
+            position: absolute;
+            display: none;
+            width: 82px;
+        }
+        .down .box2{
+            position: absolute;
+            display: none;
+            width: 82px;
+            left:83px;
+        }
+        .down .box3{
+            position: absolute;
+            display: none;
+            width: 82px;
+            left:166px;
+        }
+        .down .box4{
+            position: absolute;
+            display: none;
+            width: 82px;
+            left:249px;
+        }
+        .down ul li{
+            border:1px solid orange;
+        }
+        .down ul li:hover{
+            background-color: #f0f0f0;
+        }
+        .down ul li a{
+            font-size: 19px;
+            color: #000;
+            display: block;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="up">
+            <ul>
+                <li><a href = "#">微博</a></li>
+                <li><a href = "#">微博</a></li>
+                <li><a href = "#">微博</a></li>
+                <li><a href = "#">微博</a></li>      
+            </ul>
+        </div>
+        <div class="down">
+            <ul class="box1">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+            <ul class="box2">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+            <ul class="box3">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+            <ul class="box4">
+                <li><a href="#">私信</a></li>
+                <li><a href="#">评论</a></li>
+                <li><a href="#">@我</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(".up ul li").mouseenter(function(){
+            $(this).css("background-color","#f0f0f0").siblings("li").css("background-color","");
+            $(".down ul").eq($(this).index()).css("display","block").siblings("ul").css("display","none");
+        })
+        $(".up ul li").mouseleave(function(){
+            $(this).css("background-color","");
+        })
+        $(".down ul").mouseleave(function(){
+            $(this).css("display","none");
+        })
+    </script>
+</body>
+</html>

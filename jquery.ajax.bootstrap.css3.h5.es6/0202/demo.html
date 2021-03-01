@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .head{
+            width: 100%;
+            height: 50px;
+            background-color: skyblue;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+        .content{
+            margin-top: 50px;
+            display: flex;
+        }
+        .content .left{
+            background-color: #f8f8f8;
+            width: 100px;
+        }
+        .content .left ul{
+            position: absolute;
+            background-color: #f8f8f8;
+            width: 100px;
+            overflow: hidden;
+        }
+        .content .left ul li{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .content .left ul li.active{
+            background-color: red;
+            color: white;
+        }
+        .content .right{
+            width: calc(100% - 100px);
+            background-color: #ffa500;
+            height: calc(100vh - 50px);
+        }
+        .foot{
+            width: 100%;
+            height: 50px;
+            background-color: pink;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">页面头部</div>
+    <div class="content">
+        <div class="left">
+            <ul>
+                <li class="active">热门推荐</li>
+                <li>手机数码</li>
+                <li>电脑办公</li>
+                <li>家用电器</li>
+                <li>计生情趣</li>
+                <li>家用电器</li>
+                <li>美妆护肤</li>
+                <li>个护清洁</li>
+                <li>汽车生活</li>
+                <li>京东超市</li>
+                <li>男装</li>
+                <li>男鞋</li>
+                <li>女装</li>
+                <li>女鞋</li>
+                <li>母婴童装</li>
+                <li>图书音像</li>
+                <li>运动户外</li>
+                <li>内衣配饰</li>
+                <li>食品生鲜</li>
+                <li>酒水饮料</li>
+                <li>家具家装</li>
+                <li>家居厨具</li>
+                <li>箱包手袋</li>
+                <li>钟表珠宝</li>
+                <li>玩具乐器</li>
+                <li>医药保健</li>
+                <li>宠物生活</li>
+                <li>礼品鲜花</li>
+                <li>农资绿植</li>
+                <li>生活旅行</li>
+                <li>奢侈品</li>
+                <li>京东国际</li>
+                <li>艺术邮币</li>
+                <li>二手商品</li>
+                <li>特产馆</li>
+                <li>京东金融</li>
+                <li>国际名牌</li>
+                <li>拍卖</li>
+                <li>房产</li>
+                <li>工业品</li>
+                <li>排行榜</li>
+            </ul>
+        </div>
+        <div class="right">
+            假装这里是热门推荐的详情内容
+        </div>
+    </div>
+    <div class="foot">页面底部</div>
+    <script>
+        var lis = document.querySelectorAll("li");
+        var ul = document.querySelector("ul");
+        var right = document.querySelector(".right");
+        var startY = 0;
+        for(var i = 0;i < lis.length;i ++){
+            tap(lis[i],function(e){
+                for(var j = 0;j < lis.length; j++){
+                    lis[j].className = "";
+                }
+                e.target.className = "active";
+                right.innerHTML = "假装这里是"+e.target.innerHTML+"的详情内容";
+            })
+        }
+        ul.ontouchstart = function(e){
+            startY = e.targetTouches[0].pageY - ul.offsetTop;
+        }
+        ul.ontouchmove = function(e){
+            var moveY = e.targetTouches[0].pageY;
+            var lisY = moveY - startY;
+            if(lisY < 50 && lisY > -1425){
+                ul.style.top = lisY + "px";
+            }
+        }
+        //轻触
+        function tap(dom,callback){
+            var startTime = 0;
+            dom.ontouchstart = function(){
+                startTime = Date.now();
+            }
+            dom.ontouchend = function(e){
+                var endTime = Date.now();
+                if(endTime - startTime < 200){
+                    callback(e);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

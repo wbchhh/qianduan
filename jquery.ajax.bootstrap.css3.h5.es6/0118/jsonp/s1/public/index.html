@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>欢迎，这是服务器s1，public文件夹中的index.html文件</h2>
+	<script>
+		function fn(data){
+			console.log(data)
+		}
+	</script>
+	<script src="http://localhost:3002/get02?callback=fn"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        body,ul,p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            margin: 100px auto;
+            width: 1089px;
+            height: 429px;
+            background-color: pink;
+            background-image: url(./img/1.jpg);
+        }
+        .box .list{
+            position: relative;
+        }
+        .box .list:nth-child(1){
+            background: url(./img/1.jpg);
+            height:100%;
+            width: 100px;
+            float: left;
+            cursor: pointer;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+        }
+        .box .list:nth-child(2){
+            background-image: url(./img/2.jpg);
+            height:100%;
+            width: 100px;
+            float: left;
+            cursor: pointer;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+        }
+        .box .list:nth-child(3){
+            background-image: url(./img/3.jpg) ;
+            height:100%;
+            width: 100px;
+            float: left;
+            cursor: pointer;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+        }
+        .box .list:nth-child(4){
+            background-image: url(./img/4.jpg);
+            height:100%;
+            /* width: 100px; */
+            float: left;
+            cursor: pointer;
+            width: 789px;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+        }
+        .box .list .hade:nth-child(1){
+            height:100%;
+            width: 100px;
+            /* float: left; */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .box .list .hade:nth-child(2){
+            height:100%;
+            width: 100px;
+            /* float: left; */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .box .list .hade:nth-child(3){
+            height:100%;
+            width: 100px;
+            /* float: left; */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .box .list .hade:nth-child(4){
+            height:100%;
+            width: 100px;
+            /* float: left; */
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .box .list .hade p{
+            text-align: center;
+            display: block;
+            padding: 55px 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="list">
+            <div class="hade">
+                <p>我的个人拉萨之旅<br>|<br>|故事之城</p>
+            </div>
+        </div>
+        <div class="list">
+            <div class="hade">
+                <p>我的个人拉萨之旅<br>|<br>|故事之城</p>
+            </div>
+        </div>
+        <div class="list">
+            <div class="hade">
+                <p>我的个人拉萨之旅<br>|<br>|故事之城</p>
+            </div>
+        </div>
+        <div class="list">
+            <div class="hade">
+                <p>我的个人拉萨之旅<br>|<br>|故事之城</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $(".list").click(function(){
+                $(this).siblings(".list").animate({"width":100});
+                $(this).stop().animate({"width":789});
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul{
+            padding: 0;
+            margin: 0;
+        }
+        .nav{
+            height: 50px;
+            background-color: #f0f0f0;
+            width: 100%;
+        }
+        .container{
+            width: 1100px;
+            margin: 0 auto;
+        }
+        ul li{
+            float: left;
+            list-style: none;
+            line-height: 50px;
+            padding: 0 20px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+        ul li i{
+            border-top: 6px solid transparent;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #000;
+            position: absolute;
+            top: 17px;
+            right: 6px;
+        }
+        ul li.active{
+            background-color: white;
+        }
+        .box{
+            width: 600px;
+            height: 500px;
+            background-color: #cccccc;
+            position: absolute;
+            top: 50px;
+            display: none;
+        }
+        .box ul{
+            padding: 5px 5px;
+        }
+        .box ul li{
+            float: left;
+            overflow: hidden;
+            background-color: #fff;
+            width: 40px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="container">
+            <ul class="ulele">
+                <li>广州<i></i></li>
+                <li>17℃</li>
+                <li>空气好少时诵诗书所所所所所所所所所所所所所所所所所所所所所所</li>
+                <li>空气质量 良</li>
+                <li>2021-01-18</li>
+            </ul>
+            <div class="box">
+                <ul>
+                    <li>广州</li>
+                    <li>北京</li>
+                    <li>上海</li>
+                    <li>杭州</li>
+                    <li>长沙</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="./js/ajax.js"></script>
+    <script>
+        var ulEle = document.querySelector(".ulele");
+        var lis = ulEle.querySelectorAll("li");
+        var box = document.querySelector(".box");
+        var items = box.querySelectorAll("li");
+        tianqi("广州");
+        lis[0].onmouseenter = function(){
+            for(var i = 0;i < items.length; i ++){
+                items[i].setAttribute("data-index",i);
+                items[i].onclick = function(){
+                    var res = this.getAttribute("data-index");
+                    var value = items[res].innerHTML;
+                    tianqi(value)
+                }
+            }
+            box.style.display = "block";
+            lis[0].className = "active";
+        }
+        box.onmouseleave = function(){
+            box.style.display = "none";
+            lis[0].className = "";
+        }
+        function tianqi(value){
+            ajax({
+                url:"https://v0.yiketianqi.com/api?version=v61&appid=49311526&appsecret=SWPiwB2X&city="+value,
+                success:function(res){
+                    var arr = [`${res.city}<i></i>`,`${res.tem}℃`,`${res.air_tips}`,`空气质量 ${res.air_level}`,`${res.date}`];
+                    for(var j = 0; j < arr.length; j ++){
+                        lis[j].innerHTML = arr[j];
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>

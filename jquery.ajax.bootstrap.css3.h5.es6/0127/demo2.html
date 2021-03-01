@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习档案</title>
+    <style>
+        .box{
+            width: 800px;
+            margin: 0 auto;
+        }
+        input{
+            width: 100%;
+            height: 40px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            text-indent: 5px;
+        }
+        meter{
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="" method="get" >
+            <fieldset>
+                <legend>学生档案</legend>
+                <p><label>姓名：</label></p>
+                <p><input type="text" placeholder="请输入用户名"></p>
+                <p><label>手机号码：</label></p>
+                <p><input type="tel"></p>
+                <p><label>邮箱地址：</label></p>
+                <p><input type="email"></p>
+                <p><label>所属学院：</label></p>
+                <p>
+                    <input type="text" list="xueyuan" placeholder="请选择">
+                    <datalist id="xueyuan">
+                        <option value="H5"></option>
+                        <option value="嵌入式"></option>
+                        <option value="JAVA"></option>
+                        <option value="大数据"></option>
+                    </datalist>
+                </p>
+                <p><label>入学成绩：</label></p>
+                <input class="score" type="number" min="0" max="100" value="0">
+                <p><label>基础水平：</label></p>
+                <p><meter class="meter" value="0" min="0" max="100" high="80" low="60"></meter></p>
+                <p><label>入学时间：</label></p>
+                <p><input type="date"></p>
+                <p><label>毕业时间：</label></p>
+                <p><input type="date"></p>
+                <p><input type="submit"></p>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        var score = document.querySelector(".score");
+        var meter = document.querySelector(".meter");
+        score.oninput = function(){
+            meter.value = score.value;
+            console.log(meter.value)
+        }
+    </script>
+</body>
+</html>

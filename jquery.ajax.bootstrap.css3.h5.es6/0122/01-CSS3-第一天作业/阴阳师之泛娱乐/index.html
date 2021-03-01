@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 1200px;
+            margin: 100px auto;
+        }
+        .box .pic{
+            position: absolute;
+            top: 30%;
+        }
+        .box ul li{
+            float: left;
+            margin: 0 6px;
+            cursor: pointer;
+            position: relative;
+        }
+        .box ul li span img{
+            width: 200px;
+            height: 0px;
+            position: absolute;
+            z-index: 10000;
+            bottom: 5px;
+            left: 10px;
+            transition: all 1s;
+        }
+        .box ul li:hover{
+            transform: translateY(-20px);
+            z-index: 1000;
+        }
+        .box ul li:hover span img{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic"><img src="./images/bg.jpg"></div>
+        <ul>
+            <li><img src="./images/1.gif"></li>
+            <li><img src="./images/2.jpg"><span><img src="images/qrcode.jpg"></span></li>
+            <li><img src="./images/3.jpg"></li>
+            <li><img src="./images/4.jpg"></li>
+            <li><img src="./images/5.gif"></li>
+        </ul>
+    </div>
+</body>
+</html>

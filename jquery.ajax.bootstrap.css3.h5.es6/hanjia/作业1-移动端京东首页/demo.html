@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        input{
+            outline: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .container{
+            width: 760px;
+            margin: 0 auto;
+        }
+        .header{
+            background-color: #272926;
+            width: 100%;
+            height: 90px;
+            display: flex;
+        }
+        .header .pic{
+            display: flex;
+        }
+        .header .pic1 img{
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+            margin-top: 35px;
+        }
+        .header .pic2 img{
+            width: 60px;
+            height: 60px;
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+        .header .title{
+            color: white;
+            font-size: 28px;
+            line-height: 90px;
+            text-align: center;
+            width: 453px;
+        }
+        .header .open{
+            background-color: #f63515;
+            color: white;
+            font-size: 28px;
+            line-height: 90px;
+            width: 188px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .pic{
+            position: relative;
+
+        }
+        .pic .bg{
+            width: 760px;
+            height: 450px;
+            display: block;
+        }
+        .pic .top .left .more{
+            position: absolute;
+            left: 30px;
+            top: 28px;
+            cursor: pointer;
+        }
+        
+        .pic .top .search img{
+            position: absolute;
+            top: 28px;
+            left: 125px;
+            z-index: 999;
+            cursor: pointer;
+        }
+        .pic .top .search .shu{
+            position: absolute;
+            top: 28px;
+            left: 180px;
+            height: 30px;
+            width: 2px;
+            background-color: #ddd;
+            z-index: 999;
+        }
+        .pic .top .search .pic1{
+            position: absolute;
+            top: 28px;
+            left: 200px;
+            background: url("./images/jd-sprites.png") no-repeat -165px 0;
+            width: 31px;
+            height: 30px;
+            z-index: 999;
+        }
+        .pic .top .search input{
+            position: absolute;
+            top: 14px;
+            left: 95px;
+            height: 60px;
+            width: 550px;
+            border-radius: 40px;
+            text-indent: 150px;
+            font-size: 20px;
+            border: none;
+        }
+        .pic .top .search .deng a{
+            font-size: 26px;
+            position: absolute;
+            top: 28px;
+            left: 670px;
+            z-index: 999;
+            color: white;
+            cursor: pointer;
+        }
+        .pic .top .search .pic2 img{
+            position: absolute;
+            top: 100px;
+            left: 26px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .fenlei{
+            width: 100%;
+            height:350px;
+            background-color: #f6f6f6;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .fenlei .list{
+            margin: 0 28px 0 28px;
+            text-align: center;
+        }
+        .fenlei .list img{
+            display: block;
+            width: 92px;
+            height: 92px;
+            margin-bottom: 15px;
+        }
+        .fenlei .list span{
+            font-size: 22px;
+            color: #666666;
+        }
+        .last{
+            height: 754px;
+            width: 100%;
+            background-color: #b2f9e9;
+        }
+        .last .xinren a{
+            display: flex;
+        }
+        .last .xinren img{
+            display: block;
+            width: 356px;
+            height: 228px;
+            margin-top: 20px;
+        }
+        .last .xinren img:nth-child(1){
+            margin-left: 20px;
+            border-radius: 20px 0 0 20px;
+        }
+        .last .xinren img:nth-child(2){
+            border-radius: 0px 20px 20px 0px;
+        }
+        .last .xinren1{
+            margin-top: 20px;
+        }
+        .last .footer a{
+            margin-top: 10px;
+            display: flex;
+        }
+        .last .footer img{
+            width: 225px;
+            height: 166px;
+            display: block;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="pic">
+                <a class="pic1" href="#"><img src="./images/close.png"></a>
+                <a class="pic2" href="#"><img src="./images/logo.png"></a>
+            </div>
+            <div class="title">
+                打开京东App,购物更轻松
+            </div>
+            <div class="open">立即打开</div>
+        </div>
+        <div class="pic">
+            <img class="bg" src="./images/bg.jpg">
+            <div class="top">
+                <div class="left"><img class="more" src="./images/more.png"></div>
+                <div class="search">
+                    <img src="./images/jd.png">
+                    <div class="shu"></div>
+                    <div class="pic1"></div>
+                    <input type="search" placeholder="香奈儿香水">
+                    <div class="deng"><a href="#">登录</a></div>
+                    <div class="pic2"><img src="./images/banner01.dpg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="fenlei">
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon01.png">
+                    <span>京东超市</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon02.png">
+                    <span>数码电器</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon03.png">
+                    <span>京东服饰</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon04.png">
+                    <span>京东生鲜</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon05.png">
+                    <span>京东到家</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon06.png">
+                    <span>充值缴费</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon07.png">
+                    <span>9.9元拼</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon08.png">
+                    <span>领劵</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon09.png">
+                    <span>赚钱</span>
+                </a>
+            </div>
+            <div class="list">
+                <a href="#">
+                    <img src="./images/icon10.png">
+                    <span>PLUS会员</span>
+                </a>
+            </div>
+        </div>
+        <div class="last">
+            <div class="title"><a href="#"><img src="./images/618img.png"></a></div>
+            <div class="xinren">
+                <a href="#">
+                    <img src="./images/newPerson01.png">
+                    <img src="./images/newPerson02.png">
+                </a>
+            </div>
+            <div class="xinren1"><a href="#"><img src="./images/newPerson03.webp"></a></div>
+            <div class="footer">
+                <a href="#">
+                    <img src="./images/card01.png">
+                    <img src="./images/card02.png">
+                    <img src="./images/card03.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

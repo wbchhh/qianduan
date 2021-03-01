@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+img{
+    vertical-align: bottom;
+}
+a{
+    text-decoration: none;
+    color:#000000;
+}
+.box{
+    width: 1180px;
+    margin-top: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+    .item{
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+        border-radius: 8px;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        a{
+            width: 100%;
+            padding-bottom: 10px;
+            display: block;
+            &::after{
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,2,4,.2);
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 8px;
+                display: none;
+            }
+            &:hover::after{
+                display: block;
+            }
+        }
+        &:nth-child(5n){
+            margin-right: 0;
+        }
+        .pro_img{
+            width: 100%;
+        }
+        .title{
+            margin-top: 13px;
+            margin-left: 15px;
+            margin-right: 40px;
+            line-height: 26px;
+            font-size:14px;
+        }
+        .user{
+            margin-left: 15px;
+            margin-right: 16px;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 8px;
+            color:#555555;
+            font-size:12px;
+            .user_img{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                float: left;
+            }
+            .uname{
+                float: left;
+                margin-left: 10px;
+            }
+            .num{
+                float: right;
+                &::before{
+                    content:"";
+                    display: inline-block;
+                    vertical-align: sub;
+                    margin-right: 8px;
+                    width: 18px;
+                    height: 16px;
+                    background:url(../images/heart.png);
+                    background-size: 100% 100%;
+                }
+            }
+        }
+    }
+}
+
+.more{
+    color:#ff2741;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+}

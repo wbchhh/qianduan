@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        let time = null;
+        function red(){
+            $("body")[0].style.backgroundColor = "red";
+            console.log(time.toLocaleTimeString());
+        }
+        function green(){
+            $("body")[0].style.backgroundColor = "green";
+            console.log(time.toLocaleTimeString());
+        }
+        function yellow(){
+            $("body")[0].style.backgroundColor = "yellow";
+            console.log(time.toLocaleTimeString());
+        }
+        function light(bgColor,timer){
+            return new Promise( (resolve,reject) =>{
+                setTimeout( () =>{
+                    bgColor();
+                    resolve();
+                },timer)
+            })
+        }
+        async function lamp(){
+            try{
+                time = new Date();
+                await light(red,3000);
+                console.log("------------");
+                time = new Date();
+                await light(green,2000);
+                console.log("------------");
+                time = new Date();
+                await light(yellow,1000);
+                console.log("------------");
+                await lamp();
+            }catch(err){
+                console.log("错误");
+            }
+        }
+        lamp();
+    </script>
+</body>
+</html>

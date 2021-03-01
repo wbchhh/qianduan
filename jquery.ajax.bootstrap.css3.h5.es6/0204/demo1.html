@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>把forEach,map,filter,reduce,some,every写成箭头函数的形式,并熟悉掌握</title>
+</head>
+
+<body>
+    <script>
+        //forEach()
+        // let myarr = [100, 2, 3];
+        // myarr.forEach((item, index, arr) => {
+        //     console.log(`下标为${index},元素的值为${item}`);
+        //     console.log(arr);
+        //     console.log("");
+        // })
+
+
+        //map()
+        // let arr = [10,2,7,69,45];
+        // let newArr = arr.map(item => item*2);
+        // console.log(arr);
+        // console.log(newArr);
+
+
+        //filter()
+        // let arr = [80,60,61,62,55];
+        // console.log( arr );
+        // let newArr = arr.filter( item =>item < 60);
+        // console.log( newArr );
+
+
+        //reduce()
+        // let arr = [80,60,61,62,55];
+        // let sum = 0;
+        // sum = arr.reduce((prev,next) =>{
+        //     console.log( prev );
+        //     console.log( next );
+        //     console.log("");
+        //     return prev+next;
+        // })
+        // console.log( sum );
+
+
+        //some()
+        // let arr = [
+        //     {name:"jake",score:60},
+        //     {name:"jim",score:70},
+        //     {name:"kate",score:90},
+        //     {name:"filx",score:91},
+        //     {name:"cera",score:97},
+        // ];
+        // let rs = arr.some(item =>item.score > 90);
+        // console.log( rs );
+
+
+
+        //every()
+        let arr = [
+            {name:"jake",score:92},
+            {name:"jim",score:93},
+            {name:"kate",score:90},
+            {name:"filx",score:91},
+            {name:"cera",score:97},
+        ];
+
+        let rs = arr.every(item =>item.score > 90);
+        console.log( rs );
+    </script>
+</body>
+
+</html>

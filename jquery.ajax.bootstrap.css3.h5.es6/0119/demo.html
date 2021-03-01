@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        body,ul{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            margin-top: 50px;
+            margin-left: 100px;
+            float: left;
+            overflow: hidden;
+        }
+        .search{
+            position: relative;
+        }
+        .search input{
+            outline: none;
+            border: 2px solid #24fa33;
+            width: 300px;
+            height: 40px;
+            border-radius: 10px 0 0 10px;
+            padding-left: 10px;
+        }
+        .search .icon{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 280px;
+            top:13px;
+            cursor: pointer;
+        }
+        .search button{
+            background-color: #24fa33;
+            outline: none;
+            border: none;
+            color: #fff;
+            box-sizing: border-box;
+            height: 46px;
+            position: absolute;
+            width: 100px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+        }
+        .list{
+            margin-top: 30px;
+        }
+        .list ul{
+            width: 415px;
+            /* background-color: pink; */
+        }
+        .list ul li{
+            border-bottom: 1px solid #f0f0f0;
+            height: 120px;
+        }
+        .list ul li img{
+            width: 100px;
+            height: 100px;
+            margin-left: 10px;
+            margin-top: 10px;
+            float: left;
+            overflow: hidden;
+            display: block;
+            cursor: pointer;
+        }
+        .list ul li h3{
+            float: left;
+            overflow: hidden;
+            margin-left: 15px;
+            margin-top: 10px;
+            width: 290px;
+            height: 24px;
+        }
+        .list ul li span{
+            font-size: 14px;
+            padding: 0 15px;
+            width: 275px;
+            height: 58px;
+            float: left;
+            overflow: hidden;
+        }
+        .right{
+            overflow: hidden;
+            float: left;
+            margin-left: 55px;
+        }
+        .right .pic img{
+            width: 270px;
+            height: 270px;
+            margin-top: 55px;
+            cursor: pointer;
+        }
+        .right .title{
+            width: 270px;
+            float: left;
+            margin-bottom: 15px;
+        }
+        .right .yongliao{
+            width: 270px;
+        }
+        .right .yongliao h3{
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .right .yongliao ul li{
+            margin-top: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 5px 0;
+        }
+        .right .yongliao ul li .yleft{
+            float: left;
+            width: 70px;
+            overflow: hidden;
+        }
+        .right .yongliao ul li .yright{
+            margin-left: 100px;
+        }
+        .right .yongliao ul li i{
+            float: right;
+            margin-right: 0px;
+            overflow: hidden;
+        }
+        .zuofa{
+            width: 270px;
+        }
+        .zuofa ul li img{
+            width: 200px;
+            cursor: pointer;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="search">
+            <input type="text" placeholder="请输入菜品名字">
+            <svg t="1611047063696" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2533" width="200" height="200"><path d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z" fill="#1afa29" p-id="2534"></path><path d="M667.904 601.998222l314.766222 314.823111-62.919111 62.976-314.823111-314.823111z" fill="#1afa29" p-id="2535"></path></svg>
+            <button>搜索</button>
+        </div>
+        <div class="list">
+            <ul>
+                <!-- <li>
+                    <img src="./1.jpg">
+                    <h3>苹果豆浆</h3>
+                    <span>想都将阿森纳那是哪三男三女啥那新东方发的发的方法的是那是那是哪是哪那快去看看看</span>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="pic">
+            <img src="./1.jpg">
+        </div>
+        <div class="title">
+            <h3>苹果豆浆</h3>
+            <span>想都将阿森纳那是哪三男三女啥那新东方发的发的方法的是那是那是哪是哪那快去看看看</span>
+        </div>
+        <div class="yongliao">
+            <h3>用料</h3>
+            <ul>
+                <!-- <li><span class="yleft">白砂糖</span><span class="yright">适量</span><i>></i></li>-->
+            </ul>
+        </div>
+        <div class="zuofa">
+            <h3>做法</h3>
+            <ul>
+                <!-- <li><span>1.准备所需材料，黄豆提前浸泡8小时</span><img src="./1.jpg"></li>-->
+            </ul>
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        var caiValue = "豆腐";
+        $.ajax({
+            url:"https://api.binstd.com/recipe/search?keyword="+caiValue+"&num=10&appkey=yourappkey&appkey=85d5254d9987cf31",
+            dataType:"jsonp",
+            success:function(data){
+                caipu(data);
+            },
+        })
+        $(".box .search button").click(function(){
+            caiValue = $("input").val();
+            if(caiValue.length == 0){
+                alert("没值，请输入...");
+                return;
+            }
+            $.ajax({
+                url:"https://api.binstd.com/recipe/search?keyword="+caiValue+"&num=10&appkey=yourappkey&appkey=85d5254d9987cf31",
+                dataType:"jsonp",
+                success:function(data){
+                    // console.log(data)
+                     caipu(data);
+                     $("input").val("");
+                }
+            })
+        })
+        function caipu(data){
+            $(".list ul").html("");
+            $(".right .yongliao ul").html("");
+            $(".right .zuofa ul").html("");
+            $(".list ul").html("");
+            //初始化
+            for(var i = 0; i < data.result.list.length; i++ ){
+                $(".list ul").append("<li><img src=''><h3></h3><span></span></li>");
+                $(".list ul li img").eq(i).attr("src",`${data.result.list[i].pic}`);
+                $(".list ul li h3").eq(i).html(`${data.result.list[i].name}`);
+                $(".list ul li span").eq(i).html(`${data.result.list[i].content}`);
+
+                $(".right .pic img").eq(0).attr("src",`${data.result.list[0].pic}`);
+                $(".right .title h3").eq(0).html(`${data.result.list[0].name}`);
+                $(".right .title span").eq(0).html(`${data.result.list[0].content}`);
+            }
+            for(var j = 0;j < data.result.list[0].material.length;j ++){
+                $(".right .yongliao ul").append("<li><span class='yleft'></span><span class='yright'></span><i>></i></li>")
+                $(".right .yongliao ul li .yleft").eq(j).html(`${data.result.list[0].material[j].mname}`);
+                $(".right .yongliao ul li .yright").eq(j).html(`${data.result.list[0].material[j].amount}`);
+            }
+            for(var z = 0;z < data.result.list[0].process.length;z ++){
+                $(".right .zuofa ul").append("<li><span></span><img src=''></li>");
+                $(".right .zuofa ul li span").eq(z).html(parseInt(z+1)+`.${data.result.list[0].process[z].pcontent}`);
+                $(".right .zuofa ul li img").eq(z).attr("src",`${data.result.list[0].process[z].pic}`);
+            }    
+
+
+            //点击菜单
+            $(".list ul li").click(function(){
+                $(".right .yongliao ul").html("");
+                $(".right .zuofa ul").html("");
+                var index = $(this).index();
+                for(var i = 0; i < data.result.list.length; i ++){
+                    $(".right .pic img").eq(i).attr("src",`${data.result.list[index].pic}`);
+                    $(".right .title h3").eq(i).html(`${data.result.list[index].name}`);
+                    $(".right .title span").eq(i).html(`${data.result.list[index].content}`);
+                }
+                for(var j = 0;j < data.result.list[index].material.length;j ++){
+                    $(".right .yongliao ul").append("<li><span class='yleft'></span><span class='yright'></span><i>></i></li>")
+                    $(".right .yongliao ul li .yleft").eq(j).html(`${data.result.list[index].material[j].mname}`);
+                    $(".right .yongliao ul li .yright").eq(j).html(`${data.result.list[index].material[j].amount}`);
+                }
+                for(var z = 0;z < data.result.list[index].process.length;z ++){
+                    $(".right .zuofa ul").append("<li><span></span><img src=''></li>");
+                    $(".right .zuofa ul li span").eq(z).html(parseInt(z+1)+`.${data.result.list[index].process[z].pcontent}`);
+                    $(".right .zuofa ul li img").eq(z).attr("src",`${data.result.list[index].process[z].pic}`);
+                } 
+            })
+        }
+    </script>
+</body>
+</html>

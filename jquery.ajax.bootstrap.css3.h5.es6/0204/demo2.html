@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用原生js封装map和filter函数</title>
+</head>
+<body>
+    <script>
+        //map封装
+        // Array.prototype.myMap = function(fun){
+        //     let newArr = [];
+        //     for(let i = 0;i < this.length; i ++){
+        //         newArr.push(fun(this[i],i,this));
+        //     }
+        //     return newArr;
+        // }
+        // let arr = [5,8,6,15,14,78];
+        // let res = arr.myMap(function(item,index,array){
+        //     return item * 2;
+        // });
+        // console.log(arr);
+        // console.log(res);
+
+        //filter封装
+        Array.prototype.myFilter = function(fun){
+            let newArr = [];
+            for(let i = 0;i < this.length; i ++){
+                if(fun(this[i],i,this)){
+                    newArr.push(this[i]);
+                }
+            }
+            return newArr;
+        }
+        let arr = [5,8,6,15,14,78];
+        let res = arr.myFilter(function(item,index,array){
+            return item >0
+        });
+        console.log(arr);
+        console.log(res);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let firstIndex = (arr,uname) =>{
+            let firstVal = -1;
+            for(let i = 0;i < arr.length; i++){
+                if(arr[i].name == uname){
+                    firstVal = i;
+                    break;
+                }
+            }
+            return firstVal;
+        }
+        let arr = [
+            { name: "jake", score: 92 },
+            { name: "jim", score: 93 },
+            { name: "cera", score: 90.1 },
+            { name: "filx", score: 91 },
+            { name: "cera", score: 97 },
+        ];
+        let uname = "cera";
+        console.log(firstIndex(arr,uname));
+    </script>
+</body>
+
+</html>

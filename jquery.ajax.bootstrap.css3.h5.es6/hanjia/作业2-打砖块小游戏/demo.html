@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打砖块</title>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+        .box {
+            width: 804px;
+            margin: 0 auto;
+            border: 1px solid red;
+            height: 500px;
+            position: relative;
+        }
+
+        .box .stone {
+            position: absolute;
+            bottom: 0;
+            left: 350px;
+        }
+
+        .box .ball {
+            position: absolute;
+            left: 360px;
+            top: 350px;
+        }
+
+        .block {
+            /* display: flex;
+            flex-wrap: wrap; */
+        }
+
+        .block img {
+            width: 67px;
+            height: 25px;
+            float: left;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="block"></div>
+        <div class="ball"><img src="./images/ball.png"></div>
+        <div class="stone">
+            <img src="./images/paddle.png">
+        </div>
+    </div>
+    <script>
+        var block = document.querySelector(".block");
+        var img = block.getElementsByTagName("img");
+
+        creatStone(12, 7)
+        function creatStone(numi, numj) {
+            for (var i = 0; i < numi; i++) {
+                for (var j = 0; j < numj; j++) {
+                    var img = document.createElement("img");
+                    img.src = "./images/block_01.png";
+                    block.appendChild(img);
+                    img.style.left = img.clientWidth * i + "px";
+                    img.style.top = img.clientHeight * j + "px";
+                }
+            }
+        }
+        //stone移动
+        var x = 0;
+        var resX = 0;
+        var isChange = false;
+        $(".stone").mousedown(function (e) {
+            resX = e.clientX - $(".stone")[0].offsetLeft;
+            isChange = true;
+        });
+        $(document).mousemove(function (e) {
+            if (isChange) {
+                x = e.clientX - resX;
+                if (x < 0) {
+                    x = 0;
+                }
+                if (x > 702) {
+                    x = 702;
+                }
+                $(".stone")[0].style.left = x + "px";
+            }
+        });
+        $(document).mouseup(function () {
+            isChange = false;
+        });
+        $(document).mousedown(function () {
+            return false;
+        });
+
+        //ball滚动
+        var box = document.querySelector(".box");
+
+        var ball = document.querySelector(".ball");
+        var stone = document.querySelector(".stone");
+
+        var speedx = parseInt(Math.random() * 4) + 3;
+        var speedy = parseInt(Math.random() * 3) + 4;
+        setInterval(function () {
+            $(".ball")[0].style.left = $(".ball")[0].offsetLeft + speedx + 'px';
+            $(".ball")[0].style.top = $(".ball")[0].offsetTop + speedy + 'px';
+            if ($(".ball")[0].offsetLeft <= 0 || $(".ball")[0].offsetLeft > $(".box")[0].clientWidth - $(".ball")[0].offsetWidth) {
+                speedx *= -1;
+            }
+            if ($(".ball")[0].offsetTop <= 0 || $(".ball")[0].offsetTop > $(".box")[0].clientHeight - $(".ball")[0].offsetHeight) {
+                speedy *= -1;
+            }
+            if ($(".ball")[0].offsetTop > $(".box")[0].clientHeight - $(".ball")[0].offsetHeight) {
+                window.alert('重新开始')
+                window.location.reload();
+            }
+            if (knock($(".ball")[0], $(".stone")[0])) {
+                speedy *= -1;
+            }
+            for (var i = 0; i < img.length; i++) {
+                if (knock($(".ball")[0], img[i])) {
+                    speedy *= -1;
+                    $(".block")[0].removeChild(img[i]);
+                }
+            }
+        }, 30);
+        function knock(node1, node2) {
+            let l1 = node1.offsetLeft;
+            let r1 = node1.offsetLeft + node1.offsetWidth;
+            let t1 = node1.offsetTop;
+            let b1 = node1.offsetTop + node1.offsetHeight;
+
+            let l2 = node2.offsetLeft;
+            let r2 = node2.offsetLeft + node2.offsetWidth;
+            let t2 = node2.offsetTop;
+            let b2 = node2.offsetTop + node2.offsetHeight;
+            if (l2 >= r1 || r2 <= l1 || t2 >= b1 || b2 <= t1) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html>

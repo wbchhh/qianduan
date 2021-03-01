@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <input class="inp" type="text" placeholder="请输入...">
+    <button>添加</button>
+    <br>
+    <br>
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+    <button>删除所选</button>
+    <br>
+    <br>
+    <div>
+        <ul>
+            <li><input class="input" type="checkbox" />家里没宽带<br><br></li>
+            <li><input class="input" type="checkbox" />网速不够快<br><br></li>
+            <li><input class="input" type="checkbox" />手机没流量<br><br></li>
+            <li><input class="input" type="checkbox" />学校无Wifi<br><br></li>
+        </ul>
+    </div>
+
+    <script>
+        $("button").eq(0).click(function(){
+            var value = $(".inp").val();
+            if(value.length != 0){
+                $("ul").append($("<li><input class='input' type='checkbox' />"+value+"<br><br></li>"))
+            }else{
+                alert("没有值！！！")
+            }
+            $(".inp").val("");
+        })
+        $("button").eq(1).click(function(){
+            $(".input").prop("checked",true);
+        })
+        $("button").eq(2).click(function(){ 
+            $(".input").prop("checked",false);
+        })
+        $("button").eq(3).click(function(){
+            $(".input").each(function(){
+                $(this).prop("checked",!$(this).prop("checked"));
+            })
+        })
+        $("button").eq(4).click(function(){
+            var num = 0;
+            $(".input").each(function(index,item){
+                if($(item).prop("checked")){
+                    num ++;
+                    $(item).parent().remove();
+                }
+            })
+            if(num == 0){
+                alert("没选中！！！")
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        function PieChart(ctx){
+            this.ctx = ctx || document.querySelector("canvas").getContext("2d");
+            this.x0 = 350;
+            this.y0 = 200;
+            this.radius = 150;
+            this.outline = 20;
+            //说明矩形的宽和高
+            this.rectW = 30;
+            this.rectH = 16;
+            this.space = 20;
+        }
+        //初始化
+        PieChart.prototype.init = function(data){
+            this.transFormData(data);
+            this.drawPie(data);
+        }
+        //转换弧度
+        PieChart.prototype.transFormData = function(data){
+            var sum = 0;
+            data.forEach(function(item,index){
+                sum += item.num;
+            });
+            data.forEach(function(item,index){
+                var angle = item.num / sum * (2 * Math.PI);
+                item.angle = angle;
+            });
+            return data;
+        }   
+        //画圆
+        PieChart.prototype.drawPie = function(data){
+            var that = this;
+            var startAngle = 0;
+            data.forEach(function(item,index){
+                var endAngle = startAngle + item.angle;
+                that.ctx.beginPath();
+                that.ctx.moveTo(that.x0,that.y0);
+                that.ctx.arc(that.x0,that.y0,that.radius,startAngle,endAngle);
+                var randColor = that.randColor();
+                that.ctx.fillStyle = randColor;
+                that.ctx.fill();
+                that.drawTitle(startAngle, item.angle, randColor, item.title);
+                that.drawDescribe(index, item.title);
+                startAngle = endAngle;
+            })
+        }
+        //画标题
+        PieChart.prototype.drawTitle = function(startAngle,angle,color,title){
+            var edge = this.radius + this.outline;
+            var edgeX = edge * Math.cos(startAngle + angle / 2);
+            var edgeY = edge * Math.sin(startAngle + angle / 2);
+
+            var outX = this.x0 + edgeX;
+            var outY = this.y0 + edgeY;
+
+            this.ctx.beginPath();
+            this.ctx.moveTo(this.x0,this.y0);
+            this.ctx.lineTo(outX,outY);
+            this.ctx.strokeStyle = color;
+            this.ctx.stroke();
+            this.ctx.font = "16px 宋体";
+            this.ctx.textBaseline = "bottom";
+            var textWidth = this.ctx.measureText(title).width;
+            if (outX > this.x0) {
+                this.ctx.textAlign = 'left';
+                this.ctx.lineTo(outX + textWidth, outY);
+            } else {
+                this.ctx.textAlign = 'right';
+                this.ctx.lineTo(outX - textWidth, outY);
+            } 
+            this.ctx.stroke();
+            this.ctx.fillText(title, outX, outY);
+        }
+        PieChart.prototype.drawDescribe = function(index, title){
+            this.ctx.fillRect(this.space, this.space + index * (this.space + 10), this.rectW, this.rectH);
+            this.ctx.beginPath();
+            this.ctx.textAlign = "left";
+            this.ctx.textBaseline = "top";
+            this.ctx.fillText(title, this.space+this.rectW + 10, this.space + index * (this.space + 10));
+        }
+        PieChart.prototype.randColor = function(){
+            return  "#" + Math.random().toString(16).substr(2,6).toUpperCase();
+        }
+        // 数据
+        var data = [
+            {
+                title: '15-20岁',
+                num: 3
+            },
+            {
+                title: '20-25岁',
+                num: 4
+            },
+            {
+                title: '25-30岁',
+                num: 3
+            },
+            {
+                title: '30-35岁',
+                num: 8
+            },
+            {
+                title: '35-40岁',
+                num: 7
+            },
+            {
+                title: '40-45岁',
+                num: 2
+            },
+            {
+                title: '45岁以上',
+                num: 1
+            }
+        ];
+        var pieChart = new PieChart();
+        pieChart.init(data);
+    </script>
+</body>
+</html>

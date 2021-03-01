@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        .left{
+            height: 400px;
+            width: 200px;
+            float: left;
+        }
+        .left select{
+            outline: none;
+            margin-top: 200px;
+            margin-left: 70px;
+        }
+        .right{
+            height: 400px;
+            /* width: 1000px; */
+            border: 1px solid #000;
+            float: left;
+        }
+        .right ul{
+            float: left;
+            list-style: none;
+            margin-right: 50px;
+        }
+        .clearfix{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .right ul li{
+            height: 66px;
+            line-height: 66px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box clearfix">
+        <div class="left">
+            <select>
+                <option>广州</option>
+                <option>佛山</option>
+                <option>青岛</option>
+                <option>深圳</option>
+            </select>
+        </div>
+        <div class="right">
+            <ul>
+                <li>日期：1月15日星期五</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+            <ul>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
+                <li>555</li>
+                <li>666</li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        var cityName = null;
+        if(cityName = "广州"){
+            tianqi(cityName);
+        }
+        $(".left select").change(function(){
+            cityName = $(this).val();
+            tianqi(cityName)
+        })    
+        function tianqi(cityName){
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","https://v0.yiketianqi.com/api?version=v9&appid=49311526&appsecret=SWPiwB2X&city="+cityName);
+            xhr.send();
+            xhr.onload = function(){
+                var res = JSON.parse(xhr.responseText);
+                for(var i = 0; i < 6; i ++){
+                    var arr = [`日期：${new Date().getMonth()+1}月${res.data[i].day}`, `城市：${res.city}`, `风向：${res.data[i].wea}`, 
+                           `高温：高温${res.data[i].tem1}℃`, `低温：低温${res.data[i].tem2}℃`, `天气：${res.data[i].wea_day}`]
+                    $("ul:eq("+i+") li").each(function(index ,item){
+                        $(item).html(arr[index]);
+                    })
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        .box{
+            margin: 0 auto;
+            width: 400px;
+            margin-top: 10px;
+        }
+        .left ul{
+            float: left;
+        }
+        .left ul li{
+            border:1px solid pink;
+            border-top: none;
+            border-right: none;
+            width:60px;
+            line-height: 27px;
+            text-align: center;
+        }
+        .left ul li.con{
+            border-top:1px solid pink;
+        }
+        .left ul li.con:hover{
+            background-color: red;
+        }
+        .content img{
+            border: 1px solid pink;
+            float: left;
+            height:251px;
+        }
+        .right ul{
+            float: left;
+        }
+        .right ul li{
+            border:1px solid pink;
+            border-top: none;
+            width:60px;
+            line-height: 27px;
+            text-align: center;
+            border-left: none;
+        }
+        .right ul li.active{
+            border-top:1px solid pink;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="left">
+            <ul>
+                <li class="con"><a href="#">女靴</a></li>
+                <li><a href="#">雪地靴</a></li>
+                <li><a href="#">连衣裙</a></li>
+                <li><a href="#">呢大衣</a></li>
+                <li><a href="#">毛衣</a></li>
+                <li><a href="#">棉服</a></li>
+                <li><a href="#">女裤</a></li>
+                <li><a href="#">羽绒服</a></li>
+                <li><a href="#">牛仔裤</a></li>
+            </ul>
+        </div>
+        <div class="content"><img src="./img/女靴.jpg"></div>
+        <div class="right">
+            <ul>
+                <li class="active"><a href="#">女包</a></li>
+                <li><a href="#">男包</a></li>
+                <li><a href="#">登山鞋</a></li>
+                <li><a href="#">皮带</a></li>
+                <li><a href="#">围巾</a></li>
+                <li><a href="#">皮衣</a></li>
+                <li><a href="#">男毛衣</a></li>
+                <li><a href="#">男棉服</a></li>
+                <li><a href="#">男靴</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(".box .left ul li").mouseenter(function(){
+            $(this).css("background-color","red").siblings("li").css("background-color","");
+            $(".content img").attr("src","./img/"+$(".left ul li a").get($(this).index()).innerHTML+".jpg")
+            console.log($(this).index())
+        })
+        $(".box .right ul li").mouseenter(function(){
+            $(this).css("background-color","red").siblings("li").css("background-color","");
+            $(".content img").attr("src","./img/"+$(".right ul li a").get($(this).index()).innerHTML+".jpg")
+            console.log($(this).index())
+        })
+        $(".box .left ul li").mouseleave(function(){
+            $(this).css("background-color","")
+        })
+        $(".box .right ul li").mouseleave(function(){
+            $(this).css("background-color","")
+        })
+    </script>
+</body>
+</html>

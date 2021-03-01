@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100%;
+            height: 500px;
+            margin: 50px auto;
+        }
+        .pic{
+            width: 450px;
+            height: 300px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            perspective: 800px;
+        }
+        .left{
+            width: 225px;
+            height: 300px;
+            background-image: url("./images/bg.png");
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: 0px 0px 2px 1px #000;
+            box-sizing: border-box;
+            transition: all 2s ease;
+            transform-origin: left center;
+        }
+        .right{
+            width: 225px;
+            height: 300px;
+            background-image: url("./images/bg.png");
+            position: absolute;
+            top: 0;
+            right: 0;
+            box-shadow: 0px 0px 2px 1px #000;
+            transition: all 2s ease;
+            transform-origin: right center;
+        }
+        .left span{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            margin-right: 10px;
+            margin-top: 140px;
+            float: right;
+        }
+        .right span{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #000;
+            margin-left: 10px;
+            margin-top: 140px;
+            float: left;
+        }
+        .pic:hover .left{
+            transform: rotateY(-140deg);
+        }
+        .pic:hover .right{
+            transform: rotateY(140deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="pic">
+            <img src="./images/3.jpg">
+            <div class="left"><span></sapn></div>
+            <div class="right"><span></span></div>
+        </div>
+        
+    </div>
+</body>
+</html>

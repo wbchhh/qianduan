@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(#999, #293242);
+  user-select: none;
+}
+.container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  transform: scale(0.6);
+}
+.container .item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  transform-origin: center bottom;
+}
+.container .left {
+  left: -400px;
+  filter: blur(20px);
+}
+.container .right {
+  left: 400px;
+  filter: blur(20px);
+}
+.container .middle {
+  transform: scale(1.4);
+}

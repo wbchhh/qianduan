@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天猫国际</title>
+    <style>
+        body,ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        nav{
+            height: 70px;
+            background-color: #f5f5f5;
+            line-height: 50px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .title{
+            height: 50px;
+            z-index: 999;
+            width: 50px;
+            background-color: #f5f5f5;
+        }
+        .title span{
+            font-size: 20px;
+            font-weight: 700;
+            color: #8759dc;
+            border-bottom: 3px solid #8759dc;
+            margin: 0 0px 0 10px;
+            width: 40px;
+            display: block;
+        }
+        nav ul{
+            display: flex;
+            position: absolute;
+            left: 70px;
+        }
+        nav ul li{
+            font-size: 20px;
+            margin: 0 10px 0 10px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="title"><span>国际</span></div>
+        <ul>
+            <li class="active">宠物</li>
+            <li class="active">时尚</li>
+            <li class="active">个护</li>
+            <li class="active">美妆</li>
+            <li class="active">母婴</li>
+            <li class="active">食品</li>
+            <li class="active">数码</li>
+            <li class="active">保健</li>
+            <li class="active">居家</li>
+        </ul>
+    </nav>
+    <script>
+        var lis = document.querySelectorAll(".active");
+        var ul = document.querySelector("ul");
+        var nav = document.querySelector("nav");
+        var startX = 0;
+        var maxX = nav.offsetWidth - ul.offsetWidth;
+        ul.ontouchstart = function(e){
+            startX = e.targetTouches[0].pageX - ul.offsetLeft;
+        }
+        ul.ontouchmove = function(e){
+            var moveX = e.targetTouches[0].pageX;
+            var lisX = moveX - startX;
+            if(lisX > 70){
+                lisX = 70;
+            }else if(lisX < maxX){
+                lisX = maxX;
+            }
+            ul.style.left = lisX + "px";
+        }
+        
+    </script>
+</body>
+</html>

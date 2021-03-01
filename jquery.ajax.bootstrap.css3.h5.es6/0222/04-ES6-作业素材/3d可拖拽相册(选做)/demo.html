@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d可拖拽相册</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+            perspective: 800px;
+        }
+
+        .box {
+            width: 150px;
+            height: 400px;
+            margin: 300px auto;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(0deg);
+        }
+
+        img {
+            width: 150px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* cursor: pointer; */
+            -webkit-box-reflect: below 10px linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,0.6)100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/1.png" draggable="false">
+        <img src="./images/2.png" draggable="false">
+        <img src="./images/3.png" draggable="false">
+        <img src="./images/4.png" draggable="false">
+        <img src="./images/5.png" draggable="false">
+        <img src="./images/6.png" draggable="false">
+        <img src="./images/1.png" draggable="false">
+        <img src="./images/2.png" draggable="false">
+        <img src="./images/3.png" draggable="false">
+        <img src="./images/4.png" draggable="false">
+        <img src="./images/5.png" draggable="false">
+    </div>
+    <script>
+        let img = document.querySelectorAll("img");
+        let box = document.querySelector(".box");
+        let len = img.length;
+        let deg = 360/len;
+
+        window.onload = ()=>{
+            Array.prototype.forEach.call(img,function(item,index){
+                item.style.transform = "rotateY("+index*deg+"deg) translateZ(350px)";
+                item.style.transition = "1s "+(len - index)*0.1+"s"
+            })
+        }
+        let rotateY = 0;
+        let rotateX = -20;
+        document.onmousedown = function(e){
+            let startX = e.pageX;
+            let startY = e.pageY;
+            document.onmousemove = function(evt){
+                let newX = evt.pageX;
+                let newY = evt.pageY;
+                let moveX = evt.pageX - startX
+                let moveY = evt.pageY - startY
+                moveX = moveX * 0.1;
+                moveY = moveY * 0.1;
+
+                rotateY = rotateY + moveX;
+                rotateX = rotateX - moveY;
+                box.style.transform = "rotateX("+rotateX+"deg) rotateY("+rotateY+"deg)"
+                startX = newX;
+                startY = newY;
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞机大战</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 320px;
+            height: 568px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bg img {
+            width: 320px;
+            height: 568px;
+            vertical-align: bottom;
+            animation: move 10s linear infinite;
+        }
+
+        .bg img:nth-child(1) {
+            position: absolute;
+            top: -468px;
+        }
+
+        @keyframes move {
+            form {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(468px);
+            }
+        }
+        .plane img {
+            position: relative;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="plane">
+
+        </div>
+        <div class="bg">
+            <img src="./images/background_1.png">
+            <img src="./images/background_1.png">
+        </div>
+    </div>
+    <script>
+        let plane = document.querySelector(".plane");
+        let smallPlaneArry = [];
+        let middlePlaneArry = [];
+        let bigPlaneArry = [];
+        function Plane(imgSrc, x, y,speed) {
+            this.img = document.createElement("img");
+            this.speed = speed;
+            this.imgSrc = imgSrc;
+            this.x = x;
+            this.y = y;
+
+
+            this.init = function () {
+                this.img.src = this.imgSrc;
+                this.img.style.position = "absolute";
+                this.img.style.left = this.x + "px";
+                this.img.style.top = this.y + "px";
+                plane.appendChild(this.img);
+            }
+            this.init();
+            this.move = function(){
+                this.img.style.top = parseInt(this.img.offsetTop) + this.speed + "px";
+            }
+        }
+        function random(min,max){
+            return parseInt(Math.random()*(max-min)+min);
+        }
+        //小飞机
+        function createSmallPlane(){
+            let smallPlane = new Plane("./images/enemy1_fly_1.png",random(0,286),random(-100,-50),parseInt(random(9,10)));
+            smallPlaneArry.push(smallPlane);
+            smallPlane.move();
+        }
+        setInterval(createSmallPlane,1000);
+        function smallPlaneMove(){
+            for(i = 0;i < smallPlaneArry.length; i ++){
+                smallPlaneArry[i].move();
+                if(parseInt(smallPlaneArry[i].img.offsetTop) >= 568){
+                    plane.removeChild(smallPlaneArry[i].img);
+                    smallPlaneArry.splice(i,1);
+                }
+            }
+        }
+        setInterval(smallPlaneMove,50);
+
+        //中飞机
+        function createMiddlePlane(){
+            let middlePlane = new Plane("./images/enemy2_fly_1.png",random(0,260),random(-100,-50),parseInt(random(5,6)));
+            middlePlaneArry.push(middlePlane);
+            middlePlane.move();
+        }
+        setInterval(createMiddlePlane,5000);
+        function middlePlaneMove(){
+            for(i = 0;i < middlePlaneArry.length; i ++){
+                middlePlaneArry[i].move();
+                if(parseInt(middlePlaneArry[i].img.offsetTop) >= 568){
+                    plane.removeChild(middlePlaneArry[i].img);
+                    middlePlaneArry.splice(i,1);
+                }
+            }
+        }
+        setInterval(middlePlaneMove,50);
+
+        //大飞机
+        function createBigPlane(){
+            let bigPlane = new Plane("./images/enemy3_fly_1.png",random(0,156),random(-200,-150),parseInt(random(2,3)));
+            bigPlaneArry.push(bigPlane);
+            bigPlane.move();
+        }
+        setInterval(createBigPlane,10000);
+        function bigPlaneMove(){
+            for(i = 0;i < bigPlaneArry.length; i ++){
+                bigPlaneArry[i].move();
+                if(parseInt(bigPlaneArry[i].img.offsetTop) >= 568){
+                    plane.removeChild(bigPlaneArry[i].img);
+                    bigPlaneArry.splice(i,1);
+                }
+            }
+        }
+        setInterval(bigPlaneMove,50);
+    </script>
+</body>
+
+</html>

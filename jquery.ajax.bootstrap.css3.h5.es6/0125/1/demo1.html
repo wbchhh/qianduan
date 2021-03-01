@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("./img/bg.jpg");
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 1200px;
+            margin: 200px auto; 
+        }
+        .box ul li{
+            list-style: none;
+            float: left;
+            cursor: pointer;
+            margin-right: 20px;
+            position: relative;
+            width: 200px;
+            height: 380px;
+        }
+        .box ul li .img1{
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all .5s;
+        }
+        .box ul li .img2{
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: rotateY(180deg);
+            transition: all .5s;
+        }
+        .box ul li:nth-child(2),.box ul li:nth-child(4){
+            margin-top: 50px;
+        }
+        .box ul li:hover .img1{
+            transform: rotateY(180deg);
+        }
+        .box ul li:hover .img2{
+            transform: rotateY(0deg);
+        }
+        .box .img1{
+            backface-visibility: hidden;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img class="img1" src="./img/11.png"><img class="img2" src="./img/1.png"></li>
+            <li><img class="img1" src="./img/22.png"><img class="img2" src="./img/2.png"></li>
+            <li><img class="img1" src="./img/33.png"><img class="img2" src="./img/3.png"></li>
+            <li><img class="img1" src="./img/44.png"><img class="img2" src="./img/4.png"></li>
+            <li><img class="img1" src="./img/55.png"><img class="img2" src="./img/5.png"></li>
+        </ul>
+    </div>
+</body>
+</html>

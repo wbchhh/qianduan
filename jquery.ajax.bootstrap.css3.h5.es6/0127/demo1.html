@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调色板</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>
+            <label>红：</label>
+            <input type="range" min="0" max="255" value="0">
+            <span></span>
+        </p>
+        <p>
+            <label>绿：</label>
+            <input type="range" min="0" max="255" value="0">
+            <span></span>
+        </p>
+        <p>
+            <label>蓝：</label>
+            <input type="range" min="0" max="255" value="0">
+            <span></span>
+        </p>
+    </div>
+</body>
+<script>
+    var inputs = document.querySelectorAll("input");
+    var spans = document.querySelectorAll("span");
+    var body = document.querySelector("body");
+    for(var i = 0; i < spans.length;i ++){
+        spans[i].innerHTML = inputs[i].value;
+        inputs[i].index = i;
+        inputs[i].oninput = function(){
+            spans[this.index].innerHTML = inputs[this.index].value;
+            body.style.background = "rgb("+inputs[0].value+","+inputs[1].value+","+inputs[2].value+")";
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <style>
+        .bgColor {
+            background-color: #242424;
+            height: 70px;
+        }
+        .bgColor .pic{
+            background: url("./img/topbar.png") no-repeat 0 -6px;
+	        width: 157px;
+	        height: 60px;
+        }
+        .bgColor .navbar-nav .nav-link {
+            color: #cccccc;
+            display: block;
+            height: 70px;
+            line-height: 70px;
+            padding: 0px 10px;
+        }
+        .bgColor .navbar-nav i{
+            float: left;
+            margin-top: 20px;
+            margin-left: -6px;
+            background: url("./img/topbar.png") no-repeat -192px 0;
+	        width: 26px;
+	        height: 13px;
+        }
+        .bgColor .navbar-nav .bgc{
+            background-color: #242424;
+            color: #cccccc;
+        }
+        .bgColor .navbar-nav .nav-link:hover{
+            background-color: #000000;
+            color: #cccccc;
+        }
+        
+        .bgColor .navbar-nav .nav-link.con{
+            background-color: #000000;
+            color: #cccccc;
+        }
+        .bgColor .navbar-nav .nav-item span{
+            background: url("img/topbar.png") no-repeat -226px 0;
+            width: 12px;
+            height: 6px;
+            float: left;
+            margin-top: -7px;
+            margin-left: 37px;
+        }
+         .form-inline .form-control {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
+            border-radius: 20px;
+            border: none;
+            padding: 0 0 0 27px;
+            height: 30px;
+            font-size: 12px;
+            z-index: 100;
+        }
+        .form-inline i{
+            background: url("./img/topbar.png") no-repeat -10px -108px;
+            width: 13px;
+            height: 14px;
+            margin-right: -22px;
+            z-index: 10000;
+            float: right;
+        }
+        .form-inline .btn {
+            color: #fff;
+            background-color: #242424;
+            font-size: 12px;
+            border-radius: 20px;
+            border: 1px solid #cccccc;
+        }
+        .form-inline .nav-link{
+            color: #787878;
+            font-size: 12px;
+            float: right;
+            margin-right: -55px;
+        }
+        .bgColor .navbar-toggler{
+            background-color: #fff;
+            outline: none;
+        }
+         .bgc{
+            background-color: #242424;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bgColor">
+        <div class="container">
+
+            <!-- 图片 -->
+            <a class="navbar-brand pic pic1" href="#"></a>
+
+            <!-- 右边按钮 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 内容 -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link bgc con" href="#">发现音乐</a>
+                        <span class="d-lg-block d-none"></span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bgc" href="#">我的音乐</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bgc" href="#">朋友</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bgc" href="#">商城</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bgc" href="#">音乐人</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bgc" href="#">下载客户端</a>
+                    </li>
+                    <i class="d-lg-block d-none"></i>
+                </ul>
+                <!-- 搜索框 -->
+                <form class="form-inline my-lg-0 bgc">
+                    <i class="d-lg-block d-none"></i>
+                    <input class="form-control mr-sm-2 d-lg-block d-none" type="search" placeholder="音乐/视频/电台/用户" aria-label="Search">
+                    <button class="btn d-lg-block d-none" type="submit">创作者中心</button>
+                    <a class="nav-link" href="#">登录</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

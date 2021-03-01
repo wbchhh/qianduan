@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+    <style>
+        body,ul{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            margin: 100px auto;
+            width: 750px;
+            border: 1px solid #000;
+            /* height: 500px; */
+        }
+        .up span{
+            float: left;
+            overflow: hidden;
+            margin-top: 190px;
+            margin-left: 50px;
+            margin-right: 20px;
+        }
+        .content textarea{
+            height: 200px;
+            width: 450px;
+            float: left;
+            overflow: hidden;
+            margin-top: 10px;
+            outline: none;
+            resize: none;
+            font-size: 16px;
+        }
+        .up button{
+            margin-top: 190px;
+            margin-left: 20px;
+        }
+        .down{
+            margin-bottom: 100px;
+        }
+        .down ul{
+            margin-left: 145px;
+            margin-top: 10px;
+        }
+        .down ul li{
+            border-bottom: 1px dashed #000000;
+            height: 30px;
+            width: 430px;
+        }
+        .down ul li a{
+            float: right;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="up">
+            <span>微博发布</span>
+            <div class="content"><textarea></textarea></div>
+            <button>发布</button>
+        </div>
+        <div class="down">
+            <ul>
+                <!-- <li><span>aaa</span><a href="#">删除</a></li> -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        $("button").on("click",function(){
+            var value = $(".content textarea").val();
+            if(value.length !=0){
+                $("ul").prepend('<li><span>'+value+'</span><a href="#">删除</a></li>');
+                $("ul").children("li").eq(0).hide().slideDown(500);
+                $(".content textarea").val("");
+                $(".down ul li a").on("click" ,function(){
+                    $(this).parent().remove();
+                })
+            }else{
+                alert("没有值！！！") 
+            }
+        })
+    </script>
+</body>
+</html>

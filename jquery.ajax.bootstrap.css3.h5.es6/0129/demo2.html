@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+        var w = 0;
+        var h = 0;
+        for(var i = 1;i < 40; i ++){
+            w = w + 10;
+            ctx.moveTo(0,w);
+            ctx.lineTo(600,w);
+            ctx.strokeStyle = "#efefef";
+            ctx.stroke();
+        }
+        for(var j = 1;j < 60; j ++){
+            h = h + 10;
+            ctx.moveTo(h,0);
+            ctx.lineTo(h,400);
+            ctx.strokeStyle = "#efefef";
+            ctx.stroke();
+        }
+        ctx.beginPath();
+        ctx.moveTo(20,380);
+        ctx.lineTo(20,20);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(20,380);
+        ctx.lineTo(580,380);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(15,30);
+        ctx.lineTo(20,20);
+        ctx.lineTo(25,30);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(570,375);
+        ctx.lineTo(580,380);
+        ctx.lineTo(570,385);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        //折线
+        ctx.beginPath();
+        ctx.moveTo(20,380);
+        ctx.lineTo(120,260);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(120,260);
+        ctx.lineTo(220,220);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(220,220);
+        ctx.lineTo(320,140);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(320,140);
+        ctx.lineTo(420,60);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(420,60);
+        ctx.lineTo(520,300);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#787878";
+        ctx.stroke();
+
+        //正方形
+        ctx.beginPath();
+        ctx.rect(116,256,8,8);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(216,216,8,8);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(316,136,8,8);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(416,56,8,8);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(516,296,8,8);
+        ctx.fillStyle = "black";
+        ctx.fill();
+    </script>
+</body>
+</html>
