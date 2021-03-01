@@ -1,0 +1,61 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+		    body {
+			  font-size:16px;
+			}
+			.box1 {
+			   width:600px;
+			   height:100px;
+			   background-color:#ccc;
+			   line-height:100px;
+			   /*(100 - 16) / 2 = 42*/
+			   /* 盒子高度 = 上间距 + 字体大小 + 下间距 = 行高*/
+			}
+			
+			.box2 {
+			   width:600px;
+			   background-color:#f00;
+			   padding-top:42px;
+			   padding-bottom:42px;
+			}
+			
+			.box3 {
+			   width:600px;
+			   background-color:#0ff;
+			   /*属性值 px / % / rem / em */
+			   /*倍数 */
+			   line-height:150%;
+			   /*设置内边距*/
+			   padding:42px 0;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	
+		<div class="box1">
+		   <div>hello wrold , ggyyfffxx</div>
+		</div>
+		
+		<div class="box2">
+		   <div>hello wrold , ggyyfffxx</div>
+		</div>
+		
+		<div class="box3">
+		   <div>hello wrold , ggyyfffxx</div>
+		   <div>hello wrold , ggyyfffxx</div>
+		   <div>hello wrold , ggyyfffxx</div>
+		   <div>hello wrold , ggyyfffxx</div>
+		</div>
+		
+	
+	</body>
+</html>
+

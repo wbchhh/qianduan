@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切换（动画版）</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 730px;
+            margin: 100px auto;
+            position: relative;
+            border: 3px solid #000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .box .banner {
+            width: 1460px;
+            height: 454px;
+            clear: both;
+            z-index: 7;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            transition: left 0.7s ease 0s;
+            /* 属性 过渡时间 运动方式 延时时间 */
+        }
+
+        .box .banner img {
+            float: left;
+            z-index: 8;
+        }
+
+        .box .list {
+            width: 730px;
+            height: 50px;
+            position: absolute;
+            clear: both;
+            z-index: 12;
+            border-bottom: 1px solid orange;
+        }
+
+        .box .list li {
+            width: 50%;
+            height: 50px;
+            float: left;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #000;
+            list-style: none;
+            top: 0px;
+            left: 0px;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="list">
+            <ul>
+                <li>衣服</li>
+                <li>手机</li>
+            </ul>
+        </div>
+        <div class="banner">
+            <img src="./img/left.jpg">
+            <img src="./img/right.jpg">
+        </div>
+    </div>
+
+    <script>
+        // 需求：
+        // 当前点击tab选项背景高亮，并动画的方式切换对应的图片
+        var banner = document.getElementsByClassName("banner")[0];
+        var list = document.getElementsByClassName("list")[0];
+        var li = list.getElementsByTagName("li");
+        var w = 730;
+        var listIn = function (dom) {
+            dom.style.backgroundColor = "rgba(255,255,255,0.7)";
+        }
+        listIn(li[0]);
+        for (i = 0; i < li.length; i++) {
+            li[i].index = i;
+            li[i].onclick = function () {
+                for (j = 0; j < li.length; j++) {
+                    li[j].style.backgroundColor = "rgba(255,255,255,0.2)";
+                }
+                listIn(this);
+                // this.style.backgroundColor = "rgba(255,255,255,0.7)";
+                // var timer = setInterval(function(){
+                banner.style.left = -w * this.index + "px";
+                // },250);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

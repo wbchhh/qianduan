@@ -1,0 +1,71 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：输入标签名称</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			div {
+			   width:1000px;
+			   height:80px;
+			   margin:0 auto;
+			   background-color:red;
+			}
+			h1,h2,h3,h4,h5,h6  {
+			   width:800px;
+			   height:80px;
+			   margin:0 auto;
+			   padding:0;
+			   background-color:green;
+			}
+			p {
+			   width:600px;
+			   height:80px;
+			   margin:0 auto;
+			   padding:0;
+			   background-color:blue;
+			}
+			body {
+			  margin:0;
+			}
+			li {
+			  list-style:none;
+			  width:1200px;
+			  height:1000px;
+			  background-color:#f0f0f0;
+			  margin:0 auto;
+			  overflow:hidden;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<li>
+		
+		
+		</li>
+		
+		<script>
+		  //1.0 弹窗，接收输入的标签名
+		  // alert()
+		  // prompt()
+		  
+		  var tagName = prompt("请输入标签名");
+		  console.log(tagName);
+		   console.log(typeof tagName);// string
+		  //2.0 根据输入的标签名 
+		  // 创建标签
+		  var element = document.createElement(tagName);
+		  
+		  // 添加到li标签里
+		  var liElement = document.getElementsByTagName("li")[0];
+		  liElement.appendChild(element);
+		  
+		  
+		  
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开关灯逻辑</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+        button {
+            width: 200px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>点击按钮切换盒子背景色</button>
+    <div class="box"></div>
+
+    <script>
+        // 要求：
+            // 首次点击按钮， 改变.box标签背景色为绿色 
+            // 再次点击按钮， 改变.box标签背景色为橙色
+
+            // 获取相关标签
+            var btn = document.getElementsByTagName("button")[0];
+            var box = document.getElementsByTagName("div")[0];
+
+            // 如果没有变量作为判断的条件，你实现不了切换背景色的功能
+            // 定义布尔值
+            var isChange = true;
+
+            // 事件绑定
+            btn.onclick = function(){
+
+               //判断条件
+               if(isChange){
+                     //给 isChange 赋值
+                     isChange = false;
+                     // 橙色背景
+                     box.style.backgroundColor = "orange";
+               }else {
+                     //给 isChange 赋值
+                     isChange = true;
+                     // 绿色背景
+                      box.style.backgroundColor = "green";
+               }
+            }
+
+
+    </script>
+</body>
+</html>

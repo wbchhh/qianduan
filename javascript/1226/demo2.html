@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两个盒子中间插入一个盒子</title>
+    <style>
+        .boxRed{
+            width: 100px;
+            height:100px;
+            background-color: red;
+            float: left;
+        }
+        .boxGreen{
+            width: 100px;
+            height:100px;;
+            /* margin-left: 100px; */
+            background-color: green;
+            float: left;
+        }
+        .boxBlue{
+            width: 100px;
+            height:100px;;
+            /* margin-left: 100px; */
+            background-color: blue;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="boxRed"></div>
+        <div class="boxGreen"></div>
+        <button class="btnl">增加</button>
+        <button class="btnr">删除</button>
+    </div>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var btnl = document.getElementsByClassName("btnl")[0];
+        var btnr = document.getElementsByClassName("btnr")[0];
+        var boxGreen = document.getElementsByClassName("boxGreen")[0];
+        
+        var boxBlue = document.createElement("div");
+        boxBlue.className = "boxBlue";
+        btnl.onclick = function(){
+            // box.children[0].appendChild(boxBlue);
+            box.insertBefore(boxBlue,boxGreen);
+            // btnl.onclick = null;
+        }
+        btnr.onclick = function(){
+            boxBlue.remove();
+            // btnl.onclick = null;
+        }
+    </script>
+</body>
+</html>

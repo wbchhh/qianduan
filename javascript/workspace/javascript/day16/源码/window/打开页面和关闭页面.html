@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>打开页面</button>
+    <button>关闭页面</button>
+
+    <script>
+        // console.log(window);
+        // 1.0 获取按钮标签
+        // var buttons = window.document.getElementsByTagName("button");
+        var buttons = document.getElementsByTagName("button");
+        console.log(buttons)
+
+        // 2.0 事件绑定
+        // 打开页面
+        buttons[0].onclick = function(){
+            window.open("https://www.baidu.com");
+        }
+        // 关闭当前页面
+        buttons[1].onclick = function(){
+            window.close();
+        }
+
+    </script>
+</body>
+</html>

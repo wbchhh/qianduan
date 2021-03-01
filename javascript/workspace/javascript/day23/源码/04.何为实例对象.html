@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id="container"> </div>
+
+    <script>
+        // 普通函数
+        // function Person(){
+        //     this.width = "100px";
+        //     console.log(this);// window
+        // }
+        // Person();
+        // console.log(window);//window
+
+
+        // 1.0 构造函数（自定义）
+        var _this ;
+        function Person() {//函数作用域的this
+            this.width = "100px";
+            console.log(this);// Person {width: "100px"}
+            _this = this;
+        }
+        // new Person() 这个就是实例对象 Person {width: "100px"}
+        // 实例对象是一个具体的对象
+        // 实例，指实际存在的例子（对象）
+        var obj = new Person();
+        console.log(obj);// 实例对象
+        console.log(obj === _this);// true
+
+        // new 操作符 在实例过程中做了什么
+        // 在系统内部创建一个空对象（在内存开辟一个空间）obj
+        // 然后如果构造函数上有属性和方法，就往这个空对象obj添加属性和方法
+        // 最终会返回这个新对象obj
+        // var obj = {}; return obj;
+
+
+
+        // 渲染：表现
+        // 实例：具体的对象
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

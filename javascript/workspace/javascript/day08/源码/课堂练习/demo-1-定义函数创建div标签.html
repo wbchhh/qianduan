@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习-1</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        // 要求：
+            // 定义函数名称为 ce 
+            // 调用ce 函数，可以创建div标签，并且添加body标签。
+
+        // 编码
+        // 1.0 定义函数
+        function ce() {
+            // 处理逻辑
+            // 创建元素
+            var div = document.createElement("div");
+            // 添加到body标签
+            document.body.appendChild(div);
+        }
+
+
+        // 2.0 调用函数
+        ce();
+        ce();
+        ce();
+
+    </script>
+</body>
+</html>

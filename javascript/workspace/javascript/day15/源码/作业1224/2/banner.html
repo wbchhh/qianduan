@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看JS代码写下自己的理解</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .slide {
+            width: 1000px;
+            height: 100px;
+            background-image: url(./banner.png);
+            margin: 200px auto;
+        }
+        .slide .con {
+            width: 1000px;
+            height: 100px;
+            /* 相对定位 */
+            position: relative;
+        }
+        /* 遮罩层 */
+        .slide .con .bg {
+            background-color: rgba(255,0,0,0.5);
+            width: 970px;
+            height: 100px;
+
+            /* 绝对定位 */
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+        }
+        .slide .con .bar {
+            width: 28px;
+            height: 150px;
+            border: 1px solid #333;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 15px;
+
+            /* 绝对定位 */
+            position: absolute;
+            left: 0px;
+            top: -25px;
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+ 
+   <div class="slide" draggable="false">
+       <!-- 内容盒子 -->
+       <div class="con">
+           <!-- 背景 （遮罩层）-->
+           <div class="bg"></div>
+           <!-- 滑块 -->
+           <div class="bar"></div>
+       </div>
+   </div>
+
+
+   <script>
+     //需求：
+     //  按下滑块改变遮罩层的宽度
+     //  看代码写注释
+
+    //  步骤：
+        // 1.获取相关元素
+        var bg_element = document.getElementsByClassName("bg")[0];
+        var bar_element = document.getElementsByClassName("bar")[0];
+        var tit_element = document.getElementsByClassName("tit")[0];
+
+        // 2. 定义变量 
+        // 
+        var startX  = 0;
+        // 
+        var x = 0;
+        // 
+        var currentX = 0;
+        // 
+        var maxDistance = bg_element.offsetWidth;
+        // 
+        var isMouseDown = false;
+
+        // 3.0 事件绑定
+        // 3.0.1 鼠标按下 滑块
+        bar_element.onmousedown = function(evt){
+            // 兼容写法
+            var event = evt || window.event;
+            // 
+            startX = event.pageX;
+            // 
+            isMouseDown = true;
+            // 禁止鼠标拖动图片(阻止浏览器默认行为)
+            return false;
+        }
+
+
+        // 3.0.2 鼠标移动 页面
+        document.onmousemove = function(evt){
+             // 兼容写法
+             var event = evt || window.event;
+             // 
+             if(isMouseDown){
+                // 
+                x = event.pageX - startX + currentX;
+                // 
+                if(x <0){
+                      x = 0;
+                }
+                // 
+                if(x > maxDistance){
+                    x = maxDistance ;
+                }
+                // 
+                bar_element.style.left = x + "px";
+                // 
+                bg_element.style.width = (maxDistance - x )+"px";
+             }
+        }
+
+        // 3.0.3 鼠标松开 页面 
+        document.onmouseup = function(){
+            // 设置布尔值 false
+            isMouseDown = false;
+            // 记录滑块当前位置
+            currentX = x ;
+            // 禁止鼠标拖动图片(阻止浏览器默认行为)
+            return false;
+        }
+   </script>
+</body>
+</html>

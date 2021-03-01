@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画函数（复习）</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box"></div>
+
+    <!-- 动画函数文件 -->
+    <script src="./animate.js"></script>
+    <script>
+     
+        // 1.0 获取div.box标签
+        var box = document.getElementsByClassName("box")[0];
+        // 2.0 事件绑定
+        box.onclick = function(){
+            // 3.0 书写处理逻辑
+            // animate(dom,obj,callback);
+            var obj1 = {
+                borderRadius:100,
+                width:200,
+                height:200
+            }
+            animate(box, obj1 ,  function(){
+                box.style.backgroundColor = "deepskyblue";
+            });
+        }
+
+    </script>
+</body>
+</html>

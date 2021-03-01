@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: absolute;
+            /* top: 50%; */
+            /* height: 100px; */
+            width: 100%;
+        }
+        .box span{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>首页</span>
+        <span>|</span>
+        <span>分类</span>
+        <span>|</span>
+        <span>发现</span>
+        <span>|</span>
+        <span>个人中心</span>
+    </div>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        var span = document.getElementsByTagName("span");
+        console.log(navigator.userAgent);
+        // window.onresize = function(){
+            if(navigator.userAgent.indexOf("iPhone") > -1){
+                box.style.bottom = 0;
+                for(var i=0;i<span.length;i++){
+                    span[i].style.color = "orange";
+                }
+            }else if(navigator.userAgent.indexOf("Windows") > -1){
+                box.style.top = "50%";
+                for(var i=0;i<span.length;i++){
+                    if(i%2 != 0){
+                        span[i].innerHTML = ""+"<br>";
+                    }
+                }
+            }else if(navigator.userAgent.indexOf("Android") > -1){
+                box.style.top = 0;
+                for(var i=0;i<span.length;i++){
+                    span[i].style.color = "skyblue";
+                }
+            }
+        // }
+    </script>
+</body>
+</html>

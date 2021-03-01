@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串获取最大值，次数</title>
+</head>
+<body>
+    <script>
+        var str = "professional coding program learning";
+        var arr = str.replace(/\s/g,"");
+        var len = arr.length;
+        var obj = {};
+        for(var i=0;i<len;i++){
+            if(obj[arr[i]] == undefined){
+                obj[arr[i]]={
+                    count:1,
+                    letter:arr[i]
+                }
+            }else{
+                obj[arr[i]].count += 1;
+            }
+        }
+        console.log(obj);
+        var tempVal = 0;
+        var letters = [];
+        for(var key in obj){
+            if(obj[key].count > tempVal){
+                tempVal = obj[key].count;
+            }
+            if(obj[key].count == 4){
+                letters.push(obj[key].letter);
+                console.log("字符串" + obj[key].letter + "出现的最多次数为" + tempVal);
+            }
+        }
+        // console.log(tempVal);
+        // console.log(letters);
+    </script>
+</body>
+</html>

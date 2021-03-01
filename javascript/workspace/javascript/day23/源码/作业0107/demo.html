@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+        .wrapper {
+            width: 1200px;
+            height: 600px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+        }
+
+        .wrapper ul {
+            padding: 0;
+            margin: 0 auto;
+            list-style: none;
+            width: 850px;
+            height: 600px;
+            position: relative;
+        }
+
+        .wrapper ul li {
+            width: 100px;
+            height: 0;
+            background-color: #ccc;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .wrapper ul li.one {
+            left: 0;
+        }
+
+        .wrapper ul li.two {
+            left: 150px;
+        }
+
+        .wrapper ul li.three {
+            left: 300px;
+        }
+
+        .wrapper ul li.four {
+            left: 450px;
+        }
+
+        .wrapper ul li.five {
+            left: 600px;
+        }
+
+        .wrapper ul li.six {
+            left: 750px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <ul class="list">
+            <li class="item one  ">1</li>
+            <li class="item two  ">2</li>
+            <li class="item three">3</li>
+            <li class="item four ">4</li>
+            <li class="item five ">5</li>
+            <li class="item six  ">6</li>
+        </ul>
+    </div>
+
+    <script>
+        // 需求： 
+        // 数据统计
+        // 上半年前6个的销售员薪酬收入比例
+        var data = [
+            {
+                month: "一月份",
+                color: "darkred",
+                income: "6500"
+            },
+            {
+                month: "二月份",
+                color: "skyblue",
+                income: "6800"
+            },
+            {
+                month: "三月份",
+                color: "yellowgreen",
+                income: "7000"
+            },
+            {
+                month: "四月份",
+                color: "lightblue",
+                income: "7600"
+            },
+            {
+                month: "五月份",
+                color: "pink",
+                income: "5800"
+            },
+            {
+                month: "六月份",
+                color: "orange",
+                income: "6000"
+            }
+        ]
+
+
+        // 1.0 定义构造函数
+        function Foo(data) {//函数作用域1
+            // 添加属性
+            this.elements = document.getElementsByClassName("item");
+            this.data = data;
+            this.totalHeight = 2000;//表示总收入的高度
+            this.total = 0;// 记录上半年总收入
+            // 添加方法
+            // 初始化
+            this.init = function(){//函数作用域1
+                // 循环li标签数组
+                for(var i = 0 ; i < this.elements.length ; i ++){
+                    // 显示月份
+                    this.elements[i].innerText = this.data[i].month;
+                    // 添加li标签的颜色
+                    this.elements[i].style.backgroundColor = this.data[i].color;
+                    // 计算上半年总收入
+                    this.total += this.data[i].income - 0 ;
+                }
+
+                // 调用显示高度的函数
+                this.showHeight();
+            }
+            // 设置每个li标签高度
+            this.showHeight = function(){//函数作用域1 
+                // 循环li标签数组
+                for(var i = 0 ;  i < this.elements.length ; i ++){
+                    // 计算当前月份占总收入的比例
+                    var demo =  this.data[i].income / this.total ;
+                    // 计算当前月份的高度
+                    var h = demo * this.totalHeight;
+                    // console.log(height)
+                    // 调用动画函数
+                    this.animate(this.elements[i],{
+                        height: h
+                    })
+                }
+            }
+
+            // 执行动画的函数
+            this.animate = function (dom, option, callback) {
+                // 先清除定时器函数（一种防抖思想）
+                clearInterval(dom.timer);
+                // 执行定时器函数
+                dom.timer = setInterval(function () {
+                    // 目标属性值 = 当前属性值 + 步长
+                    // 步长 = （目标属性值 - 当前属性值） / 数字
+                    // 定义布尔值(用于判断是否停止定时器函数)
+                    var isChange = true;
+                    // 循环对象 
+                    for (var key in option) {
+                        // 目标属性值
+                        var targetV = parseInt(option[key]);
+                        // 当前属性值
+                        var currentV = parseInt(getComputedStyle(dom)[key]);
+                        // 步长
+                        var speed = (targetV - currentV) / 30;
+                        // 处理小数点 0.1 取 1  -0.1 取 -1
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        // 判断是否存在属性没有达到目标属性值
+                        if (currentV != targetV) {
+                            isChange = false;
+                        }
+                        // 设置dom元素的样式
+                        // dom.stlye[key] = currentV + speed + "px";
+                        dom.style[key] = currentV + speed + "px";
+                    }
+                    // 判断是否停止定时器函数
+                    if (isChange) {
+                        // 停止定时器函数
+                        clearInterval(dom.timer);
+                        // 执行callback函数
+                        if (callback) callback();
+                    }
+                }, 1000 / 60)
+            }
+        
+        
+        }
+
+
+        // 2.0 创建实例对象
+        var app = new Foo(data);
+        app.init();
+        console.log(app);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

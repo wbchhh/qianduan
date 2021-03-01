@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <!-- id名 -->
+    <div id ="container"> </div>
+    <!-- 类名 -->
+    <div class="box"></div>
+    <!-- 标签名 -->
+    <button></button>
+
+
+    <script>
+        // 思考：如何获取页面的元素
+            // 如何编写获取元素的逻辑
+            // 1.0 定义函数
+            function $(selector){
+                // 书写获取元素的逻辑 
+                // console.log(selector);
+                // console.log(typeof selector);
+                // 判断是否存在 # 字符
+                if(selector.indexOf("#") > -1 ){
+                    // 处理字符串 #container
+                    selector = selector.slice(1);
+                    // console.log(selector,"2.0");
+                    // 通过id名
+                    return document.getElementById(selector);
+                }else 
+                if(selector.indexOf(".") > -1){
+                    // 处理字符串 .box 
+                    selector = selector.slice(1);
+                    // 通过类名 
+                    return document.getElementsByClassName(selector);
+                }else 
+                {
+                    // 通过标签名 button
+                    return document.getElementsByTagName(selector);
+                }
+            }
+            // 2.0 调用$函数
+            
+            // $("#container")
+            // $(".box")
+            // $("button")
+            // console.log($("#container"));
+            // console.log($(".box"));
+            // console.log($("button"));
+
+
+            // 字符串
+            var selector = "#container";
+            console.log(selector.indexOf("#"));// 返回值是 ？ 0 
+            if(selector.indexOf("#") > -1 ) {
+                // document.getElementById("#container"); //不是参数
+                // document.getElementById("container"); //是参数
+                selector = selector.slice(1);
+                var div = document.getElementById(selector);
+                console.log(div);
+            }
+
+
+    </script>
+</body>
+
+</html>

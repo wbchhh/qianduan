@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+    <style>
+        .active {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>封装一个工具库 tooljs</h3>
+
+    <div id="container">
+        <span>111</span>
+    </div>
+
+    <!-- 引入工具库文件 -->
+    <script src="./tool.js"></script>
+    <script>
+        // 获取页面元素
+        // 调用$函数 获取id名 container 的标签
+        // var $dom = $("#container");
+        // var $dom = $(".box");
+        // var $dom = $("button");
+        // console.log($dom);
+
+        // 调用$函数 返回构造函数的实例
+        // 设置元素样式
+        $("#container").css("width", "100px")
+        $("#container").css("height", "100px")
+        $("#container").css("backgroundColor", "pink");
+        $("#container").css("textAlign", "center");
+        // 给元素添加类名
+        $("#container").addClass("active");
+        // 给元素移除类名
+        // $("#container").removeClass("active");
+        // 判断元素是否包含指定类名
+        console.log($("#container").hasClass("active"));// true
+        // 获取元素的html文本
+        console.log($("#container").html());// 111
+        // 设置元素的html文本
+        $("#container").html("<h3>hello world! </h3>");
+        // 设置元素的隐藏
+         $("#container").hide()
+        // 设置元素的显示
+         $("#container").show();
+
+
+    </script>
+</body>
+
+</html>

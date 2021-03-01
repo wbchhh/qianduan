@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直接量（具体的对象）</title>
+</head>
+<body>
+    
+    <script>
+        // 直接定义对象
+        // this 关键字 （指向）
+        // 看函数作用域 ， 看函数的调用者
+        // 1.0 对象
+        var obj = {
+            width:"100px",
+            height:"100px",
+            foo:function(bgColor){//函数作用域
+                // 局部变量
+                var bgColor = bgColor || "red";
+                var div = document.createElement("div");
+                div.style.width = this.width;
+                div.style.height = this.height;
+                div.style.backgroundColor = bgColor;
+                document.body.appendChild(div);
+                // console.log(this); //obj
+            }
+        }
+        // 函数不调用代码块不执行
+        obj.foo();
+        obj.foo("blue");
+
+        // 2.0 直接量定义对象
+        var obj2 = {
+            width:"200px",
+            height:"200px",
+            foo:function(bgColor){//函数作用域
+                // 局部变量
+                var bgColor = bgColor || "red";
+                var div = document.createElement("div");
+                div.style.width = this.width;
+                div.style.height = this.height;
+                div.style.backgroundColor = bgColor;
+                document.body.appendChild(div);
+                // console.log(this); //obj
+            }
+        }
+        obj2.foo("green");
+
+
+        // 总结：
+            // 直接量方式产生对象
+            // 是一个具体的对象
+            // 一定程度上减少变量污染
+            // 具有封装性
+    </script>
+</body>
+</html>

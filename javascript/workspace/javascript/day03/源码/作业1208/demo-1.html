@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh_Cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-1</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrap {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .wrap .item {
+            padding: 10px 15px;
+            /* background-color: skyblue; */
+            background-color: #f0f0f0;
+        }
+        .wrap .item  .pull-left {
+            float: left;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            background-color: #ccc;
+        }
+        .wrap .item  .pull-left  img {
+            width: 120px;
+            height: 120px;
+            vertical-align: middle;
+        }
+        .wrap .item  .pull-right {
+           padding: 0 15px;
+           overflow: hidden;
+           height: 150px;
+           /* color: #fff; */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="item">
+                <div class="pull-left">
+                    <!-- ./img/2.jpg -->
+                    <img src="./img/1.jpg" id="image">
+                </div>
+                <div class="pull-right">
+                    <!-- 蜡笔小新 -->
+                    <h3 class="user-name">少女适俗韵</h3>
+                    <!-- 他内心早熟，喜欢欣赏并向美女搭讪。 -->
+                    <p class="user-title">相见欢错误世界遇见你</p>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 请写下的JS代码 
+	//1.0 获取相关的标签(语义化) 
+	var itemElement = document.getElementsByClassName("item")[0];
+	//console.log(itemElement)
+	var imgElement = document.getElementById("image");
+	var uNameElement = document.getElementsByClassName("user-name")[0];
+	var uTitleElement = document.getElementsByClassName("user-title")[0];
+	//.0 修改头像
+	imgElement.setAttribute("src","./img/2.jpg");
+	//.0修改昵称
+	uNameElement.innerText = "蜡笔小新"
+	//.0 修改个性签名
+	uTitleElement.innerText = "他内心早熟，喜欢欣赏并向美女搭讪。"
+	
+	//.0 背景颜色 字体颜色
+	itemElement.style["backgroundColor"]="skyblue";
+	itemElement.style["color"] = "white";
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

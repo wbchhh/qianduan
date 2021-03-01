@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机彩票</title>
+    <style>
+        button {
+            padding: 15px 20px;
+            cursor: pointer;
+        }
+        .content {
+            width: 700px;
+        }
+
+        .content ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            height: 60px;
+        }
+        .content ul li {
+            width: 46px;
+            height: 46px;
+            margin: 5px ;
+            border: 2px solid #f00;
+            float: left;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="button">
+        <button id="btn">随机生成彩票</button>
+    </div>
+    <div class="content" id="content">
+        <!-- <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul> -->
+    </div>
+
+
+
+    <!-- 引入copy.js文件 -->
+    <script src="./copy.js"></script>
+    <script>
+        //  规则：
+        //  从存放1 - 33的集合中， 选择 6个随机不重复的数字
+        //  [{color:"red",number:1},... ]
+
+        // 基本步骤：
+            // 1.0 获取页面相关的元素
+            // 2.0 事件绑定
+            // 3.0 书写程序的处理逻辑
+
+         // 编码实现：
+            // 1.0 获取页面相关的元素
+            var btnClick = document.getElementById("btn");
+            var content = document.getElementById("content");
+            // 定义数据
+            var data = [];
+            // 循环
+            for(var i = 1 ; i <= 33 ; i ++){
+                // 定义对象
+                var obj = {color:"red",number:i};
+                // 往数组添加对象
+                data.push(obj);
+            }
+            // console.log(data);
+            // 2.0 事件绑定
+            btnClick.onclick = function(){
+                // 3.0 书写程序的处理逻辑
+                // 获取新数据
+                var res = deepCopy(data);
+                // console.log(res);
+                // 打乱数组的顺序
+                // Math.random() 0 ~ 1 
+                // Math.random()  - 0.5  > 0 
+                // Math.random()  - 0.5  < 0 
+                res.sort(function(){
+                    return Math.random() - 0.5;
+                })
+                // console.log(res);
+                // 创建ul标签
+                var ul  = document.createElement("ul");
+                // 定义字符串
+                var html = "";
+                // 循环6次
+                for(var j = 0 ; j < 6 ; j ++){
+                    // 拼接字符串
+                    // html += "<li>"+res[j].number+"</li>"
+                    html += "<li style='color:"+res[j].color+";'>"+res[j].number+"</li>"
+                }
+                // 设置Ul标签的文本
+                ul.innerHTML = html;
+                // 把数据表现在 content标签
+                content.appendChild(ul);
+            }
+
+
+            
+
+
+
+
+    </script>
+
+</body>
+</html>

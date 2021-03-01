@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度条</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 1000px;
+            height: 30px;
+            background-color: #ccc;
+            margin:200px  auto;
+            position: relative;
+        }
+        .box ul {
+            width: 0px;
+            height: 30px;
+            background-color: #333;
+        }
+        .box ul li {
+            width: 30px;
+            height: 80px;
+            background-color: #f50;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            position: absolute;
+            top: -25px;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="box">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    
+    <script>
+        // 1 获取li标签
+        var bar = document.getElementsByTagName("li")[0];
+        // 2 声明变量 
+        var startX = 0;
+        var x = 0;
+        var moveX = 0;
+        var currentX = 0;
+        var maxDX =  970;
+        var isMouseDown = false;
+        // 3.0 事件绑定
+        bar.onmousedown = function(evt) {
+            var evt = evt || window.event;
+            isMouseDown = true;
+            startX = evt.pageX;//鼠标在页面的x坐标(按下)
+        }
+        document.onmousemove = function(evt){
+            var evt = evt || window.event;
+            if(isMouseDown == true){
+                moveX = evt.pageX ;//鼠标在页面的x坐标(移动)
+                x = moveX - startX + currentX ;
+                if(x < 0 ){
+                    x = 0;
+                }
+                if(x > maxDX){
+                    x = maxDX;
+                }
+                // 设置li标签位置
+                bar.style.left = x +"px";
+            }
+        }
+        document.onmouseup = function(){
+            isMouseDown = false;
+            currentX = x ;
+        }
+    </script>
+</body>
+</html>

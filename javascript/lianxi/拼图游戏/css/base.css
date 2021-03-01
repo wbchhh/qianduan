@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+ul , ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.container {
+    width: 1200px;
+    /* margin: 0 auto; */
+}
+/* 120 * 4 = 480 */
+#map {
+    width: 480px;
+    height: 480px;
+    background-color: #ccc;
+}
+#map ul {
+    height: 120px;
+}
+#map ul li {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    float: left;
+    cursor: pointer;
+}
+#map ul li img {
+    width: 116px;
+    height: 116px;
+    display: block;
+    opacity: 0.8;
+}
+#map ul li:hover img {
+    opacity: 1;
+}

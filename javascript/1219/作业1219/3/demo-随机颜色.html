@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击盒子获取随机颜色</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 500px;
+        }
+        .box button {
+            width: 100px;
+            height: 100px;
+            vertical-align: middle;
+
+            /* 圆角属性 */
+            border-radius: 50%;
+            outline: none;
+            border: 1px solid #ccc;
+
+            /* 小手 */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box" id="box">
+        <button id="btn">按钮</button>
+    </div>
+
+    <script>
+        // 需求：
+            // 1、点击 按钮 ，获取一个随机颜色， rgb(red,green,blue) ; 
+            // 备注： red,green,blue, 0 ~ 255
+            // 2、把随机颜色设置给页面 div.box的标签
+        var btn = document.getElementById("btn");  
+        btn.onclick = function(){
+            var random1 = parseInt(Math.random()*255);
+            var random2 = parseInt(Math.random()*255);
+            var random3 = parseInt(Math.random()*255);
+            var str = "";
+            str += "rgb("+random1+","+random2+","+random3+")";
+            btn.parentElement.style.backgroundColor = str;
+        }
+    </script>
+</body>
+</html>

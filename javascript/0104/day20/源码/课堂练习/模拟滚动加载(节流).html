@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟滚动加载（优化页面逻辑）</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .layout {
+            width: 360px;
+            background-color: #f0f0f0;
+            margin: 0 auto; 
+        }
+        .layout ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .layout ul li {
+            height: 100px;
+            border: 1px solid #000; 
+            margin: 10px 0 0 0;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+        <div class="layout">
+            <ul id="list">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </div>
+
+
+        <script>
+            // onscroll 事件
+            // 1.0 获取页面相关的元素
+            var listElement = document.getElementById("list");
+            // 可视区高度
+            var winHeight = window.innerHeight;
+            // console.log("可视区高度：",winHeight)
+            var count = 10;
+            // 2.0 事件绑定
+            window.onscroll = throttle(function(){
+                // 3.0 处理逻辑
+                // 获取页面的高度
+                var pageHeight = document.documentElement.offsetHeight;
+                // console.log("页面高度：",pageHeight);
+                // 获取页面被浏览器卷掉的高度
+                var scrollTop = document.documentElement.scrollTop;
+                // console.log("页面被浏览器卷掉的高度：",scrollTop);
+                // 计算剩余高度
+                var resHeight = pageHeight - (winHeight +  scrollTop);
+                console.log("页面剩余高度:",resHeight)
+                // 判断剩余高度是否小于120
+                if(resHeight < 120){
+                    // 加载10个li标签
+                    for(var i = 0 ; i < 10 ; i ++){
+                        count ++;
+                        var liCreate = document.createElement("li");
+                        liCreate.innerText = count;
+                        listElement.appendChild(liCreate);
+                    }
+                }
+            },1000)
+
+
+
+            // 封装节流函数
+            // 基础版本
+            // 闭包
+            function throttle(callback,millisecond){
+                // 定义变量 记录延迟函数
+                var delayer = null;
+                // 定义变量 记录开关
+                var isOpen = true;
+                // 返回一个函数
+                return function(){
+                    // 判断布尔值是否为true , 是 ，进入if语句
+                    if(isOpen){
+                        // 设置布尔值为false
+                        isOpen = false;
+                        // 执行延迟函数
+                        delayer = setTimeout(function(){
+                            // 条件判断
+                            if(delayer) clearTimeout(delayer);
+                            // 执行传递的callback函数
+                            callback();
+                            // 设置布尔值为true
+                            isOpen = true;
+                        },millisecond);
+                    }
+                }
+            }
+
+        </script>
+</body>
+</html>

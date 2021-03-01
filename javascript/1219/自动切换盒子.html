@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动切换盒子</title>
+    <style>
+        .box{
+            width: 360px;
+            height: 320px;
+            border: 3px solid #333;
+            overflow: hidden;
+        }
+        .box ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            /* width: 360px; */
+        }
+        .box li{
+            width: 360px;
+            height: 320px;
+            display: none;
+            text-align: center;
+            line-height: 320px;
+            font-size: 36px;
+            color: white;
+        }
+        .box li.active{
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li class="active" style="background-color: green;">第一个盒子</li>
+            <li style="background-color: deepskyblue;">第二个盒子</li>
+            <li style="background-color: blue;">第三个盒子</li>
+            <li style="background-color: purple;">第四个盒子</li>
+            <li style="background-color: orange;">第五个盒子</li>
+        </ul>
+    </div>
+    <script>
+        var lis = document.getElementsByTagName("li");
+        var count = 0;
+        
+        var fn = function(){
+            if(count<5){
+                //lis[count].index = count;
+                for(var i=0;i<lis.length;i++){
+                    lis[i].className = "";
+                }
+                lis[count].className = "active";
+                count++;
+            }else{
+                count = 0;
+            }
+        }
+        setInterval(fn ,1);
+    </script>
+</body>
+</html>

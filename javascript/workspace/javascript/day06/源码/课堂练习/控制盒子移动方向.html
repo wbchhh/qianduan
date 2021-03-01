@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制盒子的移动</title>
+    <style>
+        .map {
+            width: 700px;
+            height: 700px;
+            background-color: #ccc;
+            /* 相对定位 */
+            position: relative;
+            margin: 0 auto;
+        }
+        .map .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            /* 绝对定位 */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="map">
+        <div class="box"></div>
+    </div>
+    <script>
+        // 需求：
+            // 根据键盘按键控制红色盒子的上下左右移动。
+
+        
+        // 步骤：
+            // 1.0 记录程序所需要的数据
+            // 2.0 事件绑定
+            // 3.0 处理逻辑
+        
+        // 实现：
+             // 1.0 记录程序所需要的数据
+             var box = document.getElementsByClassName("box")[0];
+             var step = 100;
+             var x = 0; // left
+             var y = 0; // top
+             // 2.0 事件绑定  
+             document.onkeydown = function(event){
+                    // 3.0 处理逻辑
+                    //  if(){}
+                    // 键值码
+                    var keyCode = event.keyCode;
+                    // 控制流语句
+                    switch(keyCode){
+                         case  40 :  
+                                y += step;
+                                break;
+                         case  38 : 
+                                y -= step;
+                                break;
+                         case  39 : 
+                                 x += step;
+                                 break;
+                         case  37 : 
+                                 x -= step;
+                                 break;
+                    }
+                    // 判断
+                    // 垂直方向的判断
+                    // 向上
+                    if(y < 0 ){
+                        y = 0;
+                    }
+                    // 向下
+                    if(y > 600){
+                        y = 600;
+                    }
+                    // 水平方向的判断
+                       // 向上
+                    if(x < 0 ){
+                        x = 0;
+                    }
+                    // 向下
+                    if(x > 600){
+                        x = 600;
+                    }
+
+                    // 设置红色盒子的的样式
+                    box.style.left = x +"px";
+                    box.style.top = y +"px";
+             }
+
+
+
+
+
+    </script>
+</body>
+</html>

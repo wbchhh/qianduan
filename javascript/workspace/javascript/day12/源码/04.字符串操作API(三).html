@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串操作API(下)</title>
+</head>
+<body>
+    <h3>字符串操作API(下)</h3>
+
+    <script>
+        // 调用者：字符串
+        // 返回值：返回截取出来的字符（串）
+        // 功能：截取字符（串）
+
+        // 字符串：hello world!
+        // 索引值：01234567891011
+        // slice()
+        // 第一：
+        // 参数：一个参数
+        // 正数：开始索引值，从当前索引值开始截取后面所有字符
+        console.log("hello world!".slice(6));//world!
+        console.log("hello world!".slice(11));//!
+        // 负数：开始索引值，倒数截取字符（串）
+        console.log("hello world!".slice(-1));//!
+        console.log("hello world!".slice(-2));//d!
+        console.log("hello world!".slice(-12));//hello world!
+        console.log("hello world!".slice(-13));//hello world!
+        // 第二：
+        // 字符串：hello world!
+        // 索引值：01234567891011
+        // 参数：两个参数
+        // 包左（开始）不包右（结束）
+        // 参数1：开始索引值，参数2：结束索引值
+        // console.log("hello world!".slice(左,右))
+        // console.log("hello world!".slice(startIndex,endIndex))
+        console.log("hello world!".slice(2,5)); // llo 
+        console.log("hello world!".slice(8,11)); // rld 
+
+        // 第三：
+        // 特殊案例：
+                // 字符串：hello world!
+                // 索引值：01234567891011
+                // 参数：两个参数
+                // 包左（开始）不包右（结束）
+                // 参数1：开始索引值，参数2：结束索引值（倒数）
+                // [开始索引值，结束索引值]  
+                // console.log("hello world!".slice(左,右))
+                console.log("hello world!".slice(0,-2));// hello worl
+                console.log("hello world!".slice(-3,-1));// ld
+                console.log("hello world!".slice(-3,0));// 空字符串
+                // // 参数1：开始索引值，参数2：结束索引值
+                // 如果参数1是正数，参数2为负数 ，参数2为倒数索引值 
+                // 如果参数1和参数2都是负数，参数1比参数2小 ，否则就是空字符串
+                // 如果参数1是负数，参数2是0，获取是空字符串
+
+
+        console.log("=============")
+        // 字符串：hello world!
+        // 索引值：01234567891011
+        // substring()
+        // 跟slice类似，但没有负数
+        // 参数：一个参数
+        console.log("hello world!".substring(1));//ello world!
+        console.log("hello world!".substring(6));//world!
+        // console.log("hello world!".substring(-1));//
+
+        // 字符串：hello world!
+        // 索引值：01234567891011
+        // 参数：两个参数
+        // 参数1：开始索引值 ， 参数2：结束索引值
+        // 包左（开始）不包右（结束）
+        // console.log("hello world!".substring(左边,右边));
+        console.log("hello world!".substring(2,3));//l
+        console.log("hello world!".substring(7,10));//orl
+        console.log("=============")
+
+        // 字符串：hello world!
+        // 索引值：01234567891011
+        // substr()
+        // 参数：一个参数
+        console.log("hello world!".substr(2));//llo world!
+        // 参数：两个参数
+        // 参数1：开始索引值 参数2：截取的字符的长度（数量）
+        // console.log("hello world!".substr(startIndex,length));
+        console.log("hello world!".substr(4,8));//o world!
+        console.log("hello world!".substr(1,3));//ell
+
+        // 参数为负数：
+        // 索引值倒数的开始截取字符
+        // -1 代表最后一个字符
+        console.log("hello world!".substr(-1));//!
+        console.log("hello world!".substr(-2));//!
+
+
+
+        
+        // 以上三个API都是用于截取字符串。
+        // 在实际开发使用其中一个API,
+        // 面试题可能出现这3个API。
+    </script>
+</body>
+</html>

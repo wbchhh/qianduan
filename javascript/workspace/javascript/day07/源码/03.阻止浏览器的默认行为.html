@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止浏览器的默认行为</title>
+    <style>
+        a {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="https:www.baidu.com">页面跳转</a>
+
+    <script>
+        // 1.0 浏览器默认行为 
+        // 页面跳转 、刷新、选中图片、文字
+        var ele = document.getElementsByTagName("a")[0];
+        // 2.0 事件
+        ele.onclick = function(event){
+            // event 
+            // 阻止默认行为发生
+            // event.preventDefault();
+            // 阻止默认行为发生
+            return false;
+        }
+
+        // ele.onmousedown = function(){
+        //      // 阻止默认行为发生 禁止选中文本
+        //      return false;
+        // }
+        document.onmousedown = function(event){
+             event.preventDefault();
+             // 阻止默认行为发生 禁止选中文本
+             return false;
+        }
+
+
+    </script>
+</body>
+</html>

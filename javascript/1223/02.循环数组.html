@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环数组</title>
+    <style>
+        div {
+            width: 600px;
+            height: 50px;
+            border: 1px solid #ccc;
+            margin: 10px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>循环数组</h3>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <!-- <div>5</div> -->
+    <script>
+        // 1.0 定义数组 记录颜色（5个）
+        var arrColor = [
+            "yellowgreen",
+            "lightblue",
+            "darkred",
+            "pink",
+            "lightgreen"
+        ]
+        // 2.0 把数组的颜色通过循环的方式 
+        // 一一给对应div标签设置背景色
+        var div = document.getElementsByTagName("div");
+        for(var i=0;i<div.length;i++){
+            div[i].style.backgroundColor = arrColor[i];
+        }
+
+    </script>
+</body>
+</html>

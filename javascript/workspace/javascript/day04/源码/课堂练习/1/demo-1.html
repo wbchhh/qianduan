@@ -1,0 +1,131 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：DOM 【操作练习】</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			button {
+			   width:80px;
+			   height:40px;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>DOM 【操作练习】 </h3>
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
+		
+		<script>
+			// 目的：
+				//1.0 检查编码速度
+				//2.0 检查词汇拼接
+				//3.0 是否掌握相关的属性和方法（API）
+			//1. 页面放5按钮
+			//请选择第三个按钮 ，设置背景色 红色 
+			var buttons = document.getElementsByTagName("button");
+			//  Cannot set property .....  检查是否获取了页面标签
+			//console.log(buttons);// 标签数组
+			// buttons.style.backgroundColor = "red";//报错
+			buttons[2].style.backgroundColor = "red";
+		</script>
+		
+		<style>
+			ul {
+			  padding:0;
+			  margin:0;
+			  list-style:none;
+			}
+			ul li {
+				width:50px;
+				height:50px;
+				border:1px solid #333;
+				margin:10px 0  0 10px;
+			}
+		</style>
+		<ul>
+		   <li>1</li>
+		   <li id="demo">2</li>
+		   <li>3</li>
+		   <li>4</li>
+		   <li>5</li>
+		</ul>
+		
+		<script>
+			//2.  ul标签内有 5 个li标签 
+			//请选择id名为 demo的li标签
+			var demo = document.getElementById("demo");
+			//通过属性的方式，选择demo标签上一个元素 设置背景色黄色
+			//previousElementSibling
+			var prevElemet = demo.previousElementSibling;
+			prevElemet.style.backgroundColor = "yellow";
+			//通过属性的方式，选择demo标签下一个元素 设置背景色绿色
+			var nextElement = demo.nextElementSibling;
+			nextElement.style.backgroundColor = "green";
+			//通过属性的方式，选择demo标签父元素 设置宽度 高度为300px ,背景色为gray 
+			var parentEl = demo.parentElement;
+			parentEl.style.width = "300px";
+			parentEl.style.height = "300px";
+			parentEl.style.backgroundColor = "gray";
+		</script>
+		<style>
+			.img-box {
+			   width:350px;
+			   height:420px;
+			   background-color:#ccc;
+			   text-align:center;
+			   line-height:420px;
+			}
+			.img-box img {
+			   vertical-align:middle;
+			}
+		</style>
+		
+		<div class="img-box">
+			<!--<img src="./img/people.png"/> -->
+		</div>
+		<script>
+			//3. 动态创建 img标签 
+			var imgEl = document.createElement("img");
+			// 定义图片路径
+			var url = "./img/people.png";
+			// 设置 img标签路径
+			imgEl.setAttribute("src",url);
+			//imgEl.src = url;
+			// 把img标签添加指定的div标签 
+			var imgBox = document.getElementsByClassName("img-box")[0];
+			//imgBox.appendChild("imgEl");//报错 
+			imgBox.appendChild(imgEl);
+			
+			
+		</script>
+		
+		
+		
+		
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

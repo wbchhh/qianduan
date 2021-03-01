@@ -1,0 +1,38 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：设置页面标签属性</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>设置页面标签属性</h3>
+		<a href="https://www.baidu.com">点击跳转</a>
+		
+		<script>
+		//1.0 获取链接标签
+		var elements =  document.getElementsByTagName("a");
+		console.log(elements);// 标签数组
+		var ele = elements[0];// 标签
+		
+		//.0 获取标签属性
+		//参数：属性名称 
+		var url = ele.getAttribute("href");
+		console.log(url);
+		
+		//.0 设置标签属性
+		//参数1：属性名称 参数2：属性值
+		ele.setAttribute("href","https://www.jd.com");
+		
+		//.0 移除标签属性
+		ele.removeAttribute("href");
+		</script>
+	</body>
+</html>
+

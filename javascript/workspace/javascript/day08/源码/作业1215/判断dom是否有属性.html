@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找问题原因</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;  
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        // 1.0 获取dom元素
+        var element = document.getElementById("box");
+        // .0 添加属性
+        // element.num ;
+        // console.log(box.num);
+        if(element.num == undefined){
+            // element.num = 1;
+            // element.num = element.innerText || 1;
+            // 判断元素是否有文本 
+            if(element.innerText){
+                // 有，给num属性赋值 element.innerText
+                element.num = element.innerText;
+            }else {
+                 // 没有，给num属性赋值 1
+                element.num = 1;
+            }
+        }
+        console.log(element.num-0);
+
+    </script>
+</body>
+</html>

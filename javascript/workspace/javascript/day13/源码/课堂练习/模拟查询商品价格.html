@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟查询商品价格</title>
+    <style>
+        div {
+            height: 42px;
+        }
+        div > input ,
+        div > button {
+            float: left;
+            box-sizing: border-box;
+            height: 40px;
+        }
+        div > input {
+            width: 400px;
+            padding-left: 20px;
+        }
+        div > button {
+            width: 100px;
+            cursor: pointer;
+        }
+        div > p {
+            font-size: 20px;
+        }
+        div > p span {
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" id="inpBox">
+        <button id="btnCheck">查询</button>
+    </div>
+    <div>
+        <p >价格:￥<span id="txt"></span></p>
+    </div>
+
+    <script>
+        // 需求：
+            // 点击按钮，可以获取输入框的值
+            // 跟输入的值，查询相关商品的价格
+
+        // 基本步骤：
+            // 1、获取元素（记录数据）
+            // 2、事件绑定
+            // 3、书写处理逻辑
+
+
+            // 1、获取元素（记录数据）
+            var inpBox =  document.getElementById("inpBox");
+            var btnCheck =  document.getElementById("btnCheck");
+            var txtElement =  document.getElementById("txt");
+
+            // .0 定义数据
+            // 数组 > 对象
+            // 数组：根据索引值存值和取值
+            // var arr = [99,98,97];  console.log(arr[1]);// 98
+            // 对象：根据键值对的方式存值和取值
+            // var obj = {num1:99,num2:98,:num3:97};// console.log(obj.num2);// 98
+            var data = [
+                {name:"衣服",price:"86元"},
+                {name:"鞋子",price:"99元"},
+                {name:"裤子",price:"130元"},
+                {name:"被子",price:"168元"}
+            ]
+            // data 是 JSON格式的数据
+            // 0,1,2,3
+            // 取值： 86元  data[0].price;
+            // 取值： 裤子  data[2].name      
+               
+            // 2、事件绑定
+            btnCheck.onclick = function(){
+                 // 3、书写处理逻辑
+                 //  获取输入的值
+                 var v1 = inpBox.value;
+                 //  console.log(v1);
+                 //  循环数组
+                 //  for(var i = 0 ; i < 4 ; i ++){
+                 for(var i = 0 ; i < data.length ; i ++){
+                    // 判断输入的值是否存在
+                    if(v1 == data[i].name){
+                        // 显示对应商品的价格
+                        txtElement.innerText = data[i].price;
+                        // 跳出循环
+                        // return;
+                        break;
+                    }
+                 } 
+            }
+
+           
+
+    </script>
+</body>
+</html>

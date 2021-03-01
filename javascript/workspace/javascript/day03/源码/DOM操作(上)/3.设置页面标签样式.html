@@ -1,0 +1,41 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:设置页面标签样式</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>设置页面标签样式</h3>
+		
+		<div class="box"></div>
+		
+		<script>
+			//1.0 通过类名获取元素
+			var aDiv = document.getElementsByClassName("box");
+			console.log(aDiv);//标签数组
+			//div标签
+			var div = aDiv[0];
+			console.log(div);// 标签
+			//2.0 设置样式
+			//第一种写法：
+			//div.style.width = "100px";
+			//div.style.height = "100px";
+			//div.style.backgroundColor = "red";
+			
+			//第二种写法：
+			div.style["width"] = "100px";
+			div.style["height"] = "100px";
+			div.style["backgroundColor"] = "blue";
+			
+			
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-1210</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html ,body {
+            height: 100%;
+        }
+        .wrap {
+            width: 600px;
+            margin: 0 auto;
+            background-color: skyblue;
+            height: 100%;
+            position: relative;
+            padding: 10px 20px;
+        }
+        .footer {
+            position: absolute;
+            left: 20px;
+            bottom: 0;
+            width: 600px;
+            height: 470px;
+            background-color: #fff;
+        }
+       .footer ul {
+           width: 600px;
+        }
+        .footer ul li {
+            padding: 5px 5px;
+            background-color: #f0f0f0;
+            float: left;
+        }
+        .footer ul li img {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <h3>渲染表情图标</h3>
+        </div>
+        <div class="footer">
+            <ul class="list">
+                <!-- <li><img src="./icon-assets/1.bmp" alt=""></li>  -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 要求：
+        // 1.0 获取相关的标签
+		//var footer = document.getElementsByClassName("footer")[0];
+		//var list = footer.getElementsByTagName("ul")[0];
+		var list = document.getElementsByClassName("list")[0];
+		//console.log(list)
+        // 2.0 定义字符串
+		var str = "";
+        // 3.0 循环(此处100次)
+		for(var i = 1 ; i < 101 ; i ++){
+			// 4.0 字符串拼接
+			str += '<li><img src="./icon-assets/'+i+'.bmp" alt=""></li>'
+		}
+        // 5.0 渲染字符串
+		//填充超文本
+		list.innerHTML = str;
+
+		//目的：
+			//熟练获取页面标签
+			//熟练使用循环语句
+			//字符串拼接（重点）
+			//熟练使用DOM填充文本的API
+    </script>
+</body>
+</html>

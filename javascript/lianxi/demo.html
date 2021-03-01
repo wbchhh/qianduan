@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 120px;
+            height: 60px;
+        }
+        .box{
+            width: 1000px;
+            margin-top: 50px;
+        }
+        .box ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            float: left;
+        }
+        .box ul li{
+            height: 440px;
+            width: 48px;
+            float: left;
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <button class="darkred" style="background-color: darkred;"></button>
+        <button class="green" style="background-color: green;"></button>
+        <button class="skyblue" style="background-color: skyblue;"></button>
+        <button class="yellow" style="background-color: yellow;"></button>
+        <button class="purple" style="background-color: purple;"></button>
+    </div>
+    <div class="box">
+        <!-- <ul> <li style="background-color:red;"></li> </ul> -->
+    </div>
+    
+    <script>
+        var buttons = document.getElementsByTagName("button");
+        var box = document.getElementsByClassName("box")[0];
+        function render(color) { //形参 ： 占位置
+                // 定义变量
+                var str = '<li style="background-color:'+color+';"></li>';
+                // 返回值 字符串
+                return str;
+            }
+        for(var  i = 0 ; i < buttons.length ; i ++){
+                // 事件绑定
+                buttons[i].onclick = function(){
+                    // 创建ul标签
+                    var ul = document.createElement("ul");
+                    // 获取颜色（语义化命名）
+                    var bgColor = this.className;
+                    // 设置ul的字符串文本
+                    ul.innerHTML = render(bgColor);//实参
+                    // ul.innerHTML = render(this.className);
+                    // 添加元素
+                    box.appendChild(ul);
+                }
+            }
+    </script>
+    
+</body>
+</html>

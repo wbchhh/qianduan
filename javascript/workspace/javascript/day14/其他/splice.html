@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>splice 方法 </title>
+    <style>
+        .box {
+            width: 200px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            background-color: #ccc;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>splice 方法</h3>
+    <div class="box">xxx</div>
+
+    <script>
+        // 1.0 数组
+        // var arr = [1,2,3,4,5];
+        var arr = ["张三","李四","赵五","钱六","孙七"];
+        // console.log(arr);
+        // console.log(arr[1]);// 李四
+
+        // 2.0 定义随机的所索引值
+        function randomIndex(v1){
+            var num =  Math.random()*v1;
+            return Math.floor(num);
+        }
+
+        // 3.0 获取随机的索引值
+        var length =  5;
+        var length =  arr.length;
+        var index = randomIndex(length);
+        var res = arr.splice(index,1)[0];
+        // console.log(arr);
+        // console.log(res);
+        // 4.0 显示随机学生名字
+        // document.getElementsByClassName("box")[0].innerHTML = ["张三"];
+        // document.getElementsByClassName("box")[0].innerHTML = "张三";
+        document.getElementsByClassName("box")[0].innerHTML = res;
+        // document.getElementsByClassName("box")[0].innerHTML = arr.splice(randomIndex(arr.length),2)[0];
+        // var res = arr.splice(开始索引值,截取的个数);//返回值是数组
+        
+        // var res = arr.splice(randomIndex(arr.length),2);
+        // var res = arr.splice(0,2);
+        // console.log(res);// ["张三", "李四"]
+
+
+    </script>
+</body>
+</html>

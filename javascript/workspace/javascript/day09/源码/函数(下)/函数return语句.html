@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>return 有哪些作用</title>
+    <style>
+        button {
+            height: 50px;
+            width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>return 有哪些作用</h3>
+    <p>返回值的作用（函数）</p>
+    <p>终止代码</p>
+    <p>在函数作用域的循环语句 跳出循环的作用</p>
+    <div>事件是函数，但是函数不一定是事件。事件作用域中的return 是没有返回值。是函数体</div>
+    <button>按钮</button>
+    <script>
+        // 1.0 定义函数
+        // 终止代码的作用
+        function foo(){
+            console.log("1");
+            return ;
+            console.log("2");
+        }
+        // 2.0 调用函数
+        foo()
+
+        // 3.0 定义函数
+        // 跳出循环的作用
+        function foo2(){
+            for(var i = 0 ; i < 5 ;i ++){
+                if(i == 3){
+                    // 终止代码
+                    return ;
+                }
+                console.log("i:",i);
+            }
+        }
+        // 4.0 调用函数
+        foo2();
+
+        // 5.0 定义函数
+        // 获取元素
+        var btn = document.getElementsByTagName("button")[0]
+        // 绑定事件
+        var res = btn.onclick = function(){
+            console.log("1111")
+            // 没有返回值，仅仅是终止代码的作用
+            return "abcd";
+            console.log("2222")
+        }
+        console.log(res);// 函数体
+        // 事件是函数，但不是所有函数都是事件。
+
+
+
+        // 定义函数 foo5
+        function foo5(){
+            // 没有返回值
+        }
+        // 调用函数 foo5
+        var res = foo5();
+        console.log(res);// undefined
+        // 函数不一定有返回值！
+    </script>
+</body>
+</html>

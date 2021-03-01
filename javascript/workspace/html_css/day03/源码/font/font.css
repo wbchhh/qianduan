@@ -1,0 +1,7 @@
+﻿/*定义字体*/
+@font-face {
+	/*字体名称*/
+    font-family: 'demoxxx';
+	/*字体文件路径  字体格式*/
+    src: url('./HYXiXingKaiJ.ttf') format('truetype');
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何判断指向（this）</title>
+</head>
+<body>
+    <p>全局环境下定义的函数 其作用域 this 指向  window </p>
+    <p>事件的函数作用域 this 指向事件的调用者 </p>
+    <button>点击一下</button>
+    <p>定义对象添加的函数，其函数作用域this,指向函数调用者</p>
+    <p>构造函数作用域 this 指向实例对象（构造函数产生的实例对象）</p>
+    <p>Array Object Foo </p>
+</body>
+</html>
+<script>
+    // 全局环境下定义的函数 其作用域 this 指向  window
+    // console.log(this);// window
+    // function a1(){//普通函数
+    //     console.log(this); // window
+    // }
+    // a1();
+    // window.setTimeout(function(){
+    //     console.log(this);// window
+    // },100)
+
+    // 事件的函数作用域 this 指向事件的调用者
+    // var btn = document.getElementsByTagName("button")[0];
+    // btn.onclick = function(){//函数作用域
+    //     console.log(this);//  <button>点击一下</button>
+    // }
+
+    // 定义对象 Object
+    // var obj = {
+    //     color:"red",
+    //     foo:function(){//函数作用域
+    //         console.log(this);// obj
+    //     }
+    // }
+    // obj.foo();
+
+
+    // 构造函数
+    var _this ;
+    function Person(){ //函数作用域1
+        console.log(this);// xiaoming 指向实例对象
+        _this = this;
+        this.btn =  document.getElementsByTagName("button")[0];
+        this.btn.onclick = function(){//函数作用域2
+            // this 事件的调用者 this.btn 
+            console.log(this);// <button>点击一下</button>
+        }
+    }
+    var xiaoming = new Person();
+    // console.log(_this === xiaoming);// true
+
+    // 如何识别this指向?
+        // 1.看函数作用域
+        // 2.看函数的调用者
+</script>

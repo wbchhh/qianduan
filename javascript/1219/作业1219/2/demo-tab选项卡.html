@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业 </title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .layout {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .layout .nav {
+            width: 800px;
+            height: 100px;
+            border-bottom: 3px solid #000;
+        }
+        .layout .nav ul li {
+            width: 78px;
+            height: 48px;
+            border: 1px solid skyblue;
+            cursor: pointer;
+            line-height: 50px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            float: left;
+        }
+        .layout .nav ul li.current {
+            background-color: skyblue !important;
+            color: white;
+        }
+        .layout .nav ul li:hover {
+            background-color: #ccc;
+            color: white;
+        }
+        .layout .con {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+        }
+        .layout .con ul li {
+            width: 800px;
+            display: none;
+        }
+        .layout .con ul li.active {
+            display: block;
+        }
+        .layout .con ul li img {
+            display: block;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout">
+        <div class="nav">
+            <ul>
+                <li class="current">第一辆车</li>
+                <li>第二辆车</li>
+                <li>第三辆车</li>
+                <li>第四辆车</li>
+                <li>第五辆车</li>
+                <li>第六辆车</li>
+                <li>第七辆车</li>
+                <li>第八辆车</li>
+                <li>第九辆车</li>
+                <li>第十辆车</li>
+            </ul>
+        </div>
+        <div class="con">
+            <ul>
+                <li class="active"><a href="javascript:;"><img src="./img/1.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/2.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/3.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/4.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/5.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/6.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/7.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/8.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/9.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/10.jpg" alt=""></a> </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script>
+        // 需求：汽车tab选项卡自动切换
+            // 1、自定切换tab选项卡和图片
+            // 2、鼠标移入导航选项区域，停止自动切换，鼠标移开导航区域，继续执行自动切换
+            // 3、点击“导航选项”，当前选项添加类名 current , 并且显示对应的图片、非当前点击的选项，移除高亮背景色高亮
+        var ul = document.getElementsByTagName("ul");
+        var lis = ul[0].getElementsByTagName("li");
+        var liss = ul[1].getElementsByTagName("li");
+        var count = 0;
+        var ms = 500;
+        var qiehuan = null;
+        var len = lis.length;   
+        var fn = function(){
+            for(var i=0;i<len;i++){
+                lis[i].className = "";
+                liss[i].className = "";
+            }
+            lis[count].className = "current";
+            liss[count].className = "active";
+            count++;
+            if(count > len-1){
+                count = 0;
+            }
+        }
+
+        qiehuan = setInterval(fn,ms);
+        for(var t=0;t<len;t++){
+            lis[t].index = t;
+            liss[t].onmouseenter = function(){
+                clearInterval(qiehuan);
+            }
+            liss[t].onmouseleave = function(){
+                clearInterval(qiehuan);
+                qiehuan = setInterval(fn,ms);
+            }
+            lis[t].onmouseover = function(){
+                clearInterval(qiehuan);
+            }
+            lis[t].onmouseleave = function(){
+                clearInterval(qiehuan);
+                qiehuan = setInterval(fn,ms);
+            }
+            lis[t].onclick =function(){
+                for(var s=0; s<len;s++){
+                    lis[s].className = "";
+                    liss[s].className = "";
+                }
+                lis[this.index].className = "current"
+                liss[this.index].className = "active";
+                count = this.index;
+                if(count > len-1){
+                    count = 0;
+                }
+                console.log(count);
+            }
+        }        
+    </script>
+</body>
+</html>

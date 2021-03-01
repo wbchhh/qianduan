@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截取用户的账号密码</title>
+</head>
+<body>
+    <script>
+        var url ="http://127.0.0.1:5050/index.html?username=xiaoming&password=123456";
+        // var url1 = url.split("?");
+        // var url2 = url1[1].split("&");
+        // var username = url2[0].split("=");
+        // var uname = username[1];
+
+        // var password = url2[1].split("=");
+        // var pword = password[1];
+        // console.log("username:"+uname);
+        // console.log("password:"+pword);
+        if(url.indexOf("?") > -1){
+            var info = url.slice(url.indexOf("?")+1);
+            var arr = info.split("&");
+            var uname = arr[0].split("=")[1];
+            var upass = arr[1].split("=")[1];
+            console.log("账号：" + uname , "密码：" + upass);
+        }else{
+            console.log("该路径是安全路径");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素-->
+	     <!--不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:浮动</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.box1 {
+			   width:300px;
+			   background-color:#ccc;
+			}
+			.box1 > div {
+			  
+			  width:100px;
+			  height:100px;
+			}
+			.son1 {
+			  float:left;
+			  background-color:#f00;
+			}
+			.son2 {
+			  float:left;
+			  background-color:#00f;
+			}
+			.son3 {
+			  /*清除浮动*/
+			  clear:both;
+			  background-color:#0f0;
+			}
+			.son0 {
+				background-color:#0ff;
+			}
+			
+			
+			.box2 {
+			  width:300px;
+			  background-color:orange;
+			}
+			
+			.child-1 {
+			  float:left;
+			  width:100px;
+			  height:100px;
+			  background-color:pink;
+			}
+			.box2::before {
+			  content:"";
+			}
+			.box2::after {
+			  content:"";
+			  display:block;
+			  clear:both;
+			  opacity:0;
+			  height:0;
+			  visibility:hidden;/*隐藏元素*/
+			}
+			
+			/*伪类清除*/
+			.clearfix::after {
+			  content:"";
+			  display:block;
+			  clear:both;
+			  opacity:0;
+			  height:0;
+			  visibility:hidden;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素-->
+	    
+		<div class="box1">
+			<div class="son0">0</div>
+			<div class="son1">1</div>
+			<div class="son2">2</div>
+			<div class="son3">3</div>
+		</div>
+		
+		<!--浮动：会让元素脱离正常文档流。不占位置-->
+		
+		
+		<div class="box2">
+			<div class="child-1">1</div>
+			<!--通过生成的伪类标签清除浮动！-->
+		</div>
+		
+		
+
+	
+	</body>
+</html>
+

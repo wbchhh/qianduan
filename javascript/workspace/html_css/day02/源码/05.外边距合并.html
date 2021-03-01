@@ -1,0 +1,51 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：外边距合并（重叠）</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			div.box {
+			   width:600px;
+			   height:100px;
+			}
+			
+			.bg-red {
+			   background-color:red;
+			   margin-bottom:80px;
+			}
+			.bg-green {
+			   margin-top:100px;
+			   background-color:green;
+			}
+			/*形成独立的渲染区域（块级格式化上下文 BFC）*/
+			.item {
+			    /*1.0 */
+				/*overflow:hidden; /*
+				/*2.0 */
+				border:1px solid transparent;
+			}
+			
+			/*出现外边距合并 会取数值较大的属性*/
+			/*CSS 设计者*/
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	
+		<!--并列关系的标签（垂直方向）-->
+		<!-- margin -->
+		<div class="item">
+			<div class="box bg-red"></div>
+		</div>
+		
+		
+		<div class="item">
+			<div class="box bg-green"></div>
+		</div>
+	
+	</body>
+</html>
+

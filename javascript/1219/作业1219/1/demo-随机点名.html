@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名</title>
+    <link rel="stylesheet" href="./css/base.css">
+    
+</head>
+<body>
+    
+    <div class="map">
+        <div class="letter">
+            <ul id="list">
+                <li class="">紫安</li>
+                <li>曼冬</li>
+                <li>谷蕊</li>
+                <li>飞兰</li>
+                <li>瀚钰</li>
+                <li>瀚文</li>
+                <li>涵亮</li>
+                <li>涵煦</li>
+                <li>明宇</li>
+                <li>涵衍</li>
+                <li>浩皛</li>
+                <li>寻巧</li>
+                <li>浩波</li>
+                <li>雅昕</li>
+                <li>梦君</li>
+                <li>凡雁</li>
+                <li>以旋</li>
+                <li>初夏</li>
+                <li>浩初</li>
+                <li>依丝</li>
+            </ul>
+            <div class="mask">
+                <div class="text" style="color:#000;font-size:30px; text-align: center;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="btn" id="btn">随机点名</button>
+        </div>
+    </div>
+
+   
+    
+
+    <script>
+        // 图示：随机随机点名
+        // 1、点击“随机点名”按钮，随机抽选名字，被随机选中的名字标签背景高亮
+        // 2、并且显示选中的学员名字
+        var btn = document.getElementById("btn");
+        var lis = document.getElementsByTagName("li");
+        var text = document.getElementsByClassName("text")[0];
+        btn.onclick = function(){
+            for(var i=0;i<lis.length;i++){
+                lis[i].className = "";
+            }
+            var random = parseInt(Math.random()*lis.length);
+            lis[random].className = "active";
+            text.innerText = "学员："+lis[random].innerText; 
+        }
+    </script>   
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现tab选项卡（事件委托的方式）</title>
+    <style>
+        body , ul , ol , h3 , p  {
+            margin: 0;
+        }
+        ul , ol, h3 , p {
+             padding: 0;
+         }
+         ul , ol {
+            list-style: none;
+         }
+         .nav-box , .con-box{
+             width: 640px;
+             margin: 0 auto;
+             background-color: skyblue;
+         }
+         .nav-box {
+             height: 100px;
+             background-color: skyblue;
+             /* border-bottom: 3px solid deepskyblue; */
+             border-bottom: 3px solid white;
+         }
+         /* 伪类清除浮动 */
+         .nav-box ul::after {
+             /* 核心代码 */
+             content: "";
+             display: block;
+             clear: both;
+             /* 辅助代码 */
+             height: 0;
+             opacity: 0;
+             visibility: hidden;
+         }
+         /* 浮动和相对定位能同时使用 (正确)*/
+         /* 浮动和绝对定位能同时使用 (错误) */
+         /* 浮动和固定定位能同时使用 (错误) */
+         .nav-box ul li {
+             float: left;
+             position: relative;
+             padding: 0px 20px;
+             height: 38px;
+             line-height: 38px;
+             margin: 30px 10px;
+             border: 1px solid #ccc;
+             background-color: #fff;
+             border-radius: 5px;
+         }
+         .nav-box ul li.current {
+             background-color: #f00;
+             color: #fff;
+         }
+         .nav-box ul li span {
+             position: absolute;
+             left: 0;
+             top: 0;
+             opacity: 0;
+             width: 100%;
+             height: 100%;
+             cursor: pointer;
+         }
+
+         .con-box ol {
+            padding: 30px 20px;
+         }
+         .con-box ol li {
+            /* background-color: #ccc; */
+            display: none;
+         }
+         .con-box ol li.active {
+             display: block;
+         }
+         .con-box ol li h3 {
+             height: 40px;
+         }
+         .con-box ol li p , .con-box ol li div {
+             padding: 0 0 0 32px;
+             height: 32px;
+             line-height: 32px;
+         }
+    </style>
+
+    <script>
+        // 需求：
+            // 点击导航选项，显示对应的内容
+            // 实现tab选项卡（tab:切换）
+        // 基本步骤：
+            // 1.0 获取页面元素 （记录数据）
+            // 2.0 事件绑定
+            // 3.0 书写处理逻辑
+
+        // 编码实现
+        // 加载页面
+        window.onload = function(){
+                // 1.0 获取页面元素 （记录数据）
+                var navBoxList = document.getElementById("navBoxList");
+                var navItems = navBoxList.getElementsByTagName("li");
+                // console.log(navItems)
+                var conBoxList = document.getElementById("conBoxList");
+                var conItems = conBoxList.getElementsByTagName("li");
+                // 2.0 事件委托
+                navBoxList.onclick = function(event){
+                    // 获取当前点击的标签
+                    var ele = event.target;
+                    // 判断
+                    //  console.dir(ele);
+                    // if(ele.tagName == "SPAN"){ }
+                    if(ele.className == "index"){
+                        // console.log(ele);
+                        // 获取索引值
+                        var index = ele.innerText;
+                        // 隐藏所有内容
+                        for(var j = 0 ; j < conItems.length ; j ++){
+                            // 移除所有指定标签的类名
+                            // conItems[j].className="";
+                            // navItems[j].className="";
+                            conItems[j].classList.remove("active");
+                            navItems[j].classList.remove("current");
+                        }
+                        // conItems[j].className="active";
+                        // navItems[j].className="current";
+                        // 显示对应的内容
+                        conItems[index].classList.add("active");
+                        navItems[index].classList.add("current");
+                    }
+                }
+               
+        }
+
+    </script>
+
+</head>
+<body>
+    <!-- 排版得从娃娃抓起..... -->
+    <div class="nav-box">
+        <ul id="navBoxList">
+            <!-- data-index="0"  实际开发-->
+            <li class="current"><span class="index">0</span>基本简介</li>
+            <li class=""><span class="index">1</span>经历    </li>
+            <li class=""><span class="index">2</span>项目    </li>
+            <li class=""><span class="index">3</span>专业技能</li>
+            <li class=""><span class="index">4</span>自我评价</li>
+        </ul>
+    </div>
+    <div class="con-box">
+        <ol id="conBoxList">
+            <li class="active">
+                <h3>基本简介</h3>
+                <p><span>姓名:张三</span></p>
+                <p><span>邮箱:1217245509@qq.com</span></p>
+                <p><span>手机:1358888888</span></p>
+                <p><span>微信:jiayouban777</span></p>
+            </li>
+
+            <li>
+                <h3>经历</h3>
+                <p>大学</p>
+                <p>xxxxx</p>
+            </li>
+
+            <li>
+                <h3>项目</h3>
+                <p>项目-1</p>
+                <div>xxx</div>
+
+                <p>项目-2</p>
+                <div>xxx</div>
+            </li>
+
+            <li>
+                <h3>专业技能</h3>
+                <p>熟练掌握html,css,js</p>
+                <p>可以快速还原PSD效果UI界面</p>
+                <p>熟练使用前端浏览器框架Vue react anglaur</p>
+                <p>xxx</p>
+            </li>
+
+            <li>
+                <h3>自我评价</h3>
+                <p>平易近人，活泼开朗，风度翩翩....</p>
+            </li>
+
+        </ol>
+    </div>
+    <!-- win 系统 -->
+    <!-- 快捷键: alt + tab 切换程序的界面 -->
+  
+</body>
+</html>

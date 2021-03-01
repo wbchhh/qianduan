@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab选项卡（闭包）</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: fixed;
+            top: 50%;
+            margin-top: -180px;
+            left: 20px;
+        }
+
+        ul li {
+            width: 100px;
+            text-align: center;
+            height: 50px;   
+            line-height: 50px;
+            border: 1px solid #ccc;
+            margin: 0 0  10px 0 ;
+            cursor: pointer;
+        }
+        ul li.active {
+            background-color: #f00;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <script>
+        // 闭包：内部函数有权访问外部函数作用域定义的变量。
+        // 1.0 获取所有li标签
+        var elements  = document.getElementsByTagName("li");
+        // 2.0 循环标签数组
+        for(var i = 0 ; i < elements.length ; i ++){
+            ;(function(index){// index 是形参 （局部变量）
+                elements[i].onclick = function(){
+                    // console.log(index);// 0 
+                    // console.log(i);// 6
+                    // 排他思想
+                    for(var j = 0 ; j < elements.length ; j ++){
+                        elements[j].className = "";
+                    }
+                    // 设置当前点击的li标签背景高亮
+                    // this.className ="active";
+                    elements[index].className ="active";
+                }
+            })(i) //i 是实参
+        }
+        // console.log(i); //全局变量 6
+        // 闭包的作用：
+            // 1.0 函数作用域的数据是私有的
+            // 2.0 函数作用域的变量可以被保留
+        // 缺点：
+            // 内存泄漏：JS 指的不断创建函数作用域，该函数作用域的变量，一直存在着，不会被释放。会导致栈溢出问题。（没有用的值一直占用内存）
+            // 栈溢出问题：是设备内存不够。
+            // 垃圾回收机制：是指浏览器本身存在的一种自动清除垃圾（没有用的值）的机制（函数）
+            // var a = 100;
+            // a = null;
+
+            // 马路上的清洁工，每隔一段时间，会清理一次马路上的垃圾。
+            // 不会清除你家的垃圾
+    </script>
+</body>
+</html>

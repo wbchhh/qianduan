@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识数组和伪数组</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <script>
+        // 1.0 定义数组
+        // var arr = ["aaa"];
+        // var arr = new Array("aaa");
+        // console.log(arr);
+
+        // 2.0 索引值和length
+        var arr = ["aaa","bbb","ccc"];
+        // 添加元素
+        arr.push("dddd");
+        console.log(arr);
+
+
+        // 3.0 伪数组
+        var elements = document.getElementsByTagName("div");
+        console.log(elements);//伪数组 
+        // 伪数组具有数组特征，但不能调用数组的方法
+        // elements.push("div");//报错
+
+
+    </script>
+</body>
+</html>

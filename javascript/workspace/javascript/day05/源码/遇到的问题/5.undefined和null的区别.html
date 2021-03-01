@@ -1,0 +1,57 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：undefined和null的区别</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			div {
+			  width:100px;
+			  height:100px;
+			  background-color:#ccc;
+			
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>undefined和null的区别</h3>
+		
+		
+		<div id="demo"></div>
+		<script>
+			//undefined ： 初始化一个变量的时候，没有赋值。（缺少值）
+			//null : 空 ，没有对象，初始化一个函数的时候，没有函数体（值）（不该有值）
+
+			// 1.0 undefined
+			var  str ;
+			console.log(str);// undefined  缺少值
+			
+			
+			// 变量声明提升，实际上就是ES5 语法缺陷
+			// 用意：先声明变量，再引用
+			console.log(num);// undefined   变量名提升了，值没有提升 （缺少值）
+			var num = 99;
+			console.log(num);
+			// undefined 通常是尚未赋值的变量、参数。（缺少值）
+			
+			
+			//2.0 null （空）
+			var div = document.getElementById("demo");
+			console.dir(div.onclick);//null （空对象）
+			div.onclick = function(){
+				console.log("test")
+			}
+			console.dir(div.onclick);
+			console.dir(typeof div.onclick);// function
+			// null 表示尚未存在的函数
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
+

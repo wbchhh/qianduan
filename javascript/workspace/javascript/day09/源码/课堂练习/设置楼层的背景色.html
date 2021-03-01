@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂练习：04</title>
+    <style>
+        .wrapper {
+            width: 600px;
+            position: absolute;
+            left: 100px;
+            top: 120px;
+        }
+        .wrapper ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .wrapper ul li {
+            width: 70px;
+            height: 70px;
+            border: 2px solid #000;
+            text-align: center;
+            line-height: 70px;
+            font-size: 20px;
+            border-bottom-width: 0px;
+        }
+        .wrapper ul li.border-2 {
+            border-bottom-width: 2px;
+        }
+
+        .wrapper div {
+            position: absolute;
+            bottom: 0;
+            left: 120px;
+        }
+        .wrapper div button {
+           padding: 10px 15px;
+           cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 楼层 -->
+        <ul>
+            <li>10</li>
+            <li>9</li>
+            <li>8</li>
+            <li>7</li>
+            <li>6</li>
+            <li>5</li>
+            <li>4</li>
+            <li>3</li>
+            <li>2</li>
+            <li class="border-2">1</li>
+        </ul>
+        <!-- 按钮 -->
+        <div>
+            <button id="btn">设置楼层背景色</button>
+        </div>
+    </div>
+
+
+    <script>
+        // 要求：  
+        // 定义函数 setFColor ，主要逻辑是设置楼层的背景色（设置哪个元素，设置什么颜色）
+        // 10 层楼，最大的索引值为 9 
+        // 点击“按钮”，调用 setFColor 函数，设置索引值对应的楼层背景色
+        // 首先是绿色背景色  (green)，当索引值大于 9 ,
+        // 改变背景色为橙色（orange）
+        // 然后是橙色背景色（orange），当索引值大于 9 ,
+        // 改变背景色为绿色（orange）
+        // 以此类推设置楼层背景色
+
+
+        // 基本步骤：
+            // 1. 获取页面相关的元素
+            // 2. 事件绑定
+            // 3. 书写程序处理逻辑
+
+
+        // 编码实现：
+             // 1. 获取页面相关的元素
+             var btn = document.getElementById("btn");
+             var items = document.getElementsByTagName("li");
+            //  console.log(items)
+             // 2. 事件绑定
+             // 定义变量变量 （索引值、li标签的个数、布尔值、背景色） 
+             var index = 9;
+             var len = items.length;
+             var isChange = true;
+             var bgColor = "green";
+             btn.onclick = function(){
+                // 3. 书写程序处理逻辑
+                // 判断索引值 是否小于0
+                if(index < 0 ){
+                    // 如果小于0，重复索引值为 9 
+                    index = 9;
+                    // 开关灯的逻辑
+                    if(isChange){
+                        // 设置布尔值为false
+                        isChange = false;
+                        // 改变颜色为orange
+                        bgColor = "orange";
+                    }else {
+                        // 设置布尔值为 true
+                        isChange = true;
+                        // 改变颜色为green
+                        bgColor = "green";
+                    }
+                }
+                //调用函数 setFColor 改变楼层背景色
+                setFColor(index , bgColor);
+                // 改变索引值
+                index --;
+             }
+
+            // 4. 编写函数 setFColor 的处理逻辑
+            function setFColor(index,color){
+                // console.log(index,color);
+                // 设置索引值对应的元素背景色
+                items[index].style.backgroundColor = color;
+            }
+
+
+
+
+             
+
+
+
+
+
+    </script>
+</body>
+</html>

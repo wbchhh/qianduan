@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听可视区尺寸变化</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+        ul li{
+            width: 20%;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            float: left;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .active{
+            color: red;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>超小屏幕</li>
+        <li>小屏幕</li>
+        <li>中等屏幕</li>
+        <li>大屏幕</li>
+        <li>特大屏幕</li>
+    </ul>
+
+    <script>
+        var items = document.getElementsByTagName("li");
+        function setColor(clientWith){
+            var index = 0;
+            if(clientWith < 567){
+                index =0;
+            }else if(clientWith > 567 && clientWith < 767){
+                index = 1;
+            }else if(clientWith > 767 && clientWith < 991){
+                index = 2;
+            }else if(clientWith > 991 && clientWith < 1099){
+                index = 3;
+            }else{
+                index = 4;
+            }
+             for(var i = 0 ; i < items.length ; i ++){
+                // 移除类名
+                items[i].className = "";
+            }
+            items[index].className = "active";
+        }
+        window.onresize = function(){
+            var w = document.documentElement.clientWidth || window.innerWidth;
+            setColor(w);
+        }
+        var w2 = document.documentElement.clientWidth || window.innerWidth ;
+        // 调用setColor函数 设置对应的字体颜色
+        setColor(w2);//实参
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>display属性显示隐藏轮播图2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #wrapper{
+            position: relative;
+            margin: 50px auto;
+            padding-right:100px;
+            width: 500px;
+            height: 300px;
+        }
+        #wrapper .content{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #wrapper>.content>.imgs{
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            padding:2px;
+            border: 1px solid #ccc;
+            background: #F0F0F0;
+            border-radius: 5px;
+            list-style: none;
+        }
+        #wrapper>.content>.imgs li{
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border:1px solid #fff;
+        }
+        #wrapper>.content>.imgs>li img{
+            width: 100%;
+            height: 100%;
+        }
+        #wrapper>.dots{
+            position: absolute;
+            right:-5px;
+            bottom:0px;
+            top:0px;
+            width:100px;
+            list-style: none;
+        }
+        #wrapper>.dots li{
+            box-sizing: border-box;
+            width: 100px;
+            height: 58px;
+            padding:2px;
+            border: 1px solid #ccc;
+            background: #F0F0F0;
+            margin-bottom:3px;
+            border-radius:3px;
+            cursor: pointer;
+        }
+        #wrapper>.dots li:last-child{
+            margin-bottom:0;
+        }
+        #wrapper>.dots li .dot_img{
+            box-sizing: border-box;
+            width:100%;
+            height:100%;
+            border:1px solid #fff;
+        }
+        li.active{
+            padding:1px !important;
+            border: 1px solid #EDB5ED !important;
+            background: #fff !important;
+        }
+        li.active .dot_img{
+            border:3px solid #FFD1FF!important;
+        }
+        li.quiet{
+            padding:2px;
+            border: 1px solid #ccc;
+            background: #F0F0F0;
+        }
+        li.quire .dot_img{
+            border:1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id = "wrapper">
+        <div class="content">
+            <ul class="imgs">
+                <li class="img"><img src="img/1.jpg"/></li>
+                <li class="img"><img  src="img/2.jpg"/></li>
+                <li class="img"><img  src="img/3.jpg"/></li>
+                <li class="img"><img  src="img/4.jpg"/></li>
+                <li class="img"><img src="img/5.jpg"/></li>
+            </ul>
+        </div>
+        <ul class='dots'>
+            <li><img class="dot_img" src="img/1.jpg"/></li>
+            <li><img class="dot_img" src="img/2.jpg"/></li>
+            <li><img class="dot_img" src="img/3.jpg"/></li>
+            <li><img class="dot_img" src="img/4.jpg"/></li>
+            <li><img class="dot_img" src="img/5.jpg"/></li>
+        </ul>
+    </div>
+    <script>
+        // 滚动索引
+        var index=0;
+        var imgs = document.getElementsByClassName("img");
+        var dots = document.getElementsByClassName("dots")[0];
+        var dotss = dots.children;
+        
+        var len = imgs.length;  //图片张数
+        var timer = null; //定时器
+
+        dotss[0].className="active";
+
+        //改变图片
+        function ChangeImg() {
+            index++;
+            if(index>=len) index=0;
+
+            // 循环将全部图片和圆点重置为默认样式
+            for(var i=0; i<len; i++){
+                imgs[i].style.display='none';
+                dotss[i].className = "quiet";
+            }
+
+            // 将当前图片显示
+            imgs[index].style.display='block';
+            // 将当前圆点添加高亮样式
+            dotss[index].className = "active";
+        }
+
+        // 循环添加小圆点的触发事件
+        for(var i=0; i<len; i++){
+            dotss[i].index = i;
+            dotss[i].onmouseover = function(){
+                for(var j=0; j<len; j++){
+                    imgs[j].style.display='none';
+                    dotss[j].className = "quiet";
+                }
+                this.className = "active";
+                index = this.index;
+                imgs[index].style.display='block';
+            }
+        }
+
+        // 添加事件：鼠标移动到wrapper上，暂停切换图片
+        wrapper.onmouseover = function(){
+            clearInterval(timer);
+        }
+        // 添加事件：鼠标移出wrapper，开始切换图片
+        wrapper.onmouseout = function(){
+            timer = setInterval(ChangeImg,2000);
+        }
+
+        //设置定时器，每隔两秒切换一张图片
+        timer = setInterval(ChangeImg,2000);
+    </script>
+</body>
+</html>

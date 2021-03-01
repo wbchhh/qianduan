@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工厂模式</title>
+</head>
+<body>
+    
+
+    <script>
+        // 原材料        经过加工     生产出产品
+        // 塑料          加工         水杯，椅子，xxx
+        // 尺寸，颜色    处理逻辑      创建可视化标签
+
+
+        // 工厂模式
+        // 通过调用函数，返回一个对象
+        // 1.0 定义函数
+        function factory(size){
+            // 定义对象
+            var obj = {}
+            // 添加属性
+            obj.width = size;
+            obj.height = size;
+            // 添加方法
+            obj.foo = function(bgColor){
+                // 默认值
+                var bgColor = bgColor || "darkred";
+                // 创建div标签
+                var div = document.createElement("div");
+                div.style.width = this.width ;
+                div.style.height = this.height ;
+                div.style.backgroundColor = bgColor ;
+                // console.log(this);
+                // 把div添加到body
+                document.body.appendChild(div);
+            }
+            // 返回对象
+            return obj;
+        }
+        // 调用factory函数 就返回一个对象
+        var o1 = factory("100px");
+        o1.foo();
+        console.log(o1);
+
+
+        var o2 =  factory("150px");
+        console.log(o2);
+        o2.foo("green");
+
+
+
+
+        // 例如：
+        // var arr = [];
+        // var arr = new Array();
+        // var obj = new Object();
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+				.box {
+				  width:600px;
+				  background-color:red;
+				}
+				.box1 img {
+				   /*vertical-align:baseline; */
+				   vertical-align:middle;
+				}
+				
+				/*img  input  button  行内块标签*/
+				/*行内块标签 自带文本空白 */
+				.box2 {
+				  font-size:0;
+				}
+				
+				.box3 img {
+				  display:block;
+				}
+				
+				.box4 {
+				  width:1200px;
+				  font-size:0;
+				}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	    
+		<div class="box box1">
+			<img src="./2.jpg"/>
+		</div>
+	
+	
+	  
+		<div class="box box2">
+			<img src="./2.jpg"/>
+		</div>
+		
+		<div class="box box3">
+			<img src="./2.jpg"/>
+		</div>
+		
+		<div class="box box4">
+			<img src="./2.jpg"/>
+			<img src="./2.jpg"/>
+		</div>
+		
+		
+	</body>
+</html>
+

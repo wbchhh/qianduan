@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-bottom: 2px solid #f00;
+            /* 父元素 相对定位 */
+        }
+        .header .btn-toggle {
+            float: right;
+            padding: 10px 30px;
+            height: 20px;
+            line-height: 20px;
+            background-color: skyblue;
+            margin: 10px 150px 10px 0 ;
+            cursor: pointer;
+        }
+        .header .code {
+            /* 隐藏二维码 */
+            display: none;
+            /* 子元素  绝对定位 */
+            position: absolute;
+            right: 20px;
+            top: 60px;
+            border: 2px solid #f0f0f0;
+            border-top: 0;
+            z-index: 1000;
+            background-color: #fff;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .header .code .btn-close {
+            /* 子元素 绝对定位 */
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="btn btn-toggle"> <span>二维码</span></div>
+        <div class="code">
+            <span class="btn btn-close">×</span>
+            <img src="./code.png" alt="">
+        </div>
+    </div>
+    
+    <script>
+		//要求：
+		//点击“二维码”按钮，显示二维码图片
+        //点击 “关闭” 按钮，隐藏二维码图片
+        
+        var btn = document.getElementsByClassName("btn-toggle")[0];
+        var code = document.getElementsByClassName("code")[0];
+        var close =document.getElementsByClassName("btn-close")[0];
+        btn.onclick = function(){
+            code.style.display = "block";
+        } 
+        close.onclick = function(){
+            code.style.display = "none";
+        }
+       
+    </script>
+</body>
+</html>

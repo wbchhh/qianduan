@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-2</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 150px;
+            border: 3px solid #333;
+            text-align: center;
+            line-height: 150px;
+            font-size: 16px;
+        }
+        .ctrl {
+            width: 600px;
+            padding: 20px 15px;
+        }
+        .ctrl button {
+            width: 120px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .ctrl button.active {
+            background-color: #ff5500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        点击按钮，设置文本字体大小
+    </div>
+    <div class="ctrl">
+        <button>18px</button>
+        <button>28px</button>
+        <button>38px</button>
+    </div>
+
+    <script>
+        // 要求：
+        // 定义  setFontSize 函数
+        // 该函数主要逻辑是设置 .box标签的字体大小
+        // 点击“按钮”，setFontSize 函数，设置对应的字体样式
+
+        // 基本步骤
+            // 1、获取页面相关元素
+            var box = document.getElementsByClassName("box")[0];
+            var buttons = document.getElementsByTagName("button");
+
+            // 2、0 事件绑定
+            // 第一个按钮
+            buttons[0].onclick = function(){
+                // 3、0 处理逻辑
+                // 事件触发了，调用setFontSize 
+                setFontSize("18px",buttons[0]);
+            }
+            // 第二个按钮
+            buttons[1].onclick = function(){
+                // 3、0 处理逻辑
+                // 事件触发了，调用setFontSize 
+                setFontSize("28px",buttons[1]);
+            }
+            // 第三个按钮
+            buttons[2].onclick = function(){
+                // 3、0 处理逻辑
+                // 事件触发了，调用setFontSize 
+                setFontSize("38px",buttons[2]);
+            }
+
+            // 4、0 定义函数 
+            function setFontSize(fontSize,button){
+                // .0 设置box的字体大小
+                box.style.fontSize = fontSize;
+                // .0 设置box的字体颜色
+                box.style.color = "#ff5500";
+                // .0 排他逻辑
+                for(var i = 0 ; i < buttons.length ; i ++){
+                    // 移除所有按钮的类名
+                    buttons[i].className = "";
+                }
+                // .0 设置对应按钮的类名
+                button.className = "active";
+            }
+
+    </script>
+</body>
+</html>

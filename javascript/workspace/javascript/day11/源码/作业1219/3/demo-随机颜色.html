@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击盒子获取随机颜色</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 500px;
+        }
+        .box button {
+            width: 100px;
+            height: 100px;
+            vertical-align: middle;
+            /* 圆角属性 */
+            border-radius: 50%;
+            outline: none;
+            border: 1px solid #ccc;
+            /* 小手 */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box" id="box">
+        <button id="btn">按钮</button>
+    </div>
+
+    <script>
+        // 需求：
+            // 1、点击 按钮 ，获取一个随机颜色， rgb(red,green,blue) ; 
+            // 备注： red,green, blue, 0 ~ 255
+            // 2、把随机颜色设置给页面 div.box的标签
+
+
+        // 基本步骤：
+            // 1.0 获取页面相关的元素（记录数据）
+            // 2.0 事件绑定
+            // 3.0 书写程序的处理逻辑
+
+
+            // 1.0 获取页面相关的元素（记录数据）
+            var btn = document.getElementById("btn");
+            var box = document.getElementById("box");
+            // 写代码的时候，要思考的地方：
+                // a. 标签是否获取了
+            // 2.0 事件绑定
+            btn.onclick = function(){
+                    // b.事件是否执行了 console.log("click")
+                // 3.0 书写程序的处理逻辑
+                // 定义颜色 0 ~ 255
+                var r = Math.floor(Math.random()*256);
+                var g = Math.floor(Math.random()*256);
+                var b = Math.floor(Math.random()*256);
+                // 字符串拼接
+                var bgColor = "rgba("+r+","+g+","+b+",1)";
+                    // c. 定义的背景色变量是否有值
+                    // console.log(bgColor);
+                // 给box设置颜色
+                box.style.backgroundColor = bgColor;
+            }
+           
+
+    </script>
+</body>
+</html>

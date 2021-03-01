@@ -1,0 +1,182 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:商品列表</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			/*tab 推进*/
+			/*shift + tab 缩进*/
+			/*重置页面默认样式*/
+			body , ul , h3 , p {
+				  margin:0;
+				  padding:0;
+			}
+			ul {
+				list-style:none;
+			}
+			a,
+			a:hover,
+			a:focus {
+				color:#333;
+				text-decoration:none;
+			}
+			
+			/*列表的样式*/
+			.wrapper {
+				font-size:14px;
+			}
+			
+			.list {
+				/*width:100%;*/
+				padding: 20px 20px;
+			}
+			.list ul {
+				width:100%;
+			}
+			.list ul li {
+				width:100%;
+				margin-bottom:20px;
+			}
+			.list ul li a {
+				display:block;
+				width:100%;
+				background-color:lightyellow;
+			}
+			
+			.link .img-box {
+				width:150px;
+				height:150px;
+				line-height:150px;
+				text-align:center;
+				/*background-color:pink;*/
+				float:left;
+			}
+			
+			.link .img-box img {
+				width:130px;
+				vertical-align:middle;
+			}
+			/*设置右侧栏自适应*/
+			.link .pro-box {
+				/*float:left;*/
+				/*width:400px;*/
+				overflow:hidden;
+				height:150px;
+			}
+			.link .pro-box  .pro-box-top {
+				/*background-color:lightblue;*/
+				padding:10px 10px;
+			}
+			.link .pro-box  .pro-box-top .title {
+				float:left;
+			}
+			.link .pro-box  .pro-box-top .date {
+				float:right;
+			}
+			
+			.link .pro-box  .pro-box-price {
+			   font-family:黑体;
+			   padding:5px 10px;
+			}
+			.link .pro-box  .pro-box-price.new-price {
+				font-size:18px;
+				color:red;
+			}
+			.link .pro-box  .pro-box-price.old-price {
+				font-size:14px;
+				color:gray;
+				text-decoration:line-through;
+			}
+			
+			.clearfix::after {
+				content:"";
+				display:block;
+				clear:both;
+			}
+		 </style>
+	</head>
+	<!-- del  u  b i  -->
+	<body> <!--主体元素:可视化部分-->
+		
+	      <div class="wrapper">
+				<div class="list">
+					<ul> 
+					    <!-- 1.0 -->
+					    <li>
+						    <a href="#" class="link clearfix">
+							    <!--图片-->
+								<div class="img-box">
+								    <img src="./images/1.jpg"/>
+								</div>
+								
+								<!--信息-->
+								<div class="pro-box">
+								    <div class="pro-box-top clearfix">
+									    <h3 class="title">秋冬新款牛仔裤</h3>
+										<div class="date">2020-12-01</div>
+									</div>
+									<p class="pro-box-price new-price">￥99</p>
+									<p class="pro-box-price old-price">￥998</p>
+								</div>
+								
+							</a>
+						</li>
+						
+						 <!-- 2.0 -->
+					    <li>
+						    <a href="#" class="link clearfix">
+							    <!--图片-->
+								<div class="img-box">
+								    <img src="./images/2.jpg"/>
+								</div>
+								
+								<!--信息-->
+								<div class="pro-box">
+								    <div class="pro-box-top clearfix">
+									    <h3 class="title">秋冬新款牛仔裤</h3>
+										<div class="date">2020-12-01</div>
+									</div>
+									<p class="pro-box-price new-price">￥99</p>
+									<p class="pro-box-price old-price">￥998</p>
+								</div>
+								
+							</a>
+						</li>
+						
+						
+						 <!-- 3.0 -->
+					    <li>
+						    <a href="#" class="link clearfix">
+							    <!--图片-->
+								<div class="img-box">
+								    <img src="./images/3.jpg"/>
+								</div>
+								
+								<!--信息-->
+								<div class="pro-box">
+								    <div class="pro-box-top clearfix">
+									    <h3 class="title">秋冬新款牛仔裤</h3>
+										<div class="date">2020-12-01</div>
+									</div>
+									<p class="pro-box-price new-price">￥99</p>
+									<p class="pro-box-price old-price">￥998</p>
+								</div>
+								
+							</a>
+						</li>
+						
+						
+					
+					</ul>
+				</div>
+		  </div>
+	
+		
+		
+	
+	</body>
+</html>
+

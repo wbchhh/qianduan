@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟点击发送验证 2 </title>
+    <style>
+        .inp-box {
+            width:600px;
+            height: 100px;
+        }
+        .inp-box input ,
+        .inp-box button {
+            float: left;
+        }
+        .inp-box input {
+            width: 350px;
+            height: 40px;
+            margin: 30px 0;
+            box-sizing: border-box;
+        }
+        .inp-box button {
+            height: 40px;
+            margin: 30px 0;
+            cursor: pointer;
+           
+        }
+        .inp-box button.not-allowed{
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="inp-box">
+        <input type="text" placeholder="请输入手机号码">
+        <button id="btnSend" >点击发送验证码</button>
+    </div>
+</body>
+</html>
+<script>
+
+    // 需求：
+        // xxx 
+    // 基本步骤：
+        // 1. 获取页面相关的元素
+        // 2. 事件绑定
+        // 3. 书写程序处理逻辑
+
+     // 编码实现：
+        // 1. 获取页面相关的元素
+        var btnSend = document.getElementById("btnSend");
+        // 处理发送验证码的逻辑
+        // 剩余时间秒数
+        var second = 3;
+        // 定时器函数
+        // null 表示尚未存在的函数，此处不该有值
+        var delay = null;
+        // 定义事件函数 handle
+        var fn = function(){
+            // 3. 书写程序处理逻辑
+            // 解绑事件
+            btnSend.onclick = null;
+            // console.log("click");
+            // 执行定时器函数
+            delay = setTimeout(function(){
+                // 设置提示的文本  
+                btnSend.innerText = "重新发送验证码";
+                // 设置按钮的样式
+                btnSend.className = "";
+                // 设置禁用按钮的属性 disabled
+                btnSend.removeAttribute("disabled");
+                //再次绑定点击事件
+                btnSend.onclick = fn ;
+                // 清除延迟函数
+                clearTimeout(delay);
+            },1000 * second)
+            // 设置提示的文本 (触发事件即可改变文本)
+            btnSend.innerText = "正在发送验证码";
+            // 设置按钮的样式
+            btnSend.className = "not-allowed";
+            // 设置禁用按钮的属性 disabled
+            btnSend.setAttribute("disabled","disabled");
+        }
+        // 2. 事件绑定
+        btnSend.onclick = fn ;
+        
+        
+        // 总结：
+            // 为什么设置timer等于 null ?
+            // 表示尚未存在的函数，此处不该有值
+            // 为什么解绑点击事件？
+            // 如果没有解绑点击，出现连续点击按钮触发事件，导致定时器函数频繁执行
+            // 出现定时器函数停不下来的情况
+
+
+</script>

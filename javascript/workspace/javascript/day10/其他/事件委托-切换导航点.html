@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>作业-2-事件委托</title>
+    <style>
+        .circle {
+            width: 400px;
+            margin: 100px auto;
+        }
+
+        .circle ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 500px;
+            background-color: #fff;
+
+        }
+
+        .circle ol li {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: #ccc;
+            /* float: left; */
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .circle ol li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle">
+        <ol>
+            <li data-index="0" class="active"></li>
+            <li data-index="1"></li>
+            <li data-index="2"></li>
+            <li data-index="3"></li>
+            <li data-index="4"></li>
+            <li data-index="5"></li>
+            <li data-index="6"></li>
+            <li data-index="7"></li>
+        </ol>
+    </div>
+    <script>
+        // 要求：
+        // 1、编写函数 setPoint 形参：索引值 index ，
+        ///2、函数处理逻辑： 根据index设置对应的导航点背景色高亮
+        //                  不是传递索引值 index 对应的导航点移除背景高亮
+        // 3、鼠标移入导航点触发事件，获取当前导航点索引值，作为实参，调用 setPoint 函数
+
+        // 基本步骤：
+        // 1、获取相关元素
+        // 2、事件绑定
+        // 3、书写程序处理逻辑
+
+
+        // 1、获取相关元素
+        var ol = document.getElementsByTagName("ol")[0];
+        var points = document.getElementsByTagName("li");
+        // console.log(points);
+        // ol.onclick = function (event) {
+        //     console.log(event.target)
+        //     if(event.target.getAttribute("data-index")){
+        //         var index = event.target.getAttribute("data-index");
+        //         setPoint(this.index);
+        //     }
+        // }
+        ol.addEventListener("mouseenter", function (event) {
+            // console.log(event.target)
+            if (event.target.getAttribute("data-index")) {
+                var index = event.target.getAttribute("data-index") - 0;
+                console.log("索引值：", index)
+                setPoint(index);
+            }
+        }, true);
+        // 4、定义函数 setPoint
+        function setPoint(index) {//形参：占位置
+            // 移除所有导航点的背景色
+            for (var j = 0; j < points.length; j++) {
+                points[j].className = "";
+            }
+            // 给索引值对应的导航点添加背景色
+            points[index].className = "active";
+        }
+
+            // 测试
+            // setPoint(7);
+
+
+            // 目的：
+                // 熟练掌握DOM操作、获取元素、类名控制
+                // 熟练掌握函数（代码块/函数传参）
+                // 具备一定的编码思维逻辑
+    </script>
+
+</body>
+
+</html>

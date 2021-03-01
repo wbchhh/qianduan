@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单</title>
+    <style>
+        /* 重置默认样式 */
+        html , body , ul , ol {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul , ol {
+            list-style: none;
+        }
+
+        /* 书写自定义样式 */
+        .wrapper {
+            width: 1000px;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+        .nav {
+            height: 80px;
+        }
+        .first-list {
+            width: 180px;
+            float: left;
+            margin-right: 20px;
+        }
+        .first-list > li {
+            width: 180px;
+        }
+        .first-list > li .tab-item {
+            width: 180px;
+            height: 40px;
+            background-color: green;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .first-list > li .second-list {
+            width: 180px;
+            /* 设置二级菜单的位置 */
+            /* 设置隐藏 */
+            display: none;
+        }
+        .first-list > li .second-list li {
+            width: 180px;
+            height: 40px;
+            background-color: orange;
+            border-bottom: 1px solid red;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav">
+                <ul id="first-list1" class="first-list">
+                    <li>
+                        <!-- 鼠标移入一级菜单 -->
+                        <div class="tab-item">一级菜单</div>
+                        <!-- 显示二级菜单 -->
+                        <ol  class="second-list">
+                             <li>二级菜单</li>
+                             <li>二级菜单</li>
+                             <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+
+
+                <ul id="first-list2" class="first-list">
+                    <li>
+                        <div class="tab-item">一级菜单</div>
+                        <ol  class="second-list">
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+
+
+                <ul id="first-list3" class="first-list">
+                    <li>
+                        <div class="tab-item">一级菜单</div>
+                        <ol  class="second-list">
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <script>
+        // 要求：
+            // 1.0 获取相关的元素
+            var tabItems = document.getElementsByClassName("tab-item");
+            var secItems = document.getElementsByClassName("second-list");
+            // console.log(secItems)
+            // 2.0 事件绑定(注意目标元素)
+            // 鼠标移入 ul > li div标签
+            tabItems[0].onmouseenter = function(){
+                 // 3.0 鼠标移入ul > li div标签 显示当前选项的二级菜单，隐藏其他的二级菜单
+                 secItems[0].style.display = "block";
+            }
+            //鼠标移开ul > li 标签
+            tabItems[0].parentElement.onmouseleave = function(){
+                 // 4.0 鼠标移开ul > li 标签 隐藏二级菜单
+                 secItems[0].style.display = "none";
+            }
+            // ======================================================
+            // 第二个选项
+            tabItems[1].onmouseenter = function(){
+                 secItems[1].style.display = "block";
+            }
+            tabItems[1].parentElement.onmouseleave = function(){
+                 secItems[1].style.display = "none";
+            }
+
+            // 第三个选项
+            tabItems[2].onmouseenter = function(){
+                 secItems[2].style.display = "block";
+            }
+            tabItems[2].parentElement.onmouseleave = function(){
+                 secItems[2].style.display = "none";
+            }
+
+
+</script>
+</body>
+</html>

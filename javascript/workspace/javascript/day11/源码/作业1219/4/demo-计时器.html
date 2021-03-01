@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <style>
+        .wraper {
+            width: 220px;
+            margin: 100px auto;
+        }
+        #startButton , #pauseButton{
+            width: 100px;
+            height: 50px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+        #textBox {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 48px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+
+     <div class="wraper">
+        <button id="startButton">开始计数</button>
+        <button id="pauseButton">暂停计数</button>
+        <div id="textBox">0</div>
+     </div>
+
+    <script>
+        // 需求：
+            // 1、点击 开始计数 按钮， 数字从0开始计算 ，显示数字
+            // 2、点击 暂停计数 按钮， 数字就暂停计算
+            // 3、相隔 100ms 自增一的方式进行计数
+
+        // 基本步骤：
+            // 1.0 获取页面相关的元素（记录数据）
+            // 2.0 事件绑定
+            // 3.0 书写程序的处理逻辑
+
+
+        // 编码实现：
+            // 1.0 获取页面相关的元素（记录数据）
+            var startButton = document.getElementById("startButton");
+            var pauseButton = document.getElementById("pauseButton");
+            var textBox = document.getElementById("textBox");
+
+            // 声明计数器变量
+            var count = 0;
+            // 定义变量 接收定时器函数
+            // null 此处不该有值（函数）
+            var timer = null ;
+            // 定义函数(代码块)
+            // function fn(){}
+            var fn = function(){
+                // 改变计数器变量
+                count ++;
+                // 显示计数的结果
+                textBox.innerText = count;
+            }   
+           
+            // 2.0 事件绑定
+            // 开始计时
+            startButton.onclick = function(){//函数作用域1
+                 // 3.0 书写程序的处理逻辑
+                 // 先停止定时器函数 
+                 clearInterval(timer);
+                 // 再执行定时器函数
+                 timer = setInterval(fn,100);
+                 // 设置当前点击的按钮 背景色高亮
+                 this.style.backgroundColor = "yellowgreen";
+                 pauseButton.style.backgroundColor = "#f0f0f0";
+            }
+            // 暂停计时
+            pauseButton.onclick = function(){//函数作用域2
+                // 3.0 书写程序的处理逻辑
+                // 停止定时器函数
+                clearInterval(timer);
+                 // 设置当前点击的按钮 背景色高亮
+                 this.style.backgroundColor = "yellowgreen";
+                 startButton.style.backgroundColor = "#f0f0f0";
+            }
+
+
+
+           
+            
+
+
+    </script>
+</body>
+</html>

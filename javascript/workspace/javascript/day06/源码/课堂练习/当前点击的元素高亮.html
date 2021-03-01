@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前点击的元素背景色高亮</title>
+    <style>
+        button {
+            border:0;
+            outline: none;
+            padding: 20px 45px;
+            margin: 50px 10px;
+            cursor: pointer;
+            background-color: #ccc;
+        }
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+
+    <!-- 脚本 -->
+    <script>
+        // 基本步骤：
+            // 1.0 记录数据
+            // 2.0 事件绑定
+            // 3.0 书写处理逻辑
+
+        // 实现
+        // 1.0 记录数据 获取标签
+        var buttons = document.getElementsByTagName("button");
+        console.log(buttons);
+        // 2.0 事件绑定 点击事件
+        // buttons[0].onclick = function(){}
+        // buttons.length ====  5 
+        for(var i = 0 ; i < 5 ; i ++){
+            // console.log(i);// 0,1,2,3,4 
+            // 点击事件
+            buttons[i].onclick = function(){
+                 // 3.0 书写处理逻辑
+                 // 排他思想
+                 //  ....
+                 //  console.log("事件触发才执行：",i);// 5 
+                 for(var j = 0 ; j < 5 ; j ++){
+                    //  移出所有元素的背景色（类名）
+                    buttons[j].className = "";
+                 }
+                 // 当前点击的元素 背景色高亮
+                 // this  是当前点击的元素
+                 this.className = "active"; 
+            }
+        }
+        // console.log(i);// 循环结束： i 等于 5 
+       
+
+    </script>
+</body>
+</html>

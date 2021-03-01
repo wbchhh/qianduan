@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归排序</title>
+</head>
+<body>
+    <h3>递归排序（快速排序）</h3>
+    <script>
+        // 数组
+        var arr = [90,10,40,100,120,30];
+        // console.log(arr);
+        // 左边数组 10 20 30
+        // 中间的数值 100
+        // 右边数组 90  120
+
+        // 思考： 
+             // 如何使用递归实现数组从小到大的排序。
+        // 1.0 定义函数
+        function quickSort(array){
+            // 如果array没有值
+            if(array == undefined){
+                // 终止代码
+                return ;
+            }
+            // 条件 判断是否终止递归 返回数组
+            // [90,10,40,100,120,30] 
+            if(array.length <= 1){
+                return array ;
+            }
+            // 找出数组中间的数值索引（约等于）
+            var middleIndex = Math.floor(array.length / 2);
+            // 找出数组中间的数值
+            // var middleV = array[middleIndex];
+            var middleV = array.splice(middleIndex,1)[0];
+            // 定义空数组
+            // [90,10,40,100,120,30];
+            var left  = []; //记录较小的数值 10 40 30
+            var right = []; //记录较大的数值
+            // 循环数组
+            for(var i = 0 ; i < array.length ; i ++){
+                // 比较数值的大小
+                if(array[i] < middleV){
+                    // 添加到左边的数组（较小）
+                    left.push(array[i]);
+                }else {
+                    // 添加到左边的数组（较大）
+                    right.push(array[i]);
+                }
+            }
+            // 合并数组 左.concat(中,右)
+            return quickSort(left).concat([middleV],quickSort(right));
+        }
+        // 2.0 调用函数
+        var res = quickSort(arr);
+        console.log(res);
+
+
+        // 定义数组
+        // 思路：
+            // left = []
+            // middleV = 10 
+            // right = []
+
+        // Math.floor(1.5);// 1 
+        // 循环 
+        // left = []
+        // middle = 10     [10]
+        // right = [90,40]    
+                // left = []
+                // middle = 40;
+                // right = [90]     
+                         // [10].concat([40],[90])  = [10,40,90]
+        // var arr2 = [90,10,40,30];
+        // console.log(quickSort(arr2));// 快速排序
+        // 排序算法 （代入法去理解）
+
+
+
+
+        // 这是已经封装完成！
+        // arr.sort(function(a,b){ return a - b ;}) // 升序
+        // arr.sort(function(a,b){ return b - a;})  // 降序
+
+
+
+
+
+
+    </script>
+</body>
+</html>

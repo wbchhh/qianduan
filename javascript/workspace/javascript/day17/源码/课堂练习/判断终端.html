@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 视口属性 -->
+    <!-- name="viewport"   设置视口属性
+        content="width=device-width,  宽度等于当前设备的宽度
+        initial-scale=1.0" 初始化的缩放比 pc : moblie = 1 : 1  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断终端（PC , Androind, iPhone）</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        a {
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .header,
+        .footer {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header ul,
+        .footer ul {
+            width: 100%;
+        }
+
+        .header ul li,
+        .footer ul li {
+            width: 25%;
+            float: left;
+            text-align: center;
+            height: 20px;
+            padding: 15px 0;
+        }
+
+        .header ul li a,
+        .footer ul li a {
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            font-weight: bold;
+        }
+
+        .header ul li a {
+            color: deepskyblue;
+            border-right: 2px solid deepskyblue;
+        }
+
+        .header ul li a.no-border,
+        .footer ul li a.no-border {
+            border-right: 2px solid transparent;
+        }
+
+        .footer ul li a {
+            color: orangered;
+            border-right: 2px solid orangered;
+        }
+
+        /* 顶部 安卓 */
+        .header {
+            top: 0;
+        }
+
+        /* 底部  苹果 */
+        .footer {
+            bottom: 0;
+        }
+
+        /* 居中  PC端 */
+        .aside {
+            width: 120px;
+            position: fixed;
+            left: 0;
+            top: 50%;
+            z-index: 1000;
+            height: 160px;
+            margin-top: -80px;
+        }
+
+        .aside ul {
+            width: 100%;
+        }
+
+        .aside ul li {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 0 0 20px;
+        }
+
+        .aside ul li a {
+            text-align: left;
+            display: block;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header / aside / footer -->
+    <div class="aside" id="navList">
+        <ul>
+            <li><a href="javascript:;">首页 <span></span></a></li>
+            <li><a href="javascript:;">分类 <span></span></a></li>
+            <li><a href="javascript:;">发现 <span></span></a></li>
+            <li><a href="javascript:;" class="no-border">个人中心<span></span></a></li>
+        </ul>
+    </div>
+
+    <script>
+        // 需求：
+        // 根据不同的终端设置页面布局排版
+
+        // 基本步骤：
+        // 1.0 获取相关的元素
+        // 2.0 事件绑定
+        // 3.0 书写处理逻辑
+
+        // 编码实现：
+        // 1.0 获取相关的元素
+        var navList = document.getElementById("navList");
+        // 2.0 事件绑定
+        window.onresize = function () {
+            // 3.0 书写处理逻辑
+            init();
+        }
+
+        // 4.0 编写函数判断终端
+        function terminalFunc() {
+            // 获取设备主要信息 
+            var userAgent = window.navigator.userAgent;
+            // 判断终端
+            if (userAgent.indexOf("Windows") > -1) {
+                // 返回指定的字符串  PC 
+                return "Windows";
+            } else if (userAgent.indexOf("Android") > -1) {
+                // 返回指定的字符串 安卓
+                return "Android";
+            } else if (userAgent.indexOf("iPhone") > -1) {
+                // 返回指定的字符串 苹果
+                return "iPhone";
+            }
+        }
+        // 测试
+        // console.log(terminalFunc());
+
+        // 5.0 编写初始化
+        function init() {
+            // 获取代表终端的字符串
+            var str = terminalFunc();
+            // 控制流语句
+            switch (str) {
+                case "Windows":
+                    // 设置指定元素的类名
+                    navList.className = "aside";
+                    break;
+                case "Android":
+                    // 设置指定元素的类名
+                    navList.className = "header";
+                    break;
+                case "iPhone":
+                    // 设置指定元素的类名
+                    navList.className = "footer";
+                    break;
+            }
+        }
+
+        // 初始化 （第一次打开页面）
+        init();
+    </script>
+</body>
+
+</html>

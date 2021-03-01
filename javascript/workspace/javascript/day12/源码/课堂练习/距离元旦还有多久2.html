@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>距离元旦还有多少时间2</title>
+    <style>
+        .box {
+            width: 600px;
+            margin: 0 auto;
+            padding: 200px 20px;
+            background-color: #ccc;
+            font-size: 20px;
+            /* 字间距 */
+            letter-spacing: 5px;
+        }
+        .box span {
+            text-decoration: underline;
+            color: #f00;
+            font-weight: bold;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <h3>
+            距离2021元旦还有<span>0</span>天<span>0</span>小时<span>0</span>分钟<span>0</span>秒钟 
+        </h3>
+    </div>
+
+    <script>
+        // 要求：
+            // 距离2021元旦的时间，还有多少天 小时 分钟 秒钟
+        // 获取页面所有span标签
+        var spanElements = document.getElementsByTagName("span");
+        // 相差的时间 = 元旦的时间 减去 现在的时间
+        // var futureTime = new Date("2021/01/01 00:00:00").getTime();
+        var futureDate = new Date();
+        futureDate.setFullYear(2021);
+        futureDate.setMonth(0);
+        futureDate.setDate(1);
+        futureDate.setHours(0);
+        futureDate.setMinutes(0);
+        futureDate.setSeconds(0);  
+        var endTime = futureDate.getTime();//结束的时间戳
+        // 格式化时间
+        function formatTime(sec){
+            // 判断是否传参
+            if(sec === undefined){
+                // 终止代码
+                return false ;
+            }
+            // 定义变量 记录天数 小时 分钟 秒钟
+            var days = 0;
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+            // 格式化时间
+            // 天数
+            days = Math.floor(sec / 3600 / 24 );
+            hours = Math.floor(sec / 3600 % 24);
+            minutes = Math.floor(sec % 3600 / 60);
+            seconds = Math.floor(sec % 60);   
+            // 定义对象 记录格式化的时间
+            var obj =  {
+                d:days,
+                h:hours,
+                m:minutes,
+                s:seconds
+            }
+            // 返回一个包含时间信息的数据集合
+            return obj;
+        }
+        // 定义初始化函数
+        var init = function(){
+            // 现在的日期对象
+            var nowDate = new Date();
+            // 现在的时间戳
+            var nowTime = nowDate.getTime();
+            // 元旦距离现在的时间差
+            var totalTime = (endTime - nowTime) / 1000;
+            // 格式化时间 返回一个关于天数 /小时 /分钟 秒的对象
+            var res = formatTime(totalTime);
+            // 渲染时间
+            // 天数
+            spanElements[0].innerText = res.d; 
+            // 小时
+            spanElements[1].innerText = res.h; 
+            // 分钟
+            spanElements[2].innerText = res.m; 
+            // 秒钟
+            spanElements[3].innerText = res.s; 
+        }
+        // 调用初始化函数
+        init()
+        // 执行定时器函数
+        var timer = setInterval(init,1000)
+
+
+
+
+
+    </script>
+</body>
+</html>

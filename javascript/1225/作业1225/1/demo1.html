@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切换（动画版）</title>
+    <style>
+        .box{
+            width: 730px;
+            height: 454px;
+            margin: 0px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box .imgs{
+            width: 1460px;
+            height: 454px;
+            clear: both;
+            z-index: 7;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            transition: left 0.7s ease 0s;
+        }
+        .box .imgs img{
+            float: left;
+        }
+        .box .top{
+            width: 730px;
+            height: 50px;
+            position: absolute;
+            z-index: 12;
+        }
+        .box .top ul{
+            margin: 0;
+            padding: 0;
+        }
+        .box .top ul li{
+            width: 50%;
+            height: 50px;
+            float: left;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #000;
+            list-style: none;
+            top: 0px;
+            left: 0px;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <ul>
+                <li>衣服</li>
+                <li>手机</li>
+            </ul>
+        </div>
+        <div class="imgs">
+            <img src="img/left.jpg">
+            <img src="img/right.jpg">
+        </div>
+        
+    </div>
+    <script>
+        // 需求：
+            // 当前点击tab选项背景高亮，并动画的方式切换对应的图片
+        var imgs = document.getElementsByClassName("imgs")[0];
+        var ttop = document.getElementsByClassName("top")[0];
+        var li = ttop.getElementsByTagName("li");
+        li[0].style.backgroundColor = "rgba(255,255,255,0.8)";
+        for(var i=0;i<li.length;i++){
+            li[i].index = i;
+            li[i].onclick = function(){
+                for(var j=0;j<li.length;j++){
+                    li[j].style.backgroundColor = "rgba(255,255,255,0.5)";
+                }
+                this.style.backgroundColor = "rgba(255,255,255,0.8)";
+                imgs.style.left = -730 * this.index + "px";
+            }
+        }
+    </script>
+</body>
+</html>

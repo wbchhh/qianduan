@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 对象</title>
+    <style>
+        .box {
+            width: 120px;
+            height: 150px;
+            background-color: rgba(0, 0, 255, 1);
+        }
+
+        .box::after {
+            content: "";
+            display: block;
+            width: 90px;
+            height: 80px;
+            background-color: rgba(0, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <h3>window 对象</h3>
+    <div class="box"></div>
+    <script>
+        // 全局对象
+        // console.log(window);
+        // alert()
+        // prompt()
+
+
+        // getComputedStyle
+        // 调用者： window
+        // 参数：参数1：dom  ，参数2：伪类
+        // 返回值：关于dom元素css属性和属性值的对象
+        // 功能：获取元素样式
+        // window.getComputedStyle(dom,伪类);
+
+
+        // 获取dom
+        var div = document.getElementsByTagName("div")[0];
+        var obj = window.getComputedStyle(div);
+        // console.log(obj);//关于div元素的样式数据集合
+        // var width = obj.width;
+        console.log( obj.width )
+        console.log( obj.height )
+        console.log( obj.backgroundColor )
+
+
+        // 伪类
+        var obj2 = window.getComputedStyle(div,"after");
+        // console.log(obj2);//关于伪类元素的样式数据集合
+        console.log(obj2.width);
+        console.log(obj2.height);
+        console.log(obj2.backgroundColor);
+
+
+
+        
+
+
+
+    </script>
+</body>
+</html>

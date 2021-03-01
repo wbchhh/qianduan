@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标在页面频繁滑动（节流）</title>
+    <style>
+        .box {
+            width: 200px;
+            margin: 100px auto;
+            background-color: #ccc;
+            text-align: center;
+            font-size: 40px;
+            padding: 80px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">0</div>
+    <script>
+        // 1.获取div标签
+        var box = document.getElementsByClassName("box")[0];
+        // 2.0 事件绑定
+        // 鼠标在页面上不断滑动，那么计数器变量一直计算
+        // 计数器变量
+        var count = 0;
+        // 定义变量 接收延迟函数
+        // var delayer = null;
+        // // 定义开关布尔值
+        // var isOpen = true;
+        // document.onmousemove = function () {
+        //     // 判断 如果布尔值是false
+        //     // 高频率触发事件
+        //     // if(!isOpen){
+        //     if (isOpen) {
+        //         // 事件被触发了，设置布尔值为false
+        //         isOpen = false;
+        //         // 执行延迟函数
+        //         delayer = setTimeout(function () {
+        //             count++;
+        //             box.innerText = count;
+        //             // 在指定的时间设置布尔值为true
+        //             isOpen = true;
+        //             // 清除延迟函数（严谨的角度）
+        //             clearTimeout(delayer);
+        //         }, 1000)
+        //     }
+
+        // }
+
+
+        // 测试
+        document.onmousemove = throttle(function(){
+            count++;
+            box.innerText = count;
+        },1000)
+
+        // 封装节流函数
+        // 基础版本
+        // 闭包
+        function throttle(callback,millisecond){
+            // 定义变量 记录延迟函数
+            var delayer = null;
+            // 定义变量 记录开关
+            var isOpen = true;
+            // 返回一个函数
+            return function(){
+                // 判断布尔值是否为true , 是 ，进入if语句
+                if(isOpen){
+                    // 设置布尔值为false
+                    isOpen = false;
+                    // 执行延迟函数
+                    delayer = setTimeout(function(){
+                        // 条件判断
+                        if(delayer) clearTimeout(delayer);
+                        // 执行传递的callback函数
+                        callback();
+                        // 设置布尔值为true
+                        isOpen = true;
+                    },millisecond);
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        // 时间戳
+    </script>
+</body>
+
+</html>

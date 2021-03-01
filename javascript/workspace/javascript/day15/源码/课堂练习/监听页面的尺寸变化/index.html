@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听页面可视区尺寸变化</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+        ul li {
+            width: 20%;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            float: left;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .active {
+            color: red;
+            background-color: #CCC;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>特小屏幕</li>
+        <li>小屏幕</li>
+        <li>中等屏幕</li>
+        <li>大屏幕</li>
+        <li>特大屏幕</li>
+    </ul>
+
+
+    <script>
+
+        // < 567  特小屏幕
+        // > 568  <= 767  小屏幕
+        // > 767  <= 991 中等屏幕
+        // > 991  <= 1099 大屏幕
+        // > 1099  特大屏幕
+
+
+        // 要求：
+            // 当前屏幕符合那个尺寸，那么设置对应的字体高亮
+
+        // 1.0 获取li标签
+        var items = document.getElementsByTagName("li");
+        // 2.0 编写函数
+        function setColor(clientWidth){//形参
+            // 索引值 
+            var index = 0;
+            // 判断屏幕尺寸
+            if(clientWidth < 567 ){
+                // 特小屏幕
+                index = 0;
+            }else if(clientWidth > 568 && clientWidth <= 767 ){
+                // 小屏幕
+                index = 1 ;
+            }else if(clientWidth > 767 && clientWidth <= 991 ){
+                // 中等屏幕
+                index = 2 ;
+            }else if(clientWidth > 991 && clientWidth <= 1099 ){
+                // 大屏幕
+                index = 3 ;
+            }else {
+                // 特大屏幕
+                index = 4 ;
+            }
+            // 排他思想
+            for(var i = 0 ; i < items.length ; i ++){
+                // 移除类名
+                items[i].className = "";
+            }
+            // 给对应的标签添加类名
+            items[index].className = "active";
+        }
+        // 测试
+        // setColor(300);
+        
+        // 3.0 事件监听
+        window.onresize = function(){
+            // 如何获取可视区的宽度
+            var w = document.documentElement.clientWidth || window.innerWidth ;
+            // 调用setColor函数 设置对应的字体颜色
+            setColor(w);//实参
+        }
+        
+        // 4.0 初始化
+        var w2 = document.documentElement.clientWidth || window.innerWidth ;
+        // 调用setColor函数 设置对应的字体颜色
+        setColor(w2);//实参
+
+    </script>
+</body>
+</html>

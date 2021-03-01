@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+    <style>
+        div {
+            width: 80px;
+            height: 80px;
+            background-color: #ccc;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>属性绑定</h3>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 1.0 声明变量是为了记录数据
+        // 变量
+        var index = 0 ;
+        console.log("index:",index)
+        index = 1 ;
+        console.log("index:",index)
+        index = 2 ;
+        console.log("index:",index)
+        index = 3 ;
+        console.log("index:",index)
+
+        // 2.0 获取div标签
+        var aDiv = document.getElementsByTagName("div");
+        // .0 添加事件
+        // aDiv[0].onclick = 数据
+
+        // .0 添加属性(记录数据的作用)
+        aDiv[0].aaa = "hello world";
+        console.dir(aDiv[0]);
+        console.dir(aDiv[0].aaa);// hello world
+
+
+        // .0 记录标签的索引值
+        // 属性绑定（记录数据）
+        // 属性
+        // dom 是一个对象 。 （对象是可以添加属性）
+        aDiv[0].index = 0;
+        aDiv[1].index = 1;
+        aDiv[2].index = 2;
+        console.log("aDiv[0].index:",aDiv[0].index)
+        console.log("aDiv[1].index:",aDiv[1].index)
+        console.log("aDiv[2].index:",aDiv[2].index)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮移动盒子</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            position: absolute;
+            left: 0px;
+            top: 0;
+        }
+        .line {
+            width: 1000px;
+            height: 5px;
+            background-color: #000;
+            position: absolute;
+            left: 0;
+            top: 120px;
+        }
+        .btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 135px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="line"></div>
+    <button class="btn">点击移动盒子</button>
+
+    <script>
+        // 动画原理
+        // 目标位置 ： 当前位置 + 步长
+
+
+        // 基本步骤：
+            // 1. 获取相关的元素(数据)
+            // 2. 事件绑定
+            // 3. 处理逻辑
+
+        // 
+            // 1. 获取相关的元素(数据)
+            var box = document.getElementsByClassName("box")[0];
+            var btn = document.getElementsByClassName("btn")[0];
+            // 2. 事件绑定
+            btn.onclick = function(){
+                 // 3. 处理逻辑
+                 // console.log("click")
+                 // 设置步长 
+                 var speed = 10 ;
+                // 判断 是否到达目标位置
+                if(box.offsetLeft >= 1000){
+                    // 终止代码
+                    return ;
+                }
+                // 设置元的目标位置
+                box.style.left = box.offsetLeft + speed + "px";
+                console.log("位置：",box.offsetLeft);
+            }
+           
+
+    </script>
+</body>
+</html>

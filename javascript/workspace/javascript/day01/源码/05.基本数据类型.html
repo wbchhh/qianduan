@@ -1,0 +1,105 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:基本数据类型</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>基本数据类型</h3>
+		
+		
+		<script>
+			// 打印====== 输出
+			// 1. string 
+			// 字符串  带单双引号的
+			var str1 = 'yyyyy';
+			var str2 = "hello world";
+			console.log(str2);
+			// 检测数据类型 typeof
+			console.log(typeof str2);// string 
+			console.log(typeof str1 === "string");// true
+			console.log("-----------------------------");
+		    //2.0 number  
+			// 数字
+			var  num1 = 100;
+			var  num2 = 100.111;
+			console.log(num1);
+			console.log(typeof num1);// number 
+			console.log(typeof num1 === "number");// true
+			console.log("-----------------------------");
+			
+			//3.0 boolean 
+			//布尔值 (true / false)
+			var bool = true ;
+			console.log(bool);
+			console.log(typeof bool);// boolean
+			console.log(typeof bool === "boolean");// ture 
+			console.log("-----------------------------");
+			
+			//4.0 undefined 
+			// 初始化变量，但是没有赋值
+			// 尚未赋值的变量或者属性
+			var index  ;
+			console.log(index);// undefined
+			console.log(typeof index);// undefined
+			console.log(typeof index === "undefined");// true
+			console.log("-----------------------------");
+			
+			//5.0 null 
+			// 空
+			// 初始化函数 ，但是没有赋值
+			// 尚未存在的函数
+			var timer = null;
+			console.log(timer);// null 
+			// null，表示空对象， 用 typeof 来检测，输出的object
+			console.log(typeof null);// object
+			console.log("-----------------------------");
+			
+			//6.0 symbol  【ES6 了解】
+			// 唯一
+			var id_1 = Symbol();
+			console.log(id_1);// Symbol()
+			
+			var id_2 = Symbol();
+			console.log(id_2);// Symbol()
+			console.log(typeof id_1);// symbol
+			
+			console.log(id_1 == id_2);// false
+			console.log(id_1 === id_2);// false
+			
+			console.log("-----------------------------");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			// 备注：
+			//  string number boolean 用于判断的时候 记得添加引号
+			//  =     赋值
+			//  ==    与值进行比较
+			//  ===   与值、数据类型进行比较 （全等于）
+			
+			
+			
+			
+			
+		
+		
+		
+		
+		</script>
+	</body>
+</html>
+

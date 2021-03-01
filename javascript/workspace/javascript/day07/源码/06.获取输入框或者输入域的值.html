@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入的值</title>
+    <style>
+        input {
+            height: 40px;
+            width: 490px;
+            display: block;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        button {
+            width: 120px;
+            height: 40px;
+        }
+        span {
+            font-size: 50px;
+            line-height: 40px;
+            color:#00f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 输入框 -->
+    <input type="text" id="inp" placeholder="请输入" value="">
+      <!-- 按钮 -->
+    <div>
+        <button id="btn">发表</button>
+    </div>
+    <!-- 输入的值 -->
+    <div>
+        <span id="txt"></span>
+    </div>
+    <script>
+        // 基本步骤：
+            // 1、获取元素 
+            // 2、绑定事件 
+            // 3、书写程序的处理逻辑
+
+        // 实现：
+            // 1、获取元素 
+            var inpEl = document.getElementById("inp");
+            var btnEl = document.getElementById("btn");
+            var txtEl = document.getElementById("txt");
+            // console.log(inpEl.value);// 没有值 
+            // 2、绑定事件 
+            btnEl.onclick = function(){
+                 // 3、书写程序的处理逻辑
+                 //console.log(inpEl.value);//有值 
+                 var v1 = inpEl.value;
+                 
+                 console.log(v1);//在控制台输出。检查变量是否有值
+                 // 渲染输入的值
+                 txtEl.innerText = v1 ;
+                
+            }
+           
+          
+    </script>
+
+</body>
+</html>

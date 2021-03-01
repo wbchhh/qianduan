@@ -1,0 +1,44 @@
+html , body , ul , ol , input , button , p , 
+h1 , h2 , h3 , h4 , h5 , h6 {
+	padding:0;
+	margin:0;
+}
+ul , ol {
+	list-style:none;
+}
+input , button {
+	border:0;
+	outline:none;
+}
+a {
+	color:#000;
+	text-decoration:none;
+}
+
+.f-left {
+	float:left;
+}
+.f-right {
+	float:right;
+}
+.clearfix::after {
+	content:"";
+	display:block;
+	clear:both;
+	opacity:0;
+	height:0;
+	visibility:hidden;
+}
+
+.bg-color {
+	background-color:#65a7f3;
+	color:#ffffff;
+}
+
+
+
+
+
+
+
+

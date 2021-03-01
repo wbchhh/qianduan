@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂练习：03 </title>
+    <style>
+        div {
+            width: 200px;
+            height: 300px;
+            border: 3px solid #ccc;
+        }
+        input {
+            width: 150px;
+            height: 40px;
+            margin-left: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 20px;
+            text-align: center;
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            margin-left: 50px;
+            display: block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="box" id="box"></div>
+    <input type="text" id="inp" placeholder="请输入颜色">
+
+    <script>
+        // 要求：
+            // xxxx 
+            // 没有传递参数
+       
+         // 编码实现：
+         // 获取页面相关元素
+         var inp = document.getElementById("inp");
+         var box = document.getElementById("box");
+
+        // 定义函数 
+        // 形参:color
+        function setBgColor(color){
+            // 给box标签设置背景色
+            // aaa = "red"
+            box.style.backgroundColor = color ;
+        }
+
+        // 监听输入框输入的值变化
+        inp.oninput = function(){
+            // 获取输入的值
+            var v1 =  this.value;
+            // console.log(v1);
+            // 调用函数 
+            // 实参：v1 
+            setBgColor(v1);
+        }
+
+        // 如果需要实时监听输入的值变化 ，那么就可以使用oninput事件
+
+
+
+
+        
+
+        // 定义函数 function foo(color){ //函数作用域使用的 color }
+        // 调用函数 foo("red")
+
+
+    </script>
+
+</body>
+</html>

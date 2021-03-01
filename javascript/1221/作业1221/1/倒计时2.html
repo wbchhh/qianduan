@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        .time-box {
+            width: 600px;
+            height: 100px;
+            background-color: #ccc;
+        }
+        .time-box span {
+            float: left;
+        }
+        .time-box .text {
+            height: 50px;
+            padding: 0 20px;
+            background-color: #f00;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            line-height: 50px;
+            color:#fff;
+            text-align: center;
+        }
+        .time-box .word {
+            height: 50px;
+            padding: 0 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            line-height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-box">
+        <span class="text">倒计时</span>
+        <span class="word">00:00:00</span>
+    </div>
+
+</body>
+</html>
+<script>
+    // 需求：倒计时
+    // 1 天 = 24小
+    // 1 小时 = 60分钟
+    // 1 分钟 = 60 秒
+    // 1 秒 = 1000 毫秒
+
+
+        // 剩余时间设置 7200 秒 
+        // 每一秒中减去1秒
+        // 格式化时间为小时、分钟、秒 并显示在页面
+
+    // 1.0 获取页面指定元素
+    var box = document.getElementsByClassName("word")[0];
+    // 2.0 定义剩余秒数(活动结束时间)
+    // var seconds = 7200;
+    var seconds = 2 * 60 * 60 ;
+    // var seconds = 10 ;
+    // 定义全局 接收定时器函数
+    var tiemr = null;
+    // 3.0 编写 init 函数
+    function init (){
+        // 改变秒数
+        seconds --;
+        // 判断 
+        if(seconds < 0 ){
+            // 停止定时器函数
+            clearInterval(tiemr);
+            // 终止代码
+            return ;
+        }
+        // 小时 、分钟 、秒钟
+        // var h , m , s ;
+        var h = 0;//显示小时
+        var m = 0;//显示分钟
+        var s = 0;//显示秒数
+
+        // 计算剩余的秒数  7200
+        // 计算小时
+        h = Math.floor(seconds/3600);
+        // 去掉属于小数部分的秒数，再计算分钟 （剩余分钟 ）
+        m = Math.floor(seconds%3600/60);
+        // 剩余秒数
+        // 120 % 60 = 0 
+        // 119 % 60 = 59
+        // 118 % 60 = 58
+        // 59 , 58 ,57 ,56 ,,,,,,,  9 , 8 , 7 , 6 
+        s = Math.floor(seconds % 60);
+
+        // 处理两位数时间
+        h = h < 10 ? "0"+h : ""+h;
+        m = m < 10 ? "0"+m : ""+m;
+        s = s < 10 ? "0"+s : ""+s;
+        // 拼接时间字符串
+        // 00:00:00
+        var str = h + ":"+ m + ":" + s ;
+        // console.log(str);
+        // 显示倒计时
+        box.innerHTML = str;
+    }
+    // 调用初始化函数 init
+    init();
+
+    // 4.0 执行定时器函数
+    timer = setInterval(init , 1000);
+
+
+
+
+  
+</script>

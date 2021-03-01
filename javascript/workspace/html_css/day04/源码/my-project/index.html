@@ -1,0 +1,360 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:项目首页[PC]</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <!--引入resset.css文件-->
+		 <link rel="stylesheet" href="./css/reset.css"/>
+		 <!--引入index.css文件-->
+		 <link rel="stylesheet" href="./css/index.css"/>
+		 <!--引入网页logo文件-->
+		 <link rel="shortcut icon" href="./logo.png"/>
+		 
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<div class="tt-wrapper">
+			<!--1.0 页面头部-->
+			<div class="tt-header">
+				<div class="container clearfix">
+					<div class="left f-left">
+						<div class="tt-header-logo"></div>
+						<div class="tt-header-nav">
+							<ul>
+							    <li>
+									<a href="javascript:;">内容管理</a>
+								</li>
+								
+								<li>
+									<a href="javascript:;">终端管理</a>
+								</li>
+								
+								<li class="active">
+									<a href="javascript:;">资源管理</a>
+								</li>
+								
+								<li>
+									<a href="javascript:;">内容审核</a>
+								</li>
+								
+								<li>
+									<a href="javascript:;">系统管理</a>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					
+					<div class="right f-right">
+						<a class="tt-header-personal" href="javascript:;">
+						   <span class="icon"></span>
+						   <span class="text">此处最多只有帅哥靓女</span>
+						</a>
+					</div>
+				
+				</div>
+			</div>
+			
+			
+			
+			<!--2.0 页面主体-->
+			<div class="tt-section">
+				<div class="container clearfix">
+					<div class="left f-left">
+						<!--页面侧栏-->
+						<div class="tt-section-aside">
+							<!--素材类型-->
+							<div class="aside-title">
+							    <h3 class="bg-color">素材类型</h3>
+							</div>
+							<!--侧栏列表-->
+							<!--842 - 210 = 632-->
+							<div class="aside-list">
+								<ul>
+									<li class="active">
+									    <a href="javascript:;">
+										   <span class="icon icon1"></span>
+										   图片
+										</a>
+									</li>
+									
+									<li>
+									    <a href="javascript:;">
+										   <span class="icon icon2"></span>
+										   视频
+										</a>
+									</li>
+									
+									<li>
+									    <a href="javascript:;">
+										   <span class="icon icon3"></span>
+										   音乐
+										</a>
+									</li>
+									
+									<li  >
+									    <a href="javascript:;">
+										   <span class="icon icon4"></span>
+										   Word
+										</a>
+									</li>
+									
+									<li >
+									    <a href="javascript:;">
+										   <span class="icon icon5"></span>
+										   Excel
+										</a>
+									</li>
+									
+									<li>
+									    <a href="javascript:;">
+										   <span class="icon icon6"></span>
+										   PPT
+										</a>
+									</li>
+									
+									<li>
+									    <a href="javascript:;">
+										   <span class="icon icon7"></span>
+										   PDF
+										</a>
+									</li>
+									
+									<li>
+									    <a href="javascript:;">
+										   <span class="icon icon8"></span>
+										   网页
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!--存储信息-->
+							<div class="aside-bottom">
+								<div class="aside-bottom-title">
+									<div class="f-right"><a href="#">查看详情</a></div>
+									<div class="f-left"><span>存储信息</span></div>
+								</div>
+								<div class="aside-bottom-content">
+									<div class="box">
+										<ul>
+											<li></li>
+										</ul>
+										<p> <span>5.0G</span>/</span>10.0G</span> </p>
+									</div>
+									<!--p标签不能嵌套块级元素，因为这样会把p分割成两段-->
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="right f-right">
+						<!--页面内容-->
+						<div class="tt-section-content">
+							<!--内容顶部 40-->
+							<div class="content-top clearfix">
+								
+								 <div class="f-left">
+								      <button class="btn-upload">上传素材</button>
+								 </div>
+								 
+								 <div class="f-right">
+									  <div class="search">
+									      <input type="text" placeholder="请输入文件名"/>
+										  <button class="btn-search">搜索</button>
+									  </div>
+								 </div>
+								
+							</div>
+							<!--间距 15 -->
+							<!-- 内容中间 677-->
+							<div class="content-middle">
+								<div class="content-middle-box">
+								    <div class="middle-box-title">
+										   <!-- 顺序为什么先右后左？为了低版本浏览器。 -->
+										  <div class="f-right">
+										        <div class="tab-item "><span class="icon1"></span></div>
+												<div class="tab-item active"><span class="icon2"></span></div>
+										  </div>
+											
+								          <div class="f-left">
+										       <ul>
+											      <li class="active">全部</li>
+												  <li>我的机构</li>
+											   </ul>
+										  </div>
+										
+								   </div>
+									
+									<div class="middle-box-list">
+										<ul>
+										   <li class="ml-0">
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										   </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											<li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										   
+										   
+										    <li class="ml-0">
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											<li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										   
+										   
+										    <li class="ml-0">
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											<li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											
+											 <li class="ml-0">
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+										   
+										    <li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											<li>
+												<!-- 215 * 121-->
+										        <img src="./images/pic.jpg" alt="描述图片的"/>
+												<p>我叫文件名</p>
+										    </li>
+											
+											
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- 内容底部 68-->
+							<div class="content-bottom">
+							     <div class="content-bottom-box">
+										<div class="f-left">
+											<span class="total">共240条记录</span>
+										</div>
+										<div class="f-right">
+											<ul>
+											    <li>
+												   <span>&lt;</span>
+												</li>
+												<li class="active">1</li>
+												<li>2</li>
+												<li>3</li>
+												<li>4</li>
+												<li>5</li>
+												<li>6</li>
+												<li>7</li>
+												<li>8</li>
+												<li>...</li>
+												<li>20</li>
+												<li>
+												  <span>&gt;</span>
+												</li>
+											</ul>
+										</div>
+								 </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	
+	</body>
+</html>
+<!--htmlcss阶段的要求-->
+<!--1. 编码速度提升-->
+<!--2. 独立排查代码错误-->
+<!--3. 减少单词词汇拼写错误-->
+<!--4. 合理使用html标签-->
+<!--5. css属性的熟练使用（盒子模型，浮动，定位）-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

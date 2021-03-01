@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制盒子的移动</title>
+    <style>
+        .box{
+            width:700px;
+            height:700px;
+            border: 2px solid #000;
+            position: relative;
+        }
+        .box .box1{
+            width: 100px;
+            height:100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+    </div>
+
+
+    <script>
+        var box1 = document.getElementsByClassName("box1")[0];
+        var step = 100;
+        var x = 0;
+        var y = 0;
+        document.onkeydown = function(e){
+            var keyCode = e.keyCode;
+            //移动
+            switch(keyCode){
+                case 40 : 
+                    y += step; 
+                    break;
+                case 38 :
+                    y -= step;
+                    break;
+                case 39:
+                    x += step;
+                    break;
+                case 37:
+                    x -= step;
+                    break;
+            }
+            //范围判断
+            if(y < 0){
+                y = 0;
+            }
+            if(y > 600){
+                y = 600;
+            }
+            if(x < 0){
+                x = 0;
+            }
+            if(x > 600){
+                x = 600;
+            }
+            box1.style.left = x + "px";
+            box1.style.top = y + "px";
+        }
+
+    </script>
+    
+</body>
+</html>

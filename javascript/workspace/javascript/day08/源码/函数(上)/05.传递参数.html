@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数传参</title>
+</head>
+<body>
+    <h3>函数传参</h3>
+    <script>
+        // 1.0 定义函数
+        function foo(a){//形参 （形式参数）
+            // 形参仅仅在作用域中使用
+            console.log(a);// undefined
+        }
+        // 2.0 调用函数
+        foo(99);//实参（值）
+        foo("hello");//实参（值）
+        foo(true);//实参（值）
+        foo();// 没有实参
+
+
+
+        // ========= 思考 ========= 
+        function add(a,b){
+            // a  === 100
+            // b  === 99
+            console.log(a+b);
+        }
+        add(100,99);
+        // 实参和形参的顺序要一一对应
+
+
+
+    </script>
+</body>
+</html>

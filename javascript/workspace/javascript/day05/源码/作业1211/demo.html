@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-20201211</title>
+    <style>
+        html ,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+        body {
+            background-image: url(./img/1.jpg);
+            background-size: 100% 100%;
+        }
+        .mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .mask .box {
+           width: 360px;
+           height: 200px;
+           background-color: #fff;
+           position: absolute;
+           left: 50%;
+           top: 50%;
+           margin-left: -180px;
+           margin-top: -100px;
+        }
+
+        .mask .box .close {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+            cursor: pointer;
+            border: 0;
+            outline: none;
+        }
+        .mask .box .close:hover {
+            background-color: #ccc;
+        }
+        .mask .box h3 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .mask .box p {
+            text-align: center;
+        }
+        .mask .box .btn-list {
+            width: 360px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+        .mask .box .btn-list button {
+            vertical-align: middle;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            outline: none;
+        }
+        .mask .box .btn-list .btn-success {
+            border: 1px solid #f00;
+            background-color: #f00;
+            color: #fff;
+        }
+
+        .mask .box .btn-list .btn-error {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="mask">
+        <div class="box">
+			<!--关闭按钮-->
+            <button class="close">×</button>
+            <h3>恭喜您，中了传奇一等奖</h3>
+            <p>请下载传奇手机APP领取奖品</p>
+            <div class="btn-list">
+                <button class="btn-success">确定</button>
+                <button class="btn-error">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 需求：
+            //获取页面相关的标签 
+            //点击关闭按钮 ，删除div.mask标签
+            //点击“确定”按钮，隐藏div.mask标签 
+
+		//步骤：
+		    //获取页面相关的标签 
+			var maskElement = document.getElementsByClassName("mask")[0];
+			var buttonClose = document.getElementsByClassName("close")[0];
+			var btnSuccess = document.getElementsByClassName("btn-success")[0];
+			
+            //点击关闭按钮 
+			buttonClose.onclick = function(){
+				//删除div.mask标签
+				//maskElement.remove();
+				document.body.removeChild(maskElement);
+			} 
+            //点击“确定”按钮
+			btnSuccess.onclick = function(){
+				// 隐藏div.mask标签 
+				//设置元素隐藏
+				//不占位置 ： display:none;
+				//占位置 ： visibility:hidden;
+				//透明度 ： opacity:0;
+				maskElement.style.display = "none";
+			}
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

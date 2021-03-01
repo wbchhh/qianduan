@@ -1,0 +1,263 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			body {
+			  margin:0;
+			}
+			ul {
+			  padding:0;
+			  margin:0;
+			  list-style:none;
+			}
+			
+			.wrapper {
+			   width:640px;
+			   margin:0 auto;
+			}
+			.wrapper .chat-box {
+			  padding:20px 15px;
+			  background-color:#f0f0f0;
+			} 
+			/*聊天区域*/
+			.chat-box-message {
+			  width:610px;
+			  background-color:#fff;
+			  height:800px;
+			  overflow-x: hidden;
+			  overflow-y: auto;
+			}
+			.chat-box-message ul {
+			   padding:10px 15px;
+			}
+			.chat-box-message ul li {
+				width:550px;
+				/*border:1px solid #ccc;*/
+				padding:10px 15px;
+			}
+			/*用户头像*/
+			.chat-box-message ul li .user-image {
+			    width:60px;
+				height:60px;
+				border-radius:50%;
+				overflow:hidden;
+				text-align:center;
+				line-height:60px;
+			}
+			.chat-box-message ul li .user-image  img {
+				vertical-align:top;
+			}
+			
+			/*用户消息*/
+			.chat-box-message ul li  .user-message {
+			    width:400px;
+				padding-top:20px;
+			}
+			.chat-box-message ul li  .user-message .item {
+				border-radius:5px;
+				position:relative;
+			}
+			
+			
+			.chat-box-message ul .pull-left  .user-image {
+			   float:left;
+			}
+			.chat-box-message ul .pull-left  .user-message {
+			   float:left;
+			   margin-left:15px;
+			}
+			.chat-box-message ul .pull-right .user-image{
+			   float:right;
+			}
+			.chat-box-message ul .pull-right .user-message {
+				float:right;
+				margin-right:15px;
+			}
+			
+			.chat-box-message ul .pull-left .user-message .item {
+				background-color:deepskyblue;
+				padding:10px 15px;
+				float:left;
+			}
+			.chat-box-message ul .pull-right .user-message .item {
+				background-color:deepskyblue;
+				padding:10px 15px;
+				float:right;
+			}
+			/*通过定位设置图标*/
+			.chat-box-message ul li  .user-message .item  span {
+			    position:absolute;
+				top:5px;
+				width:0;
+				height:0;
+				border-top:5px solid transparent;
+				border-right:10px solid transparent;
+				border-bottom:10px solid transparent;
+				border-left:10px solid transparent;
+			}
+			
+			.chat-box-message ul .pull-left  .user-message .item  span {
+				border-right:20px solid deepskyblue;
+				left:-20px;
+			}
+			
+			.chat-box-message ul .pull-right  .user-message .item  span {
+				border-left:20px solid deepskyblue;
+				right:-20px;
+			}
+			
+			/*发送消息区域*/
+			.chat-box-send {
+				width:610px;
+			}
+			.chat-box-send .input-message {
+			   padding:10px 15px;
+			   width:580px;
+			}
+			.chat-box-send .input-message input {
+				width:440px;
+				height:40px;
+				padding:0 0 0 20px;
+				/*改变盒子大小计算方式*/
+				box-sizing:border-box;
+			}
+			.chat-box-send .input-message button {
+				width:120px;
+				height:40px;
+				cursor:pointer;
+				background-color:#fff;
+			}
+			
+			
+			/*关于浮动以及清除浮动*/
+			.pull-left {
+			  float:left;
+			}
+			
+			.pull-right {
+			  float:right;
+			}
+			ul::after {
+			  content:"";
+			  clear:both;
+			  display:block;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<div class="wrapper">
+			<div class="chat-box">
+				<!--聊天区域-->
+				<div class="chat-box-message">
+					<!--对方-->
+					<ul>
+					    <li class="pull-left">
+						    <div class="user-image"><img src="./img/1.bmp" alt="1"/></div>
+							<div class="user-message">
+							    
+							   <div class="item">
+							        <span></span>您点的外卖到了您点的外卖到了您点的外卖到了您点的外卖到了
+							   </div>
+							</div>
+						</li>
+					</ul>
+					
+					<!--我的-->
+					<ul>
+					    <li class="pull-right">
+						    <div class="user-image"><img src="./img/2.bmp" alt="2"/></div>
+							<div class="user-message">
+							   
+								<div class="item">
+									<span></span>好的，我知道了，谢谢
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					
+					
+				
+				</div>
+				
+				<!--发送区域-->
+				<div class="chat-box-send">
+				    <div class="input-message">
+					     <input type="text" class="inp-box"/>
+						 <button class="btn-send">发送</button>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		
+
+		<script>
+			// 基本步骤：
+				// 1、获取元素 
+				// 2、绑定事件 
+				// 3、书写程序的处理逻辑
+
+
+			// 实现：
+				 // 1、获取元素 
+				 //  chat-box-message / inp-box / btn-send
+				 var chatBoxMessage = document.getElementsByClassName("chat-box-message")[0];
+				 var inpBox = document.getElementsByClassName("inp-box")[0];
+				 var btnSend = document.getElementsByClassName(" btn-send")[0];
+				 // 2、绑定事件 
+				 btnSend.onclick = function(){
+					// 3、书写程序的处理逻辑
+					// 获取输入的值
+					var v1 = inpBox.value;
+					// 判断输入框是否有值
+					if(v1.length !=0 ) {
+						// console.log(v1);
+						// 创建ul标签
+						var ulCreate = document.createElement("ul");
+						// 字符串拼接
+						// 定义字符串
+						var str = '';
+							str += '<li class="pull-right">'
+							str +=		'	<div class="user-image"><img src="./img/2.bmp" alt="2"/></div>'
+							str +=		'	<div class="user-message">'
+							str +=		'		'
+							str +=		'		<div class="item">'
+							str +=		'			<span></span>' + v1
+							str +=		'		</div>'
+							str +=		'	</div>'
+							str +=	'</li>'
+
+						// 填充ul标签的超文本
+						ulCreate.innerHTML = str;
+						// 添加聊天信息 
+						chatBoxMessage.appendChild(ulCreate);
+						// 重置输入框
+						inpBox.value = "";
+					}
+				 }
+				
+		</script>
+	</body>
+</html>
+
+<script>
+
+
+
+</script>
+
+
+
+
+
+
+
+
+

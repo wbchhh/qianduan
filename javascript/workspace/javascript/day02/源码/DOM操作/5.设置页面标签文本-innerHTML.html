@@ -1,0 +1,35 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:设置页面标签文本-innerHTML</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			#box {
+			  height:80px;
+			  background-color:yellowgreen;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>设置页面标签文本-innerHTML</h3>
+		<div id="box">
+			<span>hello today ! </span>
+		</div>
+		
+		<script>
+			//1.0 获取标签
+			var box = document.getElementById("box");
+			//.0 获取文本（包含html文本）
+			var html =  box.innerHTML;
+			console.log(html);
+			//.0 设置文本（解析html文本）
+			box.innerHTML = "<b>你好，今天！</b>";
+			
+		</script>
+	</body>
+</html>
+

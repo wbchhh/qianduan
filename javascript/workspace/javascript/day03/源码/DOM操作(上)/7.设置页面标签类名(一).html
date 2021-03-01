@@ -1,0 +1,51 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:设置页面标签类名</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+				div {
+					  width:100px;
+					  height:100px;
+					  background-color:#ccc;
+					  margin:10px;
+				}
+				
+				.active {
+					background-color:#f00;
+				}
+				.add {
+				    width:200px;
+					height:200px;
+				}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>设置页面标签类名(一)</h3>
+		<div ></div>
+		
+		<script>
+		 //1.0 获取页面的指定标签
+		 var elements = document.getElementsByTagName("div");
+		 var ele = elements[0];//标签
+		 
+		 //2.0 设置标签类名
+		 //类名可以有多个 
+		 //id名只有一个
+		 ele.className="active add";
+		 //ele.className="add";
+		 
+		 //3.0 获取标签类名
+		 console.log(ele.className);// active add
+		 
+		 
+		 
+		
+		</script>
+	</body>
+</html>
+

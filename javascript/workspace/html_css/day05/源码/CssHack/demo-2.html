@@ -1,0 +1,55 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：属性 hack [差别]</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.box {
+				  width:600px;
+				  height:50px;
+				  background-color:#ccc;
+			}
+			.box1 {
+			   _background:red;
+			}
+			
+			.box2 {
+			  *background:blue;
+			}
+			
+			.box3 {
+			  background:green\9;
+			}
+			
+			.box4 {
+			  background:orange\0;
+			}
+			
+			
+			
+			
+			
+			/*
+				
+				选择IE6及以下。连接线（中划线）（-）亦可使用，为了避免与某些带中划线的属性混淆，所以使用下划线（_）更为合适。
+				*：选择IE7及以下。诸如：（+）与（#）之类的均可使用，不过业界对（*）的认知度更高
+				\9：选择IE6+
+				\0：选择IE8+和Opera
+			*/
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<div class="box box1">IE6及以下</div>
+		
+		<div class="box box2">选择IE7及以下</div>
+		
+		<div class="box box3">选择IE6+</div>
+		
+		<div class="box box4">选择IE8+和Opera</div>
+	</body>
+</html>
+

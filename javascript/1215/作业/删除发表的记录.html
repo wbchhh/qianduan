@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除发表的记录</title>
+    <style>
+        input,button{
+            outline: none; /*去除选中状态边框*/ 
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            height:500px;
+            width:500px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        .box input{
+            width:400px;
+            height:40px;
+            margin-left: 50px;
+            padding-left: 10px;
+        }
+        .box button{
+            margin-left: 50px;
+            height:30px;
+            width: 50px;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .box .box1{
+            width:400px;
+            height:50px;
+            margin-left: 50px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+        .box .box1 span{
+            float: left;
+            padding-left: 10px;
+        }
+        .box .box1 div{
+            float: right;
+            margin-right: 10px ;
+            font-size: 20px;
+            height:20px;
+            width:20px;
+            /* background-color: red; */
+            border: 1px solid #000;
+            border-radius: 5px;
+            line-height: 20px;
+            text-align: center;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .box .box1 div:hover{
+            background-color: red; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" placeholder="请输入" class="inpu" value=""></input>
+        <div class="btn"><button class="send">发表</button></div>
+        <div class="box1"><span></span><div class="close">×</div></div>
+    </div>
+    <script>
+        var send = document.getElementsByClassName("send")[0];
+        var box = document.getElementsByClassName("box")[0];
+        var inpu = document.getElementsByClassName("inpu")[0];
+        send.onclick = function(){
+            var v1 = inpu.value;
+            if(v1.length != 0){
+                var box1 = document.createElement("div");
+                str = "";
+                str += '<div class="box1"><span>'+v1+'</span><div class="close">×</div></div>'
+                box1.innerHTML = str;
+                box.appendChild(box1);
+                inpu.value = "";
+                //console.log(inpu.value);
+            }
+        }
+        box.onclick = function(event){
+            var ele = event.target;
+            if(ele.className == "close"){
+                ele.parentElement.remove();
+            }
+        }
+    </script>
+
+
+</body>
+</html>

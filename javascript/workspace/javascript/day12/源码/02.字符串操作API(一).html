@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串操作的API</title>
+</head>
+<body>
+    <h3>字符串操作的API</h3>
+
+
+    <script>
+
+        // 学习一个API的技巧。
+            // 调用者：字符串
+            // 参数：
+            // 返回值：
+            // 功能：
+        
+        // 定义字符串
+        var str = "hello world!";
+        console.log(typeof str);// string
+        console.log(str.length);// 长度 12
+        console.log(str);
+
+        //如果没有提供的字符串操作api,关于字符串的一切操作，是难以处理的
+        //例如：判断字符串是否包含某个字符串，截取字符串一小段字符， 转小写转大写， 去掉空格，替换字符串
+        // toString() 转字符串 转任意进制
+        // console.log(toString());
+
+        // indexOf() 
+        // 参数：字符（串）
+        // 返回值：返回字符（串）的索引值 / -1 , 如果是-1表示不包含该字符（串）
+        // 功能：检索字符（串）的所在索引位置。默认首次出现的字符串
+        console.log("hello world!".indexOf("x"));// -1
+        console.log("hello world!".indexOf("h"));// 0
+        console.log("hello world!".indexOf("o"));// 4
+        console.log("hello world!".indexOf("l"));// 2
+        console.log("hello world!".indexOf("wor"));// 6
+
+        // 参数：字符（串）
+        // 返回值：返回字符（串）的索引值 / -1 , 如果是-1表示不包含该字符（串）
+        // 功能：检索字符（串）的所在索引位置。默认最后次出现的字符（串）
+        // lastIndexOf()
+        console.log("hello world!".lastIndexOf("l"));// 9       
+        // toLowerCase()
+        // 参数：无
+        // 返回值：转小写字母的字符串
+        // 功能：把大写的字母转小写
+        console.log("HELLO WORLD".toLowerCase());// hello world
+        // toUpperCase()
+        // 参数：无
+        // 返回值：转大写字母的字符串
+        // 功能：把小写的字母转大写
+        console.log("hello world".toUpperCase());// hello world
+        // trim()
+        // 参数：无
+        // 返回值：去掉前后空格的字符串
+        // 功能：把字符串前后出现的空格字符串去掉
+        console.log("   hello   world    ");
+        console.log("   hello   world    ".trim());
+        // replace()
+        // 参数：
+        // 参数1：被替换的字符（串） 参数2：目标字符（串）
+        // 返回值：替换之后的字符串
+        // 功能：替换字符(串)
+        console.log("  123    hello   world    ".replace("  123    ",""));
+        console.log("hello   world".replace("hello   world","你好  世界"));
+        // console.log("  123    hello   world    ".replace(/\s/g,"")); // 利用正则表达式去掉空格
+
+        // split()
+        // 参数：空字符串、字符（串）、无
+        // 返回值：数组
+        // 功能：把字符串切割成数组
+        console.log("hello,world".split(","));
+        console.log("hello,world".split(""));
+        console.log("hello,world".split());
+
+
+        // concat()
+            // 参数：字符串
+            // 返回值：字符串
+            // 功能：合并字符串
+        console.log("hello world!".concat("你是，世界"));
+
+
+
+
+        // 构造函数 String 【了解】
+        // console.dir(new String());
+    </script>
+</body>
+</html>
+<!-- API -->
+<!-- application program interface  -->
+<!-- 应用程序的编程接口 -->
+<!-- 在JS领域 ，是指可以实现某个功能的属性和方法，我们叫做API -->
+<!-- 例如： -->
+<!-- dom.innerText  设置元素文本 -->
+<!-- document.getElementById()  通过id名获取元素 -->
+<!-- 在JS中，函数我们也叫做方法。 -->

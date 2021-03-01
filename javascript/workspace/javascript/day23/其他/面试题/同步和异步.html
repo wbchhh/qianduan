@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同步和异步</title>
+</head>
+<body>
+    
+    <script>
+
+        // 同步：是一个阻塞的线程，同一时间执行一个任务。顺序从上往下执行
+        // console.log(1);
+        // console.log(2);
+        // console.log(3);
+
+
+
+        // 异步（了解）:是一个非阻塞的线程，同一时间执行多个任务。不按顺序执行
+        // 此处为异步编程（暂时用于理解异步）
+        console.log("111");
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                console.log("222")
+                console.log(JSON.parse(xhr.responseText).msg);
+            }
+        }
+        var url = "./data.json";
+        xhr.open("get",url,true);
+        xhr.send(null);
+        console.log("333");
+
+        // 111
+        // 333
+        // 222
+
+        // setTimeout(fn,1000)
+
+    </script>
+</body>
+</html>

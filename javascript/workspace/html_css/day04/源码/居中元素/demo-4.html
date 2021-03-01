@@ -1,0 +1,43 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：定位</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.parent {
+				  width:600px;
+				  height:500px;
+				  background-color:skyblue;
+				  /*相对定位*/
+				  position:relative;
+			}
+			.parent .child {
+			      width:200px;
+				  height:100px;
+				  background-color:red;
+				  /*绝对定位*/
+				  position:absolute;
+				  left:0;
+				  right:0;
+				  top:0;
+				  bottom:0;
+				  margin:auto;
+				  /*之前谷歌浏览器支持*/
+				  /*建议不使用*/
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	   <div class="parent">
+	       <div class="child">
+		   
+		   </div>
+	   </div>
+	
+	</body>
+</html>
+

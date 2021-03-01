@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>制作时钟</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrapper {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .section .out-circle {
+            width: 300px;
+            height: 300px;
+            border: 80px solid #43e925;
+            border-radius: 50%;
+            position: relative;
+        }
+        .section .out-circle .in-circle {
+            width: 30px;
+            height: 30px;
+            background-color: #ff5500;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -15px;
+            margin-top: -15px;
+            z-index: 1000;
+        }
+        /* .section .out-circle ul {} */
+        .section .out-circle ul li {
+            position: absolute;
+            left: 50%;
+            /* 设置转换属性的原点 */
+            /* transform-origin: left bottom; */
+            transform-origin: bottom center;
+        }
+        .section .out-circle ul li.hour {
+            width: 20px;
+            height: 70px;
+            background-color: #00fff5;
+            margin-left: -10px;
+            top: 50%;
+            margin-top: -70px;
+            /* 旋转属性  */
+            transform: rotate(0deg);
+        }
+        .section .out-circle ul li.minute {
+            width: 10px;
+            height: 120px;
+            background-color: #af9900;
+            margin-left: -5px;
+            top: 50%;
+            margin-top: -120px;
+            /* 旋转属性  */
+            transform: rotate(0deg);
+        }
+        .section .out-circle ul li.second {
+            width: 4px;
+            height: 140px;
+            background-color: #e93e3e;
+            margin-left: -2px;
+            top: 50%;
+            margin-top: -140px;
+            /* 旋转属性  */
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 区块 -->
+        <div class="section ">
+            <!-- 外圆 -->
+            <div class="out-circle">
+                <!-- 内圆 -->
+                <div class="in-circle"></div>
+                <!-- 列表 -->
+                <ul>
+                     <!-- 时针 -->
+                     <li class="hour" id="hour"></li>
+                     <!-- 分针 -->
+                     <li class="minute" id="minute"></li>
+                     <!-- 秒针 -->
+                     <li class="second" id="second"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    // 需求：制作时钟
+
+    // 基本常识
+    // 1个圆 360 
+    // 1个时钟 有12格 每一格就是一个小时
+    // 1小时(针)旋转的角度 = 360 / 12 = 30°
+    // 1分钟(针)旋转的角度 = 360 / 60 = 6° ====  30 / 5 = 6 °
+    // 1秒钟(针)旋转的角度 = 6° ===  1° 
+
+
+    // 步骤：
+        // 1.0 获取相关标签
+        var hour_element = document.getElementById("hour");
+        var minute_element = document.getElementById("minute");
+        var second_element = document.getElementById("second");
+        // console.log(hour_element,minute_element,second_element)
+
+        // 2.0 定时器函数
+        var timer = null;
+
+        // 3.0 设置时分秒
+        function autoPlay(){
+            // .0 创建日期对象的实例（关于时间的数据）
+            var dt = new Date();
+            // .0 获取小时
+            var h = dt.getHours();
+            // .0 获取分钟
+            var m = dt.getMinutes();
+            // .0 获取秒钟
+            var s = dt.getSeconds();
+            // .0 获取毫秒钟
+            var ms = dt.getMilliseconds();
+
+
+            // 计算精确的小时
+            h = h + m / 60;
+
+            // 计算精确的分钟
+            m = m + s / 60;
+
+            // 计算精确的秒
+            s = s + ms / 1000;
+
+            // console.log(h,m,s,ms);
+            // .0 根据所获取的时间设置元素的角度
+            //  时针角度
+            hour_element.style.transform = "rotate("+(h*30)+"deg)";
+            //  分针角度
+            minute_element.style.transform = "rotate("+(m*6)+"deg)";
+            //  秒针角度
+            second_element.style.transform = "rotate("+(s*6)+"deg)";
+        }
+
+        //4.0 调用autoPlay()函数
+        autoPlay();
+
+        // 5.0 执行定时器函数
+        // timer = setInterval(function(){
+        //     autoPlay();
+        // },1000)
+
+        // 因为autoPlay是全局函数，所以可以这么书写
+        timer = setInterval(autoPlay,1000);
+            
+        // 总结：
+            // 1.0  不断更新时间的数据
+            // 2.0  获取当前的时分秒毫秒
+            // 3.0  时针乘以 30 ° 
+            // 4.0  分针乘以 6 ° 
+            // 5.0  秒针乘以 6 ° 
+
+
+
+</script>

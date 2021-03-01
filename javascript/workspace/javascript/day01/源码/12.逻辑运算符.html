@@ -1,0 +1,70 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：逻辑运算符</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>逻辑运算符</h3>
+		<p> ||   或          </p>
+		<p> &&   且 （与）   </p>
+		
+		<script>
+		//只需要一个条件成立，结果为true (真)
+		console.log( 1 < 2 ||  2 > 3 );// true 
+		console.log( 1 < 0 ||  2 > 3 );// false 
+		console.log( 1 < 0 ||  2 > 3|| true );// true 
+		console.log( 1 < 0 ||  2 > 3|| 9< 10 );// true 
+		
+		
+		console.log("----------------------------")
+		//所有条件都需要成立，结果为true (真)
+		console.log(1 < 2 && 2 < 3 );// true 
+		console.log(1 < 2 && 2 < 2 );// false 
+		
+		
+		console.log("----------------------------")
+		// 或 
+		//var num = 0;
+		var num = false;
+		var res = num || 2021; //前者条件不成立，执行后者的代码
+		console.log(res);//2021 
+		
+		console.log("----------------------------")
+		var num11 = 111111;
+		var res11 = num11 || 2021; //前者条件成立，执行前者的代码
+		console.log(res11);//111111 
+		
+		console.log("----------------------------")
+		// 且
+		var str = "hello world";
+		var res2 = str && "你好,世界";//前者条件成立，执行后者的代码
+		console.log(res2);
+		
+		console.log("----------------------------")
+		var str3 = false;
+		var res3 = str3 && "你好,世界"; //前者条件不成立，直接是结果 false
+		console.log(res3);
+		
+	
+		console.log("----------------------------")
+		
+		var bool = 1 < 2;
+		bool && console.log("1小于2");
+		//条件成立吗, 成立：执行 && 后面的代码，否则，不执行
+		
+		
+		
+		
+		
+		</script>
+	</body>
+</html>
+

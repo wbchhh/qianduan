@@ -1,0 +1,142 @@
+/* 重置页面默认样式 */
+body {
+  margin: 0;
+}
+ul , ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+a , a:hover , a:focus {
+    color: #000;
+    text-decoration: none;
+}
+img {
+    display: block;
+}
+/* 设置轮播图的样式 */
+/* 520 * 280 */
+.wraper {
+    width: 600px;
+    margin: 0 auto;
+}
+/* 轮播图 */
+.sipwer-banner {
+    width:520px;
+    margin: 100px auto;
+    position: relative;
+}
+/* 图片容器 */
+.swiper-banner-box { 
+    width:520px;
+    height: 280px;
+    overflow: hidden;
+}
+.swiper-banner-box ul {
+    /* width: 3640px; */
+    width: 4000px;
+    margin-left: -520px;
+ }
+ /* 伪类清除浮动 */
+ .swiper-banner-box ul::after {
+    content: "";
+    clear: both;
+    display: block;
+ }
+.swiper-banner-box ul li { 
+    float: left;
+}
+.swiper-banner-box ul li a { 
+    display: block;
+    position: relative;
+}
+.swiper-banner-box ul li a i {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #f00;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 50px;
+    font-size: 26px;
+}
+.swiper-banner-box ul li a img { 
+    width: 520px;
+    height: 280px;
+}
+/* 导航点容器 */
+.swiper-banner-point { 
+    position: absolute;
+    width: 520px;
+    bottom: 10px;
+    left: 0;
+}
+.swiper-banner-point ol { 
+    width: 100px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.swiper-banner-point ol li {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    float: left;
+    cursor: pointer;
+ }
+ .swiper-banner-point ol li.active {
+     background-color: #f00;
+ }
+
+/* 左右切换按钮 */
+.prev-box , .next-box { 
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.2);
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    cursor: pointer;
+    line-height: 40px;
+    text-align: center;
+}
+.prev-box { 
+    left: 0;
+ }
+.next-box { 
+    right: 0;
+}
+.prev-box:hover , .next-box:hover {
+    background-color: rgba(0,0,0,0.4);
+}
+.prev-box .icon , .next-box .icon { 
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border:10px solid transparent;
+    vertical-align: middle;
+}
+.prev-box .icon { 
+    border-right:10px solid #fff;
+    margin-left: -10px;
+}
+.next-box .icon { 
+    border-left:10px solid #fff; 
+    margin-left: 10px;
+}
+
+
+
+
+
+
+/* css预处理语言 */
+/* less / sass */

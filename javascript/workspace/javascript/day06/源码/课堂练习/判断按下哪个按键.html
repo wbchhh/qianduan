@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件（键值码）</title>
+</head>
+<body>
+    <h3>键盘事件（键值码）</h3>
+    <p>光标不要在控制台中，不会触发键盘事件</p>
+
+    <script>
+        // .0 记录移动的方向
+        var direction = "down";
+        // 1.0 给document绑定事件
+        document.onkeydown = function(evt){//形参 占位置 代表事件对象
+            // evt : 事件对象
+            // keyCode : 键值码 （和键盘上的按键一一对应的数字） 
+            var keyCode = evt.keyCode;
+            // console.log("keyCode:",keyCode);
+            // 2.0 设置方向
+                // 40 ----- 向下
+                // 38 ----- 向上
+                // 37 ----- 向左
+                // 39 ----- 向右
+            if(keyCode == 40 ){
+                direction = "down"
+            }
+            if(keyCode == 38){
+                direction = "up"
+            }
+            if(keyCode == 37){
+                direction = "left"
+            }
+            if(keyCode == 39){
+                direction = "right"
+            }
+            // 查看方向
+            console.log(direction);
+        }
+
+        // console.log(direction,1.0);// down
+
+
+
+    </script>
+</body>
+</html>

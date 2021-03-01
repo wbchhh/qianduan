@@ -1,0 +1,45 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：九九乘法口诀</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>九九乘法口诀</h3>
+		<div id="con">
+		
+		
+		</div>
+		
+		<script>
+			//1.0 获取标签
+			var con = document.getElementById("con");
+			//2.0 定义字符串
+			var str = "";
+			//3.0 外部循环
+			//为什么使用html标签？为了更好修饰页面图文信息
+			for(var i = 1 ; i < 10 ; i ++){
+			    // 内部循环
+				for(var j = 1 ; j <= i ; j ++){
+					//拼接字符串
+					str += i + "*" + j +"="+ (i * j) +"&nbsp;&nbsp;";
+				}
+				//换行
+				str += "<br/>"
+			}
+			
+			//4.0 渲染字符串
+			con.innerHTML = str;
+			
+		
+		</script>
+	</body>
+</html>
+

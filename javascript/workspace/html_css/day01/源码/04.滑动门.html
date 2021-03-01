@@ -1,0 +1,98 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素-->
+	     <!--不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：滑动门</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.row {
+			   display:inline-block;
+			   height:50px;
+			   cursor:pointer;
+			}
+			.row .col {
+				height:50px;
+				line-height:50px;
+				float:left;
+			}
+			/*并集选择器*/
+			.row .left , .row .right {
+				width:50px;
+			}
+			.row .left{
+			  background-image:url("./images/l.png")
+			}
+			.row .right{
+			  background-image:url("./images/r.png")
+			}
+			.row .center {
+				background-image:url("./images/c.png");
+			}
+			
+			
+			
+			
+			
+			.box {
+			  width:900px;
+			  heighgt:50px;
+			  line-height:50px;
+			  background-image:url("./images/bg.png");
+			  background-size:900px 50px;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素-->
+	
+		<div class="wrapper">
+			<!--滑动门-->
+			<div class="row">
+				<div class="col left"></div>
+				<div class="col center">登录</div>
+				<div class="col right"></div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<!--滑动门-->
+			<div class="row">
+				<div class="col left"></div>
+				<div class="col center">免费注册</div>
+				<div class="col right"></div>
+			</div>
+		</div>
+		
+		<div class="wrapper">
+			<!--滑动门-->
+			<div class="row">
+				<div class="col left"></div>
+				<div class="col center">发送手机验证码</div>
+				<div class="col right"></div>
+			</div>
+		</div>
+		
+		<div class="wrapper">
+			<!--滑动门-->
+			<div class="row">
+				<div class="col left"></div>
+				<div class="col center">剩余时间59秒</div>
+				<div class="col right"></div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--<div class="box">文字文字文字文字文字</div>-->
+		
+	
+	</body>
+</html>
+

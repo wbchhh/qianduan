@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 700px;
+            padding: 200px 20px;
+            background-color: #ccc;
+            font-size: 20px;
+            letter-spacing: 10px;
+        }
+        .box span{
+            text-decoration: underline;
+            color: #f00;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>
+            距离元旦还有<span>0</span>天<span>0</span>小时<span>0</span>分钟<span>0</span>秒钟<span>
+        </h3>
+    </div>
+    <script>
+        //获取页面所有span标签
+        var spanEle =document.getElementsByTagName("span");
+        //相差时间 = 元旦时间-现在时间
+        var futureTime = new Date();
+        futureTime.setFullYear(2021);
+        futureTime.setMonth(0);
+        futureTime.setDate(1);
+        futureTime.setHours(0);
+        futureTime.setMinutes(0);
+        futureTime.setSeconds(0);
+        var endTime = futureTime.getTime(); //获取元旦时间戳
+
+        function formatTime(sec){
+            //判断是否传参
+            if(sec ===undefined){
+                return 0;
+            }
+            var days = 0;
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+            //天数
+            days = Math.floor(sec / 3600 / 24);
+            //小时
+            hours = Math.floor(sec / 3600 % 24);
+            //分钟
+            minutes = Math.floor(sec % 3600 / 60);
+            //秒数
+            seconds = Math.floor(sec % 60);
+            //定义对象 记录格式化的时间
+            var obj = {
+                d:days,
+                h:hours,
+                m:minutes,
+                s:seconds
+            }
+            return obj;
+        }
+
+        //定义初始化函数
+        var init = function(){
+            var nowDate =new Date();
+            var nowTime = nowDate.getTime(); //获取现在时间戳
+            var totalTime = (endTime - nowTime)/1000;
+            var res = formatTime(totalTime);
+
+            spanEle[0].innerText = res.d;
+            spanEle[1].innerText = res.h;
+            spanEle[2].innerText = res.m;
+            spanEle[3].innerText = res.s;
+        }
+        init();//初始化效果
+        //执行定时器函数
+        var timer =setInterval(init ,1000);
+    </script>
+</body>
+</html>

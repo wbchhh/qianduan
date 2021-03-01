@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式-内部类</title>
+</head>
+<body>
+    <h3>正则表达式-内部类</h3>
+
+    <script>
+        // regExp.test()
+            // 调用者：正则表达式的实例
+            // 参数：字符/字符串
+            // 返回值：布尔值 （true 表示符合正则表达式）
+            // 功能：检查文本是否符合正则表达是描述的内容
+        // 书写方式
+        // 内部类
+
+        // 1.0 简单类 (只多不少)
+        // 描述 hello 这个字符串
+        // var re = /hello/;
+        // console.log(re.test("aaaa"));// false
+        // console.log(re.test("hello"));// true
+        // console.log(re.test("hello123"));// true
+        // console.log(re.test("456hello123"));// true
+
+        // =========================================================
+
+
+        // 2.0 预定义类 （提前定义）
+        // \d    表示数字
+        // \D    表示非数字
+        // \s    表示空格字符
+        // \S    表示非空格字符
+        // \w    表示英文词汇字符（包含数字）
+        // \W    表示非英文词汇字符
+
+        // 编写在正则表达式结束字符位置
+        // /正则表达式/g  全部
+        // /正则表达式/i  忽略大写字母
+
+        // RegExp
+        // regular（规则） expression（表达）
+        // 事出必有因
+        // 记录正则表达式的变量
+        // var re = /\d/;
+        // console.log(re.test("abc"));// false
+        // console.log(re.test("123"));// true
+        // console.log(re.test(123));// true
+        // console.log(re.test("123456abcde"));// true
+
+        // console.log(/\s/.test(""));// false
+        // console.log(/\s/.test("    "));// true
+        // console.log("  123   hello world   ".trim());// 去掉首尾空格字符串
+        // console.log("  123   hello world   ");//
+        // console.log("  123   hello world   ".replace(/\s/g, ""));//去掉所有空格
+
+        // 思考
+        // function myTrim(str){  return  去掉空格的字符串; }
+        // =========================================================
+
+
+        // 3.0 范围类
+        // 区间
+        // 0 ~ 9   数字范围
+        // a ~ z   字母范围
+        // \u4e00-\u9fa5         中文汉字范围
+        // \u4e00-\u9fa5         表示中文开始~结束的unicode编码
+        // var re = /[4-9]/;// 表示数组
+        // console.log(re.test("abc"));// false
+        // console.log(re.test("123"));// false
+        // console.log(re.test("456"));// true
+        // console.log(re.test("234"));// true
+
+        // console.log(/[a-z]/.test("abc"));// true
+        // console.log(/[a-f]/.test("ijk"));// false
+        // console.log(/[A-Z]/.test("ABC"));// true
+        // console.log(/[a-z]/.test("ABC"));// false
+        // console.log(/[a-z]/i.test("ABC"));// true  忽略大小写 i 
+
+
+        // console.log(/[\u4e00-\u9fa5]/.test("你好"));// true
+        // console.log(/[\u4e00-\u9fa5]/.test("我爱你,祖国"));// true
+        // console.log(/[\u4e00-\u9fa5]/.test("hello world"));// false
+        // console.log(/[\u4e00-\u9fa5]/.test("中國"));// true
+        // console.log(/[\u4e00-\u9fa5]/.test("樂"));// true
+        // console.log(/[\u4e00-\u9fa5]/.test("同九年，何汝秀"));// true
+        // =========================================================
+
+        // 4.0 组合类
+        // 数组 ， 字母 ，汉字 ，其他字符
+        // var re = /[5-9a-fA-Z]/;
+        // console.log(re.test("123"));// false
+        // console.log(re.test("456"));// true
+        // console.log(re.test("abc"));// true
+        // console.log(re.test("ABC"));// true
+
+        // console.log(/[qwer159]/.test(1));// true
+        // console.log(/[qwer159]/.test(234));// false
+        // console.log(/[qwer159]/.test("234q"));// true
+        // console.log(/[真善美]/.test("真美丽"));// true
+
+
+        // 5.0 反向类
+        // 取反
+        // 备注：取反字符在[]中书写
+        // var re = /[^1]/
+        // 表示字符串中不出现12345字母即可
+        var re = /[^12345]/
+        console.log(re.test("1"));// false
+        console.log(re.test("23435"));// false
+        console.log(re.test("234356"));// true
+        console.log(re.test("678910"));// true
+        console.log(re.test("abcde"));// true
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+        
+       
+        
+
+
+    </script>
+</body>
+</html>

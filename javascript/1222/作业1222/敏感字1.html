@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrap {
+            width: 100%;
+            max-width: 600px;
+            height: 800px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+        .messagebox , .inputbox {
+            padding: 20px 15px;
+        }
+        .messagebox ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            height: 600px;
+            background-color: #fff;
+        }
+        .messagebox ul li::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .messagebox ul li .f-right {
+            float: right;
+            padding: 10px 15px;
+            border: 1px solid skyblue;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .inputbox input {
+            box-sizing: border-box;
+            display: block;
+            height: 40px;
+            width: 470px;
+            float: left;
+            border: 0;
+            padding: 0 0 0 20px;
+        }
+        .inputbox button {
+            float: left;
+            height: 40px;
+            width: 100px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+        }
+        .inputbox button:hover {
+            background-color: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="messagebox">
+            <ul id="messageList">
+                <!-- <li ><div class="f-right"> 完犊子了 </div> </li> -->
+            </ul>
+        </div>
+        <div class="inputbox">
+            <input type="text" placeholder="输入消息">
+            <button>发送</button>
+        </div>
+    </div>
+
+    <script>
+        // 需求：
+            // 把发送信息内同中出现的敏感词替换成 ***
+            // 例如:
+                // 你大爷, 替换成 ***
+                // 牛逼， 替换成 ***
+                // 滚， 替换成 ***
+                // 完犊子了， 替换成 ***
+                // xxxx,替换成 ****
+        var btn = document.getElementsByTagName("button")[0];
+        var ul = document.getElementById("messageList");
+        btn.onclick = function(){
+            var tx = btn.previousElementSibling.value;
+            setNews(tx);
+            btn.previousElementSibling.value = "";
+        }      
+        function setNews(news){
+            var li = document.createElement("li");
+            var mingan = ["你大爷","滚","牛逼","完犊子了","xxxx"];
+            for(var i=0;i<mingan.length;i++){
+                if(news.indexOf(mingan[i]) > -1){
+                    news = news.replace(mingan[i] , "***");
+                }
+            }
+            var str = "";
+            str += '<div class="f-right">'+news+'</div>';
+            li.innerHTML = str;
+            ul.appendChild(li);
+        }
+    </script>
+</body>
+</html>

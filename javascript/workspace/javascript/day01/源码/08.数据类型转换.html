@@ -1,0 +1,132 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：数据类型的转换</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>数据类型的转换</h3>
+		
+		
+		<script>
+		   // 数据类型： string number boolean    undefined null symbol 
+		   // "string"
+		   // undefined
+		   
+		   
+		   // 构造函数  String Number Boolean 
+		   //1.0 显式转换
+		   var str = "99";
+		   console.log(typeof str);// string
+		   
+		   var num = Number(str);
+		   console.log(typeof num);// number 
+		   
+		   var str2 = String("100");
+		   console.log(typeof str2);// string
+		   
+		   var bool = Boolean("1");
+		   console.log(bool);// true
+		   console.log(typeof bool);// boolean
+		   console.log(Boolean(""));
+		   
+		   //例如：
+		   //数据类型没有转换
+		   var a = "100";
+		   var b = 99;
+		   console.log(a + b);// 10099  字符串拼接
+		   
+		   //数据类型有转换
+		   var a1 = "100";
+		   var b1 = 99;
+		   console.log(Number(a1) + 99);// 199 进行计算
+		   
+		   console.log("------------------------")
+		   //转换的作用：相同的数据类型才可以进行计算
+		   //2.0 隐式转换
+		   // 计算机自动转换
+		   // 通过运算符转换
+		   // 任何数减 0  等于其自身
+		   var count = "98";
+		   console.log(count);// 字符串
+		   console.log(count - 0 );// 数字
+		   var res = count - 0;
+		   console.log(typeof res);// number
+		   // - 
+		   var str3 = 100;
+		   console.log(str3);// 数字
+		   console.log(str3+"");// 字符串
+		   var res2 = str3+"";
+		   console.log(typeof res2);//string 
+		   var res3 = true + "";
+		   console.log(typeof res3);// string 
+		   // +  除了可以做加法运算 ，还可以做字符串拼接
+		   
+		    //通过语句转换
+			//if 如果
+			//if(条件){ 条件成立，执行代码 }
+			
+			var res4 = true;
+			//if(res4 === true){
+			if(res4){
+				console.log("条件成立11")
+			}
+			
+			// var res5 = "";
+			// var res5 ;
+			// var res5 = 100 ;
+			var res5 = "hello world";
+			if(res5){
+				console.log("条件成立22")
+			}
+		   
+		    console.log("------------------------")
+			// 1 == true
+			// 0 == false
+			// "" == false
+			// [] == false
+			
+		   //记住有哪些隐式转换
+		   //查字典
+		   // 在JS中 0 表示 false  , 1 表示true 
+		   console.log(1 == true);   // true 
+		   console.log(0 == false);  // true
+		   console.log("" == false); // true
+		   console.log([] == false); // true
+		   console.log("" == []);    // true
+		   console.log(undefined == null);//true
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		   
+		
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回顾数据类型</title>
+</head>
+<body>
+    
+
+    <script>
+        // 1.0 基本数据类型 (数据) 
+        // 值
+        var str = "hello";
+        var num = 100;
+        var bool = true;
+
+        // 赋值
+        str = "world";
+        console.log(str);// world
+
+
+        // 2.0 引用数据类型（数据集合）
+        // 地址
+        // var arr = [ str, num , bool ];
+        var arr = ["hello", 100 ,  true ];
+        console.log(arr);
+        console.log(arr[0]);// hello 
+        arr[0] = "世界";
+        console.log(arr);
+
+
+        // 思考：
+        // 为什么要拷贝数据?  数据可以互相不受影响
+        // 1.0 浅拷贝 
+        
+        // 2.0 深拷贝
+
+
+    </script>
+</body>
+</html>

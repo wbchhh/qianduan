@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品排序</title>
+    <style>
+        ul,
+        ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            float: left;
+            margin-left: 50px;
+        }
+
+        ul li {
+            width: 160px;
+            height: 40px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+
+        ul li span {
+            display: block;
+            width: 160px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        ol {
+            width: 600px;
+            height: 1000px;
+            background-color: #f0f0f0;
+        }
+
+        ol li {
+            width: 598px;
+            height: 100px;
+            border: 1px solid gray;
+        }
+
+        ol li div {
+            height: 40px;
+        }
+
+        ol li div p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul id="ul_nav">
+            <li><span data-index="0">单价最高</span></li>
+            <li><span data-index="1">单价最低</span></li>
+            <li><span data-index="2">销量最高</span></li>
+            <li><span data-index="3">信用最高</span></li>
+        </ul>
+
+        <ol id="ol_content">
+            <!-- <li>
+                <div> <p>商品名称</p> </div>
+               <div>  <p>价格    </p> </div>
+               <div>  <p>销量    </p> </div>
+            </li> -->
+        </ol>
+    </div>
+
+    <script>
+        // 1.0 假数据
+        var data = [
+            {
+                "price": 199,
+                "sales": 10000,
+                "honesty": 2,
+                "desc": "大白菜"
+            },
+            {
+                "price": 599,
+                "sales": 9999,
+                "honesty": 5,
+                "desc": "大西瓜"
+            },
+            {
+                "price": 399,
+                "sales": 6666,
+                "honesty": 9,
+                "desc": "大番薯"
+            }
+        ]
+
+
+        // 基本步骤：
+        // 1.0 获取页面相关的元素（记录）
+        // 2.0 事件驱动
+        // 3.0 书写程序的处理逻辑
+
+        // 编码实现：
+        // 1.0 获取页面相关的元素（记录）
+        var ul_nav = document.getElementById("ul_nav");
+        var ol_content = document.getElementById("ol_content");
+        var navItems = ul_nav.getElementsByTagName("li");
+        // 2.0 事件驱动
+        // 事件委托的方式
+        ul_nav.onclick = function (event) {
+            // 3.0 书写程序的处理逻辑
+            // 事件源
+            var ele = event.target;
+            // console.log(ele);
+            // class 标签自带属性
+            // data-index 标签自定义属性
+            // 获取自定义属性  data-index 
+            var index = ele.getAttribute("data-index");
+            // 判断index是否有值
+            if (index) {
+                // 控制流语句
+                switch (index) {
+                    case "0":
+                        // 对数据进行排序（单价最高）
+                        data.sort(function (prev, next) {
+                            //降序（值从大到小）
+                            return next.price - prev.price;
+                        });
+                        break;
+                    case "1":
+                        // 对数据进行排序（单价最低）
+                        data.sort(function (prev, next) {
+                            // 升序（值从小到大）
+                            return prev.price - next.price;
+                        });
+                        break;
+                    case "2":
+                        // 对数据进行排序（销量最高）
+                        data.sort(function (prev, next) {
+                            //降序（值从大到小）
+                            return next.sales - prev.sales;
+                        });
+                        break;
+                    case "3":
+                        // 对数据进行排序（信用最高）
+                        data.sort(function (prev, next) {
+                            //降序（值从大到小）
+                            return next.honesty - prev.honesty;
+                        });
+                        break;
+                }
+                // console.log(data);
+                // 调用渲染数据的函数
+                render(data);// 实参 ：全局变量 data
+                // 设置当前点击的导航选项高亮
+                for (var i = 0; i < navItems.length; i++) {
+                    // 设置背景色白色
+                    navItems[i].style.backgroundColor = "white";
+                }
+                // 设置背景色白色
+                navItems[index].style.backgroundColor = "#ccc";
+            }
+        }
+
+        // 4.0 定义渲染数据的函数
+        function render(data) {// 形参 ：局部变量 data
+            // 判断data是否值
+            if (data == undefined || data.length == 0) {
+                return;
+            }
+            // 定义字符串
+            var str = '';
+            // 循环数据
+            for (var i = 0; i < data.length; i++) {
+                str += '<li>'
+                str += '    <div>  <p>名称:' + data[i].desc + '</p> </div>'
+                str += '    <div>  <p>单价:' + data[i].price + '</p> </div>'
+                str += '    <div>  <p>销量:' + data[i].sales + '</p> </div>'
+                str += '</li>'
+            }
+            // 渲染拼接好的字符串
+            ol_content.innerHTML = str;
+        }
+
+        // 初始化效果
+        render(data);
+
+        // 总结：
+            // 掌握函数的封装（提高代码的重复使用）
+            // 掌握数组的sort方法
+            // 掌握事件委托（给父级元素或者祖先元素绑定事件，其后代元素也同时注册了相应的事件，这种绑定事件的方式，叫做事件委托）
+            // 事件委托的实现：是利用了事件冒泡原理
+            // 事件在触发的时候，有三个阶段 事件捕获阶段、目标阶段、冒泡阶段。
+            // div > ul > li > span 
+            // addEventListener 
+            // 使用事件对象  event.target属性 找出事件源（目标元素）
+    </script>
+
+</body>
+
+</html>

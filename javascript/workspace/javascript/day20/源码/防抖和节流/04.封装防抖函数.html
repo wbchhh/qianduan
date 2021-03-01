@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听输入框值的变化(防抖 2 )</title>
+    <style>
+            input {
+                width: 498px;
+                height: 50px;
+                border: 1px solid #000;
+                margin: 0 auto;
+                display: block;
+                padding: 0 0 0 20px;
+                font-size: 20px;
+            }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="请输入">
+
+    <script>
+        // 如果给input标签绑定oninput事件，
+        // 在输入框输入值的时候，会频繁触发该事件
+
+        // 1.0 获取元素
+        var inpElement = document.getElementsByTagName("input")[0];
+        // inpElement.oninput = function(){//函数作用域
+        //     // this 事件的调用者 inpElement
+        //     console.log(this);// <input type="text" placeholder="请输入">
+        // }
+
+        // 2.0 事件绑定
+        // inpElement.oninput = function(){};
+        // inpElement.oninput = debounce(fn,300);
+        // inpElement.oninput = debounce(callback,300);
+        inpElement.oninput = debounce(function(){
+            // console.log("input")
+            // console.log(this);// this 指向主要看函数作用域 window
+            console.log(inpElement.value);
+        },300);
+        
+
+        // 封装防抖函数
+        // 基本版本
+        // 闭包
+        function debounce(callback,millisecond){
+            // 定义变量 记录延迟函数
+            var delayer = null;
+            // 返回function
+            return function(){
+                // 判断变量是否有值 ，有，说明正在执行延迟函数，那么就清除延迟函数
+                if(delayer) clearTimeout(delayer);
+                // 重新执行延迟延迟函数
+                delayer = window.setTimeout(callback,millisecond)
+            }
+        }
+
+
+
+
+
+
+        // 目标：防止事件被频繁触发
+        // 回调函数(匿名函数)
+        // call  apply bind
+    </script>
+</body>
+</html>

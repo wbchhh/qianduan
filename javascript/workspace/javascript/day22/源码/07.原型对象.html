@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prototype (原型)</title>
+</head>
+<body>
+    <h3>prototype (原型) 是个对象，是构造函数的一个属性。</h3>
+    <script>
+        // Array Object
+        var arr = new Array("red","blue");
+        // var arr = ["red","blue"];
+        // console.log(arr);
+        arr.push("绿色");
+        console.log(arr);
+        // __proto__ 该属性是每个对象都有的属性，称之为，隐式原型
+        // 原型这个机制一直都存在
+        console.log(Array.prototype === arr.__proto__);// true
+        console.log(typeof Array.prototype);// object
+        // console.log(typeof arr.__proto__);// object
+        Array.prototype.sayHello = function(){
+            console.log("sayHello 你是最胖的！你是最美的（想得美）");
+        }
+        console.log(arr);
+        arr.sayHello();
+
+
+        // 镜头转自定义构造函数
+        // 构造函数
+        var _this ;
+        function Foo(){
+            this.width = "100px";
+        }
+        // 原型属性（对象）
+        Foo.prototype.sayHello = function(){
+            console.log("Foo sayHello ");
+            document.body.style.backgroundColor = "pink";
+            _this = this;
+            console.log(this.width);
+        }
+        Foo.prototype.aaaa = function(){
+            console.log("Foo aaaa ");
+        }
+        // 实例对象
+        var obj =  new Foo();
+        console.log(obj);
+        obj.sayHello();
+        console.log(obj=== _this);// true
+
+        // 原型属性prototype是每个构造函数都有的属性
+        // 构造函数的prototpe属性和实例对象的__proto__属性是全等于关系
+        // 实例对象既可以使用构造函数的属性和方法，也可以使用原型上添加的属性和方法
+        // 实例对象首先在构造函数上检索对应的属性和方法，如果检索不到，就去原型对象上检索。
+            // 编码风格
+            // 构造函数添加属性
+            // 构造函数原型添加方法
+
+
+
+            // 构造函数 实例对象 原型对象 
+            // 原型链
+    </script>
+</body>
+</html>

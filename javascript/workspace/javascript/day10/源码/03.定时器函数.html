@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window下的定时器函数</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 0, 0, 0.6);
+            text-align: center;
+            line-height: 100px;
+            font-size: 26px;
+            cursor: pointer;
+        }
+        .box:hover {
+            background-color: rgba(255, 0, 0,1);
+        }
+    </style>
+</head>
+<body>
+    <h3>定时器函数</h3>
+    <div class="box">0</div>
+</body>
+</html>
+<script>
+        // 定时器函数
+            // 调用者： window
+            // 参数：参数1：匿名函数 ，参数2：相隔的时间（毫秒值）
+            // 返回值：数字 (用于停止定时器函数的)
+            // 功能：相隔指定的时间执行一次匿名函数
+        // window.setInterval(参数1,参数2)
+        // 1000 毫秒 = 1秒
+        // 计数器变量
+        // var index = 0;
+        // var timer = window.setInterval(function(){
+        //     index ++;
+        //     if(index == 10){
+        //         //停止定时器函数
+        //         window.clearInterval(timer);
+        //         // 终止当前函数作用域的代码，没有停止定时器函数的作用
+        //         // return ;
+        //     }
+        //     console.log("index:",index)
+        // } ,100)
+        // // console.log(timer)
+
+
+
+
+        // 要求：
+            // 初始化页面的时候，.box的数字从0开始计算，每隔300毫秒 + 1 
+            // 鼠标移入，停止计数
+            // 鼠标移开，继续计数
+
+        // 1.获取元素
+        var box = document.getElementsByClassName("box")[0];
+
+        // .0 处理计数逻辑
+        // 计数器变量
+        var count = 0;
+        // 匿名函数
+        var fn = function(){
+            count ++;
+            box.innerText = count;
+        }
+        //毫秒值
+        // 1000ms  = 1s 
+        var ms = 30;
+        //声明变量接收定时器函数（执行定时器函数）
+        var dingshiqi  = setInterval(fn,ms);
+
+       // 2.0 事件绑定
+        box.onmouseenter = function(){
+             // 3.0 处理逻辑
+             //停止定时器函数
+             clearInterval(dingshiqi);
+        }
+        box.onmouseleave= function(){
+             // 3.0 处理逻辑
+             //.0 防止执行定时函数 （事件，使用定时器，先清除定时器）
+              clearInterval(dingshiqi);
+             //.0 鼠标移开，继续计数
+             dingshiqi  = setInterval(fn,ms);
+        }
+
+
+
+
+
+
+</script>

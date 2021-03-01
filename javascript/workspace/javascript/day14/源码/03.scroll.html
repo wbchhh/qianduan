@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll  （滚动）</title>
+    <style>
+        .container {
+            height: 2000px;
+            width: 2000px;
+        }
+
+        .box {
+            height: 200px;
+            width: 100px;
+            background-color: #f00;
+            border:2px solid #333;
+            /*       上     右   下  左  */
+            padding: 10px 20px 30px 40px;
+        }
+
+        .son {
+            height: 400px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="son">
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+                hello world <br>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // scroll (滚动)
+        // 备注：页面尺寸比浏览器尺寸大的时候，才能看到效果。
+        // 如果获取div标签scrollTop和scrollLeft的值，首先需要设置该盒子产生滚动条
+        // scrollTop:页面超出浏览器顶部的大小(垂直方向)
+        var ttop = document.documentElement.scrollTop;
+        // scrollLeft:页面超出浏览器左边的大小(水平方向)
+        var left = document.documentElement.scrollLeft;
+        console.log("页面超出浏览器顶部的大小：",ttop);
+        console.log("页面超出浏览器左边的大小：",left);
+
+        // 获取div标签标签
+        var div = document.getElementsByClassName("box")[0];
+        // scrollWidth
+        // 获取盒子的宽度（内边距 + 内容）
+        console.log(div.scrollWidth);// 160
+
+        // scrollHeight
+        // 获取盒子的高度（内边距 + 内容）
+        console.log(div.scrollHeight);// 240
+
+        // 有两种情况：
+            // 1.0 文本内容不超出盒子大小的时候 
+            // 大小 = 内边距 + width/height
+
+            // 2.0 文本内容超出盒子大小的时候 
+            // 大小 = 顶部（左边）的内边距 + 内容真实的大小
+
+    </script>
+</body>
+</html>

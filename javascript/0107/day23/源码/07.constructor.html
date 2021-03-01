@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // constructor 
+        // 这是原型prototype上的一个属性，这个属性可以找出原型对应的构造函数
+        // Array.prototype.constructor === Array  // true
+        // var arr = [];
+        // console.log( arr.__proto__.constructor === Array)  // true
+        // constructor: 构造，结构
+        // var obj = {};
+        // console.log(obj.__proto__.constructor === Object);// true 
+
+
+        // 构造函数
+        function  Person(){}
+        // console.log(Person);// Person
+        // console.log(Person.prototype.constructor);// Person
+        // var xiaoming =  new Person();
+        // console.log(xiaoming.__proto__.constructor);// Person
+
+        // Person.prototype.say = function(){console.log("say")}
+        // var xiaoming =  new Person();
+        // console.log(Person.prototype.constructor ===  Person);//true
+        // xiaoming.say();
+
+        // ES5 面向对象的书写，没有统一的写法
+        // Object
+       
+        // Person.prototype = {
+        //     run:function(){
+        //         console.log("run 2")
+        //     }
+        // }
+        // console.log( Person.prototype.constructor === Person);// false 
+        
+        // var xiaohong = new Person();
+        // xiaohong.run();
+
+        // 重新指向构造函数Person
+        Person.prototype = {
+            constructor:Person,
+            run:function(){
+                console.log("run 2")
+            }
+        }
+        console.log( Person.prototype.constructor === Person);// true 
+        var xiaohong = new Person();
+        xiaohong.run();
+
+
+        // 总结：
+            // 在原型prototype上有个constructor属性，该属性可以找出原型对应的构造函数
+            // 可以用于判断实例对象是否属于哪个构造函数
+            // 设置原型对象对应的构造函数
+
+
+    </script>
+</body>
+
+</html>

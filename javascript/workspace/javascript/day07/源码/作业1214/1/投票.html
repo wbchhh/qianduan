@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+		h3 {
+		  text-align:center;
+		}
+		body {margin:0;}
+		.wrapper {
+			width: 710px;
+			margin: 0 auto;
+			height:900px;
+			background-color:#ccc;
+			overflow:hidden;
+		}
+        ul li {
+            width: 600px;
+            height: 60px;
+            border: 1px solid #ccc;
+            margin-top: 50px;
+            line-height:60px;
+            padding-right: 20px;
+			-moz-user-select: none; /*火狐*/
+			-webkit-user-select: none; /*webkit浏览器*/
+			-ms-user-select: none; /*IE10*/
+			-khtml-user-select: none; /*早期浏览器*/
+			user-select: none;
+			background-color:#fff;
+        }
+        ul li .con {
+            float: left;
+        }
+        ul li .info {
+            float: right;
+        }
+        ul li .info .icon ,
+        ul li .info .count {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        ul li .info .icon {
+            font-size:16px;
+            cursor: pointer;
+        }
+        ul li .info.active {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="wrapper">
+		<h3>广东杰出青年投票</h3>
+        <ul>
+            <li>
+                <div class="con">一号选手</div>
+                <div class="info">
+                    <span class="icon">
+                        点击投票
+                    </span>
+                    <span class="count">[0]</span>
+                </div>
+            </li>
+
+            <li>
+                <div class="con">二号选手</div>
+                <div class="info">
+                    <span class="icon">
+                       点击投票
+                    </span>
+                    <span class="count">[0]</span>
+                </div>
+            </li>
+            <li>
+                <div class="con">三号选手</div>
+                <div class="info">
+                    <span class="icon">
+                       点击投票
+                    </span>
+                    <span class="count">[0]</span>
+                </div>
+            </li>
+
+
+            <li>
+                <div class="con">四号选手</div>
+                <div class="info">
+                    <span class="icon">
+                        点击投票
+                    </span>
+                    <span class="count">[0]</span>
+                </div>
+            </li>
+			
+			
+			 <li>
+                <div class="con">五号选手</div>
+                <div class="info">
+                    <span class="icon">
+                        点击投票
+                    </span>
+                    <span class="count">[0]</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+
+    <script>
+        // 需求：
+            // 1、给当前点击的选手投票，每个选手的初始值票数是 0 
+            // 2、点击 .icon 标签 ， 设置“点击投票”文字高亮，给当前选手的投 1 票
+			// 3、而且，每点一次，当前选手的票数会增加 1 票
+    
+        // 基本步骤：
+        // 1、获取相关的元素
+        // 2、事件的绑定
+        // 3、书写程序的处理逻辑
+
+
+        // 编码实现： 
+            // 1、获取相关的元素
+            var iconElements = document.getElementsByClassName("icon");
+            var countElements = document.getElementsByClassName("count");
+            // console.log(iconElements);
+            // console.log(countElements);
+
+            // 2、事件的绑定
+            // iconElements[0].onclick = function(){}
+            // iconElements[1].onclick = function(){}
+            // iconElements[2].onclick = function(){}
+            // iconElements[3].onclick = function(){}
+            // iconElements[4].onclick = function(){}
+            var len = iconElements.length;// 5
+            // 思维活跃
+            for(var i = 0 ; i  <  len ; i ++){
+                // 属性绑定
+                iconElements[i].aaa = i;//记录索引值
+                iconElements[i].num = 0;//记录票数
+                // 2、事件的绑定
+                iconElements[i].onclick = function(){
+                      // 3、书写程序的处理逻辑
+                      //  this  是事件的调用者 
+                      //  this.num  += 1;
+                      this.num ++ ;
+                      //显示票数
+                      countElements[this.aaa].innerHTML = "["+this.num+"]";
+                      // 设置类名（添加字体高亮）
+                      this.parentElement.className ="info  active";
+                      
+                }
+            }
+
+
+
+
+            // console.log("i:",i);// 此处输出的值是多少 5
+            // console.log( iconElements[2].aaa);// 2
+          
+
+     
+
+        // 涉及：
+        // 1、DOM操作
+        // 2、循环
+        // 3、事件 点击事件
+        // 4、属性 记录数据
+
+    </script>
+</body>
+</html>

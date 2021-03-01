@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切换（动画版）</title>
+    <style>
+        /* 通配符 （在开发的时候不推荐使用）*/
+        /* * {padding: 0; margin: 0;} */
+
+        body , ul {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+        button {
+            border: 0;
+            outline: none;
+        }
+        .wrapper {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .swiper-box {
+            width: 600px;
+            height: 374px;
+            position: relative;
+            overflow: hidden;
+        }
+        .swiper-box .swiper-box-nav  {
+            width: 600px;
+            height: 60px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+        .swiper-box .swiper-box-nav > div {
+            float:left;
+        }
+        .swiper-box .swiper-box-nav > div button {
+            display: block;
+            width: 300px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+        .swiper-box .swiper-box-nav  > div.active  button {
+            background-color: rgba(255,255,255,0.8);
+        }
+        .swiper-box .swiper-box-con {
+            width: 600px;
+            position: relative;
+        }
+        .swiper-box .swiper-box-con ul {
+            width: 1200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .swiper-box-con ul li {
+            float: left;
+         }
+         .swiper-box-con ul a {
+            display: block;
+         }
+        .swiper-box-con ul a img {
+            width: 600px;
+            display: block;
+        }
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="swiper-box">
+            <!-- 导航 -->
+            <div class="swiper-box-nav">
+                <div class="btn-left active"><button>衣服</button></div>
+                <div class="btn-right"><button>手机</button></div>
+            </div>
+            <!-- 图片 -->
+            <div class="swiper-box-con">
+                <!-- 改变承载图片的盒子的水平位置 -->
+                <ul class="clearfix">
+                    <li><a href="javascript:;"><img src="./img/left.jpg" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="./img/right.jpg" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 需求：
+            // 当前点击tab选项背景高亮，并动画的方式切换对应的图片
+
+
+        // 基本步骤：
+            // 1.0 获取相关元素（记录数据）
+            // 2.0 事件绑定
+            // 3.0 书写程序处理逻辑
+
+
+        // 编码实现：
+            // 1.0 获取相关元素（记录数据）
+            var btnLeft = document.getElementsByClassName("btn-left")[0];
+            var btnRight = document.getElementsByClassName("btn-right")[0];
+            var swiperBoxcon = document.getElementsByClassName("swiper-box-con")[0];
+            var ulElement = swiperBoxcon.getElementsByTagName("ul")[0];
+            // console.log(ulElement)
+
+            // 索引值
+            var index = 0;
+            // 宽度
+            var width = swiperBoxcon.offsetWidth;
+            // var width = parseInt(getComputedStyle(swiperBoxcon)['width']);
+            // console.log(width);
+
+            // 2.0 事件绑定
+            // 向左
+            btnLeft.onclick = function(){
+                // 3.0 书写程序处理逻辑
+                // 索引值 0
+                index = 0;
+                // 设置背景色高亮
+                this.className = "active";
+                btnRight.className = "";
+                // ..... 
+                // ulElement.style.left = -index * width +"px";
+                // 向右移动 步长正数
+                move(ulElement,-index*width,10);
+            }
+            // 向右
+            btnRight.onclick = function(){
+                // 3.0 书写程序处理逻辑
+                // 索引值 0
+                index = 1;
+                // 设置背景色高亮
+                this.className = "active";
+                btnLeft.className = "";
+                // ..... 
+                // ulElement.style.left = -index * width +"px";
+                // 向右移动 步长负数
+                move(ulElement,-index*width,-10);
+            }
+
+            // 动画原理 ：
+                // 目标位置 = 当前位置 + 步长
+            // 4.0 编写动画函数
+            // 函数：可重复利用的代码块
+            // 参数： 形参 / 实参
+            // 封装思路：设置哪个dom元素的样式，设置样式属性值是多少
+            // dom   要控制的元素
+            // value  要到达的目标位置
+            // speed  步长
+            // 对动画函数的封装有个初步认识（小试牛刀）
+            function move(dom,value,speed){
+                // 用定时器先清除定时器
+                clearInterval(dom.timer);
+                
+                // 属性绑定
+                dom.timer = setInterval(function(){
+                    // 判断是达到目标位置（属性值）
+                    if(dom.offsetLeft == value){
+                        // 检查代码是否符合执行逻辑
+                        console.log(dom.offsetLeft,"到达目标位置")
+                        // 暂停定时器函数
+                        clearInterval(dom.timer);
+                        // 终止代码
+                        return ;
+                    }
+                    // 设置dom标签的位置
+                    dom.style.left = dom.offsetLeft + speed + "px";
+                }, 1000/60 );
+            }
+            // 动画最佳效果：1秒执行60帧 , 1000/60 [表达的意思是1秒钟执行60次function]
+            // move(ulElement,-600,-10);
+           
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情页</title>
+    <style>
+        .wraper {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .photo img {
+            display: block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="photo">
+            <div class="img-box">
+                <img src="" alt="" class="img">
+            </div>
+        </div>
+        <div class="content">
+            <h3 class="title">标题</h3>
+            <p class="con">内容</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 定义数据
+    // 数组包裹对象
+    // 数组：以索引值存储数据的集合
+    // 对象：以键值对存储数据的集合
+    var data = [
+        {
+            src:"./images/p1.jpg",
+            title:"鲜花",
+            con:"一朵紫色的鲜花"
+        },
+        {
+            src:"./images/p2.jpg",
+            title:"猎豹",
+            con:"一只奔跑的猎豹"
+        },
+        {
+            src:"./images/p3.jpg",
+            title:"大海",
+            con:"一片茫茫的大海"
+        },
+        {
+            src:"./images/p4.jpg",
+            title:"狗",
+            con:"一只静静的狗狗"
+        },
+         {
+            src:"./images/p5.jpg",
+            title:"帆船",
+            con:"几艘白色的帆船"
+        }
+    ]
+
+    // 如何找出 一片茫茫的大海  字符串。
+    // console.log(data[2].con);
+
+    // 1. 获取页面相关的元素
+    var imgEl = document.getElementsByClassName("img")[0];
+    var titleEl =  document.getElementsByClassName("title")[0];
+    var conEl =  document.getElementsByClassName("con")[0];
+    // 2.0 获取页面地址
+    location.href
+    var url = location.href;
+    // console.log(url);
+    // console.log(location.search);// ?id=0
+    // 3.0 判断 是否存在参数
+    if(url.indexOf("?") > -1){
+        // 接收传递过来的参数
+        var index = url.indexOf("?") + 1;
+        var str = url.slice(index);
+        // console.log(str);
+        // 获取首页传递过来的数据  
+        var rid = str.split("=")[1];
+        // console.log(rid);
+        console.log(data[rid]);
+        // 判断传递的参数是否超出范围
+        if(rid > data.length -1 ){
+            // 提示用户
+            document.body.innerText = "没有这条记录！";
+        }else {
+            // 渲染数据
+            imgEl.setAttribute("src",data[rid].src);
+            titleEl.innerText = data[rid].title;
+            conEl.innerText = data[rid].con;
+        }
+    }else {
+        // 提示用户
+        document.body.innerText = "没有这条记录！";
+    }
+</script>

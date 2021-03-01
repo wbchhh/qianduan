@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回值</title>
+</head>
+<body>
+    <h3>什么情况下有返回值</h3>
+    <script>
+        // 1.0 定义函数
+        function foo(){
+             "aaa"
+        }
+        // 2.0 调用foo函数
+        var res = foo();
+        console.log(res);// undefined 
+        // 同学们回答：
+            // 赌他有值       错误
+            // 有吧           错误
+            // undefined      正确  
+            // 有，undefined  
+            // 没有          正确
+            // undefined     正确
+            // undefined  原因：没有声明?
+        // 1.0 定义函数
+        function foo2(){
+            // 返回值
+            return  "aaa";
+        }
+        // 2.0 调用foo函数
+        var res2 = foo2();
+        console.log(res2);// aaa 
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:获取页面标签</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			div {
+			  width:80px;
+			  height:80px;
+			  background-color:#ccc;
+			  margin:10px;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>获取页面标签(一)</h3>
+		
+		<div id="box1" class="box">box1</div>
+		<div id="box2" class="box">box2</div>
+		<div id="box3" class="box">box3</div>
+		<script>
+		    // 元素 ==== 标签 ==== 盒子 
+			console.log(typeof document);// object
+			// document 是一个对象
+			//1.0 是document对象下的方法 getElementById
+			// 通过id名 获取标签
+			var ele1 = document.getElementById("box1");
+			console.log(ele1);
+			console.log(typeof ele1);// object
+			// 页面标签：dom对象
+			
+			
+			// 2.0 通过类名 获取标签数组
+			var elements = document.getElementsByClassName("box");
+			console.log(elements);// 标签数组
+			var ele2 = elements[1];
+			console.log(ele2);
+			
+			//3.0 通过标签名 获取标签数组
+			var aDiv = document.getElementsByTagName("div");
+			console.log(aDiv);   //标签数组
+			
+			var ele3 = aDiv[2];
+			console.log(ele3);
+			
+		
+		
+			
+			
+			
+		
+		
+		</script>
+	</body>
+</html>
+

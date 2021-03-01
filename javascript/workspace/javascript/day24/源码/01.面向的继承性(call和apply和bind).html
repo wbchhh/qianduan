@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象 继承性</title>
+</head>
+
+<body>
+    <h3>JS-面向对象 继承性</h3>
+    <div id="container"></div>
+
+    <script>
+        // 以下三个方法用于改变this执指向（替换）
+        // 
+        // call 
+        // apply 
+            // 调用者： 被继承的对象
+            // 参数： 1. 实例对象（this）  2.单一参数
+            // 返回值 ： 忽略
+            // 功能 ： 可以实现对象的继承
+
+        // bind
+            // 调用者： 函数（方法）
+            // 参数： 1. 实例对象 
+            // 返回值 ： 忽略
+            // 功能 ： 可以实现方法的继承
+
+
+        // // 1.0 一个对象
+        // function A(name) {
+        //     this.name = name;
+        //     this.sayHello = function(){
+        //         console.log(this.name + " say Hello");
+        //     }
+        // }
+
+        // // 2.0 另外一个对象
+        // // 继承 ： 通俗点理解，你的就是我的，我的还是我的。
+        // // A对象的属性和方法就是B对象的，B对象的属性和方法还是B对象的
+        // function B(name) {//当前执行环境 this
+        //     // 利用call方法继承A对象的属性和方法
+        //     // this.call(A,name); //错误的写法
+        //     A.call(this,name);
+        //     // 自身的属性和方法
+        //     this.age = 23;
+        //     this.run = function(){
+        //         console.log(this.name,"今年",this.age,"岁");
+        //     }
+        // }
+
+        // // 创建B构造函数的实例
+        // var b1 =  new B("小明");
+        // // console.log(b1);//B {name: "小明", sayHello: ƒ}
+        // b1.sayHello();
+        // b1.run();
+
+        // 创建A构造函数的实例
+        // var a1 = new A();
+        // a1.run(); //报错
+
+
+        // ====================================================
+        // // 1.0 一个对象
+        // function A(name) {
+        //     this.name = name;
+        //     this.sayHello = function () {
+        //         console.log(this.name + " say Hello");
+        //     }
+        // }
+
+
+        // // 2.0 另外一个对象
+        // // 继承 ： 通俗点理解，你的就是我的，我的还是我的。
+        // // A对象的属性和方法就是B对象的，B对象的属性和方法还是B对象的
+        // function B(name) {//当前执行环境 this
+        //     // 利用apply方法继承A对象的属性和方法
+        //     // call和apply的作用是一样的，都可以实现继承
+        //     // 区别：传递参数不一样 
+        //     // call: 参数单一的
+        //     // apply: 参数是个数组
+        //     A.apply(this, [name]);
+        //     // 自身的属性和方法
+        //     this.age = 23;
+        //     this.run = function () {
+        //         console.log(this.name, "今年", this.age, "岁");
+        //     }
+        // }
+
+        // // 创建B构造函数的实例
+        // var b1 = new B("小明");
+        // // console.log(b1);//B {name: "小明", sayHello: ƒ}
+        // b1.sayHello();
+        // b1.run();
+
+        // ====================================================
+        // 1.0 一个对象
+        function A(name) {
+            this.name = name;
+            this.sayHello = function () {
+                console.log(this.name + " say Hello");
+            }
+        }
+        // 不推荐使用
+        function B(name) {
+            var a1 = new A(name);
+            this.sayHello = a1.sayHello.bind(a1)
+            // this.sayHello = a1.sayHello
+        }
+        // 创建B对象的实例
+        // var a1 = new A("小红");
+        //  bind()
+        // var sayHello = a1.sayHello;
+        // sayHello.bind(a1)
+        // sayHello();
+        var b1 = new B("XXX");
+        b1.sayHello();
+
+    </script>
+</body>
+
+</html>

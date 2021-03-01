@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // 数组
+        // var arr = ["11","22","33","44","55"];
+
+        // splice()
+        // 调用者：arr
+        // 参数：1.索引值  2.长度
+        // 返回值：数组
+        // 功能：
+        // var res = arr.splice(1,1);
+        // console.log(res);
+        // var v1 = res[0];
+        // console.log(v1);
+
+        // var v1 = arr.splice(3,1)[0];
+        // var v1 = arr.splice(4,1)[0];
+        // console.log(v1);// 55
+
+        var arr = ["11","22","33","44","55"];
+        var v1 = arr.splice(Math.floor(Math.random()*arr.length),1)[0];
+        console.log(v1);
+
+
+    </script>
+</body>
+
+</html>

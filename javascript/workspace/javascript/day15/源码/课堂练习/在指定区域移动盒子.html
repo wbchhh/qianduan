@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在指定的区域移动盒子</title>
+    <style>
+        .layout {
+            width: 600px;
+            height: 500px;
+            border: 3px solid purple;
+            position: relative;
+            margin: 100px 0 0 200px;
+        }
+
+        .layout .box {
+            width: 150px;
+            height: 150px;
+            /* background-color: yellowgreen; */
+            background-color: rgba(154, 205, 50, 0.8);
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout">
+        <div class="box"></div>
+    </div>
+
+
+    <script>
+        // 需求：
+        // 鼠标移入紫色边框的标签，改变荧光绿的盒子位置 ， 
+        // 鼠标不在紫色边框的标签内，不需要改变荧光绿盒子位置
+
+
+        // 基本步骤：
+        // 1、获取相关元素
+        var layout = document.getElementsByClassName("layout")[0];
+        var box = document.getElementsByClassName("box")[0];
+
+        // 2、声明变量记录坐标位置
+        var x = 0;
+        var y = 0;
+        // 盒子可滑动的最大宽度
+        var maxWidth = layout.clientWidth - box.offsetWidth;
+        // 盒子可滑动的最大高度
+        var maxHeight = layout.clientHeight - box.offsetHeight;
+
+        // 3、事件绑定
+        layout.onmousemove = function (event) {
+            // 事件对象
+            // 鼠标在可视区范围的坐标
+            x = event.clientX;
+            y = event.clientY;
+            // console.log(x,y);
+            // 鼠标在计算荧光绿盒子的坐标位置
+            x = x - layout.offsetLeft - box.offsetWidth / 2;
+            y = y - layout.offsetTop - box.offsetHeight / 2;
+
+            // 判断
+            // 向左边
+            if (x < 0) {
+                x = 0;
+            }
+            // 向右边
+            if (x > maxWidth) {
+                x = maxWidth;
+            }
+            // 向上
+            if( y < 0 ){
+                y = 0;
+            }
+            // 向下
+            if(y > maxHeight){
+                y = maxHeight;
+            }
+            // 设置荧光绿盒子的位置
+            box.style.left = x + "px";
+            box.style.top = y + "px";
+        }
+
+
+    </script>
+</body>
+
+</html>

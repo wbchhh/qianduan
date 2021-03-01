@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标在页面频繁滑动</title>
+    <style>
+        .box {
+            width: 200px;
+            margin:100px auto;
+            background-color: #ccc;
+            text-align: center;
+            font-size: 40px;
+            padding: 80px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">0</div>
+    <script>
+        // 1.获取div标签
+        var box = document.getElementsByClassName("box")[0];
+        // 2.0 事件绑定
+        // 鼠标在页面上不断滑动，那么计数器变量一直计算
+        // 计数器变量
+        var count = 0;
+        document.onmousemove = function(){
+            count ++;
+            box.innerText = count;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+
+        div::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #00f;
+        }
+
+
+        div::before {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 50px;
+            background-color: #0f0;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div></div>
+    <script>
+
+        // 获取元素
+        var div = document.getElementsByTagName("div")[0];
+        // 第二个参数：
+        // var weilei = null;
+        // var weilei = "before";
+        var weilei = "after";
+
+        // 获取div元素的相关样式
+        var obj  = getComputedStyle(div,weilei);
+        // var obj  = getComputedStyle(div,null);
+
+        // 获取元素的样式属性值
+        var width = obj["width"];
+        console.log(width);// 50px
+
+        // rgb()
+        var backgroundColor = obj["backgroundColor"];
+        console.log(backgroundColor);// rgb(0, 0, 255)
+
+        
+    </script>
+</body>
+</html>

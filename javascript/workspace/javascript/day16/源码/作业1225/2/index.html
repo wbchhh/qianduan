@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动窗口</title>
+    <style>
+        .banner {
+            width: 450px;
+            height: 300px;
+            background-color: #ccc;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -228px;
+            margin-top: -153px;
+
+
+            border: 3px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .banner .banner-top {
+            height: 50px;
+            line-height: 50px;
+            background-color: deepskyblue;
+            width: 450px;
+            cursor: move;
+            text-align: center;
+        }
+        .banner .banner-con {
+            padding: 25px;
+            background-color: #666;
+        }
+        .banner .banner-con .box {
+            width: 400px;
+            height: 200px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 整个盒子 -->
+    <div class="banner">
+        <!-- 蓝色盒子 -->
+        <div class="banner-top">
+            标题
+        </div>
+        <div class="banner-con">
+            <div class="box">内容</div>
+        </div>
+    </div>
+
+    <script>
+        // 要求：
+            // 鼠标按下.banner-top标签，可移动整个banner盒子
+            // 鼠标如果没有按下.banner-top标签，不可以移动banner盒子
+
+        // 基本步骤：
+            // 1.0 获取相关的元素
+            // 2.0 事件绑定
+            // 3.0 处理逻辑
+
+          // 基本步骤：
+            // 1.0 获取相关的元素(记录数据)
+            var bannerEle =  document.getElementsByClassName("banner")[0];
+            var bannerTopEle =  document.getElementsByClassName("banner-top")[0];
+            // 声明变量记录相关数据
+            // 整个盒子的坐标
+            var x = 0;
+            var y = 0;
+            // 鼠标在蓝色盒子的坐标
+            var resX = 0 ;
+            var resY = 0 ;
+            // 整个盒子当前的坐标位置(忽略)
+            // var curX = 0;
+            // var curY = 0;
+            // 鼠标是否按下蓝色盒子
+            var isMouseDown = false;
+            // 2.0 事件绑定
+            // 鼠标按下事件
+            bannerTopEle.onmousedown = function(e){
+                // 3.0 处理逻辑
+                // 计算鼠标在蓝色盒子的坐标位置
+                resX = e.pageX - bannerEle.offsetLeft || e.clientX -  bannerEle.offsetLeft;
+                resY = e.pageY - bannerEle.offsetTop || e.clientY - bannerEle.offsetTop;
+                // 鼠标按下了
+                isMouseDown = true;
+            }
+            // 鼠标移动事件
+            document.onmousemove = function(e){
+                // 3.0 处理逻辑
+                // 判断鼠标是否按下的意思
+                // if(isMouseDown == true){
+                if(isMouseDown){
+                    // 计算整个盒子在页面的坐标位置（left和top）
+                    x = e.pageX - resX  || e.clientX - resX ;
+                    y = e.pageY - resY  || e.clientY - resY ;
+                    // 如果没有重置外边距属性
+                    bannerEle.style.marginLeft = "0px";
+                    bannerEle.style.marginTop = "0px";
+
+                    // 设置整个盒子（窗口）的位置
+                    bannerEle.style.left = x +"px";
+                    bannerEle.style.top = y +"px";
+                }
+            }
+            // 鼠标松开事件
+            document.onmouseup = function(){
+                // 3.0 处理逻辑
+                // 鼠标松开了
+                isMouseDown = false;
+                // 记录整个盒子（窗口）当前的位置（忽略）
+                // curX = x;
+                // curY = y;
+            }
+            // 禁止选择文字
+            document.onmousedown = function(){
+                return false;
+            }
+       
+    </script>
+</body>
+</html>

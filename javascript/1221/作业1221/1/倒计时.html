@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        .box{
+            width: 100%;
+            height:80px;
+            background-color: #f0f0f0;
+            margin-top: 100px;
+            padding: 10px 10px;
+        }
+        .box .box1{
+            background-color: red;
+            line-height: 60px;
+            height:60px;
+            width:100px;
+            color: #fff;
+            font-size: 30px;
+            margin:10px 10px;
+            text-align: center;
+            cursor: pointer;
+            float: left;
+        }
+        .box span{
+            float: left;
+            color: red;
+            line-height: 60px;
+            height:60px;
+            font-size: 30px;
+            margin:10px 0px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1">倒计时</div>
+        <span class="sp">00</span>
+        <span>:</span>
+        <span class="sp">00</span>
+        <span>:</span>
+        <span class="sp">00</span>
+    </div>
+
+</body>
+</html>
+<script>
+    // 需求：倒计时
+        // 剩余时间设置 7200 秒 
+        // 每一秒中减去1秒
+        // 格式化时间为小时、分钟、毫秒 并显示在页面
+
+    var sp = document.getElementsByClassName("sp");
+    var box1 = document.getElementsByClassName("box1")[0];
+    var second = 7200;
+    var hour = 0;
+    var minute = 0;
+    var timer = null;
+    var key = true;
+    var fn = function(){
+        second--;
+        if(second >= 60){
+            minute = parseInt(second / 60);
+            second = parseInt(second % 60);
+            if(minute >= 60){
+                hour = parseInt(minute / 60);
+                minute = parseInt(minute % 60);
+            }
+        }
+        if(second < 0){
+            minute = minute-1;
+            second = 59;
+        }
+        if(minute < 0){
+            hour = hour-1;
+            minute = 59;
+        }
+        if(hour == 0 && minute == 0 && second == 0){
+            clearInterval(timer);
+        }
+
+        sp[0].innerHTML = hour;
+        sp[1].innerHTML = minute;
+        sp[2].innerHTML = second;
+        if(second < 10){
+            sp[2].innerHTML = "0" + second;
+        }
+        if(minute < 10){
+            sp[1].innerHTML = "0" + minute;
+        }
+        if(hour < 10){
+            sp[0].innerHTML = "0" + hour;
+        }
+    }
+    box1.onclick = function(){
+        clearInterval(timer);
+        if(key){
+            timer = setInterval(fn,0);
+            key = false;
+        }
+    }
+    
+
+</script>

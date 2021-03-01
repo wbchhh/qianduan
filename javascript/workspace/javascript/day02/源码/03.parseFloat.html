@@ -1,0 +1,43 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：浮点型数据</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>parseFloat(参数)</h3>
+		
+		
+		<script>
+			// 1.0 浮点型数据
+			var num = 100.99;
+			var res = parseFloat(num);
+			console.log(res);// 100.99
+			
+			
+			// 2.0 浮点型数据
+			var num1 = "100.99px";
+			console.log(num1);
+			var res1 = parseFloat(num1);
+			console.log(res1);// 100.99
+			
+			
+			// 3.0 浮点型数据(非数字开头，结果是nan)
+			var num2 = "abc100.99px";
+			console.log(num2);
+			var res2 = parseFloat(num2);
+			console.log(res2);// NaN
+			// A. 100 B.100.99  C.NaN
+			
+			
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab选项卡</title>
+    <style>
+        button{
+            outline: none; /*去除选中状态边框*/
+            border:0px;
+        }
+        #box{
+            height: 350px;
+            width: 800px;
+            margin: 0 auto;
+            background-color: skyblue;
+        }
+        #box .box-top{
+            height:100px;
+        }
+        #box .box-top ul{
+            list-style: none;
+            height:100px;
+            margin: 0;
+            padding: 0;
+            border-bottom: 2px solid #000;
+        }
+        #box .box-top ul li{
+            padding: 25px 30px;
+            float:left;
+        }
+        #box .box-top ul li .btn{
+            height:50px;
+            width:100px;
+            background-color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            color:slategrey;
+        }
+        #box .box-top ul li .btn.con{
+            background-color: red;
+            color: #fff;
+        }
+        dl dt{
+            font-size: 30px;
+            margin-left: 30px;
+        }
+        dl dd{
+            font-size: 20px;
+            margin-left: 40px;
+            padding: 5px 0;
+        }
+        .down1{
+            display: none;
+        }
+        .dd{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="box-top">
+            <ul>
+                <li><button class="btn">基本介绍</button></li>
+                <li><button class="btn">经历</button></li>
+                <li><button class="btn">项目</button></li>
+                <li><button class="btn">职业技能</button></li>
+                <li><button class="btn">自我介绍</button></li>
+            </ul>
+        </div>
+        <div class="box-down">
+            <div class="down1">
+                <dl>
+                    <dt>基本介绍</dt>
+                    <dd>姓名：汪炳澄</dd>
+                    <dd>邮箱：1911194654@qq.com</dd>
+                    <dd>手机：13728409736</dd>
+                    <dd>微信：w13094728990</dd>
+                </dl>
+            </div>
+            <div class="down1">
+                <dl>
+                    <dt>经历</dt>
+                    <dd>大学</dd>
+                    <dd>××××....</dd>
+                </dl>
+            </div>
+            <div class="down1">
+                <dl>
+                    <dt>项目</dt>
+                    <dd>项目名称1：内容管理系统【×××】</dd>
+                    <dd>××××....</dd>
+                    <dd>PC端...</dd>
+                    <dd>项目名称2：移动端网页【×××】</dd>
+                    <dd>移动端...</dd>
+                </dl>
+            </div>
+            <div class="down1">
+                <dl>
+                    <dt>职业技能</dt>
+                    <dd>熟练掌握html,css...</dd>
+                    <dd>熟练掌握js...</dd>
+                    <dd>...</dd>
+                </dl>
+            </div>
+            <div class="down1">
+                <dl>
+                    <dt>自我介绍</dt>
+                </dl>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var btn = document.getElementsByClassName("btn");
+        var down = document.getElementsByClassName("box-down")[0];
+        for(var i=0;i<btn.length;i++){
+            btn[i].index = i;
+            //console.log(down.children[i].index);
+            btn[i].onclick = function(){
+                for(var j=0;j<btn.length;j++){
+                    btn[j].className = "btn";
+                    down.children[j].className = "down1";
+                }
+                this.className = "btn con";
+                //down.children[this.index].style.display = "block";
+                down.children[this.index].className = "dd";
+            }
+        }
+        
+    </script>
+</body>
+</html>

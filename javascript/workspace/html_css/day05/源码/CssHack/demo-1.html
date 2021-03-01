@@ -1,0 +1,48 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <!--目的：检测兼容低版本的浏览器-->
+		 <title>标题：条件 hack [差别]</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.box {
+				  width:600px;
+				  height:60px;
+			}
+			p {
+			     width:600px;
+				 height:50px;
+				 background-color:green;
+			}
+		 </style>
+		 <!--  条件 hack -->
+		 <!--  条件注释 -->
+		 <!--[if IE]>
+			<script>window.onload = function(){document.body.style.background="pink";}</script>
+		 <![endif]-->
+		 
+		 
+		 <!--  条件注释  小于-->
+		 <!--[if lt IE 7]>
+			<style>
+				.box1{color:red;}
+			</style>
+		<![endif]-->
+		 
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	    <div class="box box1">hello css hack </div>
+		
+		
+		
+		
+		<!--[if IE]>
+			<p>你在非IE中将看不到我的身影</p>
+		<![endif]-->
+	</body>
+</html>
+

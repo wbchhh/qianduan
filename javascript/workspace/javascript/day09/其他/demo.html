@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业练习 加法运算</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        input , button{
+            border: 0;
+            outline: none;
+            display: block;
+        }
+        
+        .wrap {
+            width: 600px;
+            height: 400px;
+            background-color: #ccc;
+            padding: 20px;
+        }
+        .wrap ul {
+            width: 600px;
+        }
+        .wrap ul li {
+            float: left;
+            height: 40px;
+            font-size: 20px;
+        }
+        .wrap ul li span {
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            width: 80px;
+            text-align: center;
+        }
+        .wrap ul li input {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            font-size: 20px;
+            /* 盒子大小 = 边框 + 内边距 + 内容 */
+            /* 改变元素大小计算方式的 */
+            /* 盒子大小 = 内容  */
+            box-sizing: border-box;
+        }
+        .wrap ul li button {
+            width: 80px;
+            height: 40px;
+            /*默认的属性 */
+            /* box-sizing: border-box; */
+
+            /* transparent: 透明 */
+            /* 背景透明 */
+            background-color: transparent;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .wrap ul li button:hover {
+            background-color:#f0f0f0;
+        }
+        .wrap ul li #result {
+            /* background-color: #fff; */
+            border-bottom: 2px solid #f00;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <ul>
+            <li> <input type="text" value="0" id="inp_1"> </li>
+            <li> <span>+</span>  </li>
+            <li> <input type="text" value="0" id="inp_2"> </li>
+            <li> <button id="btn">=</button> </li>
+            <li> <span id="result">0</span> </li>
+        </ul>
+    </div>
+    
+
+    <script>
+        //  要求：
+        //  定义  add  函数，
+        //  实现，获取两个输入框的值，并且计算两个数值相加的结果
+        //  点击“=”标签 ，调用add函数，显示计算的结果
+
+
+        // 步骤：
+            // 1、获取页面相关元素
+            // 2、事件绑定
+            // 3、书写处理逻辑
+
+        // 编码实现：
+            // 1、获取页面相关元素
+            var inp_1 = document.getElementById("inp_1");
+            var inp_2 = document.getElementById("inp_2");
+            var btn = document.getElementById("btn");
+            var result = document.getElementById("result");
+            // 2、事件绑定
+            btn.onclick = function(){
+                 // 3、书写处理逻辑
+                 add();
+            }
+            // parseInt("");// NaN
+            // console.log(parseInt(inp_1.value));// NaN
+            // 输入框没有值，是空字符串 ，所以parseInt("")等于 NaN
+            // 4、定义函数
+            function add(){
+                // 定义变量 接收两个输入框的值
+                var num1 =  inp_1.value;
+                // console.log(typeof num1);// string
+                var num2 =  inp_2.value;
+                // 判断输入框是否有值
+                // length : 字符的长度
+                if(num1.length == 0 || num2.length == 0){
+                    console.log("输入框没有值")
+                }else {
+                    //隐式转换 number
+                    num1 = num1 - 0 ; 
+                    num2 = num2 - 0 ; 
+                    // 计算结果
+                    var res = num1 + num2;
+                    // 渲染计算的计算
+                    result.innerText = res;
+                }
+            }
+
+            // 测试
+            // add();
+
+
+    </script>
+</body>
+</html>

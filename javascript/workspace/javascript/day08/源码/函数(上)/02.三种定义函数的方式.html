@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识函数 关键字 function </title>
+</head>
+<body>
+    <h3>关键字 function </h3>
+    <p>可重复利用的代码块</p>
+
+    <script>
+        // 定义函数的三种方式：
+        // 第一种：关键字 function 声明的函数 可以在声明之前调用 （预先解析）
+        // function 函数名称() { }
+        // 函数名称 ： 在符合web规范的前提下 自定义 
+        // 2.0 调用函数
+        // foo1() 
+        // 
+        // 1.0 定义函数
+        function foo1() { 
+            console.log("hello foo1 ");
+        }
+        // 2.0 调用函数
+        foo1();
+
+        // 第二种：直接量
+        // var 关键字 
+        // 声明变量接收函数体
+        // foo2  undefined
+        // foo2(); // foo2 is not a function
+        // 如果是第二种方式，需要先声明后调用，否则报错
+        // 1.0 定义函数
+        var foo2 = function(){
+            console.log("hello foo2")
+        }
+        // 2.0 调用函数
+        foo2();
+
+
+        // 第三种：构造函数的方式
+        // new  操作符
+        // 通过new的方式调用的函数，叫做构造函数
+        // 创建函数的实例 foo3
+        // 1.0 定义函数
+        var foo3 = new Function("console.log('hello foo3')");
+        // 2.0 调用函数
+        foo3();
+
+
+
+        // 总结：
+            // 有三种方式定义函数，推荐第一种
+            // 其次，第二种
+            // 最后，第三种
+
+
+        // 重点：
+            // 函数不调用，其代码不执行
+
+
+        
+
+
+    </script>
+</body>
+</html>

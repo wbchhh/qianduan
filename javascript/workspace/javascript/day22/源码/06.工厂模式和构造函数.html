@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>点击一下 </button>
+    <script>
+        // 工厂模式
+        // function factory() {
+        //     var obj = {}
+        //     obj.btn = document.getElementsByTagName("button")[0];
+        //     obj.foo = function () {//函数作用域1
+        //         // 此处this 是 ？ obj
+        //         console.log(this,'1.0');
+        //         obj.btn.onclick = function () {//函数作用域2
+        //             // 此处this又是 ？   <button>点击一下 </button>
+        //             console.log(this,'2.0');
+        //             console.log("工厂模式");
+        //         }
+        //     }
+        //     return obj;
+        // }
+        // var o1 = factory();
+        // o1.foo();
+        // console.log(o1);
+
+
+        // 构造函数
+        function Page(){//函数作用域
+            // 添加属性
+            this.btn = document.getElementsByTagName("button")[0];
+            this.foo = function () {//函数作用域1
+                // 此处this 是 ？  o2   Page{} 实例对象
+                console.log(this,'1.0');
+                this.btn.onclick = function () {//函数作用域2
+                    // 此处this又是 ？   <button>点击一下 </button>
+                    console.log(this,'2.0');
+                    console.log("工厂模式");
+                }
+            }
+        }
+        // 创建实例对象
+        var o2 = new Page();
+        o2.foo();
+
+        console.log(o2)
+    </script>
+</body>
+
+</html>

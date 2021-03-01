@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定：记录数据</title>
+    <style>
+         button {
+             width: 80px;
+             height: 80px;
+             margin: 10px ;
+         }
+    </style>
+</head>
+<body>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+</body>
+</html>
+<script>
+    // 声明变量 记录按钮的索引值
+    // var index_1 = 0;
+    // var index_2 = 1;
+    // var index_3 = 2;
+    // var index_4 = 3;
+    // var index_5 = 4;
+
+    // 获取元素
+    var buttons = document.getElementsByTagName("button")
+    // console.log(buttons);
+    // buttons[0].index = 0 ;
+    // buttons[1].index = 1 ;
+    // buttons[2].index = 2 ;
+    // buttons[3].index = 3 ;
+    // buttons[4].index = 4 ;
+
+
+    // 循环按钮标签数组
+    for(var i = 0 ; i < 5 ; i ++){
+        // 属性绑定
+        buttons[i].index = i ;
+        // 事件绑定
+        buttons[i].onclick = function(){
+            // console.log(this);// 当前点击的标签
+            // 点击序号是 3 的button标签，输出index属性值是?
+            console.log(this.index);// 2
+        }
+    }
+
+
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html lang="zh_cn"><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题: 删除页面标签</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			/*权重是多少 ？  111*/
+			div#demo.box  {
+				width:100px;
+				height:100px;
+				background-color:red;
+			
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3> 删除页面标签(二)</h3>
+		<div class="box" id="demo"><div>
+		
+		<script>
+			//1.0 获取元素
+			var demo = document.getElementById("demo");
+			//2.0 获取Bodybody
+			var bd = document.body;
+			
+			// 删除元素
+			//调用removeChild可以删除元素，并且返回该元素
+			var res = bd.removeChild(demo);
+			console.log(res);// <div class="box" id="demo"><div>
+			
+			// api
+			//学习的技巧
+				//调用者：
+				//参数：
+				//返回值： 不是所哟函数都有返回值
+				//功能：
+				
+			
+		</script>
+	</body>
+</html>
+

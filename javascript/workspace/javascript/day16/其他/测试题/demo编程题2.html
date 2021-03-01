@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .blue {
+            background-color: blue;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="red"></div>
+    <div class="green"></div>
+
+
+    <button class="btn-add">增加</button>
+    <button class="btn-remove">删除</button>
+
+
+    <script>
+        // insertBefore()
+            // 调用者： 父元素
+            // 参数: 1：添加的元素  2.已经存在的元素
+            // 返回值：忽略
+            // 功能：在已经存在的元素之前插入元素
+            
+        // // 创建div标签
+        // var blueElement = document.createElement("div");
+        // // 设置类名
+        // blueElement.className = "blue";
+        // // 绿色的元素
+        // var greenElement = document.getElementsByClassName("green")[0];
+        // // 父元素
+        // document.body.insertBefore(blueElement , greenElement);
+
+
+        // 1.0 获取相关的元素
+        var btnAdd = document.getElementsByClassName("btn-add")[0];
+        var btnRemove = document.getElementsByClassName("btn-remove")[0];
+        var greenElement = document.getElementsByClassName("green")[0];
+        // 创建div标签
+        var blueElement = document.createElement("div");
+        // 设置类名
+        blueElement.className = "blue";
+
+        // 2.0 事件绑定
+        // 增加元素
+        btnAdd.onclick = function(){
+            // 处理逻辑
+            // 在红色和绿色元素之间增加蓝色元素
+            document.body.insertBefore(blueElement,greenElement);
+            // 解绑事件
+            btnAdd.onclick = null;
+        }
+        // 删除元素
+        btnRemove.onclick = function(){
+            // 删除蓝色元素
+            document.body.removeChild(blueElement);
+            // 解绑事件
+            btnRemove.onclick = null;
+        }
+
+
+    </script>
+    
+</body>
+</html>

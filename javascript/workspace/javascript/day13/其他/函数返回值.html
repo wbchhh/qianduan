@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> return   返回值 </title>
+</head>
+<body>
+
+
+    
+    <script>
+
+        // function foo(){
+            //     return "娃哈哈"
+            // }
+            // //console.log( foo() );
+            // var res = foo();
+            // console.log(res);
+            // document.getElementById("box").innerHTML = foo();
+
+            // 什么是函数返回值？
+            // 是指函数作用域中 return 后面的数据
+
+            // 为什么要用返回值？
+            // 主要是根据实际业务来决定的
+            // 使用return 返回值，可以让程序编码更加灵活
+
+            // 加法运算
+            function add(a,b){
+                //...
+                if(a == undefined){}
+                if(b == undefined){}
+                // ...
+                return (a-0) + (b-0);
+            }
+            // console.log(1+1);
+            // console.log(1+2);
+            console.log(add(1,1));
+            console.log(add(1,2));
+
+
+            // 判断终端 
+            function isPc(userAgent){
+                if(userAgent.indexOf("iPhone") > -1 || userAgent.indexOf("Android") > -1 ){
+                    return false;
+                }else {
+                    return true;
+                }
+            }
+            console.log(isPc("iPhone"));// false
+            console.log(isPc("Android"));// false
+            console.log(isPc("Window"));// true  PC端
+
+            // 创建并返回指定样式的div标签
+            function ce(w,h,bgColor){
+                if( w==undefined || h == undefined || bgColor ==undefined){
+                    return false;
+                }
+                var div = document.createElement("div");
+                div.style.width = w ;
+                div.style.height = h ;
+                div.style.backgroundColor =bgColor ;
+                return div;
+            }
+            console.log(ce("100px","100px","red"));
+            console.log(ce("200px","200px","green"));
+            console.log(ce("300px","600px","blue"));
+
+            document.body.appendChild(ce("100px","100px","red"));
+            document.body.appendChild(ce("200px","200px","green"));
+            document.body.appendChild(ce("300px","600px","blue"));
+
+
+            // return 值 叫做返回值
+            // 什么使用函数返回值
+            // 根据业务需要来定！
+            // 可以不用return  ,肯定可以。 
+            // 你希望执行一个函数，返回处理结果，那么就是用return .
+            // 如果函数没有写return 返回值，那么默认undefined
+            // 第一：
+            function foo(){
+                // xxxxx
+                console.log("hello world")
+            }
+            console.log( foo() );// undefined
+
+            // 第二：
+           function foo2(){
+                // xxxxx
+                return "hello world"
+            }
+           console.log( foo2() );// hello world
+
+
+    </script>
+</body>
+</html>

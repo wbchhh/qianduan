@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器</title>
+    <style>
+        .wraper {
+            width: 220px;
+            margin: 100px auto;
+        }
+        #startButton , #pauseButton{
+            width: 100px;
+            height: 50px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+        }
+        #startButton.con , #pauseButton.con{
+            background-color: skyblue;
+        }
+        #textBox {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 48px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+
+     <div class="wraper">
+        <button id="startButton">开始计数</button>
+        <button id="pauseButton">暂停计数</button>
+        <div id="textBox">0</div>
+     </div>
+
+    <script>
+        // 需求：
+        // 1、点击 开始计数 按钮， 数字从0开始计算 ，显示数字
+        // 2、点击 暂停计数 按钮， 数字就暂停计算
+        // 3、相隔 100ms 自增一的方式进行计数
+
+        var start = document.getElementById("startButton");
+        var count = 1;
+        var timer = null;
+        fn = function(){
+            // clearInterval(timer);
+            start.onclick = null;
+            timer = setInterval(function(){
+                start.nextElementSibling.nextElementSibling.innerText = count++;
+            },100);
+            this.style.backgroundColor = "pink";
+            start.nextElementSibling.style.backgroundColor = "";
+        }
+        start.onclick = fn;
+        start.nextElementSibling.onclick =function(){
+            start.style.backgroundColor = "";
+            this.style.backgroundColor = "pink";
+            clearInterval(timer);
+            start.onclick = fn;
+        }    
+    </script>
+</body>
+</html>

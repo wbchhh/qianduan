@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form </title>
+</head>
+<body>
+    
+    <!-- http://127.0.0.1:5050/index.html?username=xiaoming&userpass=123456&id=10010 -->
+    <!-- action="提交表单信息的地址"  method="提交的方式GET/POST" -->
+    <!-- <form action="数据接口地址" method="get"> -->
+    <!-- <form action="./api/demo.php" method="get"> -->
+    <!-- 模拟提交数据 -->
+    <form action="./api/demo.html" method="get">
+        <div>
+            <!-- name:key -->
+            <input type="text" placeholder="请输入账号" name="username">
+        </div>
+        <div>
+            <input type="password" placeholder="请输入密码" name="userpass">
+        </div>
+        <div>
+            <input type="submit" value="登录"> 
+        </div>
+    </form>
+</body>
+</html>

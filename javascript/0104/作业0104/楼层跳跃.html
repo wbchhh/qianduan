@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html , body , .layout{
+            width: 100%;
+            height: 100%;
+        }
+        .layout , .wrapper{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            width: 100%;
+            margin-top: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+        .container .section {
+            height: 100%;
+        }
+
+        .circle {
+            position: fixed;
+            right: 50px;
+            top: 50%;
+            z-index: 1000;
+            width: 40px;
+            height: 200px;
+            margin-top: -100px;
+        }
+        .circle ul {
+            width: 40px;
+        }
+        .circle ul li {
+            width: 35px;
+            height: 35px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 5px auto 0 ;
+        }
+        /* .circle ul li:hover , */
+        .circle ul li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="wrapper">
+            <div class="container" id="container">
+                <div class="section">第一屏</div>
+                <div class="section">第二屏</div>
+                <div class="section">第三屏</div>
+                <div class="section">第四屏</div>
+                <div class="section">第五屏</div>
+            </div>
+        </div>
+        <div class="circle">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 仿照：
+            // https://browser.360.cn/ee/
+            // 鼠标滚轮滚动切换页面 
+            // onmousewheel 事件
+            
+        // 初始化页面
+        var winHeight = window.innerHeight ;
+        var container = document.getElementById("container");
+        var sections = document.getElementsByClassName("section");
+        var ul = document.getElementsByTagName("ul")[0];
+        var lis = ul.getElementsByTagName("li");
+        var index = 0;
+        var arrColor = ["#1af","#2bf","#3cf","#4df","#5ef"];
+        for(var i = 0 ; i < sections.length ;  i ++){
+            sections[i].style.height = winHeight +"px";
+            sections[i].style.backgroundColor = arrColor[i];
+        }
+
+        var setPoint = function(index){
+            for(var n = 0; n < lis.length; n ++){
+                lis[n].className = "";
+            }
+            lis[index].className = "active";
+        }
+        //导航点
+        for(var j = 0; j < lis.length; j ++){
+            lis[j].index = j;
+            lis[j].onmouseenter = function(){
+                index = this.index;
+                animate(container , {
+                    marginTop:-(index*winHeight)
+                });
+                setPoint(index);
+            }
+        }
+        var delayer = null;
+        //鼠标滚动
+        window.onmousewheel = function(e){
+            if(delayer){
+                clearTimeout(delayer);
+            }
+            delayer = setTimeout(function(){
+                if (e.wheelDelta > 0) { 
+                    index --;
+                    if(index < 0){
+                        index = 0;
+                    }
+                }
+                if (e.wheelDelta < 0) { 
+                    index ++;
+                    if(index > lis.length - 1){
+                        index = lis.length - 1;
+                    }
+                }
+                clearTimeout(delayer);
+            },300)            
+            animate(container , {
+                marginTop:-(index*winHeight)
+            });
+            setPoint(index);
+        };
+
+    </script>
+    <script src="./animate.js"></script>
+</body>
+
+</html>

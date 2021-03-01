@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式-边界</title>
+</head>
+<body>
+    <h3>正则表达式-边界</h3>
+    <script>
+        // 边界
+        // helloworld
+        // 开始的字符h  结束的字符d
+
+        // ^  开始   以哪个字符(串)开始
+        // $  结束   以哪个字符(串)结束
+
+        // 备注：^ 这个特殊字符 表示开始不能写在[]中
+        // 如果写在[^xxxx]中，表示取反
+
+        // 定义正则表达式
+        // var re = /hello/;
+        var re = /^hello$/;
+        console.log(re.test("hello"));// true
+        console.log(re.test("123hello"));// false
+        console.log(re.test("hello456"));// false
+
+        console.log(/^\d/.test("abc12345"));//false 
+        console.log(/^\d/.test("12345abc"));//true 
+
+        console.log(/\d$/.test("12345abc"));//false 
+        console.log(/\d$/.test("12345abc890"));//true 
+
+    </script>
+</body>
+</html>

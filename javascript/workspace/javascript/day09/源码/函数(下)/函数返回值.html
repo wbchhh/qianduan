@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数返回值</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h3>函数返回值</h3>
+    <div class="container"></div>
+    <script>
+        // return 
+        // return 语句仅限于在函数作用域中使用 ，在函数作用域外部使用会报错
+        // return 1111;// 报错
+
+        // 1.0 定义函数
+        function foo(){
+            //返回值
+            return 1111;
+        }
+
+        // 2.0 调用函数
+        var res = foo();
+        console.log(res);// 1111
+
+
+        // 思考：
+        // 调用 ce 函数  , 
+        // 返回一个宽度100px 、高度 100px，背景色red 、外边距10px的div标签
+
+        // 1.0 定义函数 
+        function ce(){
+            // 处理逻辑怎么写 ？
+            var div = document.createElement("div");
+            // 设置元素宽度
+            div.style.width = "100px";
+            // 设置元素高度
+            div.style.height = "100px";
+            // 设置元素背景色
+            div.style.backgroundColor = "red";
+            // 设置元素外边距
+            div.style.margin = "10px";
+            // 返回div标签
+            return div;
+        }
+
+
+        // 2.0 调用函数
+        // 定义变量接收ce函数的返回值
+        var div1 = ce();
+        var div2 = ce();
+        // console.log(div1,div2);// div
+        document.body.appendChild(div1);
+        document.body.appendChild(div2);
+
+        var div3 = ce();
+        var container = document.getElementsByClassName("container")[0];
+        container.appendChild(div3);
+    </script>
+</body>
+</html>

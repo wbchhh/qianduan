@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ["123","234","345","abc","hhh"];
+        var item = "234";
+        var len = arr.length;
+        function cha(item){
+            for(var i=0;i<len;i++){
+                if(arr.indexOf(item) > -1){
+                    console.log("item的索引值为:"+arr.indexOf(item));
+                }else{
+                    console.log("不存在");
+                }
+            }
+        }
+        cha(item);
+    </script>
+</body>
+</html>

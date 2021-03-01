@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数防抖和节流的区别</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .wrapper {
+            width: 500px;
+            height: 200px;
+            background-color: #ccc;
+            cursor: move;
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 2000px;
+            margin: 50px auto;
+
+        }
+
+        .container ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            height: 100px;
+            border-bottom: 3px solid #ccc;
+            overflow: hidden;
+        }
+
+        .container ul li {
+            width: 10px;
+            height: 50px;
+            background-color: #000000;
+            float: left;
+            margin: 25px 2px;
+            border-radius: 5px;
+        }
+
+        #box1 {
+            background-color: pink;
+        }
+
+        #box2 {
+            background-color: lightgreen;
+        }
+
+        #box3 {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>函数防抖和节流</h3>
+    <p>作用：防止函数被高频调用，优化web性能</p>
+
+
+    <div class="wrapper" id="wrapper">
+        <!-- 鼠标在此处频繁滑动-->
+    </div>
+
+    <div class="container">
+        <ul id="box1">
+            <!-- 函数高频执行 -->
+        </ul>
+        <ul id="box2">
+            <!-- 函数防抖 -->
+        </ul>
+        <ul id="box3">
+            <!-- 函数节流 -->
+        </ul>
+    </div>
+
+
+    <!-- 引入公共函数 -->
+    <script src="./util.js"></script>
+    <script>
+        // 1.0 获取页面相关元素
+        var wrapper = document.getElementById("wrapper");
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+
+        
+        // 记录防抖函数
+        var fangDou = debounce(function(){
+             var li = document.createElement("li");
+             box2.appendChild(li);
+        },500);
+        // 记录节流函数
+        var jieLiu = throttle(function(){
+             var li = document.createElement("li");
+             box3.appendChild(li);
+        },500);
+
+        // 2.0 事件绑定
+        wrapper.onmousemove = function () {
+            // 频繁执行
+            ; (function () {
+                var li = document.createElement("li");
+                box1.appendChild(li);
+                console.log("频繁执行")
+            })()
+            // 防抖函数 (会重新计算时间)
+            fangDou();
+            // 节流函数
+            jieLiu();
+        }
+
+
+
+
+        // 防抖函数
+        // wrapper.onmousemove = debounce(function(){
+        //      var li = document.createElement("li");
+        //      box2.appendChild(li);
+        // },1000)
+
+        // 节流函数
+        // wrapper.onmousemove = throttle(function(){
+        //      var li = document.createElement("li");
+        //      box3.appendChild(li);
+        // },1000)
+    </script>
+</body>
+
+</html>

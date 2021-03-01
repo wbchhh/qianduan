@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象 匿名函数</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // 匿名函数
+        // function(){ return 1 ;} //报错
+        // var res = -function(){ return 1 ;}() // 负数
+        // var res = +function(){ return 1 ;}() // 正数
+        // console.log(res);// -1
+        // 了解一下即可（按位运算）
+        // 首先转负数 再减 1 
+        // var res = ~ function(){ return 100 ;}()
+        // console.log(res);// -101
+        // 首先转正数 再减 1 
+        // var res = ~ function(){ return -100 ;}()
+        // console.log(res);// 99
+        // var res = !function(){ return true };
+        // console.log(res);
+
+        // + - ~  ! 
+        // 匿名函数在书写的时候，防止语法报错
+
+        // 立即执行函数
+        // ; 分割符
+        // ;(function(){ console.log("test") })()
+
+
+        // 回调函数
+        // 1.0 
+        function foo(callback){
+            // 判断callback是否为函数 ，是则调用
+            if(typeof callback === "function") callback();
+        }
+        // 2.0 
+        foo(function(){
+            console.log("callback")
+        })
+        // 把 function(){} 作为实参参数传递到指定函数作用域中调用
+
+
+     
+    </script>
+</body>
+
+</html>

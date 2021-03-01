@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加强版本</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #0ff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        button {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <button>点击按钮</button>
+    <script>    
+        // 思路：
+            // 设置哪个元素的样式 ， 设置样式属性值是多少，设置步长
+            // 目标属性值 = 当前的属性值 + 步长
+            // 步长 = （目标属性值 - 当前的属性值） / 数字
+            // 步长 = （目标属性值（固定）- 当前的属性值（变）） / 数字
+            // 步长 = （600- 500） / 5  = 值
+            // 数字是控制步长的大小的
+
+        // 1.0 定义函数（dom：元素, value：目标属性值,speed:步长）speed = 5
+        // getComputedStyle(dom)[属性]
+        function move(dom,key,value){
+            // 为了防止出现抖动的现象 用定时器先清除定时器
+            clearInterval(dom.timer);
+            // 属性绑定，执行定时器函数
+            dom.timer = setInterval(function(){
+                // 记录当前的属性值
+                var currentV = parseInt(getComputedStyle(dom,null)[key]);
+                // 计算步长 （目标属性值 - 当前的属性值） / 数字
+                // 匀速
+                // var speed = 10 ;
+                // 减速 60 ~ 0 
+                // speed = (600 - 0) / 10 = 60 
+                // speed = (600 - 0) / 20 = 30 
+                // speed = (600 - 0) / 30 = 20 
+                // speed = (600 - 0) / 60 = 10 
+                // 数字：控制速度快慢 （值越大 速度越慢，值越小，速度越快）
+                var speed = (value - currentV) / 10 ;
+                // 加速 0 ~ 60 (自己思考)
+                // 处理小数点的逻辑（为了使元素更好到达目标属性值）
+                // 0.3 = 1  Math.ceil(speed) 向上取整
+                // -0.1 = -1  Math.floor(speed)  向下取整
+
+                //  0.xxx > 0 ==== 0.2 
+                // 599 + 0 = ?
+                // 599 + 1 = 600
+                // currentV = 599
+                // (600 - 599) / 10 = 0.1 
+                // Math.ceil(0.1)  = 1 
+                // 599 + 1 = 600 达到目标值
+                // 599 + 0 = 599 没办法达到目标值
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                // 判断是否到达目标属性值
+                if(currentV == value){
+                    // 检查定时器函数是否停止
+                    console.log("停止定时器函数");
+                    // 停止定时器函数
+                    clearInterval(dom.timer);
+                    // 终止代码
+                    return;
+                }
+                // 设置dom的样式
+                dom.style[key] = currentV + speed +"px";
+            },30);
+        }
+
+        // 2.0 获取页面的div标签
+        var div = document.getElementsByTagName("div")[0];
+        var button = document.getElementsByTagName("button")[0];
+        // 3.0 调用动画函数
+        // move(dom,key,value)
+        // 599 + 1 = 600
+        // 599 + 0 = 600
+        // move(div,"left",600);
+        // move(div,"width",600);
+        // 3.0 点击按钮
+        button.onclick = function(){
+            // 调用动画函数
+            move(div,"width",600);
+            // move(div,"height",600);
+        }
+    
+    </script>
+</body>
+</html>

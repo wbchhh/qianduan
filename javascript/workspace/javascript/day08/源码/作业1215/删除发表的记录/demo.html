@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除发表记录</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .header {
+            width: 600px;
+        }
+        .header input {
+            vertical-align: middle;
+            height: 50px;
+            width: 490px;
+            padding: 0 0 0 10px;
+        }
+        .box button {
+            width: 120px;
+            height: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .list {
+            width: 600px;
+        }
+        .list ul li {
+            min-height: 80px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 0  0 20px 0;
+        }
+         .list ul li .f-right {
+             float: right;
+             margin: 5px;
+         }
+         .list ul li .f-right button {
+             width: 40px;
+             height: 40px;
+             border:0;
+         }
+         .list ul li .f-right button:hover {
+             background-color: #f00;
+         }
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <input type="text" placeholder="请输入" id="inp">
+    </div>
+    <div class="box">
+        <button id="btn">发表</button>
+    </div>
+    <div class="list">
+        <ul id="listElement">
+
+        <!--             
+            <li><div class="f-right"><button>×</button></div><div>说说内容1111</div></li>
+        -->
+        </ul>
+    </div>
+
+    <script>
+        // 需求：
+            // 点击“发表”获取输入框的值
+            // 把输入的值拼接好，渲染字符串在列表区域
+            // 点击“关闭”按钮，删除当前的说说
+
+        // 基本步骤：
+
+        // 编码实现
+            // 1.0 获取相关元素
+            var inpElement = document.getElementById("inp");
+            var btnElement = document.getElementById("btn");
+            var listElement = document.getElementById("listElement");
+
+            // 2.0 事件绑定
+            // 发表按钮
+            btnElement.onclick = function(){
+                // 3.0 处理逻辑
+                // 获取输入的值
+                var v1 = inpElement.value;
+                // 判断是否有值
+                if(v1.length !=0){
+                     // 定义字符串
+                    var html = '<div class="f-right"><button>×</button></div><div>'+v1+'</div>';
+                    // 创建Li标签 （说说记录）
+                    var li = document.createElement("li");
+                    // 填充文本
+                    li.innerHTML = html;
+                    // 添加说说记录
+                    listElement.appendChild(li);
+                    // 重置输入的值
+                    inpElement.value = "";
+                }
+               
+            }
+
+            // 删除逻辑（事件委托）
+            listElement.onclick = function(event){
+                 // 3.0 处理逻辑
+                 var element = event.target;
+                //  console.dir(element);
+                // 判断 点击是否为 BUTTON 标签名 是大写字母
+                if(element.tagName == "BUTTON"){
+                    // 获取li标签
+                    var curElement = element.parentElement.parentElement;
+                    // 删除元素
+                    curElement.remove();
+                }
+            }
+    </script>
+</body>
+</html>

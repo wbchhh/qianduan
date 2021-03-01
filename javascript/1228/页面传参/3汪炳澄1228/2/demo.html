@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-2</title>
+</head>
+<body>
+    
+    <script>
+        // 数组
+        var arr = [20,30,50,10,60,80]
+        // 要求：
+            //编写函数对数组的数字进行从大到小的排序
+            // 返回从大到小排序的新数组
+        var len = arr.length;
+        var count = 0;
+        function paiXu(array){
+            for(var i=0;i<len;i++){
+                for(var j=i+1;j<len;j++){
+                    count ++;
+                    if(array[i]<array[j]){
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp; 
+                    }
+                }
+            }
+            console.log(count);
+            return array;
+        }
+        var res = paiXu(arr);
+        console.log(res);
+    </script>
+</body>
+</html>

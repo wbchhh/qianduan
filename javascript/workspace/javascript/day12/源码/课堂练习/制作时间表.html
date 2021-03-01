@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>制作时间表</title>
+    <style>
+        table {
+            /* 重叠边框线 */
+            border-collapse: collapse;
+            width: 600px;
+        }
+        table th , table td {
+            border: 2px solid  deepskyblue;
+            text-align: center;
+            /* height: 30px; */
+        }
+        .time {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 设置表格标签 -->
+    <!-- cellpadding="20" 内容与边框的距离 -->
+    <!-- cellspacing="0" 单元格与单元格之间的距离 -->
+    <table cellpadding="30" cellspacing="0">
+        <thead>
+            <tr>
+                <th>年份</th>
+                <th>月份</th>
+                <th>日期</th>
+                <th>xxx</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <div class="year"></div> </td>
+                <td> <div class="month"></div> </td>
+                <td> <div class="date"></div> </td>
+                <td> <div class="week"></div> </td>
+            </tr>
+            <tr>
+                <!-- colspan="4" 跨4列 -->
+                <td colspan="4"> <div class="time"> 00:00:00:00</div> </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+     // 需求：
+        // 获取当前时间相关的数据并且渲染在表格中
+
+    // 编码：
+        // 1.0 获取相关的元素 (语义化命名)
+        var yearElement  = document.getElementsByClassName("year")[0];
+        var monthElement  = document.getElementsByClassName("month")[0];
+        var dateElement  = document.getElementsByClassName("date")[0];
+        var weekElement  = document.getElementsByClassName("week")[0];
+        var timeElement  = document.getElementsByClassName("time")[0];
+        // 2.0 处理时间的逻辑
+        function getCurrentTime(){
+            // .0 创建日期对象的实例
+            var dt = new Date();
+            // .0 获取年份
+            yearElement.innerText = dt.getFullYear();
+            // .0 获取月份
+            monthElement.innerText = dt.getMonth() + 1;
+            // .0 获取日期
+            dateElement.innerText = dt.getDate();
+            // .0 获取星期
+            // 数组
+            var arr = ["日" ,"一" ,"二 ","三" ,"四 ","五 "," 六"];
+            // weekElement.innerText = "星期"+ dt.getDay();
+            weekElement.innerText = "星期"+ arr[dt.getDay()];
+            // .0 获取小时
+            var h = dt.getHours() < 10 ? "0"+dt.getHours() : dt.getHours();
+            // .0 获取分钟
+            var m = dt.getMinutes() < 10 ? "0"+dt.getMinutes() : dt.getMinutes();
+            // .0 获取秒钟
+            var s = dt.getSeconds() < 10 ? "0"+dt.getSeconds() :  dt.getSeconds();
+            // .0 获取毫秒
+            var ms = dt.getMilliseconds();
+            // .0 渲染时间
+            timeElement.innerText = h +":" + m + ":" + s + ":" + ms;
+        }
+        // 3.0 初始化页面效果
+        getCurrentTime();
+        // 4.0 执行定时器函数
+        var timer = setInterval(function(){
+            // 调用获取当前时间的函数
+            getCurrentTime();
+        },1000)
+
+
+
+
+
+
+</script>

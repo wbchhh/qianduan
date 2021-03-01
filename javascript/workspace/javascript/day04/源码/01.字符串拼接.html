@@ -1,0 +1,43 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:字符串拼接</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>字符串拼接</h3>
+		
+		
+		<script>
+			//1.0 
+			var url = "images/1.jpg";
+			console.log(url);
+			// 示例： src="images/1.jpg"
+			var str1 = "src=" + url;
+			console.log(str1);// src=images/1.jpg
+			
+		
+			//var str2 = 'src=" "'
+			var str2 = 'src="'+url +'"';
+			console.log(str2);//src="images/1.jpg"
+			//备注：如果外层是单引号，那么插入变量的时候，用单引号
+			
+			
+			// 示例：<img src='./images/1.jpg'/>
+			//var str3 = "<img src=''/>"
+			var str3 = "<img src='"+url+"'/>";
+			console.log(str3);
+			//备注：如果外层是双引号，那么插入变量的时候，用双引号
+			
+		
+		</script>
+	</body>
+</html>
+

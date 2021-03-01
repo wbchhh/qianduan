@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie （封装cookie相关操作）</title>
+</head>
+<body>
+    
+    <h3>cookie </h3>
+
+    <script>
+        // 关于cookie , 是存储数据的一种方式
+
+        // 设置cookie 
+        // 1.0 
+        function setCookie(key,value,hours){
+            // 日期对象 
+            var dt = new Date();
+            var currentTime = dt.getTime();
+            hours = hours || 2 ;
+            // 设置有效时间
+            dt.setTime(currentTime + hours * 60 * 60 * 1000);
+            document.cookie =key+"="+value+"; expires="+ dt
+        }
+        setCookie("color","red");
+        setCookie("width","100px");
+        setCookie("bgcolor","green");
+
+        // 获取cookie 
+        // 2.0 
+        function getCookie(key){
+            // 获取cookie
+            var dataStr = document.cookie;
+            // 判断是否存在cookie ,不存在，直接终止代码
+            if(dataStr.length == 0) return ;
+            // 切割字符串
+            var data = dataStr.split("; ");
+            // console.log(data);
+            // 定义对象
+            var obj = {};
+            // 循环data数组
+            for(var i = 0 ; i < data.length ; i ++){
+                // key = value
+                var prop = data[i].split("=")[0];
+                var v1 =  data[i].split("=")[1];
+                obj[prop] = v1;
+            }
+            // console.log(obj);
+            // console.log(key);
+            // 返回指定cookie名称的属性
+            return obj[key];
+        }
+
+        var color = getCookie("color");
+        console.log(color);
+        // console.log(getCookie("aaaa"));// undefined
+      
+
+        // 删除cookie 
+        // 3.0 
+        function removeCookie(key){
+            // 有效时间过期
+            var dt = new Date(1970/01/01);
+            // 设置对应的cookie为空
+            document.cookie =key+"=; expires="+dt;
+        }
+
+        removeCookie("width");
+
+        console.log(getCookie("width"));// undefined
+
+    </script>
+</body>
+</html>

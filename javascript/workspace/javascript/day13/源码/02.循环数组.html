@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环数组</title>
+    <style>
+        div {
+            width: 600px;
+            height: 50px;
+            border: 1px solid #ccc;
+            margin: 10px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <h3>循环数组</h3>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <!-- <div>5</div> -->
+    <script>
+        // 1.0 定义数组 记录颜色（5个）
+        var arrColor = [
+            "yellowgreen",
+            "lightblue",
+            "darkred",
+            "pink",
+            "lightgreen"
+        ]
+        // 2.0 把数组的颜色通过循环的方式 
+        // 一一给对应div标签设置背景色
+        console.log(arrColor)
+        var aDiv = document.getElementsByTagName("div");
+        console.log(aDiv);
+        // 3.0 循环
+        // for(var i = 0 ; i < 4 ; i ++){
+        for(var i = 0 ; i < aDiv.length ; i ++){
+            // 给div设置背景色
+            aDiv[i].style.backgroundColor = arrColor[i];
+        }
+
+        // 关于循环语句
+        // i = 0
+        // i = 1
+        // i = 2 
+        // i = 3
+        // i = 4
+        // for(代码1 ;代码2 ; 代码3){   
+            // 首先执行 代码1 ;代码2 ，满足条件 ，进入循环，
+            // 不满足条件，跳出循环
+            // aDiv[0].style.backgroundColor = arrColor[0];
+        // }      
+
+        // 数组是如何存值和取值
+        // 是以索引值的方式存值和取值
+        // arrColor[0]
+        // arrColor[1]
+        // aDiv[0]
+        // aDiv[1]
+
+    </script>
+</body>
+</html>

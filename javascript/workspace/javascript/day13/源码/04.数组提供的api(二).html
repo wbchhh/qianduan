@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组操作API(二)</title>
+</head>
+<body>
+    <h3>数组操作API(二)</h3>
+
+    <script>
+        // 定义数组
+        // ["aaa","bbb","ccc"]
+        // console.log(typeof ["aaa","bbb","ccc"]);// object
+        // // 检测数据集合是否为数组
+        // console.log(Array.isArray(["aaa","bbb","ccc"]));// true
+        // console.log(Array.isArray({}));// false
+
+        // push()
+        // 参数: 目标数据
+        // 返回值：数组的长度 （length）
+        // 功能：往数组的最后一项（末端）添加数据
+        var arr = ["aaa","bbb","ccc"];
+        // var length = arr.push("123");
+        arr.push("123");
+        arr.push("456");
+        arr.push("789");
+        arr.push(true);
+        arr.push(undefined);
+        arr.push([]);
+        console.log(arr);
+        // console.log(length);
+      
+
+        // pop()
+        // 参数：无
+        // 返回值：被删除的数组
+        // 功能：删除数组的最后一项数据
+        var arr2 = ["aaa","bbb","ccc","111","222","333"];
+        // arr2.pop();
+        // arr2.pop();
+        // arr2.pop();
+        var res2 = arr2.pop();
+        console.log(arr2);
+        console.log(res2);
+
+
+        // unshift()
+        // 参数：目标数据
+        // 返回值：数组的长度（length）
+        // 功能：往数组的第一项位置添加数据
+        var arr3 = ["aaa","bbb","ccc"];
+        arr3.unshift("red");
+        arr3.unshift("green");
+        var res3 = arr3.unshift("blue");
+        console.log(arr3);
+        console.log(res3);
+
+
+        // shift()
+        // 参数：无
+        // 返回值：被删除的数据
+        // 功能：删除数组的第一项数据
+        var arr4 = ["333","222","111","aaa","bbb","ccc"];
+        var res4 = arr4.shift();
+        console.log(arr4);
+        console.log(res4);
+
+
+        // 总结：
+            // 往数组添加数据
+            // 删除数组的数据
+
+    </script>
+</body>
+</html>

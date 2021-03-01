@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义事件</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 1.0 获取指定
+        var aDiv = document.getElementsByTagName("div");
+        //循环
+        for(var i = 0 ; i < aDiv.length ; i ++){
+            (function(index){
+                var endTime = 0;
+                var startTime = 0;
+                aDiv[i].onmousedown = function(){
+                    startTime = new Date().getTime();
+                }
+                aDiv[i].onmouseup = function(){
+                    endTime = new Date().getTime() - startTime;
+                    if(endTime < 300){
+                        aDiv[index].onMyClick && aDiv[index].onMyClick({type:"myClick",num:0});
+                    }
+                }
+            })(i)
+        } 
+
+
+        aDiv[0].onMyClick = function(event){
+            // console.log("myClick",event)
+            console.log(event)
+        }
+        
+
+
+    </script>
+</body>
+</html>

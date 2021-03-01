@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器右下角的广告</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .banner {
+            width: 420px;
+            height: 450px;
+            background-color: #ccc;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+        }
+        .banner .title {
+            width: 420px;
+            height: 150px;
+            background-color: deepskyblue;
+            position: relative;
+        }
+        .banner .title .close-button {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            background-color: #fff;
+            color: #f00;
+            font-size: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .banner .content {
+            width: 420px;
+            height: 300px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 广告盒子 -->
+    <div class="banner">
+        <div class="title">
+            <!-- 关闭按钮 -->
+            <div class="close-button">×</div>
+        </div>
+        <div class="content">
+            <!-- 内容 -->
+        </div>
+    </div>
+
+    <script>
+        // 需求：
+            // 动画方式隐藏广告
+            // 向下动画隐藏绿色盒子，然后动画向右隐藏天蓝色盒子
+
+
+        // 面向对象(编码方式)
+        // 封装性：
+        // 将客观存在的数据添加到对象中
+        // 添加动画的逻辑
+        // 例如：
+        // var obj = {str:"hello"}
+        // console.log(obj.str);// hello
+        // console.log(str);// 报错
+        // 1.0 构造函数
+        // var _this ;
+        function Banner() {// 函数作用域1 
+            // 添加数据
+            this.banner = document.getElementsByClassName("banner")[0];
+            this.closeButton = document.getElementsByClassName("close-button")[0];
+            this.content = document.getElementsByClassName("content")[0];
+            this.distanceY = this.content.offsetHeight;
+            this.distanceX = this.banner.offsetWidth;
+            // _this = this;
+            // console.log(typeof this);// object  this 是个对象
+            // 添加方法
+            // 初始化
+            this.init = function() {
+                // 调用关闭广告的函数
+                this.close();
+                // xxxx
+                // xxxx
+                // xxxx
+            }
+            // 执行动画的函数 {bottom:"-300px"}
+            this.animate = function(dom,option,callback){
+                // 先清除定时器函数（一种防抖思想）
+                clearInterval(dom.timer);
+                // 执行定时器函数
+                dom.timer = setInterval(function(){
+                    // 目标属性值 = 当前属性值 + 步长
+                    // 步长 = （目标属性值 - 当前属性值） / 数字
+                    // 定义布尔值(用于判断是否停止定时器函数)
+                    var isChange = true;
+                    // 循环对象 
+                    for(var key in option){
+                        // 目标属性值
+                        var targetV = parseInt(option[key]);
+                        // 当前属性值
+                        var currentV = parseInt(getComputedStyle(dom)[key]);
+                        // 步长
+                        var speed = (targetV - currentV) / 30;
+                        // 处理小数点 0.1 取 1  -0.1 取 -1
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        // 判断是否存在属性没有达到目标属性值
+                        if(currentV != targetV){
+                            isChange = false;
+                        }
+                        // 设置dom元素的样式
+                        // dom.stlye[key] = currentV + speed + "px";
+                        dom.style[key] = currentV + speed + "px";
+                    }
+                    // 判断是否停止定时器函数
+                    if(isChange){
+                        // 停止定时器函数
+                        clearInterval(dom.timer);
+                        // 执行callback函数
+                        if(callback) callback();
+                    }
+                },1000/60)
+            }
+
+            // 关闭广告的函数
+            this.close = function() { //函数作用域1 
+                // 定义变量记录当前函数作用域的this
+                // that 不是关键字
+                var that = this;
+                // var _this = this;
+                // 事件绑定
+                this.closeButton.onclick = function(){ //事件函数作用域2
+                    // 此处的this 是事件的调用
+                    // console.log(this);//  <div class="close-button">×</div>
+                    // 改用变量that  
+                    that.animate(that.banner,{
+                        bottom:-that.distanceY
+                    },function(){
+                        that.animate(that.banner,{
+                            right:-that.distanceX
+                        })
+                    })
+                }
+            }
+        }
+
+        //创建构造函数的实例
+        var b1 = new Banner();
+        // // console.log(b1);
+        b1.init();
+        // b1.close();
+        // new Banner().init();
+
+
+
+        // console.log(b1=== _this);// true
+        // this 指向问题(思考)
+
+
+
+    </script>
+</body>
+</html>

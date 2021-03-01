@@ -1,0 +1,38 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:获取页面标签</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>获取页面标签（二）</h3>
+		<div id="box1" class="box">1</div>
+		<div id="box2" class="item">2</div>
+		<div id="box3" class="item">3</div>
+		
+		<script>
+			// HTML5 新增 
+			// 获取标签 (注意参数)
+			//var box1 = document.querySelector("#box1");//id名 # 
+			//var box1 = document.querySelector(".box"); // class 类名 .
+			var box1 = document.querySelector("div"); // 标签名
+			console.log(box1);
+			
+			// 获取标签数组
+			// var elements = document.querySelectorAll(".item");// class 类名 .
+			var elements = document.querySelectorAll("div");//标签名
+			console.log(elements);
+			
+			
+		
+		</script>
+	</body>
+</html>
+

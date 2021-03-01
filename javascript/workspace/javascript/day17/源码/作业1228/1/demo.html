@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-1</title>
+    <style>
+        .wrapper {
+            position: fixed;
+            right:0;
+            bottom: 0;
+            width: 350px;
+            height: 180px;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        .wrapper .btn-close {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .wrapper .btn-more {
+            float: right;
+            padding: 10px 20px;
+            background-color: deepskyblue;
+            cursor: pointer;
+            color: #fff;
+            outline: none;
+            border: 0;
+            margin: 0 10px 0 0 ;
+        }
+        .wrapper .content {
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="btn-close">×</div>
+        <div class="content"></div>
+        <button class="btn-more">查看更多</button>
+    </div>
+
+    <script>
+        // 需求：
+            // 右下角广告
+            // 点击 "×" 关闭广告（关闭页面标签页）
+            // 点击 "查看更多"，页面跳转百度首页 "http://www.badu.com"
+
+        // 基本步骤：
+            // 1. 获取页面相关的元素
+            // 2. 事件绑定
+            // 3. 书写程序处理逻辑
+
+
+        // 1. 获取页面相关的元素
+        var btnClose = document.getElementsByClassName("btn-close")[0];
+        var btnMore = document.getElementsByClassName("btn-more")[0];
+        // 2. 事件绑定
+        btnClose.onclick = function(){
+            // 3. 书写程序处理逻辑
+            // 可以把元素删除 .wrapper 
+            // 可以把元素隐藏 .wrapper 
+            // 关闭当前页面
+            window.close();
+            // firefox  chrome 浏览器不支持回退当前页面再关闭页面
+        }
+        btnMore.onclick = function(){
+            // 3. 书写程序处理逻辑
+            // 跳转页面
+            window.location.href = "http://www.badu.com";
+        }
+        
+
+    </script>
+</body>
+</html>

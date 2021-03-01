@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子跟随鼠标移动</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color:yellowgreen;
+
+            /* 绝对定位 */
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    
+
+    <script>
+        // 1.获取box标签
+        var box = document.getElementsByClassName("box")[0];
+        // 2.定义变量 记录鼠标坐标位置
+        // pageX  pageY      在页面坐标位置
+        // clientX clientY   在浏览器可视区范围坐标位置
+        var x = 0;
+        var y = 0;
+        // 3. 事件绑定
+        // 事件类型 鼠标移动
+        document.onmousemove = function(event){
+            // 事件对象
+            x = event.clientX ;
+            y = event.clientY ;
+            // 处理鼠标在box中心位置
+            x = x - box.offsetWidth / 2 ;
+            y = y - box.offsetHeight / 2;
+            // 设置box标签的位置
+            box.style.left = x + "px";
+            box.style.top = y +"px";
+            // 检查x，y是否有值
+            console.log(x,y);
+        }
+
+    </script>
+</body>
+</html>

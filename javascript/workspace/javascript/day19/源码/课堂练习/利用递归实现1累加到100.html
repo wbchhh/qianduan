@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归 实现运算1累加到100的结果</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            text-align: center;
+            line-height: 100px;
+            color: #fff;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        0
+    </div>
+
+    <script>
+        // 需求：
+            // 1 + 2 + 3 + 4 + 5 + ... + 100
+
+            // 100 + 99 + 98 + ... + 1 
+            // 在控制台输出 1 累加到 100 的结果
+            // 递归：
+            // 定义函数
+            function add(num){
+                // 条件终止代码
+                if(num == 0){
+                   return 0 ;
+                }
+                // 返回 100  + 99 + 98 + ... + 1 + 0 
+                return num + add(num - 1);
+            }
+            // 调用函数
+            var res = add(100);
+            console.log(res);
+            document.getElementsByTagName("div")[0].innerHTML = res;
+
+            
+            // 循环
+            // var total = 0;
+            // for(var i = 100 ; i > 0 ; i --){
+            //     // 累加运算
+            //     total += i;
+            // }
+            // console.log(total);
+
+
+            // 1 + 2 + 3 + 4 
+            // 递归
+            function foo(num){
+                console.log(num,"----")
+                if(num == 1){
+                    return 1;
+                }
+                // return 4 + foo(4-1)
+                // return  4 + 3 + 2 + 1
+                return num + foo(num - 1);
+            }
+            var r = foo(4);
+            console.log(r);// 10
+    </script>
+</body>
+</html>

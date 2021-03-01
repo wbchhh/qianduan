@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校验中文姓名</title>
+    <style>
+        .form {
+            width: 600px;
+            margin: 150px auto;
+        }
+
+        .form>div {
+            height: 50px;
+            line-height: 50px;
+            font-size: 0;
+            position: relative;
+        }
+
+        .form>div input {
+            vertical-align: middle;
+            padding-left: 20px;
+            height: 40px;
+            width: 480px;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+
+        .form>div button {
+            width: 100px;
+            height: 40px;
+            font-size: 18px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .form>div .txt {
+            color: red;
+            position: absolute;
+            left: 0;
+            top: -40px;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div>
+            <input type="text" placeholder="请输邮箱">
+            <button>提交</button>
+            <span class="txt">输入格式不正确!</span>
+        </div>
+    </div>
+    <script>
+        // 需求：
+        // 校验输入的值是邮箱格式
+        // 邮箱(qq或者网易邮箱) 非所有的邮箱
+        // 12173245501@qq.com
+        // wangyongguo@163.com
+        // wangyongguo@yeah.net
+        // wangyongguo123@yeah.net
+        // _wangyongguo123@yeah.net
+        // yy@yeah.net
+        
+        // 一个字符串（英文，数字，下划线）   @  英文，数字  . com/net
+        // var re = /^\w{2,}@[a-zA-Z1-9]{2,4}\.(com|net)$/
+
+        // 基本步骤：
+        // 1.0 获取页面相关元素
+        // 2.0 事件绑定
+        // 3.0 书写处理逻辑
+
+        // 编码实现：
+        // 1.0 获取页面相关元素
+        var input = document.getElementsByTagName("input")[0];
+        var button = document.getElementsByTagName("button")[0];
+        var span = document.getElementsByTagName("span")[0];
+        // 2.0 事件绑定
+        button.onclick = function () {
+            // 3.0 书写处理逻辑
+            // 获取输入的值
+            var v1 = input.value;
+            // 校验输入的值
+            // 一个字符串（英文，数字，下划线）   @  英文，数字  . com/net
+            // \w  表示（英文，数字，下划线）
+            // .   表示任意字符
+            // \.  表示特殊符号 . 
+            var re = /^\w{2,}@[a-zA-Z1-9]{2,4}\.(com|net)$/
+            isVeri(re, v1);
+        }
+        // 4.0 编写函数
+        function isVeri(regExp, value) {
+            // 校验输入文本的格式
+            var bool = regExp.test(value);
+            // 文本格式不正确 
+            if (!bool) {
+                // 显示提示
+                span.style.display = "block";
+            } else {
+                // 隐藏提示
+                span.style.display = "none";
+            }
+        }   
+    </script>
+</body>
+
+</html>

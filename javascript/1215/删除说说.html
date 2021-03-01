@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除，不用for循环</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            margin: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><span>今天天气贼冷，特别适合敲代码1</span><button class="btn">删除</button></li>
+        <li><span>今天天气贼冷，特别适合敲代码2</span><button class="btn">删除</button></li>
+        <li><span>今天天气贼冷，特别适合敲代码3</span><button class="btn">删除</button></li>
+        <li><span>今天天气贼冷，特别适合敲代码4</span><button class="btn">删除</button></li>
+        <li><span>今天天气贼冷，特别适合敲代码5</span><button class="btn">删除</button></li>
+    </ul>
+    
+    <script>
+        var ul = document.getElementsByTagName("ul")[0];
+        ul.onclick = function(event){
+            var ele = event.target;
+            //console.log(ele);
+            if(ele.className == "btn"){
+                ele.parentElement.remove();
+                //console.log(ele.className);
+            }
+        }
+    </script>
+</body>
+</html>

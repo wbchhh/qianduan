@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组中的sort方法</title>
+</head>
+<body>
+    <h3>数组中的sort方法</h3>
+
+    <script>
+        // 
+        // function sort() { //函数内部循环 }
+        // Array.prototype.sort = function(){//函数内部循环}
+        // 构造函数  /  原型 / 实例对象
+
+        // sort()
+            // 调用者：arr 数组
+            // 参数 ： function(a,b){}
+            // 返回值：数组 (默认的时候是升序)
+            // 功能：对指定的数组进行排序或者打乱顺序
+
+        // // 1.0 数组
+        // var arr = [20,10,40,50,30];
+        // // 2.0 调用sort方法
+        // var res = arr.sort();
+        // // 数组的数据是从小到大排序
+        // console.log(res);
+
+
+        // // 1.0 数组
+        // var arr2 = [20,10,40,50,30];
+        // // 2.0 调用sort方法
+        // // sort方法在封装的时候已经循环
+        // var res2 = arr2.sort(function(a,b){
+        //     return a - b;
+        // });
+        // // 数组的数据是从小到大排序
+        // console.log(res2);// 升序
+
+
+        // 1.0 数组
+        var arr3 = [20,10,40,50,30];
+        // 2.0 调用sort方法
+        // sort方法在封装的时候已经循环
+        var res3 = arr3.sort(function(a,b){
+            return b - a;
+        });
+        // 数组的数据是从大到小排序
+        console.log(res3);// 降序
+
+
+        // // 1.0 数组
+        // var arr4 = [20,10,40,50,30];
+        // // 2.0 调用sort方法
+        // // sort方法在封装的时候已经循环
+        // var res4 = arr4.sort(function(){
+        //     return  Math.random() - 0.5 ;
+        // });
+        // // 
+        // console.log(res4);//  打乱数组顺序
+
+        
+
+
+
+
+
+
+
+
+
+
+
+        // 此处你需要理解 传递的参数是function(a,b){return a -b }; 
+        // 不需要你现在理解sort方法是如何封装的
+     
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直接量（具体的对象）</title>
+</head>
+<body>
+    
+    <script>
+        var obj = {
+            width:"100px",
+            height:"100px",
+            foo:function(bgColor){
+                var bgColor = bgColor || "red";
+                var div = document.createElement("div");
+                div.style.width = this.width;
+                div.style.height = this.height;
+                div.style.backgroundColor = bgColor;
+                document.body.appendChild(div);
+            }
+        }
+        obj.foo();
+        obj.foo("blue");
+        var obj2 = {
+            width:"200px",
+            height:"200px",
+            foo:function(bgColor){
+                var bgColor = bgColor || "red";
+                var div = document.createElement("div");
+                div.style.width = this.width;
+                div.style.height = this.height;
+                div.style.backgroundColor = bgColor;
+                document.body.appendChild(div);
+            }
+        }
+        obj2.foo("green");
+    </script>
+</body>
+</html>

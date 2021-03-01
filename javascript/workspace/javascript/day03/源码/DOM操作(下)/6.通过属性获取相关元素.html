@@ -1,0 +1,78 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html lang="zh_cn"><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：通过属性获取相关元素</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>通过属性获取相关元素</h3>
+		
+		<div>hello world <span>你好 世界1</span> <span>你好 世界2</span></div>
+		
+		
+		<div id="demo">
+			  <p>11111</p>
+			  <h1 id="middle">22222</h1>
+			  <form>33333</form>
+		</div>
+		
+		<script>
+			// 1.0 获取body标签
+			// log
+			// dir
+			//console.dir(document);// document
+			//var html = document.docmentElement;//html 标签
+			//var title2 = document.title;// title 标题 
+			//var head = document.head;// head  标签
+			//var body = document.body;//body
+			//console.log(body,title2,head,link);//控制台输出
+			
+			
+			var body = document.body;//body
+			
+			// 获取所有的子元素
+			var elements = body.children;
+			console.log(elements);
+			// 获取div标签
+			var div = elements[1];
+			//console.log(div);
+			console.dir(div);
+			// 获取子节点
+			var nodeArray = div.childNodes
+			console.log(nodeArray);// 节点数组
+			console.log(nodeArray[0].nodeType);//节点类型 nodeType == 3  文本节点
+			console.log(nodeArray[1].nodeType);//节点类型 nodeType == 1  标签节点
+			// 获取子元素
+			var eleArray = div.children;
+			console.log(eleArray);//标签数组
+			
+			
+			// 获取span标签
+			var span = div.children[0];
+			span.style.color = "red";
+			
+			// 获取父元素
+			var ele =  span.parentElement;
+			console.log(ele);
+			
+			
+			console.log("----------------")
+			// 获取h3标签
+			var  mElement = document.getElementById("middle");
+			console.dir(mElement);
+			// 获取相邻关系的上一个标签
+			console.log(mElement.previousElementSibling);//
+			// 获取相邻关系的上一个标签
+			console.log(mElement.nextElementSibling);//
+			
+		</script>
+	</body>
+</html>
+

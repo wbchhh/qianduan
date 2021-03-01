@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            margin: 0  100px ;
+        }
+    </style>
+</head>
+<body>
+    <h3>事件对象</h3>
+    <div class="box"></div>
+
+
+    <script>
+        // 1.0 获取.box元素
+        var ele = document.getElementsByClassName("box")[0];
+        // 2.0 事件对象 
+        // 事件对象：是指事件被触发所产生的的数据集合
+        // 那么这个数据集合，包含需要关于当前事件的信息 、
+        // 例如点击事件：鼠标在页面的坐标位置、鼠标可视区的坐标位置、按键的状态 alt ctrl 、事件源（目标元素）、事件类型
+        ele.onclick = function(e) { // 形参 e   是事件对象
+            // console.log(e);// {key:value}  
+            // 鼠标点击在页面的坐标
+            console.log(e.pageX,e.pageY);
+            // 鼠标点击在标签的坐标
+            console.log(e.offsetX,e.offsetY);
+            // 是否按下了ctrl按键(按下状态:true ,没按下：false)
+            console.log(e.ctrlKey);
+            // 事件源（重点）
+            // this 是事件的调用者（有些情况下不等于目标元素）
+            console.log(e.target);// 当前点击的标签（目标元素）事件原
+            // 事件类型
+            console.log(e.type);
+            // 兼容写法(低版本IE) 主流浏览器不需要
+            var event = e || window.event;
+            console.log(event);// 事件对象就是一份数据
+           
+        }
+
+    </script>
+</body>
+</html>

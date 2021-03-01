@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组操作API(三)</title>
+</head>
+<body>
+    <h3>数组操作API(三)</h3>
+    <script>
+        // 1.0 数组
+        // ["red","green","blue","orange","pink", "gray", "yellow"]
+        //  0       1       2       3       4      5        6
+        // 数组长度length ： 7
+
+        // 调用者：数组
+        // 参数：
+        // 返回值：
+        // 功能：
+
+
+
+        // slice()
+        // 参数：
+        // 一个参数： 开始的索引值位置
+        // 两个参数： 开始的索引值位置，和结束的索引值位置
+        // 备注：可以负数。
+        // 返回值：返回包含截取数据的数组
+        // 功能：截取数组中指定的数据
+        var arr =  ["red","green","blue","orange","pink", "gray", "yellow"];
+        var res = arr.slice(2);
+        // console.log(res);
+        // console.log(arr);
+        // console.log(arr.slice(左,右));
+        // console.log(arr.slice(开始索引值,结束索引值));
+        // console.log(arr.slice(2,5));
+        // console.log(arr.slice(-1));       
+
+
+
+        // splice()
+        // 参数：
+        // 返回值：数组，包含被删除的数据
+        // 功能：截取数组中指定的数据，并且删除该数据，还能添加数据
+        var arr2 =  ["red","green","blue","orange","pink", "gray", "yellow"];
+
+        // 第一：
+        // 参数：索引值
+        // var res2 = arr2.splice(2);
+        // console.log(arr2);//原来数组
+        // console.log(res2);//删除的数据
+
+        // 第二、
+        // 参数：参数1：索引值 ，参数2：截取的数据的长度（删除多少个数据）
+        // var res3 = arr2.splice(2,1);
+        // console.log(arr2);//原来数组
+        // console.log(res3);//删除的数据
+
+        // 第三、
+        // 参数：参数1：索引值 ，参数2：截取的数据的长度（删除多少个数据）
+        // 参数3: 往索引值位置插入数据
+        var res4 = arr2.splice(2,1,"蓝色","123");
+        console.log(arr2);//原来数组
+        console.log(res4);//删除的数据
+
+
+
+
+
+     
+
+
+
+    </script>
+</body>
+</html>

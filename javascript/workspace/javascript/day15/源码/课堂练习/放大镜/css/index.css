@@ -1,0 +1,51 @@
+html ,body {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    width: 100%;
+}
+.section {
+    width: 1200px;
+    margin: 0 auto ;
+}
+
+.section .small-box {
+    width: 350px;
+    height: 450px;
+    position: relative;
+    float: left;
+}
+.section .small-box .mask {
+    width: 238px;
+    height: 238px;
+    background-color: rgba(255, 255, 0, 0.5);
+    cursor: move;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* 隐藏遮罩层 */
+    display: none;
+}
+.section .big-box {
+    width: 540px;
+    height: 540px;
+    float: left;
+    margin-left: 50px;
+    position: relative;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    /* 隐藏大盒子 */
+    display: none;
+}
+.section .big-box img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}

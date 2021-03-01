@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历对象</title>
+    <style>
+        div {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div>hello </div>
+
+    <script>
+
+        // 对象长这个样子
+        // 看作者的
+        // parseInt()
+        var obj = {
+            width:"200px",
+            height:"300",
+            marginLeft:50,
+            fontSize:14
+        }
+
+        // 编写foo函数
+        function foo(dom,obj){
+            // 循环对象
+            for(var key in obj){
+                // key === > width  height marginLeft fontSize
+                // obj[key] ===> "100px" "100"  200   20
+                // dom.style["width"] = parseInt(obj[width])+"px";
+                dom.style[key] = parseInt(obj[key])+"px";
+            }
+        }
+        // 获取div标签
+        var div = document.getElementsByTagName("div")[0];
+        // 调用foo函数设置div的样式
+        foo(div,obj);
+
+
+    </script>
+</body>
+</html>

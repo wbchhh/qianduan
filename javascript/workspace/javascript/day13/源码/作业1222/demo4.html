@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业（4）</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 600px;
+            height: 800px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+
+        .messagebox,
+        .inputbox {
+            padding: 20px 15px;
+        }
+
+        .messagebox ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            height: 600px;
+            background-color: #fff;
+        }
+
+        .messagebox ul li::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .messagebox ul li .f-right {
+            float: right;
+            padding: 10px 15px;
+            border: 1px solid skyblue;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .inputbox input {
+            box-sizing: border-box;
+            display: block;
+            height: 40px;
+            width: 470px;
+            float: left;
+            border: 0;
+            padding: 0 0 0 20px;
+        }
+
+        .inputbox button {
+            float: left;
+            height: 40px;
+            width: 100px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .inputbox button:hover {
+            background-color: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="messagebox">
+            <!-- 信息展示区域 -->
+            <ul id="messageList">
+                <!-- <li ><div class="f-right"> 完犊子了 </div> </li> -->
+            </ul>
+        </div>
+        <div class="inputbox">
+            <!-- 发送信息区域 -->
+            <input type="text" placeholder="输入消息" id="inpBox">
+            <button id="btnSend">发送</button>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        // 需求：
+        // 把发送信息内同中出现的敏感词替换成 ***
+        // 例如:
+        // 你大爷, 替换成 ***
+        // 牛逼， 替换成 ***
+        // 滚， 替换成 ***
+        // 完犊子了， 替换成 ***
+        // xxxx,替换成 ****
+
+        // 基本步骤：
+        // 1.0 获取页面相关元素（记录数据）
+        // 2.0 事件绑定
+        // 3.0 书写程序处理逻辑
+
+        // 1.0 获取页面相关元素（记录数据）
+        var messageList = document.getElementById("messageList");
+        var inpBox = document.getElementById("inpBox");
+        var btnSend = document.getElementById("btnSend");
+        // 2.0 事件绑定
+        btnSend.onclick = function () {
+            // 3.0 书写程序处理逻辑
+            // 获取输入框的值
+            var v1 = inpBox.value;
+            // 处理发送消息的逻辑
+            var msgElement = sendMessageFunc(v1);
+            // 添加发送的信息
+            messageList.appendChild(msgElement);
+            // 重置输入框
+            inpBox.value = "";
+        }
+
+        // 4.0 编写处理发送消息的逻辑v1 ===  message ===  msg 
+        function sendMessageFunc(msg) {
+            // 定义数组
+            var arr = ["你大爷", "牛逼，", "滚，", "完犊子了，"]
+            // 此处还不可以去掉多敏感词汇
+            // 循环(重复)
+            for (var i = 0; i < arr.length; i++) {
+                // 判断输入的值是否包含敏感词
+                if (msg.indexOf(arr[i]) > -1) {
+                    //  把出现的敏感词汇 替换成 *** 
+                    // msg = msg.replace(arr[i], "***");
+                    msg = isDangerWord(msg,arr[i]);
+                }
+            }
+            // 创建li标签
+            var liCreate = document.createElement("li");
+            // 设置li标签的文本
+            liCreate.innerHTML = '<div class="f-right"> ' + msg + ' </div>';
+            // 返回创建的li标签
+            return liCreate;
+        }
+
+
+        // 5.0 检测字符串是否包含敏感词汇
+        // msg:输入的值 ,txt：敏感词
+        function isDangerWord(msg,txt) {
+            // while(条件成立){执行代码}
+            if (msg !=undefined && txt !=undefined) {
+                var str =  msg;
+                while (str.indexOf(txt) >-1 ) {
+                    str = str.replace(txt,"***")
+                }
+                return str;
+            }
+        }
+        // console.log(isDangerWord("123完犊子了，456，完犊子了，","完犊子了，"))
+
+
+
+        
+        // 递归：
+        // 正则：（最优的解决方案）
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

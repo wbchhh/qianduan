@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 数组
+        var arr=[110,1,30,3,4,65,6,67,98,119];
+        // 数组：可以根据索引值存储一系列数据。
+        // 定义函数
+        function findMaxVal(array){
+            // 定义假设值（最大值）
+            var maxV = array[0];
+            // 循环数组
+            for(var i = 1 ; i < array.length ; i ++){
+                // 比较大小
+                // 110   1
+                // 110   30
+                // 110    3 
+                // ....
+                // 110   119 
+                if(maxV < array[i]){
+                    // 把数组中最大的值赋值给假设变量
+                    maxV  = array[i];
+                }
+            }
+            // 返回最大指
+            return maxV;
+        }
+        // 调用函数 得到最大指
+        console.log(findMaxVal(arr));
+
+
+        
+
+
+        
+
+    </script>
+</body>
+</html>

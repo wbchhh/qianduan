@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝</title>
+</head>
+<body>
+    <h3>浅拷贝</h3>
+    <script>
+        // string 基本数据类型  （数据）
+        // var str = "hello";
+        // // 赋值
+        // str = "world";
+        // console.log(str);// world
+
+        // // 传值
+        // var txt = str;
+        // txt = "12345"
+        // console.log(txt);// 12345
+
+
+
+        // // 对象 （数据集合）
+        // // object
+        // var  obj =  {
+        //     str:"hello"
+        // }
+        // obj.str = "world";
+        // // console.log(obj); // {str: "world"}
+        // // 传地址
+        // var option = obj;
+        // // console.log(option);// {str: "world"}
+        // option.str = "678910";
+        // console.log(obj,"1.0 obj");// {str: "678910"}
+        // console.log(option,"2.0 opt");// {str: "678910"}
+
+        // 例如：
+            // 一个装满水的瓶子 ，你（Obj）喝一口 , 把瓶子递给我 ,我（option）再喝一口，瓶子的水就少了
+
+
+
+            // 集合存放的是基本数据类型(适用浅拷贝)
+            // ["hello",100,true]
+            // {str:"hello",num:100,bool:true}
+
+
+            // 集合存放的是引用数据类型(不适用浅拷贝)
+            // [{str:"hello"},{num:100},{bool:true}]
+
+        
+        // 浅拷贝：
+            // 浅拷贝在复制数据的时候，不管复制的数据类型，全部都复制过来（复制过来的数据，是会存在互相影响）
+            // 什么时候适用浅拷贝？
+            // 是集合存放的是基本数据类型的时候
+            // ShallowCopy
+            var obj2 = {str:"hello"};
+            var arr2 = ["hello",100,true];
+            // 数据集合：1.array []  2.object {}
+            // 1.0 封装浅拷贝的逻辑 
+            function simpleCopy(data){
+                // 判断是否传递传参
+                if(data === undefined) { return ;}
+                // 判断数据集合是数组，还是对象
+                var newData = Array.isArray(data) === true ? [] : {} 
+                // 循环
+                for(var key in data){
+                    // 往新集合添加数据
+                    newData[key] = data[key];
+                }
+                // console.log(newData);
+                return newData;
+            }
+            // 2.0 调用浅拷贝函数
+            var res = simpleCopy(arr2);
+            // 3.0 修改复制出来的数据
+            res[0] = "123456";
+
+            console.log(arr2,"原数据");//   ["hello", 100, true] "原数据"
+            console.log(res,"新数据");//  ["123456", 100, true] "新数据"
+            // 总结：
+                // 复制的集合存放的数据如果是基本数据类型的，那么可以使用浅拷贝。
+
+            
+            // // 该集合存在的是引用数据类型(这种数据结构不适用浅拷贝)
+            // var arr3 = [{str:"hello"},{num:100},{bool:true}];
+            // var res3 = simpleCopy(arr3);
+            // res3[0].str = "67890";// 修改复制出来的数据 
+            // console.log(arr3,"3.0");//  原数据也受影响
+            // console.log(res3,"4.0");// 
+
+
+
+
+
+    </script>
+</body>
+</html>

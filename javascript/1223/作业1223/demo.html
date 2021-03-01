@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        .wrap {
+            width: 700px;
+            height: 100px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+        }
+        .wrap .redbox ,
+        .wrap .bluebox {
+            float: left;
+        }
+        .wrap .redbox {
+           width: 600px
+        }
+        .wrap .redbox ul , .wrap .bluebox ol{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .wrap .redbox li ,  .wrap .bluebox li{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+            float: left;
+        }
+        .wrap .redbox li {
+            background-color: #f00;
+        }
+        .wrap .bluebox {
+            width: 100px;
+        }
+        .wrap .bluebox li {
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="redbox">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="bluebox">
+            <ol>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // 需求
+            // 刷新页面产生一注随机彩票
+            // 彩票规则
+            // 红色数字： 1 ~ 33 
+            // 蓝色数字:  1~16
+            // 6个随机数字不重复的红色数字和1一个随机蓝色数字可以组成一注彩票
+
+            // 思路：
+                // 定义红色数字数组和蓝色数字数字分别记录对应的数据
+                // 然后从数组中根据随机索引值获取数字
+                // 组成一注彩票，渲染在页面对应的标签
+        
+        var ul = document.getElementsByTagName("ul")[0];
+        var lis = ul.children;
+        var ol = document.getElementsByTagName("ol")[0];
+        var li = ol.getElementsByTagName("li")[0];
+        // var arr = [];
+        var fn = function(){
+            var redNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,
+                18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33];
+            var blueNum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+            for(var i=0;i<lis.length;i++){
+                var num = Math.floor(Math.random()*redNum.length);
+                // arr.push(redNum[num]);
+                var n1 = redNum.splice(num,1)[0];
+                // console.log(n1)
+                lis[i].innerHTML = n1;
+            }
+            li.innerHTML = Math.ceil(Math.random()*blueNum.length);
+        }
+        fn();
+    </script>
+
+</body>
+</html>

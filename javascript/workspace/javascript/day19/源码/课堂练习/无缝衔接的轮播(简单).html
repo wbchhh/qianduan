@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .banner {
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            background-color: #ccc;
+            overflow: hidden;
+        }
+        .banner ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            /* 足够宽（承载所有的图片） */
+            width:4000px;
+        }
+
+        .banner ul li {
+            width: 520px;
+            height: 280px;
+            line-height: 280px;
+            text-align: center;
+            font-size: 70px;
+            float: left;
+        }
+        .banner ul li a {
+            display: block;
+            height: 280px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="banner">
+        <ul id="bannerList">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <!-- 添加第一张图 -->
+            <li><a href="#">1</a></li>
+        </ul>
+    </div>
+
+
+    <script src="./animate.js"></script>
+    <script>
+        // 无缝衔接的轮播图
+            // 1.0 获取页面的相关元素
+            var bannerList = document.getElementById("bannerList");
+            var items = bannerList.getElementsByTagName("li");
+            // 2.0 定义数组 记录颜色
+            var arrColor = [
+                "#af1",
+                "#be2",
+                "#cd3",
+                "#dc4",
+                "#eb5",
+
+                "#af1"
+            ]
+            // 3.0 填充li标签背景色
+            for(var i = 0 ; i < items.length ; i ++){
+                items[i].style.backgroundColor = arrColor[i];
+            }
+            // 4.0 记录索引值
+            var index = 0;
+            // 5.0 记录宽度
+            var width = items[0].offsetWidth; 
+            // 6.0 定义autoPlay
+            var autoPlay = function(){
+                // 设置索引值 自增
+                index ++;
+                // 判断
+                if(index > items.length - 1){
+                    // 设置索引值
+                    index = 1 ;
+                    // 设置ul标签瞬间移动到 marginLeft : 0px;
+                    bannerList.style.marginLeft = "0px";
+                }
+                // 执行动画函数
+                animate(bannerList,{marginLeft:-(index * width)});
+            }
+            // 测试
+            // autoPlay();
+            // 执行定时器函数
+            var timer = setInterval(autoPlay,3000);
+    </script>
+</body>
+</html>

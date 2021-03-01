@@ -1,0 +1,91 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题: dom 操作 + 事件</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.wrap {
+			   width:300px;
+			   height:200px;
+			   background-color:#ccc;
+			}  
+			.wrap > .ball {
+			   width:100px;
+			   height:100px;
+			   background-color:#fff;
+			   border-radius:50%;
+			   float:left;
+			   margin:50px 25px;
+			   text-align:center;
+			   line-height:100px;
+			}
+			.active {
+				cursor:pointer;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>dom 操作 + 事件（3）</h3>
+		
+		<div class="wrap">
+			  <div class="ball">hello JS</div>
+			  <div class="ball"></div>
+		</div>
+		
+		
+		<script>
+			//技巧：三个基本步骤
+			// 1.0 获取相关的标签
+			var elements = document.getElementsByClassName("ball");
+			//console.log(elements);
+			var oneElement = elements[0];
+			var twoElement = elements[1];
+			//console.log(oneElement);
+			//console.log(twoElement);
+			// JS 设置背景色
+			oneElement.style.backgroundColor = "skyblue";
+			
+		
+			//2.0 事件绑定
+			// 第一个标签
+			oneElement.onclick = function(){ // 事件函数作作用域
+				//3.0 书写处理逻辑
+				//.0 设置背景色
+				twoElement.style.backgroundColor = "skyblue";
+				//oneElement.style.backgroundColor = "white";
+				this.style.backgroundColor = "white";
+				//.0 设置文本
+				twoElement.innerHTML = "hello JS";
+				this.innerHTML = "";
+				
+				// this 是事件的调用者
+				// 是当前点击的标签
+				//console.log(this);// this 是经常使用的
+			}
+			
+			// 第二个标签
+			twoElement.onclick = function(){ 
+				//3.0 书写处理逻辑
+				//.0 设置背景色
+				oneElement.style.backgroundColor = "skyblue";
+				//twoElement.style.backgroundColor = "white";
+				this.style.backgroundColor = "white";
+				//.0 设置文本
+				oneElement.innerHTML = "hello JS";
+				//twoElement.innerHTML = "";
+				this.innerHTML = "";
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+

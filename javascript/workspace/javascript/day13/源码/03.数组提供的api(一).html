@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组操作API(一)</title>
+</head>
+<body>
+    <h3>数组操作API(一)</h3>
+    <script>
+        // 1.0 数组
+        // ["red","green","blue","orange","pink", "gray", "yellow"]
+        //  0       1       2       3       4      5        6
+        // 数组长度length ： 7
+
+        // 调用者：数组
+        // 参数：
+        // 返回值：
+        // 功能：
+
+
+
+        // 2.0 数组相关的方法
+        // indexOf()
+        // 参数：是数组的数据（项）
+        // 返回值：索引值， 若返回值为 -1，表示数组不存在该数据
+        // 功能：检索数组中对应数据的索引值位置
+        var arr = ["red","green","blue","orange","pink", "gray", "yellow"];
+        console.log(arr.indexOf("orange"));// 3
+        console.log(arr.indexOf("aaa"));// -1
+
+        // join()
+        // 参数：可选（默认无）
+        // 返回值：字符串
+        // 功能：把数组中的数据拼接成字符串
+        var arr2 = ["red","green","blue","orange","pink", "gray", "yellow"];
+        console.log(arr2.join());
+        console.log(arr2.join(""));
+
+        // concat()
+        // 参数：被合并的数组
+        // 返回值：合并之后的新数组
+        // 功能：合并数组
+        var array1 = ["aaa","bbb"]
+        var array2 = ["ccc"];
+        var array3 = array1.concat(array2);
+        console.log(array3)
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

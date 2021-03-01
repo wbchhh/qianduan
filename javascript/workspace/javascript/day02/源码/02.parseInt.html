@@ -1,0 +1,73 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：转换数值</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>parseInt(参数1，参数2)</h3>
+		<p> 此处第二个参数并不是代表进制，代表的是基数。</p>
+		<p> 参数2 (可选)</p>
+		<script>
+			// parseInt(参数1，参数2)
+			// 参数1 :  数值
+			// 参数2 ： 基数 （不是进制转换）
+			
+			
+			// 情况1 ： 参数1的所有字符比参数2的字符大，结果 NaN
+			var num = 33;
+			var res = parseInt(num,2);
+			console.log(res);
+			
+			
+			//情况2 ： 参数1的所有字符比参数2的小 ，计算方式如下所示
+			var num1 = 33;
+			var res1 = parseInt(num1,4);
+			// 3 * 4的1次方  +  3 * 4的0次方  
+			// 3 * 4 + 3 * 1 
+			// 15 
+			console.log(res1);// 3 * 4 + 3 * 1 
+			
+			
+		    var num2 = 32;
+			var res2 = parseInt(num2,4);
+			// 3 * 4的1次方 + 2 * 4的0次方 
+			// 12 + 2 
+			console.log(res2);//14 
+			
+			
+			var num3 = 35;
+			var res3 = parseInt(num3,6);
+			// 3 * 6的1次方 + 5 * 6的0次方
+			// 18 + 5
+			console.log(res3);//23
+			
+			
+			
+			//情况3: 参数1存在字符大于参数2 ，取比参数2小的字符
+			// 1 ~ v2 , v2 < 参数2
+			var num4 = 15;
+			var res4 = parseInt(num4,5);
+			console.log(res4);//1 
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		
+		
+		</script>
+	</body>
+</html>
+

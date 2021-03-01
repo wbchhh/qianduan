@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装工具类</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="box"></div>
+    <button></button>
+    <script>
+        function $(str){
+            if(str.indexOf(".") > -1){
+                str = str.slice(1);
+                return document.getElementsByClassName(str);
+            }else if(str.indexOf("#") > -1){
+                str = str.slice(1);
+                return document.getElementById(str);
+            }else{
+                return document.getElementsByTagName(str);
+            }
+
+        }
+        $("#container")
+        console.log($("#container"))
+        console.log($(".box"))
+        console.log($("button"))
+    </script>
+</body>
+</html>

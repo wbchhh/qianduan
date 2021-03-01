@@ -1,0 +1,44 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：行内块 </title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.parent {
+				  width:600px;
+				  height:500px;
+				  background-color:skyblue;
+				  /*行高*/
+				  line-height:500px;
+				  /*水平对齐方式*/
+				  text-align:center;
+				  font-size:0;
+			}
+			.parent .child {
+			      width:200px;
+				  height:100px;
+				  background-color:red;
+				  /*行内块*/
+				  display:inline-block;
+				  /*垂直对齐方式*/
+				  vertical-align:middle;
+				  
+				  font-size:16px;
+				  line-height:100px;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	   <div class="parent">
+	       <div class="child">
+		     hello world !!!
+		   </div>
+	   </div>
+	
+	</body>
+</html>
+

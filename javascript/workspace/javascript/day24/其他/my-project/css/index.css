@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.wrapper {
+    font-size: 20px;
+    color: #333;
+}
+.container {
+    width: 600px;
+    background-color: #f0f0f0;
+    margin: 0 auto;
+    /* 在实际开发中，页面由内容撑开高度 */
+    height: 900px;
+}
+/* 120 * 4 = 480 */
+.wrapper ul {
+    height: 150px;
+}
+.wrapper ul li {
+    width: 118px;
+    height: 148px;
+    border: 1px solid #fff;
+    float: left;
+}
+.wrapper ul li img {
+    width: 118px;
+    height: 148px;
+}

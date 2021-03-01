@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重绘和回流</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+        .left {background-color: red;}
+        .center {background-color: green;}
+        .right {background-color: blue;}
+
+        /* 回流元素 */
+        /* 页面布局发生变化（ 大小 / 位置） */
+        .left {
+            float: left;
+        }
+        .center {
+            float: left;
+            width: 200px;
+            margin: 0 10px;
+        }
+        .right {
+            float: left;
+        }
+
+        /* 重绘元素 */
+        /* 不会改变页面布局的（背景色 / 字体） */
+        .active {
+            background-color: #ccc;
+            color: #333;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="left"></div>
+    <div class="center active"></div>
+    <div class="right"></div>
+
+
+    <script>
+
+
+
+    </script>
+</body>
+</html>

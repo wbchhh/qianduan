@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie </title>
+</head>
+<body>
+    
+    <h3>cookie </h3>
+
+    <script>
+        // 关于cookie , 是存储数据的一种方式
+
+        // 设置cookie 
+        document.cookie = "username=xiaoming";
+        document.cookie = "userpass=123456";
+        document.cookie = "userId=10010";
+        var dt = new Date();
+        // dt.setDate(6);
+        // console.log(dt);
+        // 1小时 = 60分钟  1分钟 = 60秒    1秒 =  1000毫秒
+        // 2 * 60 *60 *1000
+        // 计算多少小时之后
+        var curTime  = dt.getTime();
+        dt.setTime( 2 * 60 *60 *1000 + curTime);
+        // console.log(dt);
+        // 设置cookie的有效时间
+        document.cookie = "color=red; expires="+dt;
+
+
+        // 获取cookie 
+        var dataStr = document.cookie;
+        console.log(dataStr);//username=xiaoming; userId=10010; color=red; userpass=123456
+        console.log(typeof dataStr);// string
+        var data = dataStr.split("; ")
+        console.log(data);
+        console.log(data[1].split("=")[1]);// 10010
+
+        // 删除cookie 
+        // 过去的时间
+        var dt2 =  new Date()
+        dt2.setDate(4);
+        document.cookie = "username=; expires="+dt2;
+
+        // 再次获取cookie
+        console.log(document.cookie);//userId=10010; color=red; userpass=123456
+
+
+    </script>
+</body>
+</html>

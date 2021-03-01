@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>看JS代码写下自己的理解</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .slide {
+            width: 1000px;
+            height: 100px;
+            background-image: url(./banner.png);
+            margin: 200px auto;
+        }
+
+        .slide .con {
+            width: 1000px;
+            height: 100px;
+            /* 相对定位 */
+            position: relative;
+        }
+
+        /* 遮罩层 */
+        .slide .con .bg {
+            background-color: rgba(0, 0, 255, 0.5);
+            width: 970px;
+            height: 100px;
+
+            /* 绝对定位 */
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .slide .con .bar {
+            width: 28px;
+            height: 150px;
+            border: 1px solid #333;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 15px;
+
+            /* 绝对定位 */
+            position: absolute;
+            left: 0px;
+            top: -25px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slide">
+        <!-- 内容盒子 -->
+        <div class="con">
+            <!-- 背景 （遮罩层）-->
+            <div class="bg"></div>
+            <!-- 滑块 -->
+            <div class="bar"></div>
+        </div>
+    </div>
+
+
+    <script>
+        //需求：
+        //  按下滑块改变遮罩层的宽度
+
+        //  步骤：
+        // 1.获取相关元素
+        var bg_element = document.getElementsByClassName("bg")[0];
+        var bar_element = document.getElementsByClassName("bar")[0];
+        // console.log(bg_element, bar_element)
+        // 2.0 定义变量（记录数据）
+        // 鼠标按下的坐标位置
+        var startX = 0;
+        // 滑动的距离
+        var x = 0;
+        // 记录滑块当前位置
+        var currentX = 0;
+        // 滑动最大距离
+        var maxDistanceX = bg_element.offsetWidth;// 970
+        // console.log(maxDistanceX)
+        // 定义变量判读鼠标是否按下的（开关）
+        var isMouseDown = false;
+        // 3.0 事件绑定
+        // 给滑块标签绑定鼠标按下事件
+        bar_element.onmousedown = function (event) {
+            // 鼠标按下(开门)
+            isMouseDown = true;
+            // 鼠标在页面的位置
+            startX = event.pageX ;
+            // console.log(startX);
+            // 阻止浏览器的默认行为（禁止选中页面图片）
+            return false;
+        }
+        // 给页面绑定鼠标移动事件
+        document.onmousemove = function (event) {
+            // console.log("test")
+            // 判断鼠标是否按下
+            if(isMouseDown){
+                // 计算鼠标在页面滑动的距离
+                x = event.pageX - startX + currentX;
+                // 判断是否超出滑动区间
+                // 向左
+                if(x < 0 ){
+                    // 给x赋值为 0 
+                    x = 0 ;
+                }
+                // 向右
+                if(x > maxDistanceX ){
+                    x = maxDistanceX;
+                }   
+                console.log("currentX",currentX);         
+                // console.log(x);
+                // 设置滑块的位置（鼠标滑动的距离+滑块当前的位置）
+                bar_element.style.left = x +"px";
+                // 设置遮罩层的宽度
+                bg_element.style.width = (maxDistanceX - x ) + "px";
+            }
+        }
+        // 给页面绑定鼠标松开事件
+        document.onmouseup = function () {
+            // 鼠标松开(关门)
+            isMouseDown = false;
+            // 鼠标松开页面 记录滑块当前的位置
+            currentX = x ;
+            // 阻止浏览器的默认行为
+            return false;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

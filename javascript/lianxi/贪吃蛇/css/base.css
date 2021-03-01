@@ -1,0 +1,74 @@
+* {
+	padding: 0;
+	margin: 0;
+
+}
+html,body {
+	width: 100%;
+	height: 100%;
+}
+.container {
+	width: 600px;
+	position: relative;
+}
+.container .control_box {
+	height: 50px;
+	text-align: center;
+}
+.container .txt {
+	font-size: 22px;
+	color: red;
+}
+.container .txt #score {
+	color:#000;
+	font-size: 22px;
+}
+.container h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+.container #snake_map {
+	border:1px solid skyblue;
+	margin: 0 auto;
+}
+
+/*行样式*/
+.container #snake_map .row {
+	height: 20px;
+	box-sizing:border-box;
+	border-bottom: 1px solid pink;
+}
+/*列样式*/
+.container #snake_map .row .col {
+	height: 20px;
+	width: 20px;
+	box-sizing:border-box;
+	border: 1px solid lightgray;
+	background: rgba(127,255,212,0.5);
+	float: left;
+}
+
+.container #snake_map .row  .activeSnake {
+	background: blue;
+}
+.container #snake_map .row  .egg {
+	background: red;
+}
+#PauseId , #StartId , #RefreshId , #SpeedId {
+
+	border: 1px solid skyblue;
+	color: #fff;
+	background: skyblue;
+	width: 80px;
+	height: 30px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.msk {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3 );
+}
+

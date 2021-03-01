@@ -1,0 +1,46 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：特殊的数值</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>特殊的数值</h3>
+		
+		
+		<script>
+			// NaN  非数字
+			// 非数字字符减数字
+			// 
+			var res = "100px" - 0;
+			console.log(res);// NaN 属于特殊数值
+			console.log(typeof res);// number
+			
+			// parseInt() 取整型数据
+			var res2 =  parseInt("abc100");
+			console.log(res2);//NaN
+			
+			
+			var res3 = parseInt("100abc");
+			console.log(res3);// 100
+			
+			
+			// 检测数据是否为非数字
+			// 如果不是数字 ，结果是true
+			// 如果是数字 ，结果就是false
+			// var bool = isNaN(res);
+			console.log(isNaN(res));//true 不是数字
+			console.log(isNaN(100));// false  是数字
+			console.log(isNaN("aaa"));// true  不是数字
+			
+		</script>
+	</body>
+</html>
+

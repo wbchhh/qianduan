@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // __proto__  :  每个对象都有的属性（实例上的属性） 隐式原型
+        // var obj ={};
+        // console.log(obj);//  {}
+        // console.log(obj.__proto__);//  隐式原型（对象）
+        // console.log(obj.__proto__.__proto__);//  null
+        // console.log(Object.prototype.__proto__);//  null
+
+
+        // 原型链：是指由__proto__ 所形成的一个链式结构
+        //  1.0 定义构造函数
+        function Person(){}
+        // 创建构造函数的实例对象
+        var xiaoming = new Person();
+        console.log(xiaoming);// 实例对象
+        console.log(xiaoming.__proto__);// 实例对象的隐式原型 constructor  对应的构造函数 Person
+        console.log(xiaoming.__proto__.__proto__);// 实例对象的隐式原型的隐式原型 constructor  对应的构造函数  Object 
+        console.log(xiaoming.__proto__.__proto__.__proto__);// 链式结构的终点 null
+        console.dir(Function.prototype.__proto__);// 隐式原型 constructor  对应的构造函数  Object 
+        console.dir(Function.prototype.__proto__.__proto__);// null 
+
+        // 构造函数 Function的原型对象的隐式原型上添加一个方法
+        Function.prototype.__proto__.sayHello = function(){
+            document.body.style.backgroundColor = "skyblue";
+        }
+        Function.prototype.__proto__.color = "red";
+        // String Number Object Array Date RegExp 都是Function的实例
+        // Function.prototype === Object.__proto__  // true
+        // var obj = {};
+        // console.log(obj);
+        // obj.sayHello();
+        var arr = [];
+        arr.sayHello();
+        console.log(arr.color);//red
+
+        // 作用：共享数据（属性和方法）
+
+
+
+
+    </script>
+</body>
+
+</html>

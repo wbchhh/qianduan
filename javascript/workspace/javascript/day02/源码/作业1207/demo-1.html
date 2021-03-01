@@ -1,0 +1,106 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：变量</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			 div {
+			   float:left;
+			   margin:0 0 0 10px;
+			 }
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>作业</h3>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		
+		
+		<script>
+			//1.0 控制台是提供给开发者调试代码使用的
+			// console.log();// 检查变量是否有值，代码是否执行
+		
+			//.0 获取页面div标签(通过Id名获取元素)
+			var box1 = document.getElementById("box1");
+			var box2 = document.getElementById("box2");
+			var box3 = document.getElementById("box3");
+			
+			
+			//.0 声明变量记录不同div的数据
+			var w1 = 150;
+			var h1 = 50;
+			var bgColor1 = "green";
+			var fontSize1 = "16px";
+			var fontWeight1 = "bold";
+			var txt = "JS 第一天";
+			
+			//.0 渲染数据
+			box1.style.width = w1+"px";
+			box1.style.height = h1+"px";
+			box1.style.backgroundColor=bgColor1;
+			box1.style.fontSize=fontSize1;
+			box1.style.fontWeight=fontWeight1;
+			box1.innerText = txt;
+			
+			
+			
+			//.0 第二个标签
+			box2.style.width="300px";
+			box2.style.height="100px";
+			box2.style.backgroundColor="red";
+			box2.style.fontSize="20px";
+			box2.style.fontWeight="bold";
+			box2.innerText = txt;
+			
+			
+			//.0 第三个标签
+			// 属性 = 值 
+			box3.style.width="600px";
+			box3.style.height="200px";
+			box3.style.backgroundColor="skyblue";
+			box3.style.fontSize="28px";
+			box3.style.fontWeight="bold";
+			box3.innerText = txt;
+			
+			
+			// 目的：
+			// 知道声明变量的作用
+			// DOM操作控制元素的样式和文本
+			
+			
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

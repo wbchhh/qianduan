@@ -1,0 +1,181 @@
+/*大盒子*/
+.tt-wrapper {
+	width:100%;
+	font-family:微软雅黑;
+	font-size:20px;
+	color:#000;
+}
+/*版心*/
+.container {
+  width:1200px;
+  margin:0 auto;
+}
+/*1.0 页面头部样式 */
+/*行高针对文本、行内（行内块）元素*/
+.tt-header {
+	width:100%;
+	height:100px;
+	background-color:#464646;
+}
+.tt-header-logo {
+	width:76px;
+	height:72px;
+	background-image:url(../logo.png);
+	background-color:#ffffff;
+	float:left;
+	/*(100 - 72 ) / 2 = 14px*/
+	margin-top:14px;
+	margin-bottom:14px;
+}
+.tt-header-nav {
+	float:left;
+	/*98 - 20 = 78 */
+	margin-left:78px;
+}
+.tt-header-nav ul li {
+	float:left;
+}
+.tt-header-nav ul li a {
+	display:block;
+	padding:0 20px;
+	height:100px;
+	line-height:100px;
+	color:#ffffff;
+}
+.tt-header-nav ul li.active a {
+	background-color:#65a7f3;
+	color:#ffffff;
+}
+
+.tt-header-personal {
+	display:block;
+	width:200px;
+	height:100px;
+	line-height:100px;
+	color:#ffffff;
+	/*超出部分变省略号*/
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tt-header-personal .icon {
+	display:inline-block;
+	vertical-align:middle;
+	width:28px;
+	height:34px;
+	background-image:url(../images/personal.png);
+	margin-right:15px;
+}
+.tt-header-personal .text {
+	color:#ffffff;
+}
+
+/*2.0 页面主体*/
+.tt-section {
+	width:100%;
+	background-color:#f2f2f2;
+	padding:40px 0 0 0;
+}
+/*左边的区块 250px * 800px */
+.tt-section-aside {
+	width:250px;
+	height:800px;
+	background-color:#fff;
+}
+.tt-section-aside .aside-title h3 {
+	width:250px;
+	height:60px;
+	text-align:center;
+	line-height:60px;
+	font-weight:normal;
+}
+
+.tt-section-aside .aside-list ul {
+	width:250px;
+	margin-top:10px;
+}
+.tt-section-aside .aside-list ul li {
+	padding-left:80px;
+	border-left:5px solid transparent;
+	height:50px;
+	line-height:50px;
+}
+
+/*带有active类名的li标 */
+.tt-section-aside .aside-list ul li.active {
+	border-left:5px solid #65a7f3;
+	background-color:#dddddd;
+}
+/*鼠标悬停的li标签 改变li标签背景色*/
+.tt-section-aside .aside-list ul li:hover  {
+	background-color:#dddddd;
+}
+.tt-section-aside .aside-list ul li a {
+	display:block;
+	height:50px;
+	line-height:50px;
+}
+.tt-section-aside .aside-list ul li a .icon {
+	display:inline-block;
+	width:20px;
+	height:20px;
+	vertical-align:middle;
+	background-size:20px 20px;
+	background-position:center center;
+}
+.tt-section-aside .aside-list ul li.active a {
+	color:#65a7f3;
+}
+
+
+.tt-section-aside .aside-list ul li .icon1 {
+	background-image:url("../images/icon-1.png");
+}
+/*带有active类名的li标签下的 icon 图标*/
+.tt-section-aside .aside-list ul li.active  .icon1 {
+	background-image:url("../images/icon-11.png");
+}
+
+
+
+.tt-section-aside .aside-list ul li .icon2 {
+	background-image:url("../images/icon-2.png");
+}
+/*带有active类名的li标签下的 icon 图标*/
+.tt-section-aside .aside-list ul li.active  .icon2 {
+	background-image:url("../images/icon-21.png");
+}
+
+
+.tt-section-aside .aside-list ul li .icon3 {
+	background-image:url("../images/icon-3.png");
+}
+/*带有active类名的li标签下的 icon 图标*/
+.tt-section-aside .aside-list ul li.active  .icon3 {
+	background-image:url("../images/icon-31.png");
+}
+
+
+
+
+
+/* 1200 - 250 - 930 = 20 */
+/*右边的区块  930px * 800px */
+.tt-section-content {
+	width:930px;
+	height:800px;
+	background-color:lightblue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延迟函数</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h3>延迟函数</h3>
+    <div class="box" ></div>
+    <script>
+    
+        // 1.0 window.setTimeout()
+            // 调用者：window
+            // 参数：参数1:匿名函数  参数2:时间（毫秒值）
+            // 返回值：数字（用于停止延迟函数）
+            // 功能：在指定的时间执行一次（延迟执行）
+
+            // var count = 0;
+            // var delay = window.setTimeout(function(){
+            //     count ++;
+            //     console.log("count:", count );//1
+            // },1000)
+
+            // 思考：
+                // 延迟3秒，把盒子变成绿色背景色
+                // 获取元素
+                var box = document.getElementsByClassName("box")[0];
+                // 函数：代码块
+                var fn = function(){
+                    // 设置box背景色
+                    box.style.backgroundColor = "green";
+                }
+                // 毫秒
+                var ms = 3000;
+                // 执行延迟函数
+                var delayer = setTimeout(fn,ms);
+
+                //鼠标移入box标签 停止执行延迟函数
+                box.onmouseenter = function(){
+                    // 停止延迟函数
+                    clearTimeout(delayer);
+                }
+
+
+                // 互联网赚钱的领域：
+                    // 电商
+                    // 广告
+                    // 游戏
+                    // 短视频
+    </script>
+</body>
+</html>

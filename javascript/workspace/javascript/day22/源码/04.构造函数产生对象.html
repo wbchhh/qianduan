@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    <script>
+        // 定义构造函数
+        // _this 下划线的_this不是关键字 
+        var _this ;
+        function Foo(size){
+            // obj === this === o1
+            // 添加属性
+            this.width = size;
+            this.height = size;
+            // 添加方法
+            this.foo = function(bgColor){//函数作用域 
+                // 默认值
+                var bgColor = bgColor || "skyblue";
+                // 创建div标签
+                var div = document.createElement("div");
+                div.style.width = this.width;
+                div.style.height = this.height;
+                div.style.backgroundColor = bgColor;
+                // this === 
+                _this = this;
+                // 添加元素
+                document.body.appendChild(div);
+            }
+        }
+
+        // 调用构造函数，创建实例
+        var o1 = new Foo("100px");
+        o1.foo("red");
+        console.log(o1 === _this);// true
+
+        // 面向对象：构造函数
+        // 编码风格优雅，代码可执行效率高-
+
+
+        
+    </script>
+</body>
+</html>

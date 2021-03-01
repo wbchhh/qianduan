@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名 2 </title>
+    <link rel="stylesheet" href="./css/base.css">
+    
+</head>
+<body>
+    
+    <div class="map">
+        <div class="letter">
+            <!-- 学员姓名列表 -->
+            <ul id="list">
+                <li class="active">紫安</li>
+                <li>曼冬</li>
+                <li>谷蕊</li>
+                <li>飞兰</li>
+                <li>瀚钰</li>
+                <li>瀚文</li>
+                <li>涵亮</li>
+                <li>涵煦</li>
+                <li>明宇</li>
+                <li>涵衍</li>
+                <li>浩皛</li>
+                <li>寻巧</li>
+                <li>浩波</li>
+                <li>雅昕</li>
+                <li>梦君</li>
+                <li>凡雁</li>
+                <li>以旋</li>
+                <li>初夏</li>
+                <li>浩初</li>
+                <li>依丝</li>
+            </ul>
+            <!-- 显示被选中的名字 -->
+            <div class="mask">
+                <div class="text" style="color:#000;font-size:30px; text-align: center;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <!-- 点击按钮 -->
+            <button class="btn" id="btn">随机点名</button>
+        </div>
+    </div>
+
+   
+    
+
+    <script>
+        // 图示：随机点名
+            // 1、点击“随机点名”按钮，随机抽选名字，被随机选中的名字标签背景高亮
+            // 2、并且显示选中的学员名字
+            // 3、li标签高亮效果切换，围绕中心旋转3圈，之后再选择指定学员
+
+        // 基本步骤
+            // 1、记录相关数据（元素）
+            // 2、事件绑定
+            // 3、书写程序的处理逻辑
+
+        //编码实现
+            // 1、记录相关数据（元素）
+            var items = document.getElementsByTagName("li");
+            var textElement = document.getElementsByClassName("text")[0];
+            var btn = document.getElementById("btn");
+            var len = items.length ;//li标签的数量
+            var timer = null;//记录定时器的变量
+        
+            var minV = ( len -1 ) * 3  ;// 57 最小数值
+            var maxV = ( len -1 ) * 4  ;// 76 最大数值
+            var randomIndex = function(min,max){ // min ~ max 之间的随机整数
+                return Math.floor(Math.random()*(max-min)+min);
+            }
+            var sec =  100;//定时器毫秒值
+            var count = 0;// 临界值 （计数器变量）
+            var key = 0;
+            var index = 0;//索引值 （计数器变量）
+            var randomNumber = 0;
+            // 定义自动切换高亮的函数
+            var autoPlay = function(){
+                // 改变计数器变量
+                count ++;
+                index ++;
+                // 判断 是否执行一圈切换高亮
+                if(count % 20 == 0 ){
+                     key ++;
+                     index = 0;
+                     console.log("第"+(key)+"圈")
+                     //改变定时器函数的毫秒值
+                     // 先停止定时器函数
+                     //  clearInterval(timer);
+                     //  // 再执行定时器函数
+                     //  sec -= 50;
+                     //  timer = setInterval(autoPlay,sec);
+                }
+                //判断 是否执行三圈切换高亮
+                if(key == 3 ){
+                    // 停止定时器函数
+                    // 还没结束...
+                    // clearInterval(timer);
+                    //判断 count 是否等于 随机数（randomNumber） 
+                    if(count == randomNumber){
+                        //停止定时器函数
+                        clearInterval(timer);
+                        console.log(count,randomNumber)
+                    }             
+                }
+                // 排他思想
+                for(var j = 0 ; j < len ; j ++){
+                    // 移除所有li标签的类名
+                    items[j].className = "";
+                }
+                // 设置li标签的高亮
+                items[index].className = "active";
+                // 设置学员姓名
+                textElement.innerText = items[index].innerText;
+            }
+
+
+            // 最大的索引值 19 
+            // 2、事件绑定
+            btn.onclick = function(){
+                // 3、书写程序的处理逻辑
+                // 先停止定时器函数
+                clearInterval(timer);
+                // 再执行定时器函数
+                timer = setInterval(autoPlay,sec);
+                // 获取随机范围的数值
+                randomNumber = randomIndex(minV,maxV);
+                console.log(randomNumber);
+            }
+
+
+
+
+
+
+
+            // 目的：   
+                // 理解随机数
+                // 熟练掌握函数（代码块）
+                // 编码思维逻辑
+                
+    </script>   
+</body>
+</html>

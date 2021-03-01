@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id="container"> </div>
+
+    <script>
+        // break;
+        // continue;
+        // return ;
+        // var i = 1 ;  声明的i变量是全局的 
+        // 关键字  var 
+        // var i  ;
+        // for(i = 1 ; i <= 5; i ++){
+        //     console.log("i:",i);// 1,2,3,4,5 
+        // }
+        // console.log("外部 i : ",i);// 6 
+
+        // for(var i = 1 ; i <= 5; i ++){
+        //     console.log("i:",i);// 1,2
+        //     if(i == 2){
+        //         // 跳出整个循环
+        //         break;
+        //     }
+        // }
+        // console.log("外部 i : ",i);// 2 
+
+
+
+        // for(var i = 1 ; i <= 5; i ++){
+        //     if(i == 2){
+        //         // 跳出当前的循环
+        //         continue;
+        //     }
+        //     console.log("i:",i);// 1,2,3,4,5 
+        // }
+        // console.log("外部 i : ",i);// 6 
+
+
+        //  ; 代码结束，分割点
+        ;(function () {
+            for (var i = 1; i <= 5; i++) {
+                console.log("i:", i);// 1,2,
+                if (i == 2) {
+                    // 跳出当前的循环 (终止代码)
+                    return;
+                }
+            }
+            console.log("外部 i : ", i);// 
+        })()
+
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <h3>认识对象</h3>
+    <script>
+        // 对象：无序的键值对数据集合。
+        // 1.0 定义对象（一）
+        var obj = { };//空对象
+        console.log(obj);
+
+        // 2.0 定义对象（二）
+        var obj2 = {name:"xiaoming",age:20};
+        console.log(obj2);
+
+         // 3.0 定义对象（三）
+         // 创建实例   
+         //  Object 构造函数
+         var obj3 = new Object();
+         console.log(obj3);//空对象
+
+
+        //  4.0 添加属性（存值）
+        var obj4 = {};
+        // 4.0.1
+        obj4.name = "xiaohong";
+        // 4.0.2 
+        obj4["age"] = 18;
+        obj4.name = "小红帽";
+        // 认识以键值对形式出现的无序的数据集合。数据集合的键（key）是唯一的。
+        console.log(obj4);//{ 键:值,key:value}
+
+
+        // 5.0 获取属性值（取值）
+        console.log(obj4.name);//小红帽
+        console.log(obj4["name"]);//小红帽
+        console.log(obj4.age);// 18
+        
+
+
+        // 思考题：
+        // 定义一个动物的对象 animal 对象
+            // 属性       属性值
+            // name      狮子
+            // weight    120kg
+            // age       3
+            // foo      function(){console.log("foo")}
+
+
+            // var  obj = {
+            //     str:"hello",
+            //     num:100,
+            //     foo:function(){console.log(123);}
+            // }
+            // obj.str 
+            // obj.num 
+            // obj.foo()
+
+       
+    </script>
+</body>
+</html>

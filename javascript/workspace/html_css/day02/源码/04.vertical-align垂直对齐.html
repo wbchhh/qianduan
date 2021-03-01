@@ -1,0 +1,89 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+				.box1 {
+				  width:600px;
+				  background-color:#0ff;
+				}
+				.box1 img {
+				   vertical-align:middle;
+				}
+				/*行内块img input button 存在下间隙*/
+				/*因为行内块元素，本身具有文本空白（幽灵节点）*/
+				
+				.box2 {
+					width:600px;
+					background-color:#f00;
+					font-size:0;
+				}
+				
+				.box3 {
+					width:600px;
+					background-color:#f0f;
+				}
+				.box3 img {
+				   display:block;
+				}
+				
+				.box4 {
+					width:600px;
+					font-size:30px;
+					background-color:skyblue;
+				}
+				.box4 img {
+					/*text-bottom 文本底部  gg yy */
+					/*middle 中间  */
+					/*text-top 文本顶部  ff */
+				    vertical-align:middle;
+				}
+				
+				.box5 {
+					width:600px;
+					height:100px;
+					background-color:yellowgreen;
+					line-height:100px;
+				}
+				
+				.box5 img {
+				    /*box5 设置高度的情况下*/
+				    /*top (盒子顶部)/ text-top（文本顶部） / middle（中间） / text-bottom（文本底部） / bottom（盒子底部）*/
+				    vertical-align:middle;
+				}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	
+		<div class="box1">
+		   <img src="./icon.png"/>
+		</div>
+		
+		<div class="box2">
+		   <img src="./icon.png"/>
+		</div>
+		
+		<div class="box3">
+		   <img src="./icon.png"/>
+		</div>
+		
+		
+		<div class="box4">
+		   <img src="./icon.png"/>  hello yy gg ff xx
+		</div>
+		
+		
+		<div class="box5">
+		   <img src="./icon.png"/>  hello yy gg ff xx
+		</div>
+		
+		
+	
+	</body>
+</html>
+

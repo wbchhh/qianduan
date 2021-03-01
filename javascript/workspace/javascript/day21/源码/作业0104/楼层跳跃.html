@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        html,
+        body,
+        .layout {
+            width: 100%;
+            height: 100%;
+        }
+
+        .layout,
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 通过改变container盒子的垂直位置，实现每一屏内容切换 */
+        .container {
+            width: 100%;
+            margin-top: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container .section {
+            height: 100%;
+        }
+
+        .circle {
+            position: fixed;
+            right: 50px;
+            top: 50%;
+            z-index: 1000;
+            width: 40px;
+            height: 200px;
+            margin-top: -100px;
+        }
+
+        .circle ul {
+            width: 40px;
+        }
+
+        .circle ul li {
+            width: 35px;
+            height: 35px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: 5px auto 0;
+        }
+
+        .circle ul li:hover,
+        .circle ul li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <!-- 主要内容 -->
+        <div class="wrapper">
+            <div class="container" id="container">
+                <div class="section">第一屏</div>
+                <div class="section">第二屏</div>
+                <div class="section">第三屏</div>
+                <div class="section">第四屏</div>
+                <div class="section">第五屏</div>
+            </div>
+        </div>
+        <!-- 导航点 -->
+        <div class="circle">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 引入动画函数 -->
+    <script src="./animate.js"></script>
+    <script src="./util.js"></script>
+    <script>
+        // 仿照：
+        // https://browser.360.cn/ee/
+        // 鼠标滚轮滚动切换页面 
+        // onmousewheel 事件
+
+        // 1.0 初始化页面(记录相关)
+        // 可视区的高度
+        var winHeight = window.innerHeight;
+        // 指定的容器标签
+        var container = document.getElementById("container");
+        // 所有的内容（标签数组）
+        var sections = document.getElementsByClassName("section");
+        var circle = document.getElementsByClassName("circle")[0];
+        var points = circle.getElementsByTagName("li");
+        // 颜色数组
+        var arrColor = ["#1af", "#2bf", "#3cf", "#4df", "#5ef"];
+        // 循环标签数组
+        for (var i = 0; i < sections.length; i++) {
+            // 设置每一屏标签高度
+            sections[i].style.height = winHeight + "px";
+            // 设置每一屏标签背景色
+            sections[i].style.backgroundColor = arrColor[i];
+        }
+
+        // 2.0 全局变量
+        // 定义索引值
+        var index = 0;
+
+        // 3.0 事件绑定
+        // 监听鼠标滚轮滚动的事件
+        // window.onmousewheel = function(event){
+        //     // 根据事件对象的wheelDelta属性判断滚动滚动方向
+        //     // 向后 负数   索引值 ++
+        //     // 向前 正数   索引值 --
+        //     // console.log(event.wheelDelta);
+        //     // 判断滚轮滚动方向 设置索引值
+        //     if(event.wheelDelta > 0 ){
+        //         index -- ;
+        //     }else {
+        //         index ++ ;
+        //     }
+        //     console.log("索引值：",index);
+        // }
+
+        // var f = debounce();
+        // 定义变量 记录延迟函数
+        var delayer = null;
+        // 事件绑定
+        window.onmousewheel = function (event) {
+            // 判断变量是否有值 ，有，说明正在执行延迟函数，那么就清除延迟函数
+            if (delayer) clearTimeout(delayer);
+            // 重新执行延迟函数
+            delayer = setTimeout(function () {
+                // 判断滚轮滚动方向
+                if (event.wheelDelta > 0) {
+                    // 向前 正数  
+                    index--;
+                    // 三目运算
+                    index = index < 0 ? 0 : index;
+                } else {
+                    // 向后 负数
+                    index++;
+                    // 三目运算 
+                    index = index > sections.length - 1 ? sections.length - 1 : index;
+                }
+                console.log("索引值：", index);
+
+                // 执行动画函数
+                animate(container, {
+                    top: -(index * winHeight)
+                });
+                // 设置导航点
+                setPoint(index);
+
+                // 清除延迟函数
+                clearTimeout(delayer);
+            }, 300)
+        }
+
+
+        // 编写函数处理导航点
+        function setPoint(index) {
+            for (var i = 0; i < points.length; i++) {
+                points[i].className = "";
+            }
+            points[index].className = "active";
+        }
+
+        // 鼠标移入导航点
+        for (var j = 0; j < points.length; j++) {
+            points[j].index = j;
+            points[j].onmouseenter = function () {
+                index = this.index;
+                // 执行动画函数
+                animate(container, {
+                    top: -(index * winHeight)
+                });
+                // 设置导航点
+                setPoint(index);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

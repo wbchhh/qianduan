@@ -1,0 +1,50 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：循环语句</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>循环语句（重复）</h3>
+		
+		
+		<script>
+		
+			//1.0 for(代码1，代码2，代码3){ //执行循环 }
+			//var i = 0;
+			for( var i = 0 ; i < 5 ; i ++){
+				console.log("内部 i:",i);
+			}
+			console.log("---外部--- i:",i);// 此处输入的值是？5
+			
+			
+			
+			//2.0 while(){}
+			var index = 0;
+			while(index < 5){
+				console.log("index:",index);
+				index ++;
+			}
+			console.log("---外部--- index:",index);
+			
+			
+			//3.0 do{} while()
+			var count = 0;
+			do{
+				console.log("count",count);
+				count ++;
+			}while(count < 5)
+			
+			console.log("---外部--- count:",count);
+		
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <h3>通过原型实现继承</h3>
+    <div id ="container"> </div>
+
+    <script>
+        // 父对象
+        function Parent(name){
+            this.name = name;
+            this.foo = function(){
+                console.log(this.name,"---> foo");
+            }
+        }
+        // 子对象
+        function Son(){}
+        Son.prototype = new Parent("小明");
+        // 重新指向Son构造函数 ,否则就是 Object
+        Son.prototype.constructor = Son;
+        
+        // 创建子对象的实例
+        var xiaoming = new Son();
+        console.log(xiaoming);
+        xiaoming.foo();
+        // 原型：
+            // 1.0 可以实现对象共享属性和方法
+            // 2.0 可以实现对象之间的继承
+
+
+    </script>
+</body>
+
+</html>

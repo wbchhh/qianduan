@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [20,30,50,10,60,80]
+        function QuickSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            if (Array.isArray(arr)) {
+                let center = parseInt(arr.length / 2);
+                // 取中间值需要让原数组发生变化
+                let centerNum = arr.splice(center, 1);
+                let left = [];
+                let right = [];
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i] <= centerNum) {
+                        left.push(arr[i]);
+                    } else {
+                        right.push(arr[i]);
+                    };
+                };
+                //使用递归 每次取中间排完再调用两边重新排序
+                return QuickSort(left).concat(centerNum).concat(QuickSort(right));
+            };
+        }
+        console.log(QuickSort(arr))
+    </script>
+</body>
+</html>

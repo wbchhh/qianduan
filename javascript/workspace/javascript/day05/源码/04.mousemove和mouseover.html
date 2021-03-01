@@ -1,0 +1,76 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			ul {
+			   padding:50px;
+			   margin:0 ;
+			   list-style:none;
+			   width:500px;
+			   height:100px;
+			   background-color:#ccc;
+			}
+			ul li {
+			   width:80px;
+			   height:80px;
+			   background-color:#00f;
+			   margin: 10px 10px;
+			   float:left;
+			   cursor:pointer;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3> mousemove和mouseover </h3>
+		
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+		<script>
+			//1.0 获取ul标签
+			var ul = document.getElementsByTagName("ul")[0];
+			//2.0  绑定事件
+			//mouseout
+			//鼠标在事件源上移动
+			//
+			ul.onmousemove = function(){
+				console.log("onmousemove");
+			}
+			
+			// mouseleave
+			// 鼠标在事件源上悬停
+			ul.onmouseover = function(){
+				//console.log("onmouseover");
+			}
+			
+			
+			//事件源就是事件的调用者
+			
+			
+			
+			
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

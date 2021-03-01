@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <h3>bind方法</h3>
+    <div id ="container"> </div>
+    <div id="box1">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+
+    <script>
+        // window 全局对象  
+        // 全局方法可以直接调用
+        // document 文档对象
+        // var bId = document.getElementById;
+        // var box = bId.bind(document)("container");
+        // console.log(box);
+        var fn = document.getElementById;
+        var _ = fn.bind(document);
+        // console.log(window._("container"));
+        console.log(_("box1"));//  <div id="box1">1</div>
+        console.log(_("box2"));//  <div id="box2">2</div>
+        console.log(_("box3"));//  <div id="box3">3</div>
+
+        // 总结：
+            // bind 
+            // 调用者是个方法
+            // 参数是对对象
+            // 作用：通过改变this指向，实现继承
+
+
+
+    
+
+
+
+    </script>
+</body>
+
+</html>

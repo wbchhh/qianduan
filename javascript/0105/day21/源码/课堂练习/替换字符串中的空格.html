@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+         // 1.0 定义去掉所有空格字符（串）的函数
+         function myTrim(str){ 
+              // 返回没有空格的字符串
+              return str.replace(/\s/g,"");
+         }
+
+        //  console.log("   123 hello    world   456   ");
+        // 2.0 调用封装的 myTrim 函数
+        //  charCodeAt()
+        console.log(myTrim("   123 hello    world   456   "));
+
+
+        // 字符串
+        // var str = "   123 hello    world   456   ";
+        // 调用
+        // str.trim();
+
+        // 拓展：
+        // String  构造函数
+        // String.prototype 原形对象
+        // var obj = {} ; obj.width = "100px"; obj.foo = function(){}
+        // 是个对象就可以添加属性和方法
+        // 生活处处有伏笔
+        // String.prototype.myTrim = function(){
+        //     return str.replace(/\s/g,"");
+        // }
+        // var str =  "hello   world";
+        // // 去掉
+        // var res = str.myTrim();
+        // console.log(res);
+
+        // 
+
+    </script>
+</body>
+</html>

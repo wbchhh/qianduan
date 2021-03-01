@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <h3>bind</h3>
+    <div id ="container"> </div>
+
+    <script>
+        // bind
+
+        // 父对象   
+        function Parent(name,sex){
+            this.name = name ;
+            this.sex = sex ;
+            this.sayHello = function(){
+                console.log(this.name ,"是",this.sex , "在say Hello")
+            }
+        }
+        // 子对象
+        function Son(name,sex){
+            // 创建父对象的实例
+            var obj = new Parent(name,sex);
+            // 添加方法
+            this.sayHello = obj.sayHello.bind(obj);
+            // this.sayHello = obj.sayHello;
+        }
+
+        // 创建子对象的实例
+        var xiaobai = new Son("小白","女人");
+        var xiaohei = new Son("小黑","男人");
+        xiaobai.sayHello();
+        xiaohei.sayHello();
+    </script>
+</body>
+
+</html>

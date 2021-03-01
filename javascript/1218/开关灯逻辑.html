@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        ul li{
+            width: 30px;
+            height: 30px;
+            border:1px solid #000;
+        }
+        button{
+            width: 150px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>10</li>
+        <li>9</li>
+        <li>8</li>
+        <li>7</li>
+        <li>6</li>
+        <li>5</li>
+        <li>4</li>
+        <li>3</li>
+        <li>2</li>
+        <li>1</li>
+    </ul>
+    <button id="btn">设置楼层背景色</button>
+
+    <script>
+        var lis = document.getElementsByTagName("li");
+        var btn = document.getElementById("btn");
+        var index = 9;
+        var len =lis.length;
+        var bgColor = "green";
+        var isChange = true;
+        btn.onclick =function(){
+            setFColor(index);
+            index = index <0 ? 9 : index;
+            index--;
+        }
+        function setFColor(index){
+            if(index<0){
+                index = 9;
+                if(isChange){
+                    isChange = false;
+                    bgColor = "orange";
+                }else{
+                    isChange = true;
+                    bgColor = "green";
+                }
+            }
+            lis[index].style.backgroundColor = bgColor;
+        }
+    </script>
+</body>
+</html>

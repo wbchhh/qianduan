@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除说说（事件委托）</title>
+    <style>
+        ul li span {
+            height: 40px;
+            line-height: 40px;
+            text-decoration: underline;
+            margin: 20px 20px 0;
+        }
+        ul li button {
+            padding: 5px 20px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <span>今天的天气不是很冷，还是挺暖和的 1111</span>
+                <button class="del">删除</button>
+            </li>
+
+            <li>
+                <span>今天的天气不是很冷，还是挺暖和的 2222</span>
+                <button class="del">删除</button>
+            </li>
+
+
+            <li>
+                <span>今天的天气不是很冷，还是挺暖和的 3333</span>
+                <button class="del">删除</button>
+            </li>
+
+
+            <li>
+                <span>今天的天气不是很冷，还是挺暖和的 4444</span>
+                <button class="del">删除</button>
+            </li>
+
+            <li>
+                <span>今天的天气不是很冷，还是挺暖和的 5555</span>
+                <button class="del">删除</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // 基本步骤：
+            // 1、获取元素 （记录数据）
+            // 2、绑定事件 （交互行为）
+            // 3、书写程序的处理逻辑
+
+
+           // 1、获取元素 （记录数据）
+           var wrap = document.getElementsByClassName("wrap")[0];
+           //console.log(wrap);
+           // 2、绑定事件 （交互行为）
+           wrap.onclick = function(event){
+                // 3、书写程序的处理逻辑
+                // console.log(this); //事件的调用者 div
+                var ele = event.target;
+                // console.log(ele);// 目标元素（事件源）
+                // if(ele.className == "del"){
+                // console.log(ele.getAttribute("class"));// 是button类名是del
+                if(ele.getAttribute("class") == "del"){
+                    // 删除当前点击按钮的父元素
+                    ele.parentElement.remove();
+                }
+           }
+
+          // 使用事件委托可以节省内存。（不需要执行的重复的代码）
+           
+    </script>
+  
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉菜单（同学提问）</title>
+    <style>
+        /* 重置默认样式 */
+        html , body , ul , ol {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul , ol {
+            list-style: none;
+        }
+
+        /* 书写自定义样式 */
+        .wrapper {
+            width: 1000px;
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+        .nav {
+            height: 80px;
+        }
+        .first-list {
+            width: 180px;
+            float: left;
+            margin-right: 20px;
+        }
+        .first-list > li {
+            width: 180px;
+        }
+        .first-list > li .tab-item {
+            width: 180px;
+            height: 40px;
+            background-color: green;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .first-list > li .second-list {
+            width: 180px;
+            /* 设置二级菜单的位置 */
+            /* 设置隐藏 */
+            display: none;
+        }
+        .first-list > li .second-list li {
+            width: 180px;
+            height: 40px;
+            background-color: orange;
+            border-bottom: 1px solid red;
+            text-align: center;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav">
+                <ul id="first-list1" class="first-list">
+                    <li>
+                        <!-- 鼠标移入一级菜单 -->
+                        <div class="tab-item">一级菜单</div>
+                        <!-- 显示二级菜单 -->
+                        <ol  class="second-list">
+                             <li>二级菜单</li>
+                             <li>二级菜单</li>
+                             <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+
+
+                <ul id="first-list2" class="first-list">
+                    <li>
+                        <div class="tab-item">一级菜单</div>
+                        <ol  class="second-list">
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+
+
+                <ul id="first-list3" class="first-list">
+                    <li>
+                        <div class="tab-item">一级菜单</div>
+                        <ol  class="second-list">
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                                <li>二级菜单</li>
+                        </ol>
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <script>
+        // 要求：
+            // 1.0 获取相关的元素
+            var tabItems = document.getElementsByClassName("tab-item");
+            var secItems = document.getElementsByClassName("second-list");
+
+            // 第三个选项
+            // tabItems[索引值].onmouseenter = function(){
+            //      secItems[索引值].style.display = "block";
+            // }
+            // tabItems[索引值].parentElement.onmouseleave = function(){
+            //      secItems[索引值].style.display = "none";
+            // }
+        
+            // 2.0 循环
+            for(var i = 0 ; i < tabItems.length ; i ++){
+                // 属性绑定
+                tabItems[i].index = i;
+                tabItems[i].parentElement.count = i;
+                tabItems[i].isOpen = true;
+                // 事件绑定（鼠标移入）
+                tabItems[i].onclick = function(){
+                    if(this.isOpen){
+                        secItems[this.index].style.display="block";
+                        this.isOpen = false;
+                    }else {
+                        secItems[this.index].style.display="none";
+                        this.isOpen = true;
+                    }
+                   
+                }
+                // 事件绑定（鼠标离开）
+                tabItems[i].parentElement.onmouseleave = function(){
+                    // 此处的this 是父元素
+                    // this.index // undefined
+                    // this.count 
+                    secItems[this.count].style.display="none";
+                }
+            }   
+
+            // 这是变量 循环结束 值等于 3 ，所以事件触发之后 i == 3
+            // console.log(i);// 3
+            // i == 3 
+
+</script>
+</body>
+</html>

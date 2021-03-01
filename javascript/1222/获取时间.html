@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取时间</title>
+    <style>
+        table{
+            /* 重叠边宽线 */
+            border-collapse: collapse;
+            width: 600px;
+        }
+        table th , table td{
+            border:2px solid skyblue;
+            text-align: center;
+            /* height: 30px; */
+        }
+        .time{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <table cellpadding="20" cellspacing="0">
+        <thead>
+            <tr>
+                <th>年份</th>
+                <th>月份</th>
+                <th>日期</th>
+                <th>个性签名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div class="year"></div></td>
+                <td><div class="month"></div></td>
+                <td><div class="date"></div></td>
+                <td><div class="text"></div></td>
+            </tr>
+            <tr>
+                <td colspan="4"><div class="time">00:00:00:00</div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var yearEle = document.getElementsByClassName("year")[0];
+        var monthEle = document.getElementsByClassName("month")[0];
+        var dateEle = document.getElementsByClassName("date")[0];
+        var textEle = document.getElementsByClassName("text")[0];
+        var timeEle = document.getElementsByClassName("time")[0];
+        function getCurrentTime(){
+            var time = new Date();
+            yearEle.innerText = time.getFullYear();
+            monthEle.innerText = time.getMonth() + 1;
+            dateEle.innerText = time.getDate();
+            textEle.innerText = "****************";
+
+            var h = time.getHours() < 10 ? "0" + time.getHours() : time.getHours();
+            var m = time.getMinutes() < 10 ? "0" +time.getMinutes() : time.getMinutes();
+            var s = time.getSeconds() < 10 ? "0" +time.getSeconds() : time.getSeconds();
+            var ms = time.getMilliseconds();
+
+            timeEle.innerText = h + ":" + m + ":" + s + ":" + ms;
+        }
+        getCurrentTime();
+        var timer = setInterval(function(){
+           getCurrentTime();
+       },1000)
+    </script>
+</body>
+</html>

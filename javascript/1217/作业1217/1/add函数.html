@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 0 auto;
+            height:100px;
+            width: 400px;
+            background-color: pink;
+        }
+        .box #left{
+            margin-top: 25px;
+            margin-left: 100px;
+            height:50px;
+            width:50px;
+        }
+        .box #right{
+            margin-top: 25px;
+            height:50px;
+            width:50px;
+        }
+        .box .btn{
+            cursor: pointer;
+        }
+        .box .result{
+            height:50px;
+            width:50px;
+            background-color: #fff;
+            float: right;
+            margin-top:27px;
+            margin-right: 80px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" value="0" id="left">
+        <span>+</span>
+        <input type="text" value="0" id="right">
+        <span class="btn">=</span>
+        <div class="result"></div>
+    </div>
+    
+
+    <script>
+    //  要求：
+    //  定义  add  函数，
+    //  改变实现，获取两个输入框的值，并且计算两个数值相加的结果
+    //  点击“=”标签 ，调用add函数，显示计算的结果
+    function add(){
+        var num1 = document.getElementById("left");
+        var num2 = document.getElementById("right");
+        num2.nextElementSibling.onclick = function(){
+           if(num1.value.length ==0 || num2.value.length ==0){
+               console.log("函数没有值");
+           }else{
+            num2.nextElementSibling.nextElementSibling.innerHTML = parseInt(num1.value) + parseInt(num2.value);
+           }
+        }
+    }
+    add();
+
+    </script>
+</body>
+</html>

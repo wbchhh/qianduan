@@ -1,0 +1,43 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：外边距塌陷</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.big {
+			   width:600px;
+			   height:600px;
+			   background-color:gray;
+			   /*设置元素为独立渲染区块(BFC)BLOCK FORMAT CONTENT*/
+			   overflow:hidden;
+			   /*border:1px solid gray;*/
+			   /*float:left; */
+			   /*position:absolute;*/
+			}
+			
+			.big .small {
+			   width:100px;
+			   height:100px;
+			   background-color:red;
+			   
+			   /*设置外边距属性(外边距塌陷)*/
+			   margin-top:100px;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<!--嵌套关系-->
+		<div class="big"> 
+			<div class="small"></div>
+		</div>
+	
+		
+		
+		<!--元素的尺寸 、位置、文本、背景-->
+	</body>
+</html>
+

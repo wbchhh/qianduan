@@ -1,0 +1,95 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题： dom 操作练习</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			body {
+			  margin:0;
+			}
+			ul {
+			  padding:0;
+			  margin:0;
+			  list-style:none;
+			}
+			.wrap {
+			  width:320px;
+			  height:300px;
+			  background-color:#ccc;
+			  margin:100px;
+			}
+			.wrap .row {
+				height:100px;
+			}
+			.wrap .row .col {
+				width:78px;
+				height:98px;
+				border:1px solid #fff;
+				float:left;
+				background-color:skyblue;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>dom 操作练习（二） </h3>
+		<div class="wrap">
+			
+		</div>
+		<script>
+			//练习5. 
+			//.0 获取页面.wrap标签
+			var wrap = document.getElementsByClassName("wrap")[0];
+			//1、定义多少行 多少列(变量的声明)
+			var rowNumber = 3;
+			var colNumber = 4;
+			
+			//.0 定义空字符串 
+			var str = "";
+			//2、双重for循环 
+			for(var i = 0  ; i < rowNumber ; i ++){
+				//字符串拼接
+				str +='<ul class="row">'
+				// 内部循环
+				for(var j = 0 ; j < colNumber ; j ++){
+					//字符串拼接
+					str += '<li class="col"></li>'
+				}
+				//字符串拼接
+				str +='</ul>'
+			}
+			//0. 渲染字符串
+			wrap.innerHTML = str;
+			
+
+		
+		</script>
+	</body>
+</html>
+
+
+<!-- 红色提示：错误 bug  -->
+<!-- 黄色提示：警方  -->
+
+
+
+<!--
+	<ul class="row">
+		<li class="col"></li>
+		<li class="col"></li>
+		<li class="col"></li>
+		<li class="col"></li>
+	</ul>
+-->
+
+
+
+
+
+
+
+
+

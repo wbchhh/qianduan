@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client 相关的属性</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrap {
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+            /* 相对定位 、绝对定位 、固定定位 */
+            /* position: relative; */
+            background-color: #ccc;
+            margin-left: 100px;
+            margin-top: 120px;
+        }
+        .wrap .box {
+            width: 100px;
+            height: 200px;
+            background-color: #0ff;
+            margin-left: 110px;
+            margin-top: 140px;
+            border-top: 20px solid #333;
+            border-right: 30px solid #333;
+            border-bottom: 40px solid #333;
+            border-left: 50px solid #333;
+            padding: 40px 30px 20px 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrap"> <div class="box"></div></div>
+    <script>
+        // 键盘按键 end : 光标快速移至行尾
+        // 键盘按键 home：光标快速移至行首
+        // 获取div标签
+        var box = document.getElementsByClassName("box")[0];
+        // client (可视区)
+        // clientLeft：盒子左边边框的值（内容距离左边外边框的位置）
+        console.log(box.clientLeft);// 50
+        // clientTop：盒子顶部边框的值（内容距离顶部外边框的位置）
+        console.log(box.clientTop);// 20
+        // clientWidth:获取盒子的宽度（左右内边距 + width内容）
+        console.log(box.clientWidth);// 140
+        // clientHeight: 获取盒子的宽度（上下内边距 + height内容）
+        console.log(box.clientHeight);// 260
+
+
+        
+
+
+    </script>
+</body>
+</html>

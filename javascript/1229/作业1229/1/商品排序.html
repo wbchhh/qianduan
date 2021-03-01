@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品排序</title>
+    <style>
+            ul , ol {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                float: left;
+                margin-left: 50px;
+            }
+        
+            ul li {
+                width: 160px;
+                height: 40px;
+                border: 1px solid #ccc; 
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+            }
+            ul li span {
+                display: block;
+                width: 160px;
+                height: 40px;
+                cursor: pointer;
+            }
+           ol {
+               width: 600px;
+               height: 1000px;
+               background-color: #f0f0f0;
+           }
+           ol li {
+               width: 598px;
+               height: 100px;
+               border: 1px solid gray;
+           }
+           ol li div {
+               height: 40px;
+           }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><span data-index="0">单价最高</span></li>
+        <li><span data-index="1">单价最低</span></li>
+        <li><span data-index="2">销量最高</span></li>
+        <li><span data-index="3">信用最高</span></li>
+    </ul>
+    <ol>
+        <!-- <li>
+            <div>商品:</div>
+            <div>价格:</div>
+            <div>销量:</div>
+        </li> -->
+    </ol>
+
+    <script>
+        // 1.0 假数据
+        var data = [
+                {
+                    "price":199,
+                    "sales":10000,
+                    "honesty":2,
+                    "desc":"大白菜"
+                },
+                {
+                    "price":599,
+                    "sales":9999,
+                    "honesty":5,
+                    "desc":"大西瓜"
+                },
+                {
+                    "price":399,
+                    "sales":6666,
+                    "honesty":9,
+                    "desc":"大番薯"
+                }
+            ]
+        var liEl = document.getElementsByTagName("li");
+        var ulEl = document.getElementsByTagName("ul")[0];
+        var olEl = document.getElementsByTagName("ol")[0];
+        var len = data.length;
+        ulEl.onclick = function(event){
+            var ele = event.target;
+            var index = ele.getAttribute("data-index");
+            if(index){
+                switch(index){
+                    case "0":
+                        data.sort(function(prev,next){
+                            return next.price - prev.price;
+                        });
+                        break;
+                    case "1":
+                        data.sort(function(prev,next){
+                            return prev.price - next.price;
+                        });
+                        break;
+                    case "2":
+                        data.sort(function(prev,next){
+                            return next.sales - prev.sales;
+                        });
+                        break;
+                    case "3":
+                        data.sort(function(prev,next){
+                            return next.honesty - prev.honesty;
+                        });
+                        break;
+                }
+                minPrice(data);
+                for(var i = 0; i < liEl.length; i ++){
+                    liEl[i].style.backgroundColor = "";
+                }
+                liEl[index].style.backgroundColor = "#ccc";
+            } 
+            
+            // minPrice(data);
+        }
+        function minPrice(data){
+            if (data == undefined || data.length == 0) {
+                return;
+            }
+            var str = "";
+            for(var i = 0; i < len; i ++){
+                str += "<li>"
+                str += "<div>商品:"+data[i].desc+"</div>";
+                str += "<div>价格:"+data[i].price+"</div>";
+                str += "<div>销量:"+data[i].sales+"</div>";
+                str += "</li>"
+            }
+            olEl.innerHTML = str;
+        }    
+        minPrice(data);
+    </script>
+    
+</body>
+</html>

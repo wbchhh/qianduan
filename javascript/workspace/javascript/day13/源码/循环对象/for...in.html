@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for ... in 语句</title>
+</head>
+<body>
+    <h3>循环对象</h3>
+
+    <script>
+        // for ... in 语句
+        // 既可以循环对象，也可以循环数组。
+        
+        var count = 0;
+        // 定义对象
+        var obj = {
+            width:"100px",
+            height:"200px",
+            color:"#ff0000",
+            bgcolor:"#00ff00"
+        }
+        // 键值对没有 length 
+        // console.log(obj);
+        for(var key in obj){
+            count ++;
+            // key 
+            // console.log("key：",key);
+            // value
+            // console.log(obj["key"]);
+            // console.log(obj[key]);
+            console.log(key,"----->",obj[key])
+        }
+        // key 是对象的属性
+        // obj[key] 是对象的值 
+
+        console.log("对象的键值对数量：",count);
+    </script>
+</body>
+</html>

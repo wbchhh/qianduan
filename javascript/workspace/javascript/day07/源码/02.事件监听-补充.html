@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border: 1px solid transparent;
+        }
+
+        div ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border: 1px solid transparent;
+            margin: 49px auto;
+        }
+
+        div ul li {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 49px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>事件监听</h3>
+    <!-- div > ul > li（目标阶段）  -->
+    <!-- 外 >  中>  内 -->
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        // 1.0 获取元素
+        var div = document.getElementsByTagName("div")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+        var li = document.getElementsByTagName("li")[0];
+
+        // 2.0 事件监听
+        var  bool = false;
+        // false : 从内往外   处于冒泡阶段
+        // true  : 从外往内   处于捕获阶段
+        // 事件冒泡：事件由子元素往父级元素传递。这个现象是事件冒泡
+
+        // 参数1：事件类型 参数2：匿名函数 参数3：可选 布尔值
+        div.addEventListener("click", function () {
+            console.log("div")
+        }, bool);
+        ul.addEventListener("click", function () {
+            console.log("ul")
+        }, bool);
+        li.addEventListener("click", function (event) {
+            // 使用事件对象，记得填写
+            var event = event || window.event;//兼容写法
+            // 阻止事件冒泡
+            // event.stopPropagation();
+            // 阻止事件冒泡
+            // event.cancelBubble = true;
+            // 判断（主流浏览器  IE9 + , 谷歌、火狐、欧朋  ）
+            if(event.stopPropagation){
+                event.stopPropagation();
+                console.log("主流浏览器");
+            }else {
+                // 低版本IE 5678
+                event.cancelBubble = true;
+                console.log("低版本IE 5678");
+            }
+            console.log("li")
+        }, bool);
+
+        
+        // 兼容的写法
+        // if(li.addEventListener){
+        //     li.addEventListener()
+        // }else {
+        //     li.attachEvent();
+        // }
+        // 低版本IE浏览器使用的方法
+        // div.attachEvent("onclick",function(){
+        //     console.log("div 222")
+        // });
+
+        // ul.attachEvent("onclick",function(){
+        //     console.log("ul 222")
+        // });
+        // li.attachEvent("onclick",function(event){
+        //     var event = event || window.event;
+        //     event.cancelBubble = true;
+        //     console.log("li 222")
+        // });
+        
+        // 执行的先后顺序：由内往外。 处于冒泡阶段
+        // window 全局对象
+        // console.log(window);//
+
+        // window.alert()
+        // alert("123456")
+
+
+        // 真实开发
+        // li.onclick = function(event){
+        //     var event = event || window.event;
+        //     if(event.stopPropagation){
+        //         event.stopPropagation();
+        //         console.log("主流浏览器");
+        //     }else {
+        //         // 低版本IE 5678
+        //         event.cancelBubble = true;
+        //         console.log("低版本IE 5678");
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

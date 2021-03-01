@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // 表示数据类型的时候，首字母是小写 
+        // string number boolean null undefined symbol
+        // object array function
+
+
+        // 表示构造函数，首字母大写（本身就存在的函数）
+        // String  Number  Array  Object Date RegExp
+        // Function 
+
+        // 所有函数都是 Function 的实例
+        var f = new Function();
+        // f 是 Function 的实例
+        console.log(typeof f);//function 
+        console.log(f.__proto__ === Function.prototype);//true 
+
+        //以下都是函数
+        console.log(typeof String);
+        console.log(String.__proto__ === Function.prototype);//true
+        console.log(typeof Number);
+        console.log(Number.__proto__ === Function.prototype);//true
+        console.log(typeof Array);
+        console.log(Array.__proto__ === Function.prototype);//true
+        console.log(typeof Object);
+        console.log(Object.__proto__ === Function.prototype);//true
+        console.log(typeof Date);
+        console.log(Date.__proto__ === Function.prototype);//true
+        console.log(typeof RegExp);
+        console.log(RegExp.__proto__ === Function.prototype);//true
+        console.log(typeof Function);
+        console.log(Function.__proto__ === Function.prototype);//true
+        
+        // 每一个函数都是 Function 构造函数的实例对象
+
+
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>

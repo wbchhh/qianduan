@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom对象：页面的标签</title>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        // 通过标签名获取元素 div
+        var div = document.getElementsByTagName("div")[0];
+        var span = document.getElementsByTagName("span")[0];
+
+        console.log(typeof div);// object
+
+
+        // 属性绑定（添加属性）
+        div.aaa = "hello world!";
+        console.log(div.aaa);
+        // 属性绑定（添加属性）
+        div.num = 99;
+        div.num  ++;
+        console.log(div.num);
+
+        span.num = 99;
+        span.num --;
+        console.log(span.num);
+
+
+        // 声明变量
+        var num = 0;
+        console.log(num);
+        num ++;
+        console.log(num);
+
+
+
+    </script>
+</body>
+</html>

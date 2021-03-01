@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识闭包</title>
+</head>
+<body>
+    <h3>认识闭包</h3>
+
+    <script>
+        // 闭包是函数编程中一种技巧
+        // 嵌套关系的函数
+        // 一个函数(内部)有权访问另一个函数（外部）作用域的变量，这种编码方式叫做闭包。
+        // 全局变量
+        // 局部变量
+       
+        // // 定义函数（外部）
+        // function f1() {
+        //     // 局部变量（私有）
+        //     var a = 100;
+        //     // 定义函数（内部）
+        //     function f2(){
+        //         console.log(a);
+        //     }
+        //     // f2();
+        // }
+        // // 函数不调用不执行
+        // f1();
+
+
+         // 定义函数（外部）
+         function f1() {
+            // 局部变量（私有）
+            var a = 100;
+            // 定义函数（内部）
+            var f2 = function(){
+                a ++;
+                console.log(a);
+            }
+            // 返回f2函数
+            return f2;
+        }
+        // 函数不调用不执行
+        // var f = f1();
+        // // console.log(f);// 返回的是内部函数
+        // f(); // 101
+        // f(); // 102
+        // f(); // 103
+
+        // 特点：   
+            // 数据是私有的，因为是局部变量
+            // 数据可以保留的，因为执行的是内部函数
+
+
+
+        // f1()();// 101
+        // f1()();// 101
+        // f1()();// 101
+
+
+
+
+
+
+
+
+
+
+
+        // console.log(a);// 报错
+
+
+
+
+        // var index = 0;
+        // document.onmousedown = function(){
+        //     index ++;
+        //     console.log(index);
+        // }
+
+    </script>
+</body>
+</html>

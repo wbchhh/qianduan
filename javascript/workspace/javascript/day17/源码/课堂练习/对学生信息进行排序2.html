@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对学生信息进行排序 2 </title>
+    <style>
+        /*  块级元素 {  margin: 0 auto; }*/
+        .table {
+            /* 合并表格边框线 */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        .table,
+        th,
+        td {
+            border: 1px solid #00f;
+        }
+
+        .table,
+        th {
+            color: #333;
+        }
+
+        th div,
+        td div {
+            height: 100%;
+            background-color: #f0f0f0;
+            padding: 20px 40px;
+            cursor: pointer;
+        }
+
+        th div.item.active {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>对学生信息进行排序2</h3>
+    <!--  cellpadding="20" 单元格内容与边框之间的间距 -->
+    <!--  cellspacing="0"  单元格与单元格之间的间距 -->
+    <!-- data-index="0"  自定义属性，记录数据 -->
+    <table class="table">
+        <!-- 表格头 -->
+        <thead>
+            <tr>
+                <th>
+                    <div class="item active" data-index="0">序号</div>
+                </th>
+                <th>
+                    <div class="item">姓名</div>
+                </th>
+                <th>
+                    <div class="item">性别</div>
+                </th>
+                <th>
+                    <div class="item" data-index="3">年龄</div>
+                </th>
+                <th>
+                    <div class="item" data-index="4">分数</div>
+                </th>
+                <th>
+                    <div class="item">微信</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 
+                <tr>
+                    <td><div></div></td>
+                    <td><div></div></td>
+                    <td><div></div></td>
+                    <td><div></div></td>
+                    <td><div></div></td>
+                    <td><div></div></td>
+                </tr> 
+            -->
+        </tbody>
+    </table>
+    <script>
+        // 1.0 假数据
+        var data = [
+            { number: 1, name: "张三", sex: "男", age: 20, score: 90, wechat: "a1111" },
+            { number: 2, name: "李四", sex: "男", age: 21, score: 89, wechat: "b2222" },
+            { number: 3, name: "翠花", sex: "女", age: 18, score: 99, wechat: "c3333" },
+            { number: 4, name: "露西", sex: "女", age: 25, score: 68, wechat: "d4444" },
+            { number: 5, name: "杰克", sex: "男", age: 27, score: 59, wechat: "e5555" }
+        ]
+        // console.log(data)
+        // 2.0 渲染数据的逻辑
+        // 2.0.1 获取相关的元素
+        var tableEl = document.getElementsByClassName("table")[0];
+        var tbodyEl = tableEl.getElementsByTagName("tbody")[0];
+        var theadEl = tableEl.getElementsByTagName("thead")[0];
+
+        // 2.0.2 定义函数
+        // render : 渲染
+        function render(array) {// 形参： array
+            // console.log(array);// 如果没有传递参数 控制台输出undefined
+            // 判断传递的数据是否有值
+            if (array == undefined || array.length == 0) {
+                // 终止代码
+                return;
+            }
+            // 定义字符串
+            var str = "";
+            // 循环语句（重点）
+            for (var i = 0; i < array.length; i++) {
+                str += "<tr>"
+                str += "    <td><div>" + array[i].number + "</div></td>"
+                str += "    <td><div>" + array[i].name + "</div></td>"
+                str += "    <td><div>" + array[i].sex + "</div></td>"
+                str += "    <td><div>" + array[i].age + "</div></td>"
+                str += "    <td><div>" + array[i].score + "</div></td>"
+                str += "    <td><div>" + array[i].wechat + "</div></td>"
+                str += "</tr> "
+            }
+            // console.log(str);
+            // 渲染数据（表现数据）
+            tbodyEl.innerHTML = str;
+        }
+        // 测试
+        // 初始化效果
+        render(data);//实参
+
+        // 3.0 事件驱动（事件委托）
+        theadEl.onclick = function (event) {
+            // 事件源
+            // console.log(event.target);
+            // 获取自定义属性值 data-index
+            var index = event.target.getAttribute("data-index");
+            // 判断自定义属性是否有值 
+            if (index) {
+                // console.log("index:",index);
+                // 定义变量接收sort返回值
+                var res = [];
+                // 控制流语句
+                // 降序 (从大到小)
+                switch (index) {
+                    case "0":
+                        // 按序号对数据进行排序
+                        res = data.sort(function (prev, next) {
+                            return next.number - prev.number;
+                        })
+                        break;
+                    case "3":
+                        // 按年龄对数据进行排序
+                        res =  data.sort(function (prev, next) {
+                            return next.age - prev.age;
+                        })
+                        break;
+                    case "4":
+                       // 按分数对数据进行排序
+                        res =  data.sort(function (prev, next) {
+                            return next.score - prev.score;
+                        })
+                        break;
+                }
+                // 在原数组上进行排序
+                // console.log(res);
+                // 调用渲染数据的方法
+                render(res);
+
+                // 排他思想
+                var items = document.getElementsByClassName("item");
+                var elements = [items[0], items[3], items[4]]
+                console.log(elements)
+                for(var i = 0 ; i < elements.length ; i ++ ){
+                    elements[i].classList.remove("active");
+                }
+                event.target.classList.add("active");
+                // items[index].classList.add("active");
+            }
+        }
+    </script>
+</body>
+
+</html>

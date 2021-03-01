@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域链</title>
+</head>
+<body>
+    <h3>作用域链</h3>
+    <script>
+        // 1.0 声明全局变量
+        var num = 999;
+        // 2.0 定义函数
+        function shijie(){
+            // 作用域1 
+            
+            function guojia(){
+                // 作用域2
+                
+                function shengfen(){
+                    // 作用域3
+                    
+                    function jiedao(){
+                        // 就近原则
+                        // var num = 222;
+                        // 作用域4
+                        console.log("num:",num);
+                    }
+                    jiedao();
+                }
+                shengfen();
+            }
+            guojia();
+        }
+        shijie();
+
+
+        // 在指定的函数作用域中引用变量的时候。首先在当前的函数作用域中检索变量，检索到变量，直接引用
+        // 检索不到变量该变量，会往上一级作用域继续检索，直到window作用域，
+        // 找不到该变量，就是不存在，不存在就会报错
+        // 这个过程形成的链式结构，叫做作用域链
+        // 检索：查找
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业-2 </title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .layout {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .layout .nav {
+            width: 800px;
+            height: 100px;
+            border-bottom: 3px solid #000;
+        }
+        .layout .nav ul li {
+            width: 78px;
+            height: 48px;
+            border: 1px solid skyblue;
+            cursor: pointer;
+            line-height: 50px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            float: left;
+        }
+        .layout .nav ul li.current {
+            background-color: skyblue !important;
+            color: white;
+        }
+        .layout .nav ul li:hover {
+            background-color: #ccc;
+            color: white;
+        }
+        .layout .con {
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+        }
+        .layout .con ul li {
+            width: 800px;
+            display: none;
+        }
+        .layout .con ul li.active {
+            display: block;
+        }
+        .layout .con ul li img {
+            display: block;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout">
+        <!-- 导航区域 -->
+        <div class="nav">
+            <ul>
+                <li class="current">第一辆车</li>
+                <li>第二辆车</li>
+                <li>第三辆车</li>
+                <li>第四辆车</li>
+                <li>第五辆车</li>
+                <li>第六辆车</li>
+                <li>第七辆车</li>
+                <li>第八辆车</li>
+                <li>第九辆车</li>
+                <li>第十辆车</li>
+            </ul>
+        </div>
+        <!-- 图片区域 -->
+        <div class="con">
+            <ul>
+                <li class="active"><a href="javascript:;"><img src="./img/1.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/2.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/3.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/4.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/5.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/6.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/7.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/8.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/9.jpg" alt=""></a> </li>
+                <li><a href="javascript:;"><img src="./img/10.jpg" alt=""></a> </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <script>
+
+        // 需求：汽车tab选项卡自动切换
+            // 1、自定切换tab选项卡和图片
+            // 2、鼠标移入导航选项区域，停止自动切换，鼠标移开导航区域，继续执行自动切换
+            // 3、点击“导航选项”，当前选项添加类名 current , 并且显示对应的图片、非当前点击的选项，移除高亮背景色高亮
+
+        // 基本步骤
+            // 1、记录相关数据（元素）
+            // 2、事件绑定
+            // 3、书写程序的处理逻辑
+
+        //编码实现：
+             //  为什么不是document对象，因为会获取页面所有的li标签
+             //  var navItems = document.getElementsByTagName("li");
+             // 1、记录相关数据（元素）
+             // 导航选项容器
+             var navElement = document.getElementsByClassName("nav")[0];
+             // 导航选项的li标签数组
+             var navItems = navElement.getElementsByTagName("li");
+             // 图片的容器
+             var conElement = document.getElementsByClassName("con")[0];
+             // 图片选项的li标签数组
+             var conItems = conElement.getElementsByTagName("li");
+            // console.log(navItems)
+            // console.log(conItems)
+            // 记录图片的长度（个数）
+            var len = conItems.length;
+            //  索引值（核心）
+            var index = 0;
+            // 自动切换的函数（导航选项、图片）
+            var autoPlay = function(){
+                // 改变索引值
+                index ++;
+                // 判断index变量是否大于数组的最大索引值
+                // conItems.length -1  === 9 
+                if(index > len -1 ){
+                    // 重新赋值 0
+                    index = 0;
+                }
+                // 调用setTabFunc函数
+                setTabFunc(index);// 实参：index
+            }
+            // 执行定时器函数
+            // var timer = setInterval(参数1，参数2 );
+            var timer = setInterval(autoPlay ,5000);
+
+            // 2、事件绑定
+            //  鼠标移入导航区域 停止自动切花
+            navElement.onmouseenter = function(){
+                // 3、书写程序的处理逻辑
+                // console.log("移入")
+                // 停止定时器函数
+                clearInterval(timer);
+            }
+            //  鼠标移入导航区域 继续自动切花
+            navElement.onmouseleave = function(){
+                // 3、书写程序的处理逻辑
+                // console.log("离开")
+                // 先清除定时器函数（为了防止频繁调用定时器函数）
+                clearInterval(timer);
+                // 再执行定时器函数
+                timer = setInterval(autoPlay,5000);
+            }
+            //  鼠标点击导航选项 切花导航背景高亮，和切换图片
+            // 循环
+            for(var i = 0 ; i < len ; i ++){
+                // 属性绑定(记录每个导航选项的索引值)
+                navItems[i].aaa = i ;
+                // 事件绑定
+                navItems[i].onclick = function(){
+                    // 当前点击的导航选项索引值 ，给全局变量index赋值
+                    index = this.aaa ;
+                    // 调用setTabFunc函数
+                    setTabFunc(index);// 实参：index
+                }
+            }
+
+            // 定义函数 根据索引值切换 导航/图片
+            function setTabFunc(key){// 形参：key
+                // 排他思想
+                for(var j = 0 ; j < len ; j ++){
+                    // 移除导航选项的类名
+                    navItems[j].className = "";
+                    // 移除图片选项的类名
+                    conItems[j].className = "";
+                }
+                // console.log("index:",index,"click")
+                // 当前点击的导航选项索引值，切换导航选项，切换图片
+                navItems[key].className = "current";
+                // 索引值对应的图片显示
+                conItems[key].className = "active";
+            }
+            
+
+            // 目的：
+                // 熟练使用定时器函数
+                // 理解属性绑定的作用
+                // 编码思维逻辑提升一下
+    </script>
+</body>
+</html>

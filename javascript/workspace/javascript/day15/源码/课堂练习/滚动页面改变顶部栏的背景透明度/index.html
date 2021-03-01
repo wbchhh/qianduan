@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂练习</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .header {
+            width: 100%;
+            height: 100px;
+            /* border-bottom: 2px solid #ccc; */
+            background-color: rgba(0,0,255,0);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10000;
+        }
+        .container {
+            width: 960px;
+            height: 2000px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 控制header标签的背景透明度 -->
+    <div class="header"></div>
+    <div class="container">
+        1   <br>
+        2   <br>
+        3   <br>
+        4   <br>
+        5   <br>
+        6   <br>
+        7   <br>
+        8   <br>
+        9   <br>
+        10   <br>
+        11   <br>
+        12   <br>
+        13   <br>
+    </div>
+
+    <script>
+        // 需求：
+            // 随着页面滚动，如果页面超出浏览器部分大于 300 ，
+            // 那么设置header标签背景透明度为1 ,否则设置透明度为 0 
+
+        // 1.0 获取元素
+        var header = document.getElementsByClassName("header")[0];
+        // 记录高度
+        var height = 600;
+        // 记录透明度
+        var opactiy = 0;
+        // 2.0 事件帮绑定(监听页面滚动)
+        window.onscroll = function(){
+            // 3.0 处理逻辑
+            // 获取页面超出浏览器顶部的部分大小(兼容写法)
+            var ttop = document.documentElement.scrollTop || document.body.scrollTop;
+            // console.log(ttop);
+            // 判断超出的部分是否大于指定高度 height
+            if(ttop > height){
+                // 设置透明度为1 
+                opactiy = 1;
+            }else {
+                // opactiy = 0;
+                //  0 / 300 = 0
+                //  1 / 300 = ?
+                //  299 / 300 = ?
+                //  300 / 300 = 1
+                opactiy = ttop / height ;
+            }
+            console.log(opactiy)
+            // 设置header标签的背景透明度
+            header.style.backgroundColor = "rgba(0,0,255,"+opactiy+")";
+        }
+
+    </script>
+</body>
+</html>

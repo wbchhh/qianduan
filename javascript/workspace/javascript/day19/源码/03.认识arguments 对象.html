@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识 arguments 对象</title>
+</head>
+<body>
+    <h3>认识 arguments 对象</h3>
+
+    <script>
+        // 传递参数
+        // 实参 和 形参 这两者数据是一一对应
+        // 1.0 
+        // function foo(num){
+        //     console.log(num);
+        // }
+        // foo();
+        // foo(100);
+
+        // 2.0 
+        // arguments : 记录实参数据的对象（伪数组）
+        // function foo(){
+        //     console.log(arguments);
+        // }
+        // foo(99,98);
+
+        // 3.0 
+        var foo = function(){
+            console.log(arguments);
+            console.log(foo === arguments.callee);// true
+            // arguments.callee 是函数本身（函数体）
+            // foo();
+            // arguments.callee();
+            // 不能在函数作用域中直接自身调用，会导致栈溢出问题
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+        }
+        foo("admin","123123");
+
+    </script>
+</body>
+</html>

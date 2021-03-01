@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟加入购物车</title>
+    <style>
+        button{
+            outline: none; /*去除选中状态边框*/
+            border:0px;
+        }
+        .box{
+            width:500px;
+            height:700px;
+            margin: 0 auto;
+            background-color: pink;
+            position: relative;
+        }
+        .box ul{
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+            border: 2px solid #000;
+            width: 496;
+            height:50px;
+            line-height: 50px;
+        }
+        .box ul li{
+            width: 100%;
+        }
+        .box ul li .fl{
+            font-size:20px;
+            padding: 0 10px;
+            float: left;
+        }
+        .box ul li .fr{
+            float:right;
+            padding: 0 30px;
+        }
+        .box ul li .btnl{
+            background-color: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 20px;
+        }
+        .box ul li .btnr{
+            background-color: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 20px;
+        }
+        .box .btn1{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            height:40px;
+            width: 80px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .box .btn1:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <div class="fl">商品</div>
+                <div class="fr">
+                    <button class="btnl">-</button>
+                    <span>1</span>
+                    <button class="btnr">+</button>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="fl">商品</div>
+                <div class="fr">
+                    <button class="btnl">-</button>
+                    <span>1</span>
+                    <button class="btnr">+</button>
+                </div>
+            </li>
+        </ul>
+        <button class="btn1">加入购物车</button>
+    </div>
+
+    <script>
+        var btn1 = document.getElementsByClassName("btn1")[0];
+        var box = document.getElementsByClassName("box")[0];
+        btn1.onclick = function(event){
+            var ul = document.createElement("ul");
+            str = "";
+            str +=   '<li>';
+            str +=       '<div class="fl">商品</div>';
+            str +=       '<div class="fr">';
+            str +=           '<button class="btnl">-</button>';
+            str +=           '<span>1</span>';
+            str +=           '<button class="btnr">+</button>';
+            str +=       '</div>';
+            str +=   '</li>';
+            ul.innerHTML =str;
+            box.appendChild(ul); 
+        }
+        box.onclick = function(event){
+            var ele = event.target;
+            if(ele.className == "btnr"){
+                ele.previousElementSibling.innerText++;
+                //console.log(this.num)
+            }
+            if(ele.className == "btnl"){
+                var jian = ele.nextElementSibling.innerText--;
+                if(ele.nextElementSibling.innerText<1){
+                    ele.parentElement.parentElement.parentElement.remove();
+                }
+            }        
+        }
+    </script>
+</body>
+</html>

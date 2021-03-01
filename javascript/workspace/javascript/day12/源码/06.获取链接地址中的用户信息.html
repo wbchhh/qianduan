@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟截取用户账号密码</title>
+</head>
+<body>
+    <h3>模拟截取用户账号密码</h3>
+
+    <script>
+
+        // 链接地址
+        var url = "http://127.0.0.1:5050/index.html?username=xiaoming&userpass=123456"
+
+        // 练习2：
+        //  获取链接地址中指定信息 
+        //  username = xiaoming
+        //  userpass = 123456
+
+        // xiaoming
+        // 12345
+
+        // 判断路径是否存在 ? 字符
+        if(url.indexOf("?") >-1 ) {
+            // 切割字符串
+            // var info = url.split("?");
+            // 获取包含用户信息的字符串
+            var info = url.slice(url.indexOf("?")+1);
+            // console.log(info)
+            // 切割用户信息
+            var arr = info.split("&");
+            // console.log(arr);
+            // 获取用户账号
+            var uname = arr[0].split("=")[1];
+            // 获取用户密码
+            var upass = arr[1].split("=")[1];
+            // 获取用户的账号密码
+            // console.log("账号：",uname,"密码：",upass);
+            // 记录用户信息
+            var user = {
+                username:uname,
+                userpass:upass
+            }
+            // 输出用户信息对象
+            console.log(user);
+        }else {
+            // 提示
+            console.log("该路径是安全路径")
+        }
+
+
+
+    </script>
+</body>
+</html>

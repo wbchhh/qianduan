@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于清除定时器函数 和 return </title>
+</head>
+    <h3>关于清除定时器函数 和 return </h3>
+<body>
+
+    <script>
+        // 关于清除定时器函数 和 return 。
+        // 清除定时器函数 ，不代表终止代码
+        // return 终止代码，但不代表清除定时器函数
+        var count = 0;
+        var tt = null;
+        function foo() {
+            count += 1;
+            console.log("清除定时器之前", count);
+            var speed = 10;
+            if (true) {
+                clearInterval(tt);
+                return;
+            }
+            console.log("清除定时器之后", speed, count);
+        }
+        // foo()
+        var tt = setInterval(foo, 500);
+    </script>
+</body>
+
+</html>

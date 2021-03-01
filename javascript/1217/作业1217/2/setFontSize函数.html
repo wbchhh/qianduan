@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 0 auto;
+            height:100px;
+            width: 500px;
+            background-color: pink;
+        }
+        .box .size{
+            color: orange;
+            line-height: 100px;
+            margin-left: 80px;
+            /* font-size: 38px; */
+        }
+        button{
+            height:50px;
+            width:100px;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        button.btn1{
+            margin-left: 700px;
+            height:50px;
+            width:100px;
+        }
+        button:hover{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"><span class="size">点击按钮，设置文本大小</span></div>
+    <button class="btn1">18px</button>
+    <button class="btn2">28px</button>
+    <button class="btn3">38px</button>
+    
+
+    <script>
+        // 要求：
+        // 定义  setFontSize 函数
+        // 该函数主要逻辑是设置 .box标签的字体大小
+        // 点击“按钮”，setFontSize 函数，设置对应的字体样式
+        function setFontSize(){
+            var size = document.getElementsByClassName("size")[0];
+            var btn1 = document.getElementsByClassName("btn1")[0]; 
+            console.log(btn1)
+            btn1.onclick = function(){
+                size.style.fontSize = "18px";
+            }
+            btn1.nextElementSibling.onclick = function(){
+                size.style.fontSize = "28px";
+            }
+            btn1.nextElementSibling.nextElementSibling.onclick = function(){
+                size.style.fontSize = "38px";
+            }
+        }
+        setFontSize();
+
+    </script>
+</body>
+</html>

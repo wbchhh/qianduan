@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> </div>
+
+    <script>
+        // 基本数据类型 (值)
+        // string number boolean null undefined
+        // 引用数据类型 (地址)
+        // object array function
+
+        // 比较的基本数据类型
+        // console.log("hello" === "hello");// true
+        // console.log([] === []);// false  两个不同的数据集合（地址）
+        // console.log({} === {});// false  
+        // console.log(function(){} === function(){});// false
+
+        // 是否为同一个地址
+        // var foo = function(){}
+        // console.log(foo === foo);// true
+
+
+        // 构造函数
+        function Person(){}
+
+        // 原型对象
+        Person.prototype 
+        Person.prototype.study = function(){console.log("study ")}
+
+        // 实例对象
+        var obj = new Person();
+        // console.log(obj.name);// undefined  属性
+        // obj.say();//报错   方法
+        // 隐式原型
+        obj.__proto__ 
+        // 实际开发并不是在隐式原型上添加方法的！！！
+        // obj.__proto__.run = function(){ console.log("run") }
+        // obj.run();
+
+        console.log(obj.__proto__ === Person.prototype ); // true
+        // 实例对象可以调用原型上的方法
+        obj.study();
+       
+
+        // 这三者之间的关系
+        // 1. 每个构造函数都有原型属性 prototype
+        // 2. 每个实例对象都有隐式原型 __proto__
+        // 3. 实例对象是由构造函数产生的  new Person
+        // 4. 实例对象首先检索构造函数的属性和方法，检索不到的时候，就会检索原型对象的属性和方法。
+        // 如果检索不到属性，得到的结果是undeifined ,结果不到方法且调用了，直接报错
+        // 5. 实例对象的__proto__ 是全等于  构造函数的prototype 
+        // 6. 挂载在构造函数原型prototype上的属性和方法是可以被实例对象引用（使用）
+
+
+        // 构造函数 Array (别人家的孩子多优秀啊)
+        // var arr = []; console.log(arr.__proto__ ===  Array.prototype);// true
+
+    </script>
+</body>
+
+</html>

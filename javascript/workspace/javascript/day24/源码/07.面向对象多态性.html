@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <h3>多态性</h3>
+    <div id ="container"> </div>
+
+    <script>
+
+        // 1.0 构造函数
+        function Animal(name){
+            this.name = name;
+        }
+        // 原型对象
+        Animal.prototype.run = function(){
+            if(this.name == "loin" || this.name.indexOf("狮") > -1){
+                console.log(this.name,"在奔跑")
+            }else 
+            if(this.name == "sheep" || this.name.indexOf("羊") > -1){
+                console.log(this.name,"在吃草")
+            }
+            else 
+            if(this.name == "dog" || this.name.indexOf("狗") > -1){
+                console.log(this.name,"在睡觉")
+            }else {
+                console.log(this.name,"不知道它在做什么")
+            }
+        }
+        // 创建实例对象
+        var loin = new Animal("大狮子");
+        loin.run();
+
+        var sheep = new Animal("小绵羊");
+        sheep.run();
+
+        var dog = new Animal("大黄狗");
+        dog.run();
+
+
+        // 多态性：
+        // 同一个对象，或者同一个方法，在不同的应用场景下
+        // 可以有不同的表现形式
+
+
+
+    </script>
+</body>
+
+</html>

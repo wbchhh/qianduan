@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+       .wrapper {
+           width: 1200px;
+           height: 600px;
+           background-color: #f0f0f0;
+           margin: 0 auto;
+       }
+       .wrapper ul {
+           padding: 0;
+           margin: 0 auto;
+           list-style: none;
+           width: 850px;
+           height: 600px;
+           position: relative;
+       }
+       .wrapper ul li {
+           width: 100px;
+           height: 0;
+           background-color: #ccc;
+           position: absolute;
+           bottom: 0;
+       }
+       .wrapper ul li.one   {left: 0;}
+       .wrapper ul li.two   {left: 150px;}
+       .wrapper ul li.three {left: 300px;}
+       .wrapper ul li.four  {left: 450px;}
+       .wrapper ul li.five  {left: 600px;}
+       .wrapper ul li.six   {left: 750px;}
+    </style>
+</head>
+<body>
+   
+    <div class="wrapper">
+        <ul class="list">
+            <li class="one  ">1</li>
+            <li class="two  ">2</li>
+            <li class="three">3</li>
+            <li class="four ">4</li>
+            <li class="five ">5</li>
+            <li class="six  ">6</li>
+        </ul>
+    </div>
+
+    <script>
+        // 需求： 
+            // 数据统计
+            // 上半年前6个的销售员薪酬收入比例
+        
+        var data = [
+            {
+                month:"一月份",
+                color:"darkred",
+                income:"6500"
+            },
+            {
+                month:"二月份",
+                color:"skyblue",
+                income:"6800"
+            },
+            {
+                month:"三月份",
+                color:"yellowgreen",
+                income:"7000"
+            },
+            {
+                month:"四月份",
+                color:"lightblue",
+                income:"7600"
+            },
+            {
+                month:"五月份",
+                color:"pink",
+                income:"5800"
+            },
+            {
+                month:"六月份",
+                color:"orange",
+                income:"6000"
+            }
+        ]
+        function Page(data){
+            this.listEle = document.getElementsByClassName("list")[0];
+            this.lisEle = this.listEle.getElementsByTagName("li");
+            this.total = 0;
+            this.totalHeight = 2000;
+            this.data = data;
+            this.init = function(){
+                for(var i = 0; i < this.lisEle.length; i ++){
+                    this.total += this.data[i].income - 0;
+                }
+                this.setHeight();
+            }
+            this.animate = function(dom,option,callback){
+                clearInterval(dom.timer);
+                dom.timer = setInterval(function(){
+                    var isChange = true;
+                    for(var key in option){
+                        var targetV = parseInt(option[key]);
+                        var currentV = parseInt(getComputedStyle(dom)[key]);
+                        var speed = (targetV - currentV) / 30;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        if(currentV != targetV){
+                            isChange = false;
+                        }
+                        dom.style[key] = currentV + speed +"px";
+                    }
+                    if(isChange){
+                        clearInterval(dom.timer);
+                        if(callback) callback();
+                    }
+                },1000/60)
+            }
+            this.setHeight = function(){
+                for(var i = 0; i < this.lisEle.length; i ++){
+                    this.lisEle[i].style.backgroundColor = this.data[i].color;
+                    var height = (this.data[i].income - 0) / this.total * this.totalHeight;
+                    this.animate(this.lisEle[i],{
+                        height: height
+                    })
+                }
+            }
+        }
+        var b1 = new Page(data);
+        b1.init();
+
+     
+      
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用定时器先清除定时器</title>
+    <style>
+        button {
+            width: 100px;
+            height: 100px;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <h3>用定时器先清除定时器</h3>
+    <button>0</button>
+
+    <script>
+        var btn =  document.getElementsByTagName("button")[0]
+        var count = 0;
+        var fn = function(){
+            count ++;
+            btn.innerText = count;
+        }
+        var timer = setInterval(fn,1000);
+        btn.onclick = function(){
+             // 用定时器先清除定时器
+             // 目的：防止频繁执行定时器函数
+             clearInterval(timer);
+             timer = setInterval(fn,1000);
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html lang="zh_cn"><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题： 创建页面标签</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.container {
+			  width:600px;
+			  height:600px;
+			  background-color:#ccc;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3> 创建页面标签</h3>
+		<!--<div class="container"></div>-->
+		
+		<script>
+			// 1.0 创建页面标签
+			var div = document.createElement("div");
+			var img = document.createElement("img");
+			console.log(div);
+			console.log(img);
+			
+		
+		</script>
+	</body>
+</html>
+

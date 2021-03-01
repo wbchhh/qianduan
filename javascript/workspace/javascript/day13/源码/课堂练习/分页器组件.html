@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分页器组件</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul , ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .layout {
+            width: 640px;
+            margin: 0 auto;
+        }
+        .layout .section {
+            height: 600px;
+            border: 2px solid #333;
+            position: relative;
+        }
+        .layout .section .list-box {
+            padding: 100px 50px;
+        }
+        .layout .section .list-box  li {
+            padding:4px 0;
+            line-height: 150%;
+            border-bottom: 2px dashed #ccc;
+            cursor: pointer;
+        }
+
+        .layout .section .page-box {
+            position: absolute;
+            right: 50px;
+            bottom: 20px;
+        }
+        .layout .section .page-box  li {
+            float: left;
+            /* padding: 20px; */
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-left: 0;
+        }
+        .layout .section .page-box  li.bleft {
+            border-left: 1px solid #ccc;    
+        }
+        .layout .section .page-box  li.active {
+            background-color: yellowgreen;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layout">
+        <div class="section">
+            <!-- 列表区域 -->
+            <div class="list-box" >
+                <ul id="newsList">
+                    <!-- <li>新闻动态列表11</li> -->
+                </ul>
+            </div>
+            <!-- 组件 -->
+            <div class="page-box">
+                <ol id="btnList">
+                    <li class="bleft active">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // 1.0 定义数组 假数据
+        var data = [
+            '中国成年男女最新平均身高体重出炉 你达标了吗？',
+            '全国人大常委会:城市餐饮每年食物浪费340-360亿斤',
+            '广东：未成年人、孕妇等人群暂不安排新冠疫苗接种',
+            '图解年终奖计税方式:个税临界点或导致多发1元收入少千元',
+            '中国足协重罚教练员资质材料作假 353人成“失信人”',
+
+
+            '机长飞行中身体不适 降落后送医不治而亡？西藏航空回应',
+            '韩方遗憾中俄军机飞入韩国防空识别区 外交部回应',
+            '英国货车惨案：集装箱内有多处深洞刮痕 夫妇手牵手死亡',
+            '南极洲发现数十起新冠病例 地球“唯一净土”失守',
+            '启用“新秀”风险大？拜登提名官员近6成来自奥巴马政府',
+
+            '导演团队解散 东京奥运开闭幕式将修改',
+            '法国3名警察救遭家暴女子被当场枪杀 法内政部长:嫌犯身亡',
+            '港媒：香港高等法院法官批准黎智英保释外出',
+            '西安警方通报：未央区一幼师拖摔幼儿致伤 被行拘15日',
+            '甘肃一中学回应交作业群现不雅图片:群解散 禁手机布置作业',
+
+            '青海玉树疑似陨石坠落，巨大火球划过，当地公安局回应',
+            '年会能不能开？广东:50人以上活动要制定疫情防控方案预案',
+            '上海警方:女司机玩漂移撞死人系谣言 驾车时操作不当致4伤',
+            '劳荣枝：我逃亡20年，除了炒股，没做过错事',
+            '联合抵制人数升至156人 圈里人为何容不下于正、郭敬明'
+        ]
+        console.log(data.length);
+
+
+        // 基本步骤：
+            // 获取页面相关的元素（记录数据）
+            // 事件绑定
+            // 书写处理逻辑
+            // 编写函数 渲染数据
+
+
+        //需求：  
+            //点击分页的按钮，显示对应的数据。
+            //每一页的数据列表是 5 条，
+            //当前点击的按钮背景高亮，否则，移除高亮
+            //思考：如何获取数组中指定的数据。
+
+
+            // 获取页面相关的元素（记录数据）
+            var newsList = document.getElementById("newsList");
+            var btnList = document.getElementById("btnList");
+            var buttons = btnList.getElementsByTagName("li");
+            // console.log(数据);
+            // 事件绑定
+            // 循环
+            for(var i = 0 ; i < buttons.length ; i ++){
+                // 属性绑定 （记录索引值）
+                buttons[i].index = i;
+                // 事件绑定
+                buttons[i].onclick = function(){
+                     // 书写处理逻辑
+                     // 获取当前点击li标签索引值
+                     var index = this.index;
+                     // 开始索引值 
+                     var startIndex = this.index * 5 ;
+                     // 结束索引值
+                     var endIndex = startIndex + 5 ;
+                     // 获取第?页对应的数据
+                     var arr = data.slice(startIndex,endIndex);
+                     // 渲染页面（把数据表现在页面）
+                     render(arr);
+                     // 排他思想
+                     for(var j = 0 ; j < buttons.length ; j ++){
+                        // buttons[j].style.backgroundColor="white";
+                        // buttons[j].style.backgroundColor="#000";
+                        buttons[j].classList.remove("active");
+                     }
+                    //  this.style.backgroundColor="yellowgreen";
+                    //  this.style.color="#fff";
+                    this.classList.add("active");
+                }
+            }
+           
+            // 编写函数 渲染数据
+            function render(array){
+                // 判断数组是有数据
+                if(array.length == 0 ){
+                    // 终止代码
+                    return ;
+                }
+                // 定义字符串
+                var str = "";
+                // 循环传递进来的数组
+                for(var j = 0 ; j < array.length ; j ++){
+                    // 字符串拼接
+                    str += "<li>"+array[j]+"</li>";
+                }
+                // 渲染数据
+                newsList.innerHTML = str;
+            }
+            // 测试
+            // 初始化效果
+            // var arr = [
+            //     '中国成年男女最新平均身高体重出炉 你达标了吗？',
+            //     '全国人大常委会:城市餐饮每年食物浪费340-360亿斤',
+            //     '广东：未成年人、孕妇等人群暂不安排新冠疫苗接种',
+            //     '图解年终奖计税方式:个税临界点或导致多发1元收入少千元',
+            //     '中国足协重罚教练员资质材料作假 353人成“失信人”',
+            // ]
+            // 获取第一页对应的数据
+            var arr = data.slice(0,5);
+            // 渲染页面（把数据表现在页面）
+            render(arr);
+    </script>
+    
+</body>
+</html>

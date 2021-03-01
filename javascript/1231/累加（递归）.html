@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归（累加）</title>
+</head>
+<body>
+    <script>
+        function add(count){
+            if(count == 1){
+                return 1;
+            }
+            return count + add(count - 1);
+        }
+        var res = add(100);
+        console.log(res);
+    </script>
+</body>
+</html>

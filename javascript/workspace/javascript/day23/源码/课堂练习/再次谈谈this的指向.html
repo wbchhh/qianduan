@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+    <div id ="container"> 
+        <p>1.  this 指向 window </p>
+        <p>2.  this 指向函数调用者 </p>
+        <p>3.  this 指向构造函数的实例对象</p>
+        <p>4.  this 指向事件的调用者</p>
+    </div>
+
+    <script>
+        // 1.0 
+        // console.log(this);// window
+
+        // 2.0 
+        // window.setInterval(function(){//函数作用域
+        //     console.log(this);// window
+        // },1000)
+
+        // 3.0 
+        // var obj = {
+        //     width:"100px",
+        //     foo:function(){
+        //         console.log(this,"1.0");// obj 
+        //         window.setTimeout(function(){
+        //             // console.log(this,"2.0");// window
+        //         },1000)
+        //     }
+        // }
+        // obj.foo();
+
+        // 4.0 
+        // function Foo(){
+        //     console.log(this);// Foo {}
+        //     this.width = "100px"
+        //     this.say = function(){ //函数作用域 1
+        //         // 记录当前函数作用域的this (当前执行环境的引用)
+        //         var _this = this;
+        //         var obj = {
+        //             color:"red",
+        //             init:function(){//函数作用域 2
+        //                 console.log(this);// obj 
+        //                 console.log(_this.width);// 100px
+        //             }
+        //         }
+        //         return obj;
+        //     }
+        // }
+        // var o1 = new Foo()
+        // var o2 =  o1.say();
+        // o2.init();
+
+
+        // 5.0 
+        // 键盘事件
+        // document.onkeydown = function(){
+        //     // 此处this是事件的调用者  document
+        //     console.log(this);
+        // }
+
+
+
+
+
+        // 找this
+            // 看当前的函数作用域
+            // 看函数的调用者
+
+    </script>
+</body>
+
+</html>

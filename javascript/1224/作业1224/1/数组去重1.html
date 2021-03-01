@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+</head>
+<body>
+    <script>
+    //  要求：
+            //     1、编写一个数组去重的方法  , 方法名 quchong
+            //     2、利用对象key的唯一性， 实现数组去重逻辑
+            //     3、调用 quchong(arr)方法，返回去重之后的新数组
+            var arr = ["aaa","bbb","aaa","bbb","11","22","33","22","22"];
+            function quchong(array){
+                var arr1 = [],
+                     obj = {};
+                var len = arr.length;
+                for(var i=0;i<len;i++){
+                    if(!obj[array[i]]){
+                        obj[array[i]] = "wbc";
+                        // console.log(obj[array[i]])
+                        arr1.push(array[i]);
+                    }
+                }
+                return arr1;
+            }
+            var res = quchong(arr);
+            console.log(res);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <input type="text" class="inp">
+    <button class="btn">按钮</button>
+    
+    <script>
+        var btn = document.getElementsByClassName("btn")[0];
+        var box = document.getElementsByClassName("box")[0];
+        var inp = document.getElementsByClassName("inp")[0];
+        btn.onclick = function(){
+            var v1 = inp.value;
+
+            setBgColor(v1);
+        }
+
+        function setBgColor(color){ 
+            //var color = "red";
+            box.style.backgroundColor = color;
+
+        }
+    </script>
+</body>
+</html>

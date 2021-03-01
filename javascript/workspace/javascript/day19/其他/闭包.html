@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>闭包</h3>
+    <script>
+        function f1() {//函数作用域1 
+            var index = 0;
+            return function(){//函数作用域2 
+                index ++;
+                console.log(index);
+            }
+            // return f2;
+        }
+        // 每次都调用f1()函数 , 每次 index 都没重新赋值 0
+        // f1()();// 1
+        // f1()();// 1
+        // f1()();// 1
+
+        // 仅仅调用1次f1() , 返回的是内部函数
+        var f = f1();
+        // 每次调用内部函数 ， index 就不会被重置为 0 
+        f();// 1
+        f();// 2
+        f();// 3
+
+        // 函数嵌套关系的时候，就产生闭包了。
+
+
+
+
+        // // ;(function(形参){})(实参)
+        // ;(function(index){ //函数作用域1
+        //         // index 就是一个局部变量
+        //         function f3(){  //函数作用域2
+        //             index ++;
+        //             console.log(index);
+        //         }
+
+        //         f3();//101
+        //         f3();//102
+        //         f3();//103
+        // })(100)
+
+
+          // ;(function(形参){})(实参)
+          var f3  = (function(index){ //函数作用域1
+                // index 就是一个局部变量
+                return  function(){  //函数作用域2
+                    index ++;
+                    console.log(index);
+                }
+        })(100)
+        // console.log(f5);
+        f3();// 101
+        f3();// 102
+        f3();// 103
+    </script>
+</body>
+</html>

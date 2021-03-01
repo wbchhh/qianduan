@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while </title>
+</head>
+<body>
+    
+
+    <script>
+        //  第二种：不能实现去重
+        var arr2 = ["aaa","aaa","bbb","bbb","11","22","22","33"];
+        //   1.0  while
+        //  定义函数 
+        function quchong2( array ){
+            // array 是形参 ，是局部变量
+            // 定义空数组记录过滤之后的数据
+            var arr = [];
+            // 定义计数器变量
+            var count = 0;
+            // 循环
+            while(count < array.length && array.indexOf(array[count]) > -1 ){
+                // 往空数组添加数据
+                arr.push(array[count]);
+                // 删除已经出现的数据
+                array.splice(count , 1);
+                // 改变计数器变量
+                count ++;
+            }
+            // 返回不重复的数组
+            return arr;
+        }
+        // 调用函数 
+        var res2 = quchong2(arr2);
+        console.log(res2);
+
+
+    </script>
+</body>
+</html>

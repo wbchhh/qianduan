@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票</title>
+    <style>
+        ul li {
+            width: 600px;
+            height: 40px;
+            background-color: #ccc;
+            margin: 10px 0 0 0;
+        }
+
+        ul li span {
+            float: right;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f00;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <span class="span">0</span>
+        </li>
+
+        <li>
+            <span class="span">0</span>
+        </li>
+
+        <li>
+            <span class="span">0</span>
+        </li>
+
+
+        <li>
+            <span class="span">0</span>
+        </li>
+
+        <li>
+            <span class="span">0</span>
+        </li>
+    </ul>
+
+    <script>
+        document.getElementsByTagName("ul")[0].onclick = function (event) {
+            var ele = event.target;
+            if (ele.className == "span") {
+                // 判断当前点击的span是否有值
+                if (ele.num == undefined) {
+                    //赋值 1 
+                    ele.num = 1;
+                } else {
+                    // ele.num +=1 ;
+                    //再次点击 运算
+                    ele.num++;
+                }
+                // 显示结果
+                ele.innerText = ele.num;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

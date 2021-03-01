@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+<body>
+    <h3>深拷贝</h3>
+
+    <script>
+        // 深拷贝：
+            // 复制数据的时候，首先判断复制的数据是否为基本数据类型，还是引用数据类型
+            // 如果是基本数据类型，直接赋值，如果是引用数据类型，那么继续遍历数据集合，
+            // 一直递归执行，直到复制的数据为基本数据类型为止
+
+
+            // 集合里面存放的是引用数据类型的时候，那么可以使用深拷贝
+
+        
+        // 1.0 封装深拷贝的逻辑
+        function deepCopy(data){
+            // 判断是否数据集合是数组，还是对象
+            var newData = Array.isArray(data) == true ? [] : {};
+            // 循环数据
+            for(var  key  in data){
+                // 判断集合下的数据是否为引用类型 
+                if(typeof data[key] === 'object'){
+                    // 如果是引用类型数据 ,那么继续执行递归
+                    newData[key] = deepCopy(data[key]);
+                }else {
+                    // 如果是基本数据类型,那么不需要执行递归了,直接赋值
+                    newData[key] = data[key];
+                }
+            }
+            // 返回新数据
+            return newData;
+        }
+        // 数据嵌套对象
+        var arr = [{str:"hello"},{num:100,result:[111]},{bool:true}];
+        // 2.0 调用深拷贝函数
+        var res = deepCopy(arr);
+
+        // 3.0 修改复制出来的数据
+        res[0].str = "abcde";
+        res[1].result[0] = "222";
+        console.log(res,"1.0");// 新数据[{str:"abcde"},{num:100},{bool:true}]
+        console.log(arr,"2.0");// 原数据[{str:"hello"},{num:100},{bool:true}]
+
+
+        // 总结：
+            // 深拷贝适用于数据结构比较复杂的情况，（集合存放的是引用数据的时候）
+            // 是新创建一个地址存放数据，复制出来的数据和原数据互相不影响的
+
+
+    </script>
+</body>
+</html>

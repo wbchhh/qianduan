@@ -1,0 +1,71 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素-->
+	     <!--不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:箭头</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.arrow {
+				width:200px;
+				height:200px;
+				background-color:#ccc;
+				
+				/*相对定位*/
+				position:relative;
+			}
+			.arrow::before {
+				content:"";
+				display:block;
+				width:0;
+				height:0;
+				border:100px solid transparent;
+				border-top:100px solid #ccc;
+				
+				/*绝对定位*/
+				position:absolute;
+				top:80px;
+				left:0;
+				/*层级*/
+				z-index:1000;
+			}
+			.arrow::after {
+				content:"";
+				display:block;
+				width:0;
+				height:0;
+				border:100px solid transparent;
+				border-top:100px solid orange;
+				/*绝对定位*/
+				position:absolute;
+				top:100px;
+				left:0;
+				/*层级*/
+				z-index:100;
+			}
+			
+			.line {
+			  width:16px;
+			  height:150px;
+			  background-color:orange;
+			  
+			  position:absolute;
+			  top:0;
+			  left:50%;
+			  margin-left:-8px;
+			  z-index:10000;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素-->
+	
+		<div class="arrow">
+			<div class="line"></div>
+		</div>
+		
+	</body>
+</html>
+

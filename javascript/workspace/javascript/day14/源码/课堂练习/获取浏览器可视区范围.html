@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取浏览器可视区范围大小</title>
+    <style>
+        html ,
+        body {
+            /* height: 2000px; */
+            /* height: 100%; */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>clientWidth:</p>
+        <p>clientHeight:</p>
+    </div>
+
+    <script>
+        // 根元素 （页面）html
+        // console.log(document.documentElement);
+        // console.log(document.documentElement.offsetWidth);
+        // console.log(document.documentElement.clientWidth);
+        
+        // <!DOCTYPE html> 
+        // 如果浏览器有doctype声明 
+            // document.documentElement
+        // 如果浏览器没有doctype声明
+            // document.body
+
+
+        // 获取浏览器可视区范围的大小
+        // var cWidth = document.documentElement.clientWidth;
+        // var cHeight = document.documentElement.clientHeight;
+
+        // 兼容写法
+        // var w = document.documentElement.offsetWidth ||  
+        //         document.documentElement.clientWidth ||
+        //         window.innerWidth;
+
+        // var h = document.documentElement.offsetHeight || 
+        //         document.documentElement.clientHeight ||
+        //         window.innerHeight;
+
+
+        // 编写函数 （可复用的代码块）
+        function getClient(){
+            // 浏览器可视区宽度
+            var w = document.documentElement.clientWidth ||
+                    window.innerWidth;
+            // 浏览器可视区高度
+            var h = document.documentElement.clientHeight ||
+                    window.innerHeight;
+            // 返回数组
+            return [w ,h];
+        }
+
+        // 获取p标签
+        // console.log(getClient());
+        var elements = document.getElementsByTagName("p");
+        // elements[0].innerText = "clientWidth:"+getClient()[0];
+        var arr = getClient();
+        elements[0].innerText = "clientWidth:"+arr[0];
+        elements[1].innerText = "clientHeight:"+arr[1];
+
+        // 事件 onresize 事件
+        // 监听浏览器尺寸变化
+        window.onresize = function(){
+            // 获取可视区范围的数据
+            var arr = getClient();
+            // 渲染宽度
+            elements[0].innerText = "clientWidth:"+arr[0];
+            // 渲染高度
+            elements[1].innerText = "clientHeight:"+arr[1];
+        }
+    </script>
+</body>
+</html>

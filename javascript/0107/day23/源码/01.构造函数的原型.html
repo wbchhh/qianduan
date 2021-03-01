@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+</head>
+
+<body>
+
+    <div id ="container"> </div>
+
+    <script>
+        // 普通函数 
+        // function foo(){} ; foo();
+        // var foo = function(){} ; foo();
+        // var foo = new Function();
+
+        // 构造函数
+        // console.log(Foo);// undefined
+        // console.log(new Foo())
+        // var Foo = function(){}; 
+        // var Foo = new Function(); console.log(new Foo())
+        // function Foo(){}; new Foo(); //推荐使用
+
+
+
+        // 构造函数（ES5）
+        // 定义
+        function Foo(){
+            this.width = "100px";// 基本数据类型
+            this.say = function(){}//引用数据类型
+        }
+
+        // 调用
+        // 实例对象 obj 
+        var obj = new Foo();
+        console.log(obj);
+        console.log(obj.width);//100px
+    
+        // 实例对象 obj2
+        var obj2 = new Foo();
+        console.log(obj2.width);//100px
+        console.log(obj.width === obj2.width);// true
+        
+        console.log(obj.say === obj2.say);// false
+
+
+        
+
+
+
+
+
+        // Array 构造函数
+        // concat push splice
+        // Array.prototype.aaa = function(){}
+        // var arr = new Array("red");
+        // console.log(arr);
+        // console.log(arr.__proto__);
+        // var arr2 = new Array("green");
+        // console.log(arr2);
+        // console.log(arr2.__proto__);
+        // console.log(arr.aaa === arr2.aaa);// true
+
+
+
+
+        // 构造函数
+        function Person(){}
+        Person.prototype.say = function(){}
+        var xiaoming = new Person();
+        var honghong = new Person();
+        console.log(xiaoming.say === honghong.say);// true
+
+        console.log(xiaoming.__proto__ === Person.prototype);// true
+        console.log(honghong.__proto__ === Person.prototype);// true
+
+
+        // 挂载在原型上方法，可以起到共享的作用。
+        // 既然在原型上添加方法，可以被共享，也就说不需要再重新开辟空间记录处理逻辑。（节省内存空间）
+
+
+        // 记住：
+            // 构造函数添加属性
+            // 原型添加方法
+
+
+    </script>
+</body>
+
+</html>

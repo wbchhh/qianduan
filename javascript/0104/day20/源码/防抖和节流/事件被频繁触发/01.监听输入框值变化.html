@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听输入框值的变化</title>
+    <style>
+            input {
+                width: 498px;
+                height: 50px;
+                border: 1px solid #000;
+                margin: 0 auto;
+                display: block;
+                padding: 0 0 0 20px;
+                font-size: 20px;
+            }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入">
+
+    <script>
+        // 如果给input标签绑定oninput事件，
+        // 在输入框输入值的时候，会频繁触发该事件
+
+        // 1.0 获取元素
+        var inpElement = document.getElementsByTagName("input")[0];
+        // 2.0 事件绑定
+        // inpElement.oninput = function(){
+        //     // 3.0 this 是事件的调用者 
+        //     console.log(this.value);
+        // }
+        // 事件监听
+        inpElement.addEventListener('input', function(){
+            // 3.0 this 是事件的调用者 
+            console.log(this.value);
+        })
+    </script>
+</body>
+</html>

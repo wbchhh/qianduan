@@ -1,0 +1,134 @@
+.map {
+    width: 360px;
+    height: 460px;
+    background-color: #f0f0f0;
+    position: relative;
+    margin: 100px auto;
+}
+.map .letter ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 360px;
+    height: 360px;
+}
+.map .letter ul li {
+    width: 60px;
+    height: 60px;
+    border: 1px solid skyblue;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 60px;
+    background-color: #fff;
+    position: absolute;
+}
+
+.map .letter ul li.active {
+    background-color: #ff5500;
+}
+
+.map .letter ul li:nth-child(1) {
+   top: 0;
+   left: 0;
+}
+.map .letter ul li:nth-child(2) {
+    top: 0;
+    left: 60px;
+}
+.map .letter ul li:nth-child(3) {
+   top: 0;
+   left: 120px;
+}
+.map .letter ul li:nth-child(4) {
+    top: 0;
+    left: 180px;
+}
+.map .letter ul li:nth-child(5) {
+   top: 0;
+   left: 240px;
+}
+.map .letter ul li:nth-child(6) {
+    top: 0;
+    left: 300px;
+}
+.map .letter ul li:nth-child(7) {
+   top: 60px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(8) {
+    top: 120px;
+    left: 300px;
+}
+.map .letter ul li:nth-child(9) {
+   top: 180px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(10) {
+    top: 240px;
+    left: 300px;
+}
+.map .letter ul li:nth-child(11) {
+   top: 300px;
+   left: 300px;
+}
+.map .letter ul li:nth-child(12) {
+    top: 300px;
+    left: 240px;
+}
+.map .letter ul li:nth-child(13) {
+   top: 300px;
+   left: 180px;
+}
+.map .letter ul li:nth-child(14) {
+    top: 300px;
+    left: 120px;
+}
+.map .letter ul li:nth-child(15) {
+   top: 300px;
+   left: 60px;
+}
+.map .letter ul li:nth-child(16) {
+    top: 300px;
+    left: 0px;
+}
+.map .letter ul li:nth-child(17) {
+   top:240px;
+   left: 0;
+}
+.map .letter ul li:nth-child(18) {
+    top: 180px;
+    left: 0;
+}
+.map .letter ul li:nth-child(19) {
+   top: 120px;
+   left: 0;
+}
+.map .letter ul li:nth-child(20) {
+    top: 60px;
+    left: 0;
+}
+.map .footer {
+    width: 360px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.map .footer .btn {
+    width: 300px;
+    height: 50px;
+    vertical-align: middle;
+    background-color: #f55000;
+    color: white;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 360px;
+    height: 360px;
+    text-align: center;
+    line-height: 360px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+     <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border: 1px solid transparent;
+        }
+
+        div ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border: 1px solid transparent;
+            margin: 49px auto;
+        }
+
+        div ul li {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 49px auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>事件委托</h3>
+    <!-- div > ul > li（目标阶段）  -->
+    <!-- 外 >  中>  内 -->
+    <div class="div">
+        <ul class="ul">
+            <li class="li"></li>
+        </ul>
+    </div>
+
+
+    <script>
+        // console.log("1111")
+        // 1.0 获取元素div标签
+        var div = document.getElementsByTagName("div")[0];
+        // console.log(div)
+        // 2.0 事件给div标签绑定
+        // 可以给标签设置不同属性是 
+        // class = "li"
+        // class = "ul"
+        // class = "div"
+        // 区别点击的元素
+        div.onclick = function(event){
+            // console.log("click")
+            // 通过事件对象 可以找到事件源（目标元素）
+            // 当前点击的标签（目标元素）事件原
+            var ele = event.target;
+            // console.log(ele.className);
+            if(ele.className =="li"){
+                document.body.style.backgroundColor = "yellow";
+                console.log(ele);
+
+
+            }else if(ele.className == "ul"){
+                document.body.style.backgroundColor = "skyblue";
+                  console.log(ele);
+
+
+            }else if(ele.className == "div"){
+                document.body.style.backgroundColor = "lightgreen";
+                  console.log(ele);
+            }
+        }
+
+
+        // 业务：
+            // 点击 li 标签设置 页面yellow背景色
+            // 点击 ul 标签设置 页面skyblue背景色
+            // 点击 div 标签设置 页面lightgreen背景色
+
+
+
+        // 优点：
+            // 减少使用for循环语句
+            // 减少web中DOM操作
+            // 还可以动态的给子元素（后代元素）注册事件
+
+
+
+    </script>
+</body>
+</html>

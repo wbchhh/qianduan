@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offset相关的属性</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrap {
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            /* 相对定位 、绝对定位 、固定定位 */
+            /* position: relative; */
+            background-color: #ccc;
+            margin-left: 100px;
+            margin-top: 120px;
+        }
+        .wrap .box {
+            width: 100px;
+            height: 200px;
+            background-color: #f00;
+            margin-left: 110px;
+            margin-top: 140px;
+            border: 2px solid #333;
+            padding: 40px 30px 20px 10px;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrap"> <div class="box"></div></div>
+
+    <script>
+        // 获取div标签
+        var box = document.getElementsByClassName("box")[0];
+        // offset 
+        // offsetLeft ： 默认是距离body标签容器的左边的位置（间距）
+        console.log(box.offsetLeft);// 210
+        // offsetTop:默认是距离body标签容器的顶部的位置（间距）
+        console.log(box.offsetTop);//260
+        // offsetParent：默认是body标签容器
+        console.log(box.offsetParent);// 父级容器（父级元素或祖先元素是否带定位）
+        
+        // 如果父级元素或祖先元素带有定位属性（相对定位 、绝对定位 、固定定位）
+        // 那么注意：
+        // offsetLeft : 是距离父级元素或祖先元素的左边的位置（间距）
+        // offsetTop: 是距离父级元素或祖先元素的顶部的位置（间距）
+        // offsetParent:是父级元素或祖先元素
+
+        // offsetWidth:获取元素的宽度（左右边框+左右内边距+width内容）
+        console.log(box.offsetWidth);// 144
+        // offsetHeight:获取元素的高度（上下边框+上下内边距+height内容）
+        console.log(box.offsetHeight);// 264
+
+        // box.offsetHeight = 100000;// 错误写法（该属性只读不写）
+        // 读：获取
+        // 写：设置
+
+    </script>
+</body>
+</html>

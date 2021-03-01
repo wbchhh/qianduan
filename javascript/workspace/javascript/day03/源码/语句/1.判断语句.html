@@ -1,0 +1,65 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:判断语句</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>判断语句</h3>
+		
+		
+		<script>
+		 // JS : 是单线程的脚本语言 （从上往下）
+		 // if(条件是否成立){ // 成立 ，执行代码  }
+		 if(1 < 100){
+			console.log("执行代码1111")
+		 }
+		 console.log("执行代码2222")
+		 
+		 // if(条件是否成立){ // 成立 ，执行代码1  } 
+		 // else { // 不成立，执行代码2 }
+		 if(50 > 100){
+			console.log("成立，执行代码3333")
+		 }else {
+			console.log("不成立，执行代码4444")
+		 }
+		 console.log("执行代码5555")
+		 
+		
+		
+		 // if(条件1是否成立){ // 条件1成立 ，执行代码1  } 
+		 // else if(条件2是否成立 ){ // 条件2成立，执行代码2 }
+		 // else if(条件2是否成立 ){ // 条件3成立，执行代码3 }
+		 // else if(条件2是否成立 ){ // 条件4成立，执行代码4 }
+		 // else { //不成立，执行代码5} 
+		 // 定义变量 记录方向 up  right down left 
+		 var direction = "right";
+		 // 判断 
+		 if(direction == "right"){
+			console.log("向右移动");
+		 }else if(direction == "left"){ 
+			console.log("向左移动");
+		 }else if(direction == "up"){
+			console.log("向上移动");
+		 }else if(direction == "down"){
+			console.log("向下移动");
+		 }else {
+			console.log("不移动");
+		 }
+		 
+		 
+		 console.log("执行代码7777")
+		
+		
+		
+		</script>
+	</body>
+</html>
+

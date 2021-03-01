@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切换盒子</title>
+    <style>
+        .box {
+            width: 360px;
+            height: 320px;
+            border: 3px solid #333;
+            /* overflow: hidden; */
+        }
+        .box ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 360px;
+        }
+        .box li {
+            width: 360px;
+            height: 320px;
+            display: none;
+            text-align: center;
+            line-height: 320px;
+            font-size: 36px;
+            color: white;
+        }
+        /* 交集选择器 */
+        .box li.active {
+             display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <ul>
+            <li class="active"  style="background-color: green;">第一个盒子</li>
+            <li style="background-color: deepskyblue;">第二个盒子</li>
+            <li style="background-color: blue;">第三个盒子</li>
+            <li style="background-color: purple;">第四个盒子</li>
+            <li style="background-color: orange;">第五个盒子</li>
+        </ul>
+    </div>
+    <script>
+        // 要求：
+            // 自动切换盒子显示
+            // 索引值对应的li标签显示
+            // 非索引值对应的li标签隐藏
+            // 8 ~ 分钟
+
+
+        // 函数是个代码块，调用函数才会执行代码块
+        // 定时器是可以每隔一段时间，调用一次函数
+
+
+
+        // 基本步骤：
+            // 1.获取页面相关的元素
+            var items = document.getElementsByTagName("li");
+
+            // 2. 实现切换盒子的逻辑
+            // 计数器变量（索引值）
+            var index = 0;
+            // 编写函数
+            function foo(){
+                // 改变索引值
+                index ++;
+                // 判断
+                if(index > 4 ){
+                    // 重置索引值 ： 0
+                    index = 0;
+                }
+                // 移除所有li标签的类名
+                // 排他思想
+                for(var i = 0 ; i < 5 ; i ++){
+                    items[i].className = "";
+                }
+                // 索引值对应的li标签显示
+                items[index].className = "active";
+            }
+
+            // 3.0 调用foo函数
+            foo();
+            foo();
+            foo();
+            foo();
+           
+
+          
+
+    </script>
+</body>
+</html>

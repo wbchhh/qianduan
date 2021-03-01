@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机点名</title>
+    <link rel="stylesheet" href="./css/base.css">
+    
+</head>
+<body>
+    
+    <div class="map">
+        <div class="letter">
+            <!-- 学员姓名列表 -->
+            <ul id="list">
+                <li class="">紫安</li>
+                <li>曼冬</li>
+                <li>谷蕊</li>
+                <li>飞兰</li>
+                <li>瀚钰</li>
+                <li>瀚文</li>
+                <li>涵亮</li>
+                <li>涵煦</li>
+                <li>明宇</li>
+                <li>涵衍</li>
+                <li>浩皛</li>
+                <li>寻巧</li>
+                <li>浩波</li>
+                <li>雅昕</li>
+                <li>梦君</li>
+                <li>凡雁</li>
+                <li>以旋</li>
+                <li>初夏</li>
+                <li>浩初</li>
+                <li>依丝</li>
+            </ul>
+            <!-- 显示被选中的名字 -->
+            <div class="mask">
+                <div class="text" style="color:#000;font-size:30px; text-align: center;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <!-- 点击按钮 -->
+            <button class="btn" id="btn">随机点名</button>
+        </div>
+    </div>
+
+   
+    
+
+    <script>
+        // 图示：随机点名
+            // 1、点击“随机点名”按钮，随机抽选名字，被随机选中的名字标签背景高亮
+            // 2、并且显示选中的学员名字
+
+        // 基本步骤
+            // 1、记录相关数据（元素）
+            // 2、事件绑定
+            // 3、书写程序的处理逻辑
+
+        //编码实现
+            // 1、记录相关数据（元素）
+            var items = document.getElementsByTagName("li");
+            var textElement = document.getElementsByClassName("text")[0];
+            var btn = document.getElementById("btn");
+            // li标签的数量
+            // console.log(items)
+            var len = items.length ;
+            // 2、事件绑定
+            btn.onclick = function(){
+                // 3、书写程序的处理逻辑
+                // 获取随机索引值
+                var index = randomIndex(len);
+                // 排他思想
+                for(var i = 0 ; i < len ; i ++){
+                    // 移除所有li标签的类名
+                    items[i].className = "";
+                }
+                // 索引值对应的li标签高亮
+                items[index].className = "active";
+                // 显示名字
+                textElement.innerText = "学员:"+items[index].innerText;
+            }
+            
+
+            // 定义函数 获取随机索引值
+            function randomIndex(length){
+                // 索引值 0 ~ 19 
+                // var num = Math.random()*length;
+                // var res = Math.floor(num);
+                // return res;
+                return Math.floor(Math.random()*length);
+            }
+            // 返回值
+            console.log(randomIndex(len));// 0 ~ 19 之间的随机整数
+
+
+            // 目的：   
+                // 理解随机数
+                // 熟练掌握函数（代码块）
+                // 编码思维逻辑
+                
+    </script>   
+</body>
+</html>

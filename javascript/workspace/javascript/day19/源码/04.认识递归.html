@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识递归</title>
+</head>
+<body>
+    <h3>认识递归</h3>
+    <p>它是一种编码小技巧</p>
+    <script>
+        // 例如：
+        // // 全局变量
+        // var count = 0;
+        // // 循环
+        // for(var i = 1 ; i <= 3 ; i ++){
+        //     count ++;
+        //     console.log(count);
+        // }
+
+        
+        console.log("上")
+        // 递归
+        // 全局变量
+        var index = 0;
+        // 函数
+        function foo(){
+            index ++;
+            // console.log(index);
+            if(index == 10){
+                return ;
+            }
+            // 函数在其作用域自身调用
+            // foo();
+            arguments.callee();
+            console.log("中");
+        }
+        foo();
+        console.log("下")
+        
+
+    </script>
+</body>
+</html>

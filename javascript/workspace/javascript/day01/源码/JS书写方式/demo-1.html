@@ -1,0 +1,38 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：JS书写</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">		 
+		 <!--如果script标签放在head标签内容，那么需要执行onload事件，才能获取页面元素-->
+		 <script>
+			//设置文档对象下body标签的背景色  粉色
+			//document.body.style.backgroundColor = "pink";//报错 
+			//console.log(document.body);// 获取body标签
+			// 加载事件(加载页面所有内容完毕)
+			window.onload = function(){
+				document.body.style.backgroundColor = "pink";
+			}
+			//页面window.onload 只执行一次
+			window.onload = function(){
+				document.body.style.backgroundColor = "yellowgreen";
+			}
+			
+		 </script>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>第一种：</h3>
+		
+		 <!--页面内容先渲染，再获取元素-->
+		 
+		 <!--渲染：表现出来的意思-->
+		<script>
+			
+		
+		</script>
+	</body>
+</html>
+<!--  JS 执行顺序。自上往下 -->

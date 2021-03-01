@@ -1,0 +1,52 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：简单DOM操作</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			#box1 {
+			  width:100px;
+			  height:100px;
+			  background-color:red;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>简单DOM操作</h3>
+		<div id="box1">1</div>
+		<div id="box2">2</div>
+		
+		<script>
+		    // web 规范中，一个html文档只能有一个id
+		    // id 名称 是唯一 
+			//1.0 如果元素设置了id,那么在JS中，id名称，表示对应的标签
+			//console.log(box1);
+			//console.log(box2);
+			
+			// 在实际开发过程中，页面元素需要通过api(属性和方法)获取元素
+			//2.0 获取元素
+			var box1 = document.getElementById("box1");
+			console.log(box1);// div#box1标签
+			
+			//3.0 设置文本
+			box1.innerText = "hello";
+			
+			//4.0 设置样式
+			box1.style.backgroundColor = "green";
+			box1.style.width = "200px";
+			box1.style.height = "400px";
+			
+			
+			//思考：如何进行字符串拼接
+			var width1 = 150
+			var width2 = 300
+			....
+			
+		</script>
+	</body>
+</html>
+

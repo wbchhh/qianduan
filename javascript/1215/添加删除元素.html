@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 200px;
+            height:50px;
+            background-color: #ccc;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            height:80px;
+            border: 1px solid #000;
+            margin: 10px 0 0 0;
+        }
+        ul li .del{
+            float: right;
+            padding:10px;
+            width: 40px;
+            height:40px;
+            background-color: #f00;
+            color:#fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">增加</button>
+    <div class="layout" id="layout">
+        <ul>
+            <li>
+                <button class="del">×</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var layout = document.getElementById("layout");
+        var num = 0;
+        btn.onclick = function(){
+            num ++;
+            var ul = document.createElement("ul");
+            var str =  '<li>'+num+'<button class="del">×</button></li>';
+            ul.innerHTML = str;
+            layout.appendChild(ul);
+        }
+        layout.onclick = function(event){
+            var ele = event.target;
+            if(ele.className == "del"){
+                ele.parentElement.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+</html>

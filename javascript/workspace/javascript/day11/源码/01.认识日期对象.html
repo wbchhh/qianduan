@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期对象（上）</title>
+</head>
+<body>
+    <h3>日期对象（上）</h3>
+    <script>
+        // 日期对象
+        // console.log(Date);// 构造函数
+        // console.log(typeof Date);// function
+
+
+        // 创建日期对象的实例
+        // var obj = new Date();
+        // console.log(obj);// Mon Dec 21 2020 16:26:13 GMT+0800 (中国标准时间)
+        // 星期、月份、
+        // console.dir(obj);// 对象
+
+
+        // 获取时间的API
+        // getxxx()
+        // 1.0 创建日期对象的实例
+        var dt = new Date();
+        // 获取年份
+        console.log(dt.getFullYear());
+        // console.log(dt.getUTCFullYear());// 世界标准时间
+        // 获取月份( 0 ~ 11 )
+        console.log(dt.getMonth() + 1 );
+        // 获取日期(几号)
+        console.log(dt.getDate());
+        // 获取星期
+        console.log(dt.getDay());
+        // 获取小时
+         console.log(dt.getHours());
+        // 获取分钟
+        console.log(dt.getMinutes());
+        // 获取秒钟
+        console.log(dt.getSeconds());
+        // 获取毫秒钟
+        console.log(dt.getMilliseconds());
+        // 获取时间戳
+        // 从1970.1.1 00:00:00 到此刻的毫秒值
+        console.log(dt.getTime());
+
+
+        
+
+
+
+        
+    </script>
+</body>
+</html>

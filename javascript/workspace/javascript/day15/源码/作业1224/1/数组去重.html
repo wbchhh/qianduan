@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+</head>
+<body>
+    <script>
+    //  要求：
+            //     1、编写一个数组去重的方法  , 方法名 quchong
+            //     2、利用对象key的唯一性， 实现数组去重逻辑
+            //     3、调用 quchong(arr)方法，返回去重之后的新数组
+           
+            //        ["aaa", "bbb", "11", "22", "33"]
+
+
+            // 第一：
+            // 空对象
+            // var obj = {}
+            // console.log(obj["aaa"]);// undefined
+            // obj["aaa"] = true;
+            // console.log(obj["aaa"]);// true
+            // 对象的key  是唯一的
+            // {aaa:true}
+
+            // 符合作业要求的：
+            var arr = ["aaa","bbb","aaa","bbb","11","22","33","22","22"];
+            // 定义函数
+            function quchong(array){
+                // 定义空数组
+                var newArr = [];
+                // 定义空对象
+                var obj = {};
+                // 循环
+                for(var i  =  0 ; i < array.length ; i ++){
+                    // 判断obj是否存在 array[i] 的键
+                    // if(obj["aaa"] == undefined ){obj["aaa"] = true }
+                    if(obj[array[i]] == undefined ){
+                        // 给 array[i] 这个key赋值
+                        obj[array[i]]  = true ;
+                        // 添加唯一的数据
+                        newArr.push(array[i]);
+                    }   
+                }
+                // 返回新数组
+                return newArr;
+            }
+            // 调用函数 并且得到返回值
+            var res = quchong(arr);
+            console.log(res);
+
+
+            // 第二：
+            var arr2 = ["aaa","bbb","aaa","bbb","11","22","33","22","22"];
+            // 1.0  双重循环
+            // 定义函数 
+            function quchong2( array ){
+                for(var i = 0 ; i < array.length ; i ++){
+                    // console.log("----外部循环----", i )
+                    for(var j = i + 1 ; j < array.length ; j ++){
+                        // console.log("内部循环", j )
+                        if(array[i] == array[j]){
+                            // 把重复的数据 删除掉
+                            array.splice(j,1);
+                            // 改变j的值
+                            j --;
+                        }
+                    }
+                }
+                // 返回不重复的数组
+                return array;
+            }
+            // 调用函数 
+            var res2 = quchong2(arr2);
+            console.log(res2);
+
+
+
+
+
+            // 第三：
+            var arr3= ["aaa","bbb","aaa","bbb","11","22","33","22","22"];
+            // 了解一下
+            function quchong3(array){
+                var newArr = [... new Set(array)];
+                return newArr;
+            }
+            console.log(quchong3(arr3));
+
+
+
+            // 第四：
+                // 。。。。
+
+
+            // 第五：
+                // 。。。。
+            
+           
+
+
+
+    </script>
+    
+</body>
+</html>

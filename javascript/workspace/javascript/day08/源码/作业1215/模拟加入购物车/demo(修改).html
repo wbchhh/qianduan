@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟加入购物车（修改）</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .wrapper {
+            width: 560px;
+            margin: 0 auto;
+        }
+        .product {
+            width: 560px;
+        }
+        .product-list {
+            padding: 50px 20px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            list-style: none;
+        }
+        .product-list li {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            margin: 0 0 10px 0;
+        }
+        .product-list li .f-right {
+            float: right;
+            margin-right: 10px;
+        }
+        .product-list li .f-right span {
+            float: left;
+            height: 40px;
+            background-color: #f0f0f0;
+            margin: 20px 0px;
+            text-align: center;
+            line-height: 40px;
+        }
+        .product-list li .f-right .icon-sub ,
+        .product-list li .f-right .icon-add {
+            width: 50px;
+            cursor: pointer;
+        }
+        .product-list li .f-right .icon-sub:hover ,
+        .product-list li .f-right .icon-add:hover {
+            background-color: #cccccc;
+        }   
+        .product-list li .f-right .text-num {
+            width: 80px;
+            border-left: 1px solid #fff;
+            border-right: 1px solid #fff;
+        }
+
+        .footer {
+            width: 560px;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            margin-left: -300px;
+            z-index: 1000;
+        }
+        .footer .btn-shopcar {
+            float: right;
+            padding: 15px 30px;
+            background-color: #f00;
+            color:#fff;
+            cursor: pointer;
+            border: 0;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="product">
+            <!-- 商品区域 -->
+            <ul class="product-list" id="productList">
+                <li>
+                    <!-- 右边浮动 -->
+                    <div class="f-right">
+                        <!-- 控制商品数量 -->
+                        <div class="ctrl">
+                            <span class="icon-sub">-</span>
+                            <span class="text-num">1</span>
+                            <span class="icon-add">+</span>
+                        </div>
+                    </div>
+                    <!-- 商品信息 -->
+                    <div>商品11111</div>
+                </li>
+
+                <li>
+                    <!-- 右边浮动 -->
+                    <div class="f-right">
+                        <!-- 控制商品数量 -->
+                        <div class="ctrl">
+                            <span class="icon-sub">-</span>
+                            <span class="text-num">5</span>
+                            <span class="icon-add">+</span>
+                        </div>
+                    </div>
+                    <!-- 商品信息 -->
+                    <div>商品2222</div>
+                </li>
+
+<!-- 
+                <li>
+                    <div class="f-right">
+                        <div class="ctrl">
+                            <span class="icon-sub">-</span>
+                            <span class="text-num">5</span>
+                            <span class="icon-add">+</span>
+                        </div>
+                    </div>
+                    <div>商品2222</div>
+                </li> 
+-->
+
+            </ul>
+        </div>
+
+        <div class="footer">
+            <!-- 加入购物车的按钮 -->
+            <button class="btn-shopcar" id="btnShopCar">加入购物车</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // 需求：
+            // 初始化的时候，存在两个商品
+            // 点击“加入购物车”按钮，增加一个商品
+            // 每个商品的数量是可以控制的
+            // 点击“-”标签，数量减一，如果数量小于等于0，直接移除当前的商品
+            // 点击“+”标签，数量加一，数量没有限制
+
+        // 基本步骤：
+            // 1.0 获取页面相关的元素
+            // 2.0 事件的绑定
+            // 3.0 书写处理逻辑
+
+        // 编码实现
+        // 1.0 获取页面相关的元素
+        var productList = document.getElementById("productList");
+        var btnShopCar = document.getElementById("btnShopCar");
+        // 2.0 事件的绑定
+
+        // .0 事件委托
+        productList.onclick = function(event){
+            // 3.0 书写处理逻辑
+            // .0 事件源（目标元素）
+            var element = event.target ;
+            // console.log(element);
+            // .0 获取类名
+            var cName = element.className;
+            // .0 判断
+            // 减法运算
+            if(cName == "icon-sub"){
+                // console.log("减少")
+                element.num =  element.nextElementSibling.innerText - 0; 
+                element.num --;
+                // 判断当前点击的商品数量是否小于等于 0
+                if(element.num <= 0 ){
+                    // 获取li标签
+                    // 当前点击的商品
+                    var currentProduct = element.parentElement.parentElement.parentElement;
+                    // 移除商品
+                    currentProduct.remove();
+                    // 数量为 0
+                    element.num = 0;
+                }   
+                // 选中当前点击的标签的下一个元素 设置文本显示商品数量
+                element.nextElementSibling.innerText =  element.num;
+            }
+            // 加法运算
+            if(cName == "icon-add"){
+                element.num = element.previousElementSibling.innerText - 0 ;
+                element.num ++;
+                // 选择当前点击的标签上一个元素 设置文本显示商品数量
+                element.previousElementSibling.innerText =  element.num;
+            }
+
+        }
+
+        // .0 加入购物车
+        btnShopCar.onclick = function(){
+            // 3.0 书写处理逻辑
+            // .0 创建li标签
+            var li = document.createElement("li");
+            // .0 设置li标签的文本
+            var str = '';
+                str += '<div class="f-right">'
+                str += '    <div class="ctrl">'
+                str += '        <span class="icon-sub">-</span>'
+                str += '        <span class="text-num">1</span>'
+                str += '        <span class="icon-add">+</span>'
+                str += '    </div>'
+                str += '</div>'
+                str += '<div>商品xxxx</div>'
+            li.innerHTML = str;
+            // .0 把创建的li标签添加到ul标签
+            productList.appendChild(li);
+        }
+    </script>
+</body>
+</html>

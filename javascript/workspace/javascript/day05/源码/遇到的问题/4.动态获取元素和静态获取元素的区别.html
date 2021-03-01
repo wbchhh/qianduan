@@ -1,0 +1,66 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：获取元素（动态、静态）</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			button {padding:20px 40px;}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>获取元素（动态、静态）</h3>
+		
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
+		
+		<script>
+			//1.0 获取元素（动态方式）
+			// 值是变化的
+			//var aButton = document.getElementsByTagName("button");
+			//console.log(aButton);
+			//移除第二个按钮
+			//aButton[1].remove();
+			//console.log(aButton);// 发现数组少了一个按钮
+			
+			
+			
+			//2.0 获取元素 （静态方式）
+			// 值不变化的
+			var buttons = document.querySelectorAll("button");
+			console.log(buttons);
+			buttons[2].remove();
+			buttons[3].remove();
+			buttons[4].remove();
+			console.log(buttons);
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

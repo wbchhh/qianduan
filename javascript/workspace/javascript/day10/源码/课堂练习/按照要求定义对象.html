@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义对象</title>
+</head>
+<body>
+    <h3>定义对象</h3>   
+    <script>
+          // 思考题：
+            // 定义一个动物的对象 animal 对象
+            // 属性       属性值
+            // name       狮子
+            // weight     120kg
+            // age        3
+            // foo        function(){console.log("foo")}
+
+        
+         // 细节的地方：
+         // key  可以加引号，也可以不加引号
+         // key  是唯一的 
+         // 值： 符合数据类型   string number boolean undefined null symbol function array object
+         
+         //定义对象 
+         var animal = {
+            //key : value,
+            //  name : "狮子",
+            //  weight : "120kg",
+            //  age : 3,
+            //  foo : function(){console.log("foo")}
+         }
+        // 添加属性（记录数据）
+         animal.name = "狮子";
+         animal.weight = "120kg";
+         animal.age = 3;
+         animal.foo = function(){console.log("foo")}
+         console.log(animal);
+         // 获取属性值
+         var name2 = animal.name;
+         console.log( name2 );
+         console.log(animal.aaa);// undefined (缺少值)
+         animal.foo();
+        
+         // 目的：
+            // 理解对象是以键值对的方式储存数据。
+
+
+        //  变量名称命名规范：
+        //  保留字，关键字
+        //  top , name , const , new , this 不能用作变量名称
+        //  https://www.runoob.com/js/js-reserved.html
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情页</title>
+    <style>
+        .wraper {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .photo img {
+            display: block;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="photo">
+            <div class="img-box">
+                <img src="" alt="" id="img">
+            </div>
+        </div>
+        <div class="content">
+            <h3 class="title">标题</h3>
+            <p class="con">内容</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 定义数据
+    var data = [
+        {
+            src:"./images/p1.jpg",
+            title:"鲜花",
+            con:"一朵紫色的鲜花"
+        },
+        {
+            src:"./images/p2.jpg",
+            title:"猎豹",
+            con:"一只奔跑的猎豹"
+        },
+        {
+            src:"./images/p3.jpg",
+            title:"大海",
+            con:"一片茫茫的大海"
+        },
+        {
+            src:"./images/p4.jpg",
+            title:"狗",
+            con:"一只静静的狗狗"
+        },
+         {
+            src:"./images/p4.jpg",
+            title:"帆船",
+            con:"几艘白色的帆船"
+        }
+    ]
+    var imgEl = document.getElementById("img");
+    var titleEl = document.getElementsByClassName("title")[0];
+    var conEl = document.getElementsByClassName("con")[0];
+    var url = location.href;
+    // console.log(url);
+    
+    if(url.indexOf("?") > -1){
+        var index = url.indexOf("?");
+        var str = url.slice(index);
+        // console.log(str);
+        var rid = str.split("=")[1];
+        if(rid > data.length - 1){
+            document.body.innerText = "没有这条记录";
+            
+        }else{
+            imgEl.setAttribute("src",data[rid].src);
+            titleEl.innerText = data[rid].title;
+            conEl.innerText = data[rid].con;
+        }
+        
+        
+    }             
+</script>

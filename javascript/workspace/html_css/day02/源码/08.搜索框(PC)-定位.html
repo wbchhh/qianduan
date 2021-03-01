@@ -1,0 +1,90 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：定位</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			 body {
+			    margin:0 ;
+				height:1800px;
+			 }
+			.header {
+			   width:100%;
+			   height:50px;
+			   position:fixed;
+			   left:0;
+			   top:0;
+			   /*层级*/
+			   z-index:1000;
+			}
+			.header .header-box {
+			   /*内容*/
+			   width:500px;
+			   height:50px;
+			   background-color:rgba(0,255,0,1);
+			   margin:0 auto;
+			   line-height:50px;
+			   /*内边距*/
+			   padding:0 60px 0 80px;
+			   position:relative;
+			}
+			.header .header-box .logo {
+			   width:80px;
+			   /*background-color:green;*/
+			   left:0;
+			 }
+			.header .header-box form {
+			    width:100%;
+				height:50px;
+				overflow:hidden;
+			}
+			.header .header-box form input {
+			   width:100%;
+			   height:30px;
+			   display:block;
+			   margin: 10px 0;
+			   padding:0;
+			   border:0;
+			   outline:none;
+			}
+			.header .header-box .login {
+			   width:60px;
+			   /*background-color:blue;*/
+			   right:0;
+			}
+			
+			 /*可重复使用的代码*/
+			.header .header-box .logo , .header .header-box .login {
+				height:50px;
+			    text-align:center;
+			    color:white;
+			    cursor:pointer;
+				position:absolute;
+				top:0;
+			}
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<!--写代码：潜移默化 -->
+		<div class="header">
+				<div class="header-box">
+					<!--左-->
+					<div class="logo">LOGO</div>
+					<!--中-->
+					<form> 
+                          <input type="text" placeholder="输入框"/>
+					</form>
+					<!--右-->
+					<div class="login">登录</div>
+				</div>
+		</div>
+		
+	
+	</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串操作API(二)</title>
+</head>
+<body>
+    <h3>字符串操作API(二)</h3>
+    <script>
+        // 字符串 
+        // hello world!
+        // 调用者：字符串
+
+        // charAt
+        // 参数：字符的索引值（数字）
+        // 返回值：返回索引值对应的字符串，如果超出索引值范围，返回的是空字符串
+        // 功能：根据索引值位置检索（查找）字符
+        console.log("hello world!".length);// 12
+        console.log("hello world!".charAt(4));// o 
+        console.log("hello world!".charAt(0));// h 
+        console.log("hello world!".charAt(20));// 空字符串 
+        console.log("hello world!".charAt(11));// !
+
+
+        // charCodeAt
+        // unicode 
+        // 参数：字符的索引值（数字）
+        // 返回值：是该索引值对应字符的unicode编码
+        // 功能:根据索引值检索(查找)字符的unicode编码
+        // unicode编码：和字符一一对应的数值（字符串）
+        console.log("hello world!".charCodeAt(0));// 104 
+        console.log("hello world!".charCodeAt(1));// 101
+        console.log("H".charCodeAt(0));// 72
+        // 查字典
+            // 根据unicode编码可以找出对应的字符
+            // 根据字符可以找出对应的unicode编码
+            
+        // 类似：
+        // 键值码：和按键一一对应的数值
+
+
+    </script>
+</body>
+</html>

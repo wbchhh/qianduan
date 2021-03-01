@@ -1,0 +1,60 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:开关灯 </title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.box {
+			  width:100px;
+			  height:40px;
+			  background-color:#f00;
+			  cursor:pointer;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>开关灯 </h3>
+		
+		<div class="box"></div>
+		
+		
+		<script>
+			// 点击红色标签  ，改变body背景色 blue
+			// 再次点击红色标签，改变body背景色 white
+			// ... 实现开关逻辑
+			
+			//1.获取div标签
+			var box = document.getElementsByClassName("box")[0];
+			//console.log(box);
+			
+			//.0 定义布尔值变量
+			var isOpen = true;
+			
+			//2.0 事件绑定
+			box.onclick = function(){
+				//判断
+				if(isOpen){
+					// .0 设置body标签的背景色
+					document.body.style.backgroundColor = "blue";
+					//.0 设置布尔值
+					isOpen = false;
+					console.log("开")
+				}else {
+					// .0 设置body标签的背景色
+					document.body.style.backgroundColor = "white";
+					//.0 设置布尔值
+					isOpen = true;
+					console.log("关")
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何产生闭包</title>
+</head>
+
+<body>
+    <h3>如何产生闭包</h3>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+
+        // // 1.0 第一种:
+        // function f1(){
+        //     var f2 = function(){
+
+        //     }
+        //     return f2;
+        // }
+
+        // 2.0 第二种:
+        function f3() {
+            return function () {
+
+            }
+        }
+
+        // 3.0 第三种:
+        function f4() {
+            var a = 100;
+           document.onmousedown = function(){
+                console.log(a);
+           }
+        }
+        // 4.0 第四种:
+        // 匿名函数
+        // ; 代码结束的分割点
+        // var buttons  = document.getElementsByTagName("button");
+        // ;(function(){//函数作用域1
+        //     var index = 0;
+        //     buttons[0].onclick = function(){// 函数作用域2
+        //         index ++;
+        //         console.log(index);
+        //     }
+        // })()
+
+        // 5.0 第五种：
+        var buttons  = document.getElementsByTagName("button");
+        ;(function(index){//函数作用域1  index 是形参 （局部变量）
+            // var index = 5;
+            buttons[0].onclick = function(){// 函数作用域2
+                index ++;
+                console.log(index);// 6
+            }
+        })(5)
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

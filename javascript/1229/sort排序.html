@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sort排序</title>
+    <style>
+        .table {
+            /* 合并表格边框线 */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        .table , th  , td {
+            border: 1px solid #00f;
+        }
+        .table , th {
+            color: #333;
+        }
+        th  div , td div {
+            height: 100%;
+            background-color: #f0f0f0;
+            padding: 20px 40px;
+            cursor: pointer;
+        }
+        th div.item.active {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><div class="item active" data-index="0">序号</div></th>
+                <th><div class="item">姓名</div></th>
+                <th><div class="item">性别</div></th>
+                <th><div class="item" data-index="3">年龄</div></th>
+                <th><div class="item" data-index="4">分数</div></th>
+                <th><div class="item">微信</div></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var data = [
+            {number:1,name:"张三",sex:"男",age:20,score:90,wechat:"a1111"},
+            {number:2,name:"李四",sex:"男",age:28,score:89,wechat:"b2222"},
+            {number:3,name:"翠花",sex:"女",age:18,score:99,wechat:"c3333"},
+            {number:4,name:"露西",sex:"女",age:25,score:65,wechat:"d4444"},
+            {number:5,name:"杰克",sex:"男",age:27,score:59,wechat:"e5555"}
+        ];
+        var tableEl = document.getElementsByClassName("table")[0];
+        var tbodyEl = document.getElementsByTagName("tbody")[0];
+        var theadEl = document.getElementsByTagName("thead")[0];
+        function render(array){
+            if(array == undefined || array.length ==0){
+                return;
+            }
+            var str = "";
+            for(var i = 0; i < array.length; i++){
+                str += "<tr>"
+                str += "    <td><div>"+array[i].number+"</div></td>"
+                str += "    <td><div>"+array[i].name+"</div></td>"
+                str += "    <td><div>"+array[i].sex+"</div></td>"
+                str += "    <td><div>"+array[i].age+"</div></td>"
+                str += "    <td><div>"+array[i].score+"</div></td>"
+                str += "    <td><div>"+array[i].wechat+"</div></td>"
+                str += "</tr> "
+            }
+            tbodyEl.innerHTML = str;
+        }
+        render(data);
+        theadEl.onclick = function(event){
+            var index = event.target.getAttribute("data-index");
+            if(index){
+                switch(index){
+                    case "0" :
+                        data.sort(function(prev , next){
+                                return prev.number - next.number;
+                            });
+                        break;
+                    case "3" :
+                        data.sort(function(prev , next){
+                                return next.age - prev.age;
+                            });
+                        break;
+                    case "4" :
+                        data.sort(function(prev , next){
+                                return next.score - prev.score;
+                            });
+                        break;
+                }
+                render(data);
+                var items = document.getElementsByClassName("item");
+                var elements = [items[0],items[3],items[4]];
+                for(var i = 0; i < elements.length; i ++){
+                    elements[i].classList.remove("active");
+                }
+                items[index].classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>

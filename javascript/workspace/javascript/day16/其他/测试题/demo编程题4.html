@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 数组
+        var arr = [110, 1, 30, 3, 4, 65, 6, 67, 98, 119];
+
+        //定义函数
+        //   function findItemIndex(item,array){
+        //         // 获取item元素在数组中的索引值位置
+        //         var index = array.indexOf(item);
+        //         // 返回索引值位置
+        //         return index;
+        //   }
+        //   //找出元素所在位置
+        //   var res = findItemIndex(65,arr);
+        //   console.log(res)
+
+        //定义函数
+        function findItemIndex(item, array) {
+            var index = -1;
+            for(var i = 0 ; i < array.length ; i ++){
+                if(item === array[i]){
+                    index = i;
+                    break;
+                }
+            }
+            // 返回索引值位置
+            return index;
+        }
+        //找出元素所在位置
+        var res = findItemIndex(3, arr);
+        console.log(res);
+
+
+
+    </script>
+</body>
+
+</html>

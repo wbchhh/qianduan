@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>升级版本</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>    
+        // 思路：
+            // 设置哪个元素的样式 ， 设置样式属性值是多少，设置步长
+            // 目标属性值 = 当前的属性值 + 步长
+
+        // 1.0 定义函数（dom：元素, value：目标属性值,speed:步长）speed = 5
+        // getComputedStyle(dom)[属性]
+        function move(dom,key,value,speed){
+            // 为了防止出现抖动的现象 用定时器先清除定时器
+            clearInterval(dom.timer);
+            // 属性绑定，执行定时器函数
+            dom.timer = setInterval(function(){
+                // 记录当前的属性值
+                var currentV = parseInt(getComputedStyle(dom)[key]);
+                // 判断是否到达目标属性值
+                if(currentV >= value){
+                    // 停止定时器函数
+                    clearInterval(dom.timer);
+                    // 终止代码
+                    return;
+                }
+                // 设置dom的样式
+                dom.style[key] = currentV + speed +"px";
+            },30);
+        }
+
+        // 2.0 获取页面的div标签
+        var div = document.getElementsByTagName("div")[0];
+        // 3.0 调用动画函数
+        // move(dom,key,value,speed)
+        move(div,"width",600 ,10);
+    
+    </script>
+</body>
+</html>

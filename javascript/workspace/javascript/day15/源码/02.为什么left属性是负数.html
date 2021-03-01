@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .big-box {
+            width: 500px;
+            height: 500px;
+            border: 10px solid #000;
+            position: relative;
+            margin-left: 500px;
+        }
+        .big-box .img {
+            width: 800px;
+            height: 800px;
+            background-color: #ccc;
+            position: absolute;
+            left: -100px;/*是希望图片往左边移动 所以是负数*/
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="big-box">
+        <div class="img"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题: 键盘事件</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>键盘事件</h3>
+		
+		
+		<script>
+			// 调用者： document / input / textarea  
+			// 键盘有 100 多个按键
+			
+		    // 键盘按下 
+		    document.onkeydown = function(){
+			   console.log("onkeydown")
+			}
+			// 键盘长按
+			document.onkeypress = function(){
+			   console.log("onkeypress")
+			}
+			// 键盘松开
+			 document.onkeyup = function(){
+			   //console.log("onkeyup")
+			}
+		
+		</script>
+	</body>
+</html>
+

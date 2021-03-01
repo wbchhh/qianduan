@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加元素 、点击删除元素</title>
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            background-color: #ccc;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            height: 80px;
+            border: 1px solid #000; 
+            margin: 10px 0 0 0;
+        }
+        ul li .del {
+            float: right;
+             width: 40px;
+            height: 40px;
+            background-color: #f00;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 按钮 -->
+    <button id="btn_add">增加</button>
+    <!-- 容器 -->
+    <div class="layout" id="layout">
+        <ul>
+            <li><button class="del">x</button></li>
+        </ul>
+    </div>
+
+    <script>
+        // 1.0 获取元素
+        var btn_add =  document.getElementById("btn_add");
+        var layoutElement =  document.getElementById("layout");
+
+        // 2.0 绑定事件
+        var num = 0;
+        // 按钮 
+        btn_add.onclick = function(){
+            // 计数器变量
+            num ++;
+            // 创建ul标签
+            var ul = document.createElement("ul");
+            // 字符串
+            var str = '<li>'+num+'<button class="del">x</button></li>';
+            // 给ul填充文本
+            ul.innerHTML = str;
+            // 增加元素
+            layoutElement.appendChild(ul); 
+            // 如果没有事件委托 ，想获取button.del标签,要在这个地方获取
+
+        }
+        // 容器
+        layoutElement.onclick = function(event){
+            // event 事件对象
+            // 获取当前点击的button标签
+            var btn = event.target;
+            // 判断
+            if(btn.className == "del" ){ 
+                // console.log(btn);
+                // 获取button的父元素的父元素 ul标签
+                var elementUL = btn.parentElement.parentElement;
+                // 删除当前点击的button对应的ul标签
+                elementUL.remove();
+            }
+        }
+
+        // 可以动态的方式给button标签注册事件
+
+    </script>
+
+
+</body>
+</html>

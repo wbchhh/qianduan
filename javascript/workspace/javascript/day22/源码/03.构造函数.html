@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    <h3>构造函数</h3>
+    <script>
+        // 普通函数
+        function foo(){
+            console.log("test  11111")
+            // console.log('全局作用域下，普通函数',this);// window
+            // this 指向window
+            // return {}
+        }
+        var v = foo();
+        // 为什么调用普通函数，得到的是undefined,是普通函数没有return返回值
+        console.log(v);// undefined
+
+        // 构造函数
+        // Array String Object Number Date RegExp
+        // 约定： 构造函数名称首字母大写（小写并不报错，只是不符号web规范）
+        var aaa ;
+        function Foo(){
+            console.log("test  22222")
+            console.log("全局作用域下，构造函数",this);
+            aaa =  this;
+        }
+        // 通过new操作调用的函数 是构造函数
+        // new 这个操作符在实例化对象的过程做了什么？
+        // new 创建一个空对象 ，并且返回一个新对象
+        // var obj = {} ; .... return obj ;
+        // 定义变量接收实例对象 new Foo()
+        var obj = new Foo();
+        console.log(obj);
+        console.log(obj === aaa);//全等于
+
+    </script>
+</body>
+</html>

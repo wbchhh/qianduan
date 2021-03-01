@@ -1,0 +1,132 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素-->
+	     <!--不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:轮播图</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+				* {
+					 padding:0;
+					margin:0;
+				
+				}
+				body {margin:0;}
+		        ul , ol {
+				  padding:0;
+				  margin:0;
+				  list-style:none;
+				 
+				}
+				.wrapper {
+				   width:1200px;
+				   /*width:100%;*/
+				   margin:0 auto;
+				   position:relative;
+				   border:10px solid #333;
+				   overflow:hidden;
+				}
+				
+				/*图片盒子*/
+				.wrapper .banner {/*1200*/
+				   width:100%;
+				}
+				.wrapper .banner ul {/*12000*/
+					width:1000%;
+					padding:0;
+					margin:0;
+					list-style:none;
+				}
+
+				.wrapper .banner ul li {/*1200*/
+
+				    width:10%;
+					float:left;
+				}
+				.wrapper .banner ul li a {
+					width:100%;
+					display:black;
+					/*font-size:0;*/
+				}
+				.wrapper .banner ul li a img {
+					width:100%;
+					/*display:block;*/
+					vertical-align:middle;
+				}
+				.clearfix::after {
+				  content:"";
+				  display:block;
+				  clear:both;
+				}
+				
+				
+				/*导航点盒子*/
+				.wrapper .point {
+					position:absolute;
+					left:0;
+					bottom:0;
+					width:100%;
+					
+				}
+				.wrapper .point ol {
+				   padding:0;
+				   margin:0;
+				   list-style:none;
+				   /* 5 * 40 = 200px */
+				   width:200px;
+				   margin:0 auto;
+				  /* background-color:pink;*/
+				   height:30px;
+				}
+				.wrapper .point ol li {
+				  width:30px;
+				  height:30px;
+				  background-color:#fff;
+				  border-radius:50%;
+				  float:left;
+				  margin:0 5px;
+				}
+				.wrapper .point ol li.active {
+				  background-color:#f00;
+				}
+				
+		 </style>
+	</head>
+	
+	<body> <!--主体元素-->
+		
+		<div class="wrapper">
+				<!--图片-->
+				<div class="banner">
+				    <ul class="clearfix">
+					  <li><a href="#"><img src="./images/p1.jpg"/></a></li>
+					  <li><a href="#"><img src="./images/p2.jpg"/></a></li>
+					  <li><a href="#"><img src="./images/p3.jpg"/></a></li>
+					  <li><a href="#"><img src="./images/p4.jpg"/></a></li>
+					  <li><a href="#"><img src="./images/p5.jpg"/></a></li>
+					</ul>
+				</div>
+				
+				
+				<!--导航点-->
+				<div class="point">
+				    <ol>
+					   <li class="active"></li>
+					   <li></li>
+					   <li></li>
+					   <li></li>
+					   <li></li>
+					</ol>
+				</div>
+		
+		</div>
+		
+		
+		
+		
+	
+	</body>
+</html>
+

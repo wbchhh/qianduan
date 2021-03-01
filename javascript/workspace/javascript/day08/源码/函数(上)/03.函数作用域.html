@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数作用域</title>
+</head>
+<body>
+    <h3>函数作用域</h3>
+    <script>
+      
+        // 挂载在window作用域的变量
+        // window 是一个全局对象
+
+        // 世界   >  国家       >       省份 > 城市 > 街道 ...
+        // 世界   >  国家       
+        // window作用域 >  函数作用域
+
+
+        // 全局变量
+        var count = 6;
+        //console.log(window);
+        console.log(window.count);// 6
+
+        // 函数 demo
+        // 1.0 定义函数
+        function demo() { // 函数作用域1
+            // 局部变量(私有变量)
+            var index = 0;
+            console.log("demo  index:",index)
+            //因为全局环境下，已经存在count变量，所以不能重复声明
+            //重复声明，变量冲突（变量污染）
+            // var count = 99; 
+            console.log(count);// 6
+        }
+        // 2.0 调用函数
+        demo();
+
+
+        // 函数 foo
+        // 1.0 定义函数
+        function foo() { // 函数作用域2
+            // 局部变量
+            var index = 99;
+            console.log("foo  index:",index)
+
+            console.log(count);// 6
+        }
+        // 2.0 调用函数
+        foo()
+
+
+
+        
+        // 作用域：
+        // 两种：
+        // a. 全局作用域  window
+        // b. 函数作用域  function f(){ 代码可执行范围 }
+        // 函数作用域:代码块的范围
+
+        
+        // 变量
+        // a. 在全局作用域声明的变量 叫做全局变量
+        // b. 在函数作用域声明的变量 叫做局部变量
+
+
+
+
+
+
+    </script>
+</body>
+</html>

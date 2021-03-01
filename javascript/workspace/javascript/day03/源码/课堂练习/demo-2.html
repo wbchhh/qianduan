@@ -1,0 +1,151 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:设置索引值对应标签的背景色</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			 body {
+				margin:0;
+			 }
+			 .wrap {
+				/*210 * 4 = 840 */
+				width:840px;
+				margin:0 auto;
+				background-color:#f0f0f0;
+				padding:100px 0px;
+			 }
+			 
+			 .wrap ul {
+			   padding:0;
+			   margin:0;
+			   list-style:none;
+			 }
+			 .wrap ul::after {
+			   content:"";
+			   display:block;
+			   clear:both;
+			 }
+			 .wrap ul li {
+				width:194px;
+				height:54px;
+				border:3px solid #333;
+				margin: 10px 5px 0;
+				float:left;
+				background-color:#fff;
+			 }
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		
+		<div class="wrap">
+			<ul id="listElement">
+				<li>0</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				
+				
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				
+				
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+				
+				
+				<li>12</li>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>
+			</ul>
+		</div>
+		
+		
+		<script>
+			// 1.0 获取指定的元素
+			var listElement = document.getElementById("listElement");
+			//.0 备注： getElementsByTagName 可以被父元素调用
+		    //var elements = document.getElementsByTagName("li");
+		    var elements = listElement.getElementsByTagName("li");
+			console.log(elements);	
+			
+			//2.0 定义变量 接收输入的索引值
+			// prompt()
+			// alert()
+			// 先调用弹窗 ，再渲染页面 （阻塞）
+			var index = prompt("请输入0~15之间的数字");
+			//console.log(index==0);// 当输入框没有输入值 隐式转换为 0 
+			console.log(index=="");// 空格
+			/*			
+			index <  4                   orange
+			index >  3    index < 8      red
+			index >  7    index < 12     green
+			index > 11    index < 16     purple
+			index > 15    页面不变化			
+			*/
+			//3.0 处理判断
+			// 定义变量 记录背景色
+			var bgColor = "white";
+			if(index < 4 ){
+				bgColor = "orange" ; 
+			}else if(index > 3 && index < 8){
+				bgColor = "red";
+			}else if(index > 7 && index < 12){
+				bgColor = "green";
+			}else if(index > 11 && index < 16){
+				bgColor = "purple";
+			}else {
+				bgColor = "white";
+				console.log("索引值超出范围");
+			}
+			
+			//4.0 设置索引值对应的标签背景色
+			if(index >= 0 && index <= 15  ){
+			    //判断输入框是否有值 ，如果是空字符串就是没有值
+				if(index != ""){
+					elements[index].style.backgroundColor = bgColor;
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

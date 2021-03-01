@@ -1,0 +1,35 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:非数字（Nan）</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>非数字（Nan）</h3>
+		
+		
+		<script>
+			// NaN (not a number) 是一种特殊的数值（非数字）
+			// NaN 不是一种数据类型
+			console.log("11aa" - 0);// NaN
+			// 非数字字符串 减 数字 ，就会出现 NaN 
+			
+			// isNan()  
+			// 改函数用于检测当前数据是否为非数字
+			console.log(isNaN("11aa" - 0));// true 表示其为非数字
+			console.log(isNaN(100));// false  如果是数字 返回值是false
+			console.log(isNaN("hello"));// true 不是数值 
+			
+			
+		
+		</script>
+	</body>
+</html>
+

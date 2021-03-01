@@ -1,0 +1,51 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：三目运算</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>三目运算</h3>
+		
+		
+		<script>
+			//1.0 三目运算
+			// 条件是否成立
+			10 > 9 ? console.log("成立") : console.log("不成立");
+			
+			
+			// 2.0 定义变量 
+			// 条件成立 把“hello” 赋值给res ,否则把 999 赋值给 res 
+			var res = false ? "hello" : 999;
+			console.log(res);
+			
+			//练习：
+			// 17:58:06
+			var h = 17 ;
+			var m = 59 ;
+			var s = 6 ;
+			
+			// 判断变量值是两位数吗
+		    var hour =	h > 10 ? h : "0"+ h;
+			var min  = m > 10 ? m : "0"+m;
+			var sec  = s > 10 ? s : "0"+s;
+			
+			//  拼接时间字符串
+			var str = hour+":"+min+":"+sec;
+			console.log(str);
+			
+			
+			
+			
+		
+		</script>
+	</body>
+</html>
+

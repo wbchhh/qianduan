@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业-1</title>
+    <style>
+        .circle {
+            width: 400px;
+            margin: 100px auto;
+        }
+        .circle ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 400px;
+            height: 40px;
+            background-color: #fff;
+        }
+        .circle ol li {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: #ccc;
+            float: left;
+            cursor: pointer;
+        }
+        .circle ol li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <script>
+        // 要求：
+            // 1、编写函数 setPoint 形参：索引值 index ，
+            ///2、函数处理逻辑： 根据index设置对应的导航点背景色高亮
+            //                  不是传递索引值 index 对应的导航点移除背景高亮
+            // 3、鼠标移入导航点触发事件，获取当前导航点索引值，作为实参，调用 setPoint 
+            var lis = document.getElementsByTagName("li");
+            for(var i=0;i<lis.length;i++){
+                lis[i].index = i;
+                lis[i].onmouseover =function(){
+                    setPoint(this.index);
+                }
+            } 
+            
+            function setPoint(index){
+                for(var j=0;j<lis.length;j++){
+                    lis[j].className = "";
+                }
+                lis[index].className = "active";
+            }
+
+    </script>
+    
+</body>
+</html>

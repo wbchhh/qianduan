@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        body , html {
+            height: 100%;
+        }
+        .container {
+            width: 900px;
+            height: 100%;
+            position: relative;
+        }
+        .map , .mask{
+            width: 600px;
+            height: 800px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -300px;
+            margin-top: -400px;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .map {
+            z-index: 1;
+            background-image: url(./seeyou.jpg);
+            background-size: 600px 600px;
+        }
+        .mask {
+            z-index: 1000;
+        }
+        .mask ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 600px;
+            height: 700px;
+        }
+        .mask ul li {
+            float: left;    
+            width: 198px;
+            height: 198px;
+            border: 1px solid #fff;
+            text-align: center;
+            line-height: 198px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: rgba(0,255,255,0.5);
+            border-radius: 10px;
+        }
+        .mask ul li:hover {
+            background-color: rgba(0,255,255,0.3);
+            color: #fff;
+        }
+        .mask ul li.w-400 {
+            width:398px;
+        }
+         .mask ul li.w-400:hover {
+            background-color: transparent;
+         }
+        .mask ul li > input {
+            width: 300px;
+            height: 60px;
+            line-height: 70px;
+            background-color: #fff;
+            margin: 69px auto;
+            color: #000;
+            outline: none;
+            text-align: center;
+            border: 0;
+            font-size: 40px;
+        }
+        .message {
+            width: 400px;
+            height: 80px;
+            line-height: 80px;
+            background-color: #fff;
+            border: 1px solid #f00;
+            color:#f00;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -40px;
+            z-index: 10000;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id ="container"> 
+        <!-- 背景 -->
+        <div class="map">
+            <div class="ball"></div>
+        </div>
+        <!-- 遮罩层 -->
+        <div class="mask" style="display: block;">
+            <ul >
+                <li data-index="1">1</li>
+                <li data-index="2">2</li>
+                <li data-index="3">3</li>
+                <li data-index="4">4</li>
+                <li data-index="5">5</li>
+                <li data-index="6">6</li>
+                <li data-index="7">7</li>
+                <li data-index="8">8</li>
+                <li data-index="9">9</li>
+                <li data-index="0">0</li>
+                <li class="w-400">
+                    <input type="password" id="password" value="210107">
+                </li>
+            </ul>
+        </div>
+        <!-- 提示框 -->
+        <div class="message" style="display: none;">密码错误!</div>
+    </div>
+
+    <script>
+        // 需求：模仿手机解锁屏幕
+        // 编码方式：用（面向过程|面向对象）都可以
+            // 点击遮罩层上的数字，组合成一个字符串（密码）
+            // 组合的字符串（密码）如果和input标签的六位数字 210107 匹配，则隐藏遮罩层
+            // 否则不匹配，就会提示密码错误
+
+        // 面向对象
+        // 分析思考（哪些数据得记录，有哪些处理逻辑）
+
+        // 1.0 定义构造函数
+        // var Foo = function(){}
+        // 全局变量 记录构造函数产生的对象
+        var _this ;
+        function Foo() {
+            // 添加属性
+            this.maskElement = document.getElementsByClassName("mask")[0];
+            this.items =  this.maskElement.getElementsByTagName("li");
+            this.passwordEl = document.getElementById("password");
+            this.messageEl = document.getElementsByClassName("message")[0];
+            this.passwordV = this.passwordEl.value;
+
+            // console.log(this);
+        }
+        // 原型对象 添加方法
+        Foo.prototype.show = function(dom){
+            // 显示
+            dom.style.display = "block";
+        }
+        Foo.prototype.hide = function(dom){
+             // 隐藏
+             dom.style.display = "none";
+        }
+        Foo.prototype.click = function(){//函数作用域1 
+            // 点击事件
+            // 记录当前函数作用域的this
+            _this = this;
+            // 记录拼接的字符
+            this.str = "";
+            // 延迟函数变量
+            var delayer = null;
+            // 循环li标签
+            for(var i = 0 ; i < this.items.length - 1 ; i ++){
+                // 事件绑定
+                this.items[i].onclick = function(){//事件函数作用域2
+                    // 此处的this表示当前点击的标签
+                    // 获取当前点击的li标签的自定义属性值
+                    _this.str += this.getAttribute("data-index");
+                    // console.log(_this.str);
+                    // 判断拼接字符串的长度
+                    if(_this.str.length == 6){
+                        console.log(_this.str)
+                        // 判断是否和密码匹配
+                        if(_this.str == _this.passwordV){
+                            // 是 隐藏遮罩层
+                            _this.hide(_this.maskElement);
+                        }else {
+                            // 否 显示提示框
+                            _this.show(_this.messageEl);
+                            // 清除延迟函数
+                            clearTimeout(delayer);
+                            // 执行延迟函数
+                            delayer = setTimeout(function(){//函数作用域 3
+                                // 此处的this是 window
+                                // 重置字符串
+                                _this.str = "";
+                                // 隐藏提示框
+                                _this.hide(_this.messageEl);
+                            },2000)
+                        }
+                    }
+                }
+            }
+
+        }
+
+        Foo.prototype.init = function(){
+            // 初始化
+            // 测试
+            // this.hide(this.maskElement);
+            // this.show(this.messageEl);
+            
+            // 调用click函数
+            this.click();
+        }
+
+        // 创建实例对象
+        var obj = new Foo();
+        // 调用初始化方法
+        obj.init();
+
+        // 拓展 ： 课下找时间把点击事件换键盘事件 onkeydown
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断路径是否为图片路径</title>
+</head>
+<body>
+    <h3>判断路径是否为图片路径</h3>
+
+    <script>
+        // 练习1：
+        // 通过JS编码 编写函数isPhoto, 判断传递的路径是否为图片路径，
+        // 如果是图片路径 ，返回值 true,否则，返回值是false
+
+        // ./images/1.jpg
+        // ./images/1.txt
+        // ./images/1.PNG
+        // ./images/1.doc
+        // ./images/1.exe
+        // ./images/1.GIF
+
+        // 编码:
+            // 定义函数 isPhoto
+            function isPhoto(path){
+                // 判断是否传递参数 
+                if(path === undefined){
+                    return "没有文件路径";
+                }
+                // 获取 最后一个"."字符的索引值
+                var lastIndex = path.lastIndexOf(".");
+                // console.log(lastIndex);
+                // 获取后缀名（文件名称）
+                var fileName = path.slice(lastIndex);
+                // console.log(fileName)
+                // fileName = fileName.toLowerCase();
+                fileName = fileName.toUpperCase();
+                // console.log(fileName);
+                if(fileName ==".JPG" || fileName==".PNG" || fileName==".GIF" ){
+                    // 返回true
+                    return true;
+                }else{
+                    // 返回值false
+                    return false;
+                }
+            }
+            // console.log(isPhoto());
+            // console.log(isPhoto("./images/1.jpg"));
+            // var res = isPhoto("./images/1.jpg");
+            // console.log(res);
+            console.log(isPhoto("./images/1.jpg"));
+            console.log(isPhoto("./images/1.txt"));
+            console.log(isPhoto("./images/1.ext"));
+
+
+            // 判断
+            if(isPhoto("./images/1.txt")){
+                console.log("是图片文件")
+            }else {
+                console.log("不是图片文件")
+            }
+
+    </script>
+</body>
+</html>

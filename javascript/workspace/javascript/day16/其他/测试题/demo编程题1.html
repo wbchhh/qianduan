@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程题：统计字符出现的次数</title>
+</head>
+<body>
+    
+
+    <script>
+        // 1.0 定义变量字符串
+        var str = "professional coding program learning";
+        // console.log(str);
+        // 2.0 把字符串切割成数组
+        // var arr = str.split(" ");
+        // // 3.0 把数组转字符串（去掉空格）
+        // var str2 = arr.join("");
+        // console.log(str2)
+        // console.log(str2.indexOf(" ") > -1 );// false 不存在空格
+         // 2.0 把字符串切割成数组
+         var arr = str.split("");
+         // 3.0 通过循环的方式 去掉空格  
+         for(var i = 0 ; i < arr.length ; i ++){
+            if(arr[i] == " "){
+                arr.splice(i,1);
+            }
+         }
+        //  console.log(arr);
+        // ["p", "r", "o", "f", "e", "s", "s", "i", "o", "n", "a", "l", "c", "o", "d", "i", "n", "g", "p", "r", "o", "g", "r", "a", "m", "l", "e", "a", "r", "n", "i", "n", "g"]
+        // 4.0 定义对象
+        var obj = {};
+        // 5.0 循环数组arr
+        for(var j = 0 ; j < arr.length ; j ++){
+            // 判断对象是否存在指定的key 
+            // 不存在 {p:undefined}
+            if(obj[arr[j]] == undefined){
+                // 往对象添加属性 arr[0],arr[1],arr[2] ...
+                obj[arr[j]] = {
+                    count:1,
+                    letter: arr[j]
+                }
+            }else {
+                // 存在
+                obj[arr[j]].count +=1 ;
+            }
+        }
+        console.log(obj);
+        // console.log(obj["p"].count);
+        // console.log(obj["p"].letter);
+
+        // 6.0 定义假设的此次 0 
+        var maxCount = 0;
+        var letters = [];
+        // 7.0 循环对象
+        for(var key in obj){
+            // 判断 当假设的变量值 小于 key对应的此次
+            if(maxCount < obj[key].count){
+                // 给假设的变量赋值
+                maxCount =  obj[key].count;
+            }
+            if(obj[key].count == 4){
+                // 出现次数最多的字符添加进数组
+                letters.push(obj[key].letter);
+                console.log(obj[key].letter)
+            }
+        }
+        console.log(maxCount);// 4 字符串出现的此次最多是4次
+        console.log(letters);// ["r", "o", "n"] 字符串中出现次数最多的字符
+
+    
+
+        // 目的：
+            // 熟练掌握字符串操作api和数组操作 api
+            // 熟练掌握循环数组和循环对象
+            // 对象的key是唯一
+
+
+
+
+
+    </script>
+</body>
+</html>

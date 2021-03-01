@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制金字塔</title>
+	<style>
+		ul {
+			padding: 0;
+			list-style: none;
+		}
+		ul li {
+			/*width: 100px;*/
+			height: 1px;
+			background-color: pink;
+			margin: 0 auto;
+			/*margin-top: 1px;*/
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<!-- 循环渲染 -->
+
+	</ul>
+</body>
+</html>
+<script>
+	// 1.0 获取元素
+	var ul = document.getElementsByTagName('ul')[0];
+	// 2.0 循环
+	var str = "";
+	for(var k = 0 ; k < 500 ; k ++){
+		// 3.0 拼接字符串
+		str += "<li style='width:"+k+"px'></li>";
+	}
+	// 渲染
+	ul.innerHTML = str;
+</script>

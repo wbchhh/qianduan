@@ -1,0 +1,108 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:导航</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+		 
+			 * { /* 通配符：代表页面所有的元素 */ }
+		 
+		     /*重置页面元素默认样式*/
+			 
+			 
+		     body {
+			   margin:0;
+			 }
+			 ul {
+			   padding:0;
+			   margin:0;
+			   list-style:none;
+			 }
+		     a,
+			 a:hover,
+			 a:focus {
+			   color:#000;
+			   text-decoration:none;
+			 }
+		 
+			 /*导航条样式*/
+			 .nav {
+			    width:100%;
+			 }
+			 /*版心*/
+			 .nav .container {
+				width:1200px;
+				margin:0 auto;
+			 }
+			.nav .container ul {
+			  /*126 * 4 = ? */
+			  width:504px;
+			  margin:0 auto;
+			}
+			.nav .container ul::after {
+				content:"";
+				clear:both;
+				display:block;
+			}
+			.nav .container ul li {
+			   float:left;
+			}
+			.nav .container ul li a {
+				display:block;
+				width:120px;
+				height:58px;
+				text-align:center;
+				line-height:58px;
+				color:#fff;
+				margin:0 3px;
+			}
+			
+			.nav .container ul li.item1 a {
+			  background-image:url("./img/bg1.png");
+			}
+			
+			.nav .container ul li.item2 a {
+			  background-image:url("./img/bg2.png");
+			}
+			
+			.nav .container ul li.item3 a {
+			  background-image:url("./img/bg3.png");
+			}
+			
+			.nav .container ul li.item4 a {
+			  background-image:url("./img/bg4.png");
+			}
+			
+			/*交集选择器*/
+			.nav .container ul li.active a {
+				 background-image:url("./img/bg5.png") !important;
+			}
+			 
+			 
+			 /*书写代码的格式整洁*/
+			 /*通栏：宽度是百分百的 width:100%; */
+			 /*版心：有固定的宽度的水平居中盒子（元素）*/
+			 /*具有继承性的属性：color , font-size,font-family,... text-align,text-decoration,line-heighgt*/
+			 /*不具有继承性的属性：width ,height , background, padding,margin,border */
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+	  
+	  <div class="nav">
+			<div class="container"> 
+			    <ul>
+					<li class="item1"> <a href="javascript:;">网站导航</a> </li>
+					<li class="item2"> <a href="javascript:;">网站导航</a> </li>
+					<li class="item3"> <a href="javascript:;">网站导航</a> </li>
+					<li class="item4"> <a href="javascript:;">网站导航</a> </li>
+				</ul>
+			</div>
+	  </div>
+	</body>
+</html>
+
+<!-- href="javascript:;"  禁止链接标签发生跳转-->

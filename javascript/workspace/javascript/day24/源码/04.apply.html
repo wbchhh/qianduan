@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS-面向对象 apply </title>
+</head>
+
+<body>
+    <h3>apply</h3>
+    <div id ="container"> </div>
+
+    <script>
+        // apply 实现对象之间的继承
+        // 参数：数组
+        // 父对象
+        function Parent(name,sex){
+            this.name = name;
+            this.sex = sex ;
+            this.sayHello = function(){
+                console.log(this.name ,"是",this.sex , "在say Hello")
+            }
+        }
+
+        // 子对象
+        function Son(name,sex){
+            // 父对象调用call方法 
+            // Parent.apply(this,["小明"]);
+            Parent.apply(this,[name,sex]);
+        }
+
+        // 创建子对象的实例
+        var xiaoming = new Son("小明2","男人");
+        xiaoming.sayHello();
+        var honghong = new Son("红红2","女人");
+        honghong.sayHello();
+    </script>
+</body>
+
+</html>

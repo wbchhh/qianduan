@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业-1</title>
+    <style>
+        button {
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+        }
+        input {
+            width: 180px;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 20px;
+        }
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #ccc;
+        }
+        .nav {
+            height: 100px;
+            line-height: 100px;
+        }
+        .nav input ,
+        .nav button ,
+        .nav span {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <input type="text" placeholder="请输入一个数" value="0">
+        <!-- <button onclick="函数">点击显示累加结果</button> -->
+        <button>点击显示累加结果</button>
+        <span>0</span>
+        <!-- 1 + 2 + 3 + 4 = 10 -->
+    </div>
+    <script>
+         // 要求：
+            //  编写函数 reduceFunc ， 传递一个非0数字N，处理1累加计算到 N 的结果. 并且并返回结果
+            //  N = 4 
+            //  1 + 2 + 3 + 4 = 10  
+            // 点击按钮，获取输入框的值，调用 reduceFunc  函数，把返回的结果渲染在页面
+
+        // 编码步骤：
+            // 1、获取相关元素
+            // 2、事件绑定
+            // 3、书写程序处理逻辑
+   
+
+            // 1、获取相关元素
+            var inpElement = document.getElementsByTagName("input")[0];
+            var btnElement = document.getElementsByTagName("button")[0];
+            var spanElement = document.getElementsByTagName("span")[0];
+            // console.log(inpElement)
+            // 2、事件绑定
+            btnElement.onclick = function(){
+                  // 3、书写程序处理逻辑
+                  //  获取输入的值
+                  var v1 = inpElement.value;
+                  //  隐式转换成数字
+                  v1 = v1 - 0;
+                  //  调用累加计算函数
+                  var num = reduceFunc(v1);
+                  //  显示累计结果
+                  spanElement.innerText = num;
+            }
+
+            // 4、编码函数（实现特定功能的代码块）
+            function reduceFunc( n ){
+                // 定义变量 接收计算结果
+                var total = 0;
+                // 循环
+                for(var  i = 1 ; i <= n ; i ++){
+                    // 累加计算的结果
+                    total += i;
+                }
+                // 返回计算的结果
+                return total;
+                // console.log("函数作用域：",total);// 会不会输出total变量值 ？ 不会
+            }
+
+
+
+
+            // 5、0 调用函数 reduceFunc 
+            // console.log(reduceFunc(4));
+            // var res = reduceFunc(4);
+            // console.log(res);
+
+            // var f = function(){return 6;}
+            // function f(){
+            //     return 6;
+            // }
+            // console.log(f);//函数体
+            // console.log(f());//6
+            // var r = f();//6 
+            // console.log(r);// 在控制台输出，说明数据存在了，能用。
+          
+
+
+
+
+            // 目的：
+                // 1. 理解函数的概念（可复用的代码块）
+                // 2. 函数传参（程序逻辑灵活处理）
+                // 3。函数返回值 （要不要写返回值，主要看需求）
+   
+    
+    </script>
+    
+</body>
+</html>

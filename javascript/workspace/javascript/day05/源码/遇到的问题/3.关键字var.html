@@ -1,0 +1,40 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题 : 关键字 var</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>关键字 var  </h3>
+		
+		
+		<script>
+		    //声明变量（告诉浏览器 str 是个变量）
+			var str = "hello";
+			//console.log(str);
+			
+			// 在ES5 语法比较自由
+			// 在非严格模式下 ，可以使用
+			// 因为没有使用var 声明，所以叫做 隐式变量
+			num = 15;
+			//console.log(num);
+			
+			
+			//区别：
+			// delete  删除变量操作符
+			delete str;
+			console.log(str);
+			delete num;
+			//console.log(num); //报错
+			
+		</script>
+	</body>
+</html>
+

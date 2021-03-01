@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记住账号</title>
+    <style>
+        .form {
+            width: 450px;
+            margin: 0 auto;
+        }
+        .form > div {
+            margin-top: 10px;
+            line-height: 40px;
+        }
+        .form > div input#account {
+            width: 420px;
+            height: 40px;
+            padding: 0 15px;
+            font-size: 20px;
+        }
+        .form > div input#remember {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .form > div  button {
+            width: 120px;
+            height: 40px;
+            display: block;
+            /* margin: 0 auto; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单 -->
+    <!-- <form action="#login" ></form> -->
+    <div class="form">
+        <div>
+            <input type="text" placeholder="请输入账号" id="account">
+        </div>
+        <div>
+            <!-- 该属性判断复选框是否被勾选 checked ，存在则表示勾选 -->
+            <input  type="checkbox"  id="remember" > 记住账号?
+        </div>
+        <div>
+            <button id="loginButton">登 录</button>
+        </div>
+    </div>
+
+    <script src="./cookie.js"></script>
+    <script>
+        // 需求：
+            // 根据用户勾选复选框，实现记住账号（缓存数据）
+
+        //  基本步骤：
+            // 1. 获取页面相关的元素（记录数据）
+            // 2. 事件的绑定
+            // 3. 书写程序的处理逻辑
+
+
+        //  编码实现：
+            // 1. 获取页面相关的元素
+            var accountInput = document.getElementById("account");
+            var rememberInput = document.getElementById("remember");
+            var loginButton = document.getElementById("loginButton");
+
+            // 2. 事件的绑定
+            loginButton.onclick = function(){
+                 // 3. 书写程序的处理逻辑
+                 // 获取输入的值
+                 var v1 = accountInput.value;
+                 // 判断输入框是否有值(严谨逻辑)
+                 if(v1.length === 0) return ;
+                 // 判断复选框是否被勾选
+                 if(rememberInput.checked){
+                    // console.log("勾选");
+                    setCookie("username",v1);
+                 }else {
+                    // console.log("不勾选");
+                    removeCookie("username");
+                 }
+                 //  ajax
+            }
+            // 初始化效果
+            function init(){
+                // 获取缓存的用户信息
+                var uname = getCookie("username");
+                // console.log(uname);
+                // 判断一下
+                // if(uname != undefined || uname.length != 0){
+                if(uname != undefined ){
+                    // 设置输入框标签的值 
+                    // innerText innerHTML (div,span,)
+                    // value (input textarea )
+                    accountInput.value = uname;
+                    // 设置复选框
+                    rememberInput.checked = true;
+                }
+            }
+            init();
+
+
+
+
+
+
+            // 测试 复选框的属性
+            // console.log(rememberInput.checked);
+            // div.index
+            // lis[0].index = 0 ;
+            // 拓展：
+                // 用户账号有很多个，做用户列表
+                // [用户1,用户2,用户3]
+
+
+
+    </script>
+</body>
+</html>

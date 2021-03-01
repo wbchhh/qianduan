@@ -1,0 +1,68 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：引用数据类型</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>引用数据类型</h3>
+		
+		
+		<script>
+		//1.0 object 
+		// 对象 
+		// {key:value}    键值对 
+		// 对象是一种无序的数据集合
+		// {属性:属性值，可以有多个属性}
+		// 属性 可以添加引号，也可以不加引号
+		// 属性值 看数据类型的
+		var obj = {width:100,height:200,bgcolor:"red"}
+		console.log(obj);
+		console.log(typeof obj);//object
+		console.log(typeof obj ==="object");// true
+		console.log(obj.bgcolor);//red
+		
+		
+		//2.0 array 
+		//数组
+		//[0,1,2]
+		//以索引值存取数据的
+		//索引值 0,1,2 
+		//length 是数组的长度
+		// 数组是一种有序的数据集合
+		var arr = [100,200,"red",300];
+		console.log(arr);
+		console.log(arr[2]);//red
+		// 检测数组的类型 不是直接使用typeof 
+		console.log(typeof arr);// object 
+		// Array 数组的构造函数，同时也是个对象
+		// isArray 是个方法 ，这个方法可以检测数组 
+		// 改数据集合如果是数组，返回的布尔值 true 
+		console.log(Array.isArray(arr));//  true
+		console.log(Array.isArray("xxx"));//  false
+		// instanceof 检测数据类型
+		// 数据 instanceof 构造数组   
+		// 符合条件为 true ,否则false 
+		console.log(arr instanceof Array);// true
+		
+		
+		//3.0 function 
+		// 函数 
+		// 代码块
+		// 函数名称 = 函数体
+		var  foo =  function(){ }
+		console.log(typeof foo);// function
+		
+		
+		
+		</script>
+	</body>
+</html>
+

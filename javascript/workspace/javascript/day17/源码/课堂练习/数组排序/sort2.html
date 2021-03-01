@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组中的sort方法</title>
+</head>
+
+<body>
+    <h3>数组中的sort方法2</h3>
+
+    <script>
+        // 
+        // function sort() { //函数内部循环 }
+        // Array.prototype.sort = function(){//函数内部循环}
+        // 构造函数  /  原型 / 实例对象
+
+        // sort()
+        // 调用者：arr 数组
+        // 参数 ： function(a,b){}
+        // 返回值：数组 (默认的时候是升序)
+        // 功能：对指定的数组进行排序或者打乱顺序
+        var arr = [
+            { num: 40, color: "red" },
+            { num: 20, color: "green" },
+            { num: 60, color: "blue" },
+            { num: 10, color: "yellow" },
+            { num: 50, color: "purple" }
+        ]
+        // console.log(arr);
+        // 调用sort方法,根据每条记录下num属性进行排序
+        var res = arr.sort(function(prev,next){
+            // prev  当前数组相邻的两项数据 前一项
+            // next  当前数组相邻的两项数据 后一项
+            // 根据每一项数据的num属性进行排序
+            return prev.num - next.num;
+        })
+        console.log(res);
+
+
+
+
+    </script>
+</body>
+
+</html>

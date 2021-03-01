@@ -1,0 +1,67 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题：练习</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+				button {
+				   width:80px;
+				   height:80px;
+				   margin:20px 0 0 0 ;
+				   border-radius:50%;
+				   border:3px solid #333;
+				   outline:none;
+				   cursor:pointer;
+				   background-color:#fff;
+				}
+				button:active {
+					background-color:#ccc;
+				}
+				
+				
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>课堂练习</h3>
+		
+		<div>
+			<button>1</button>
+		</div>
+		
+		
+		<div>
+			<button>2</button>
+		</div>
+		
+		
+		<div>
+			<button>3</button>
+		</div>
+		
+		<div>
+			<button>4</button>
+		</div>
+		
+		<div>
+			<button>5</button>
+		</div>
+		
+		
+		
+		<script>
+			//1.0 获取页面标签
+			var buttons = document.getElementsByTagName("button");
+			//3.0 选择器索引值2的标签
+			buttons[2].style.backgroundColor="orange";
+			
+			
+			//2.0 数组的索引值是从 0 开始的
+			//console.log(buttons)
+		</script>
+	</body>
+</html>
+

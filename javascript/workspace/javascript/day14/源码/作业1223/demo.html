@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        .wrap {
+            width: 700px;
+            height: 100px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+        }
+        .wrap .redbox ,
+        .wrap .bluebox {
+            float: left;
+        }
+        .wrap .redbox {
+           width: 600px
+        }
+        .wrap .redbox ul , .wrap .bluebox ol{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .wrap .redbox li ,  .wrap .bluebox li{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+            float: left;
+        }
+        .wrap .redbox li {
+            background-color: #f00;
+        }
+        .wrap .bluebox {
+            width: 100px;
+        }
+        .wrap .bluebox li {
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="redbox">
+            <ul>
+                <!-- 红色数字 -->
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="bluebox">
+            <ol>
+                <!-- 蓝色数字 -->
+                <li></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // 需求
+            // 刷新页面产生一注随机彩票
+            // 彩票规则
+            // 红色数字： 1 ~ 33 
+            // 蓝色数字:  1 ~ 16
+            // 6个随机数字不重复的红色数字和1一个随机蓝色数字可以组成一注彩票
+
+            // 思路：
+                // 定义红色数字数组和蓝色数字数字分别记录对应的数据
+                // 然后从数组中根据随机索引值获取数字
+                // 组成一注彩票，渲染在页面对应的标签
+        // 基本步骤:
+            // 1、记录相关数据
+            // 2、书写程序的处理逻辑
+
+        // 编码实现:
+            // 1、记录相关数据
+            // 页面的元素
+            var redBox = document.getElementsByClassName("redbox")[0];
+            var redElements = redBox.getElementsByTagName("li");
+            var blueBox = document.getElementsByClassName("bluebox")[0];
+            var blueElement = blueBox.getElementsByTagName("li")[0];
+            // 定义数组 (索引值储存数据的集合)
+            var redArray = [];
+            var blueArray = [];
+            for(var num = 1 ; num < 34 ; num ++){
+                // 红色数字数组
+                redArray.push(num);
+                // 判断数字范围
+                if(num < 17){
+                    // 蓝色数字的数组
+                    blueArray.push(num);
+                }
+            }
+            // console.log(redArray);
+            // console.log(blueArray);
+            // 2、书写程序的处理逻辑
+            // 定义函数返回随机索引值
+            function randomIndex(v1){
+                // 返回指定范围的随机数
+                return Math.floor(Math.random()*v1);
+            }
+            // console.log(randomIndex(33));
+            // 循环红色li标签数组
+            for(var i = 0 ; i < redElements.length ; i ++){
+                // 获取随机索引值
+                var index = randomIndex(redArray.length);
+                // 填充随机不重复的数字
+                // var res = redArray.splice(index,1);
+                // console.log(res);
+                // 获取随机不重复的红色数字
+                var redNumber = redArray.splice(index,1)[0];
+                // 渲染数据
+                redElements[i].innerText = redNumber;
+            }
+            // 蓝色的数据
+            // blueElement.innerText = blueArray[randomIndex(blueArray.length)];
+            var len2 = blueArray.length;
+            var index2 = randomIndex(len2);
+            blueElement.innerText = blueArray[index2];
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html><!-- 声明文档类型 -->
+<html><!--根元素-->
+	<head><!--头元素 : 不可视化部分-->
+		 <meta charset="UTF-8"><!--设置字符编码-->
+		 <title>标题:循环语句</title><!--设置网页标题-->
+		 <meta name="keyword" content="关键字1,关键字2,关键字3">
+		 <meta name="description" content="描述页面的文本" >
+		 <meta name="author" content="开发者名字">
+		 <style>
+			.container {
+			  width:1400px;
+			  margin:0 auto;
+			}
+			ul {
+			  padding:0;
+			  margin:0;
+			  list-style:none;
+			}
+			ul::after {
+			 content:"";
+			 display:block;
+			 clear:both;
+			}
+			ul li {
+			   width:80px;
+			   height:80px;
+			   border:2px solid #333;
+			   float:left;
+			}
+		 </style>
+	</head>
+	
+	<body> <!--主体元素:可视化部分-->
+		<h3>循环语句</h3>
+		<div class="container">
+		   <ul>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		      <li></li>
+		   </ul>
+		</div>
+		
+		<script>
+			//要求：给所有的li标签填充背景色
+			//1.0 获取li标签数组
+			var aLi = document.getElementsByTagName("li");
+			console.log(aLi)
+			//2.0 for 语句
+			for(var index = 0 ; index < aLi.length ; index ++){
+				//判断索引值是否为偶数
+				if(index % 2 == 0 ){
+				  aLi[index].style.backgroundColor = "red";
+				}else {
+				   aLi[index].style.backgroundColor = "green";
+				}
+			}
+			
+			
+			
+			//渲染：把内容表现在页面
+			//遍历：循环 
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

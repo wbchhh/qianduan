@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 0 auto;
+            background-color: pink;
+            width: 500px;
+            height:100px;
+        }
+        .box input{
+            line-height: 40px;
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+        .box button{
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" value="请输入手机号码" id="inp">
+        <button id="btn">点击发送验证码</button>
+    </div>
+
+    <script>
+        
+        
+        // var btn = document.getElementById("btn");
+        // var count = 10;
+        // var timer = null;
+        // var tt =function(){
+        //     btn.onclick = null;
+        //     timer = setInterval(fn ,100);   
+        // }
+        
+        // var fn = function(){
+        //      count--; 
+        //      var str = "剩余时间"+count+"秒"
+        //      btn.innerHTML = str;            
+        //      if(count<1){
+        //          clearInterval(timer);
+        //          count = 10;
+        //         btn.innerHTML = "重新发送验证码";
+        //         btn.onclick = tt;
+        //     }
+        //     btn.innerHTML = str;
+        // }
+        // btn.onclick = tt;
+        var btn = document.getElementById("btn");
+        var count = 10;
+        var timer = null;
+        var fn = function(){
+            btn.onclick = null;
+            timer = setInterval(function(){
+                count--;
+                if(count<0){
+                    clearInterval(timer);
+                    count = 10;
+                    btn.innerHTML =  "重新发送验证码";
+                    btn.onclick = fn;
+                    return;
+                }
+                btn.innerText = "剩余时间"+count+"秒";
+            },1000)
+            btn.innerText = "剩余时间"+count+"秒";
+        }
+        btn.onclick = fn;
+    </script>
+</body>
+</html>
