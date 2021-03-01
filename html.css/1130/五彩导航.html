@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.body{
+				margin:0;
+				padding:0;
+			}
+			.clearfix::after{
+				content="";
+				display:block;
+				clear:both;
+			}
+			
+			.box ul{
+				list-style:none;
+			}
+			.box ul li{
+				float:left;
+				position:relative;
+				width:130px;
+				height:58px;
+			}
+			.box ul li a{
+				text-decoration:none;
+			}
+			.box ul li a img{
+				width:120px;
+				height:58px;
+				z-index:100;
+				margin: -6px -33px;
+				position:absolute;
+			}
+			.box ul li a span{
+				height:120px;
+				z-index:999;
+				line-height:120px;
+				position:absolute;
+				margin: -40px -6px;
+				color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul clearfix>
+				<li><a href="javascript:;"><img src="img/bg1.png"><span>五彩导航</span></a></li>
+				<li><a href=""><img src="img/bg2.png"><span>五彩导航</span></a></li>
+				<li><a href=""><img src="img/bg3.png"><span>五彩导航</span></a></li>
+				<li><a href=""><img src="img/bg4.png"><span>五彩导航</span></a></li>
+			</ul>
+		</div>
+	</body>
+</html>

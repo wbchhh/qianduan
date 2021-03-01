@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			background:pink;
+		}
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		.box{
+			width:650px;
+			height:255px;
+			background-color:#fff;
+			position:absolute;
+			top:300px;
+			left:35%;
+			border:1px solid #A7A7A7;
+			border-radius:4px;
+		}
+		.box .top{
+			height:40px;
+			background:#65A7F3;
+		}
+		.box .top .top-left{
+			font-size:14px;
+			color:#fff;
+			line-height:40px;
+			margin-left:19px;
+			float:left;
+		}
+		.box .top .top-right img{
+			width:15px;
+			height:15px;
+			float:right;
+			padding-top:12px;
+			margin-right:19px;
+		}
+		.box .down{
+			padding:15px 0;
+		}
+		.box .down .left{
+			float:left;
+		}
+		.box .down .left .yuan{
+			height:152px;
+			width:152px;
+			border-radius:50%;
+			border:3px solid #6EACF4;
+			margin:0px 0px 9px 24px;
+			
+		}
+		.box .down .left .yuan .yuan-1{
+			height:146px;
+			width:146px;
+			margin:3px 3px;
+			background-color:#fff;
+			border-radius:50%;
+			overflow:hidden;
+			position:relative;
+		}
+		.box .down .left .yuan .yuan-1 .se{
+			background-color:#AD62CE;
+			width:90px;
+			height:16px;
+			position:absolute;
+			bottom:0px;
+			left:27px;
+			z-index:100;
+		}
+		.box .down .left .yuan .yuan-1 .se1{
+			width:120px;
+			height:34px;
+			background-color:#E7AD3B;
+			position:absolute;
+			bottom:0px;
+			left:12px;
+			z-index:99;
+		}
+		.box .down .left .yuan .yuan-1 .se2{
+			width:136px;
+			height:50px;
+			background-color:#F75A6B;
+			position:absolute;
+			bottom:0px;
+			left:4px;
+			z-index:98;
+		}
+		.box .down .left .yuan .yuan-1 .se3{
+			width:144px;
+			height:65px;
+			background-color:#65A7F3;
+			position:absolute;
+			bottom:0px;
+			left:1px;
+			z-index:97;
+		}
+		.box .down .left .yuan .yuan-1 h2{
+			font-size:26px;
+			top:58px;
+			z-index:101;
+			position:absolute;
+			left:44px;	
+			letter-spacing:6px;
+		}
+		.box .down .left .yuan .yuan-1 h3.con{
+			font-size:12px;
+			position:absolute;
+			z-index:101;
+			top:74px;
+			left:102px;
+		}
+		.box .down .left .yuan .yuan-1 h3.con1{
+			font-size:12px;
+			position:absolute;
+			z-index:101;
+			bottom:41px;
+			left:44px;
+			
+		}
+		.box .down .left span{
+			font-size:12px;
+			margin-left:34px;
+		}
+		.box .down .right ul{
+			list-style:none;
+		}
+		.box .down .right ul li{
+			float:left;
+			margin-top:19px;
+		}
+		.box .down .right ul li .tt{
+			height:12px;
+			width:12px;
+			border-radius:50%;
+			float:left;
+			border:1px solid #A7A7A7;
+			margin-left:43px;
+			margin-top:4px;
+		}
+		.box .down .right ul li .right-yuan1{
+			background-color:#65A7F3;
+		}
+		.box .down .right ul li .right-yuan2{
+			background-color:#F75A6B;
+		}
+		.box .down .right ul li .right-yuan3{
+			background-color:#E7AD3B;
+		}
+		.box .down .right ul li .right-yuan4{
+			background-color:#AD62CE;
+		}
+		.box .down .right ul li span{
+			font-size:12px;
+			float:left;
+			margin-left:5px;
+			margin-top:2px;
+		}
+		.box .down .right ul li .right-box{
+			height:20px;
+			width:220px;
+			border:1px solid #A7A7A7;
+			float:left;
+			margin-left:11px;
+		}
+		.box .down .right ul li .right-box .right-box1{
+			height:20px;
+			width:48px;
+			background-color:#65A7F3;
+			float:left;
+		}
+		.box .down .right ul li .right-box .right-box2{
+			height:20px;
+			width:48px;
+			background-color:#F75A6B;
+			float:left;
+		}
+		.box .down .right ul li .right-box .right-box3{
+			height:20px;
+			width:48px;
+			background-color:#E7AD3B;
+			float:left;
+		}
+		.box .down .right ul li .right-box .right-box4{
+			height:20px;
+			width:48px;
+			background-color:#AD62CE;
+			float:left;
+		}
+		.box .down .right ul li .right-box span{
+			margin-left:33px;
+			letter-spacing:2px;
+		}
+		.box .down .right ul li a{
+			text-decoration:none;
+			font-size:12px;
+			color:#000;
+			padding:2px 5px;
+			border:1px solid #65A7F3;
+			border-radius:4px;
+			float:left;
+			margin-left:10px;
+		}
+		.box .down .right ul li a.delete{
+			text-decoration:none;
+			font-size:12px;
+			color:#000;
+			padding:2px 5px;
+			border:1px solid #65A7F3;
+			border-radius:4px;
+			
+		}
+	</style>
+	
+	<body>
+		<div class="box">
+			<div class="top">
+				<div class="top-left">
+					存储详情
+				</div>
+				<div class="top-right">
+					<img src="img/1.png">
+				</div>
+			</div>
+			<div class="down">
+				<div class="left">
+					<div class="yuan">
+						<div class="yuan-1">
+							<div class="se">
+							</div>
+							<div class="se1">
+							</div>
+							<div class="se2">
+							</div>
+							<div class="se3">
+							</div>
+							<div class="content">
+								<h2>4.8</h2>
+								<h3 class="con">G</h3>
+								<h3 class="con1">可用空间</h3>
+							</div>
+						</div>
+					</div>
+					<span>总共9.6G，可用4.8G</span>
+				</div>
+				<div class="right">
+					<ul>
+						<li>
+							<div class="right-yuan1 tt"></div>
+							<span>节目</span>
+							<div class="right-box">
+								<div class="right-box1">
+								</div>
+								<span>已用1.2G</span>
+							</div>
+							<a href="#">清空</a>
+						</li>
+						<li class="con">
+							<div class="right-yuan2 tt"></div>
+							<span>素材</span>
+							<div class="right-box">
+								<div class="right-box2">
+								</div>
+								<span>已用1.2G</span>
+							</div>
+							<a href="#">清空</a>
+							<a  class="delete" href="#">确认清空</a>
+							
+						</li>
+						<li>
+							<div class="right-yuan3 tt"></div>
+							<span>模板</span>
+							<div class="right-box">
+								<div class="right-box3">
+								</div>
+								<span>已用1.2G</span>
+							</div>
+							<a href="#">清空</a>
+						</li>
+						<li>
+							<div class="right-yuan4 tt"></div>
+							<span>其他</span>
+							<div class="right-box">
+								<div class="right-box4">
+								</div>
+								<span>已用1.2G</span>
+							</div>
+							<a href="#">清空</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

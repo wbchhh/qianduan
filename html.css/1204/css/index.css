@@ -1,0 +1,255 @@
+.box{
+	width:100%;
+	height:494px;
+	background-color:#fff;
+	border-radius:2px;
+}
+.box .header{
+	height:40px;
+	background:#E6F4E7;
+}
+.box .header .title a{
+	font-size:17px;
+	line-height:40px;
+	display:block;
+	text-align:center;
+	color:#000;
+	margin-left:220px;
+}
+.box .header .title a:hover{
+	text-decoration:underline;
+}
+.box .header .title1 ul li{
+	float:left;
+}
+.box .header .title1 ul li a{
+	font-size:12px;
+	color:#86928F;
+	line-height:40px;
+	display:block;
+	padding:0 12px;
+}
+.box .header .title1 ul li a img{
+	height:11px;
+	width:11px;
+}
+.box .header1{
+	height:51px;
+	border-bottom:1px solid #EBEBEB;
+	background-color:#fff;
+}
+.box .header1 .header1-left ul li{
+	float:left;
+}
+.box .header1 .header1-left ul li a{
+	font-size:16px;
+	color:#888888;
+	line-height:50px;
+	margin-left:8px;
+	margin-right:9px;
+	padding-left:4px;
+	padding-right:5px;
+}
+.box .header1 .header1-left ul li a:hover{
+	color:#000;
+}
+.box .header1 .header1-left ul li.con a{
+	font-size:16px;
+	color:#000;
+	line-height:50px;
+	width:28px;
+	margin-left:8px;
+	margin-right:9px;
+	padding-left:4px;
+	padding-right:5px;
+	border-bottom:2px solid #000;
+	padding-bottom:13px;
+}
+.box .header1 .header1-left ul li a img{
+	height:11px;
+	width:11px;
+	margin-left:-18px;
+}
+.box .header1 .header1-right ul li{
+	float:left;
+	line-height:66px;
+}
+.box .header1 .header1-right ul li a img{
+	height:25px;
+	width:25px;
+	margin:0 10px;
+}
+.box .tbody .tbody-left{
+	width:483px;
+	height:403px;
+	border-right:1px solid #EBEBEB;
+}
+.box .tbody .tbody-right{
+	background-color:pink;
+	float:right;
+	width:100%;
+}
+.box .tbody .tbody-left .tbody-left-top{
+	height:272px;
+	border-bottom:1px solid #EBEBEB;
+}
+.box .tbody .tbody-left .tbody-left-top .time span{
+	height:29px;
+	font-size:10px;
+	color:#C4C4C4;
+	line-height:29px;
+	display:block;
+	text-align:center;
+}
+.box .tbody .tbody-left .tbody-left-top .content{
+	position:relative;
+}
+.box .tbody .tbody-left .tbody-left-top .content .yuan{
+	height:32px;
+	width:32px;
+	overflow:hidden;
+	border-radius:50%;
+	margin-left:10px;
+	float:left;
+}
+.box .tbody .tbody-left .tbody-left-top .content .yuan img{
+	height:32px;
+	width:32px;
+}
+.box .tbody .tbody-left .tbody-left-top .content span{
+	font-size:12px;
+	width:100%;
+	color:#C4C4C4;
+	margin-left:14px;
+	position:absolute;
+	top:-1px;
+}
+.box .tbody .tbody-left .tbody-left-top .content .shuo{
+	height:108px;
+	width:385px;
+	background-color:yellow;
+	position:absolute;
+	top:18px;
+	left:52px;
+	border-radius:5px;
+	overflow:hidden;
+	padding:1px 1px;
+}
+.box .tbody .tbody-left .tbody-left-top .content1{
+	position:relative;
+}
+.box .tbody .tbody-left .tbody-left-top .content1 .yuan1{
+	height:32px;
+	width:32px;
+	overflow:hidden;
+	border-radius:50%;
+	right:10px;
+	float:right;
+	position:absolute;
+	top:140px;
+}
+.box .tbody .tbody-left .tbody-left-top .content1 .yuan1 img{
+	height:32px;
+	width:32px;
+}
+.box .tbody .tbody-left .tbody-left-top .content1 span{
+	font-size:12px;
+	width:100%;
+	color:#C4C4C4;
+	position:absolute;
+	top:138px;
+	left:405px;
+}
+.box .tbody .tbody-left .tbody-left-top .content1 .shuo1{
+	height:67px;
+	width:385px;
+	background-color:yellow;
+	position:absolute;
+	top:160px;
+	left:49px;
+	border-radius:5px;
+	overflow:hidden;
+	padding:1px 1px;
+}
+.box .tbody .tbody-left .tbody-left-down .ll ul li{
+	float:left;
+	height:38px;
+	line-height:38px;
+	
+}
+.box .tbody .tbody-left .tbody-left-down .ll ul li a img{
+	width:20px;
+	height:20px;
+	padding-left:9px;
+	padding-right:4px;
+}
+.box .tbody .tbody-left .tbody-left-down .rr ul li{
+	float:left;
+	height:38px;
+	line-height:38px;
+}
+.box .tbody .tbody-left .tbody-left-down .rr ul li a img{
+	width:20px;
+	height:20px;
+	padding-right:11px;
+}
+.box .tbody .tbody-left .tbody-left-down .tx textarea{
+	margin:5px 4px;
+	border:none;
+	width:475px;
+	height:45px;
+	float:left;
+}
+.box .tbody .tbody-left .tbody-left-down .btn ul li{
+	float:left;
+}
+.box .tbody .tbody-left .tbody-left-down .btn ul li button.c{
+	width:72px;
+	height:28px;
+	margin-right:14px;
+	border:1px solid #CDCFD0;
+	border-radius:4px;
+	padding-left:4px;
+	cursor: pointer;
+}
+.box .tbody .tbody-left .tbody-left-down .btn ul li button img{
+	height:11px;
+	width:11px;
+}
+.box .tbody .tbody-left .tbody-left-down .btn ul li button.co{
+	background-color:#B8C5BC;
+	width:72px;
+	height:28px;
+	border-radius:4px 0 0 4px;
+	padding-left:4px;
+	cursor: pointer;
+}
+.box .tbody .tbody-left .tbody-left-down .btn ul li button.con{
+	background-color:#B8C5BC;
+	width:25px;
+	height:28px;
+	margin-right:14px;
+	border-left:1px solid #fff;
+	border-radius:0 4px 4px 0;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

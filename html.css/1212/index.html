@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				height:300px;
+				width:1000px;
+				background-color:#f0f0f0;
+			}
+			.c1{
+				height:200px;
+				width:200px;
+				background-color:pink;
+				border-radius:50%;
+				text-align:center;
+				line-height:200px;
+				border:2px solid #000;
+				float:left;
+			}
+			
+			.c2{
+				height:200px;
+				width:200px;
+				background-color:#fff;
+				border:2px solid #000;
+				border-radius:50%;
+				text-align:center;
+				line-height:200px;
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="c1">hello JS</div>
+			<div class="c2"></div>
+		</div>
+		
+		<script>
+			var c1 = document.getElementsByClassName("c1")[0];
+			var c3 = document.getElementsByClassName("c1")[0].innerHTML;
+			var c2 = document.getElementsByClassName("c2")[0];
+			c1.onclick = function(){
+				var obj = getComputedStyle(c1);
+				var bg = obj["background-color"];
+				c2.style.backgroundColor = bg;
+				c2.innerText = c3;
+				this.innerText = "";
+				this.style.backgroundColor = "white";
+			}
+			c2.onclick = function(){
+				var obj = getComputedStyle(c2);
+				var bg = obj["background-color"];
+				c1.style.backgroundColor = bg;
+				c1.innerText = c3;
+				this.innerText = "";
+				this.style.backgroundColor = "white";
+			}
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

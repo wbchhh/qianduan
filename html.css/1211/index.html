@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			button{
+				width:80px;
+				height:40px;
+			}
+			ul{
+				padding:0;
+				margin:0;
+				list-style:none;
+			}
+			ul li{
+				height:50px;
+				widyh:50px;
+				border:1px solid #333;
+				margin:10px 0 0 10px;
+			}
+			
+			.img-box{
+				width:350px;
+				height:420px;
+				background-color:#ccc;
+				text-align:center;
+				line-height:420px;
+			}
+			.img-box img{
+				vertical-align:middle;
+			}
+		</style>
+	</head>
+	<body>
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<button>5</button>
+		
+		<script>
+			var btn=document.getElementsByTagName("button")[2];
+			btn.style.backgroundColor = "red";
+		</script>
+		
+		<ul>
+			<li>1</li>
+			<li id="demo">2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		
+		<script>
+			var li = document.getElementById("demo");
+			var ll = document.getElementsByTagName("li");
+			
+			li.parentElement.style.width = "300px";
+			li.parentElement.style.height = "300px";
+			li.parentElement.style.backgroundColor = "gray";
+
+			//for(var i=0;i<5;i++){
+				//ll[i].style.width = "300px";
+				//ll[i].style.height = "300px";
+				//ll[i].style.backgroundColor = "gray";
+			//}
+			li.previousElementSibling.style.backgroundColor = "yellow";
+			li.nextElementSibling.style.backgroundColor = "green"
+			
+		</script>
+		
+		<div class="img-box"></div>
+		
+		<script>
+			var box = document.getElementsByClassName("img-box")[0];
+			var img = document.createElement("img");
+			//img.setAttribute("src","./img/1.png");
+			img.src = "./img/1.png";
+			box.appendChild(img);
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

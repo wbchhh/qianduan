@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width:500px;
+				height:500px;
+				border:5px solid #000;
+				margin:0 auto;
+				padding:0px;
+			}
+			.box ul{
+				list-style:none;
+				margin:0px;
+				float:left;
+				padding:0px;
+			}
+			.box ul li{
+				float:left;
+				width:100px;
+				height:100px;
+				border:1px solid #000;
+				margin:10px 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>0</li>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<ul>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+			</ul>
+			<ul>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+			</ul>
+			<ul>
+				<li>12</li>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>
+			</ul>
+					
+		</div>
+		
+		<script>
+			var num=parseInt(window.prompt('input'));
+			var ele=document.getElementsByTagName("li");
+			//ele[0].style.backgroundColor='orange';
+			if(num>=0 && num<4){
+				ele[num].style.backgroundColor='orange';
+			}else if(num>3 && num<8){
+				ele[num].style.backgroundColor='red';
+			}else if(num>7 && num<12){
+				ele[num].style.backgroundColor='green';
+			}else if(num>11 && num<16){
+				ele[num].style.backgroundColor='purple';
+			}else if(num>15 && num<0){
+				console.log("页面不变化");
+			}
+			
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

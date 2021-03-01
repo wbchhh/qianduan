@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    *{
+				margin:0px;
+				padding:0px;
+			}
+			a{
+				text-decoration:none;
+			}
+			ul{
+				list-style:none;
+			}
+			.container{
+				margin:0 auto;
+				width:600px;
+			}
+			.box{
+				height:165px;
+				background-color:pink;
+				position:relative;
+			}
+			.box .top{
+				height:40px;
+				float:left;
+			}
+			.box .top .top-left{
+				font-size:16px;
+				color:#1B7FB6;
+				float:left;
+				height:40px;
+				line-height:40px;
+				padding-left:10px;
+			}
+			.box .top a .top-content {
+				color: #eb7350;
+				text-decoration:none;
+				font-size:12px;
+				float:left;
+				line-height:40px;
+				padding-left:45px
+			}
+			.box .top a .top-right{
+				color: #eb7350;
+				text-decoration:none;
+				font-size:12px;
+				float:right;
+				line-height:40px;
+				padding-left:11px;
+			}
+			.clearfix::after{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			.box .content textarea{
+				height:80px;
+				width:580px;
+				border:1px solid #CCCCCC;
+				margin:0 10px;
+				outline:none;
+				resize:none;
+			}
+			.box .down{
+				
+			}
+			.box .down .down-left ul li{
+				float:left;
+				height:44px;
+				display:block;			
+			}
+			.box .down .down-left ul li a img{
+				height:30px;
+				width:30px;
+				vertical-align:middle;
+			}
+			.box .down .down-left ul li a{
+				font-size:12px;
+				color:#000;
+				padding:0px 10px;
+			}
+			.box .down .down-left ul li a:hover{
+				color:#eb7350;
+			}
+			.box .down .down-right{
+				float:right;
+			}
+			.box .down .down-right a{
+				font-size:12px;
+				color:#000;
+				left:0px;
+			}
+			.box .down .down-right a:hover{
+				color:#eb7350;
+			}.box .down .down-right a{
+				line-height:30px;
+			}
+			.box .down .down-right a img{
+				height:10px;
+				width:10px;
+				padding:0px 0px;
+			}
+			.box .down .down-right .btn{
+				width:82px;
+				height:30px;
+				background-color:#FFC09F;
+				font-size:14px;
+				float:right;
+				margin:0 10px;
+				text-align:center;
+				line-height:30px;
+				border-radius:2px;
+			}
+			.box .down .down-right .btn a{
+				color:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box container">
+			<div class="top clearfix">
+				<div class="top-left">有什么新鲜事想告诉大家?</div>
+				<a href="javascript:;">
+					<div class="top-content">物业禁止饲养宠物惹争议，小区全面禁养宠物合理吗>></div>
+					<div class="top-right">热门微博</div>
+				</a>
+			</div>
+			<div class="content">
+				<textarea></textarea>
+			</div>
+			<div class="down clearfix">
+				<div class="down-left">
+					<ul>
+						<li><a href="javascript:;"><img src="img/微笑.png">表情</a></li>
+						<li><a href="javascript:;"><img src="img/图片.png">图片</a></li>
+						<li><a href="javascript:;"><img src="img/视频.png">视频</a></li>
+						<li><a href="javascript:;"><img src="img/话题.png">话题</a></li>
+						<li><a href="javascript:;"><img src="img/闪电.png">头条文章</a></li>
+						<li><a href="javascript:;">...</a></li>
+					</ul>
+				</div>
+				<div class="down-right">
+					<a href="javascript:;">
+						公开<img src="img/下.png">
+					</a>
+					<div class="btn"><a href="javascript:;">发布</a></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

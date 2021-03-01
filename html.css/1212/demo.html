@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				margin:0;
+			}
+			ul{
+				padding:0;
+				margin:0;
+				list-style:none;
+			}
+			.wrap{
+				height:300px;
+				width:320px;
+				background-color:#ccc;
+				margin:100px;
+			}
+			.wrap .row{
+				height:100px;
+			}
+			.wrap .row .col{
+				width:78px;
+				height:98px;
+				border:1px solid #fff;
+				float:left;
+				background-color:skyblue;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			
+		</div>
+		
+		
+		<script>
+			var wrap = document.getElementsByClassName("wrap")[0];
+			var rowNum=6;
+			var colNum=8;
+			var w=100;
+			var h=100;
+			wrap.style.width = colNum * w +"px";
+			wrap.style.height = rowNum * h +"px";
+			
+			for(var i=0;i<rowNum;i++){
+				var ul = document.createElement("ul");
+				wrap.appendChild(ul);
+				ul.className = "row";
+				for(var j=0;j<colNum;j++){		
+					var li = document.createElement("li");
+					ul.appendChild(li);
+					li.className = "col";
+					li.style.width =(w-2)+"px";
+					li.style.height =(h-2)+"px";
+					
+				}
+			}
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

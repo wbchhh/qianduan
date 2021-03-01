@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				height:100px;
+				width:100px;
+				background-color:pink;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="box" class="box1">
+			
+		</div>
+		
+		<script>
+			var box1=document.getElementsByClassName("box1")[0];
+			var obj=getComputedStyle(box1);
+			var h=obj["height"];
+			var w=obj["width"];
+			var bg=obj["background-color"];
+			console.log(h);
+			console.log(w);
+			console.log(bg);
+			
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

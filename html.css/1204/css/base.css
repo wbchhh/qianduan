@@ -1,0 +1,33 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+    background-color: #F6F6F6;
+}
+.container{
+	width:684px;
+	margin:0 auto;
+}
+ul,ol{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+}
+.clearfix::after{
+	content:"";
+	display:block;
+	clear:both;
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+input,textarea,button{
+	outline:none;
+	resize:none;
+	border:0;
+}

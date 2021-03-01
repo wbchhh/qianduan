@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{		
+				width:600px;
+				margin:0 auto;
+				position:relative;
+				border:10px solid #333;
+				overflow:hidden;
+			}
+			.box .box1{
+				width:100%;
+			}
+			.box .box1 ul{
+				width:1000%;
+				padding:0;
+				margin:0;
+				list-style:none;
+			}
+			.box .box1 ul li{
+				width:10%;
+				float:left;
+			}
+			.box .box1 ul li a{
+				width:100%;
+				display:block;
+			}
+			.box .box1 ul li a img{
+				width:100%;
+				vertical-align:middle;
+			}
+			.clearfix::after{
+				content="";
+				display:block;
+				clear:both;
+			}
+			.box .box2{
+				position:absolute;
+				left:0;
+				bottom:0;
+				width:100%;
+				background-color:pink;
+			}
+			.box .box2 ol{
+				padding:0;
+				margin:0;
+				list-style:none;
+				width:200px;
+				margin:0 auto;
+				height:30px;
+				background-color:pink;
+			}
+			.box .box2 ol li{
+				width:30px;
+				height:30px;
+				background-color#fff;
+				border-radius:50%;
+				float:left;
+				margin:0 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="box1">
+				<ul class="clearfix">
+					<li><a href=""><img src="img/p1.jpg"></a></li>
+					<li><a href=""><img src="img/p2.jpg"></a></li>
+					<li><a href=""><img src="img/p3.jpg"></a></li>
+					<li><a href=""><img src="img/p4.jpg"></a></li>
+					<li><a href=""><img src="img/p5.jpg"></a></li>
+				</ul>
+			</div>
+			<div class="box2">
+				<ol>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ol>
+			</div>
+			
+		</div>	
+	</body>
+</html>
